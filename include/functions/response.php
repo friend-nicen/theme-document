@@ -42,3 +42,16 @@ if(isset($_GET['bad'])){
 		]));
 	}
 }
+
+
+/*
+ * 踩
+ * */
+
+if(isset($_GET['submit'])){
+   
+    foreach (getLinks() as $key=>$item){
+        echo $item."<br />";
+    }
+    exit();
+}

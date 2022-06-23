@@ -1,0 +1,100 @@
+body .index{
+
+  margin-top: calc(60px + 1.5rem);
+  .main-main{
+    width: 75%;
+
+    .main-content{
+      width: 100%;
+      padding: 1.5rem 2.4rem;
+
+      .list{
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        justify-content: space-between;
+
+        li{
+          width: 49%;
+          padding: 0.6rem 1.2rem;
+          color:var(--theme-text-color);
+          margin: 0 0.15rem;
+          
+
+          &:hover{
+            background-color: var(--theme-color);
+            border-radius: 8px;
+            color: white;
+            
+            *{
+              color: var(--theme-hover-color);
+            }
+
+            .excerpt{
+              color: var(--theme-hover-color)!important;
+            }
+          }
+
+          a{
+            text-decoration: none;
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+
+
+            .datetime{
+              white-space: nowrap;
+              font-size: var(--theme-third-level-title);
+              height: fit-content;
+              margin-top: 0.05rem;
+            }
+
+            .info{
+              width: 100%;
+              display: flex;
+              margin-left: 0.8rem;
+              flex-direction: column;
+              overflow: hidden;
+
+              .title,.excerpt{
+                width: 100%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+
+              .title{
+                font-size: 1rem;
+                font-weight: 500;
+                color: inherit;
+              }
+
+              .excerpt{
+                margin-top: 0.3rem;
+                font-size: 0.80rem;
+                color: var(--theme-text-secondary);
+              }
+            }
+
+
+
+          }
+        }
+      }
+
+
+
+    }
+
+
+  }
+
+
+
+
+
+
+
+}

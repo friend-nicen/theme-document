@@ -40,7 +40,7 @@
 	    ?>
     </li>
     <li class="menu-item">
-        <span>文章聚合</span>
+        <a href="/pages" title="文章聚合" target="_blank"><span>文章聚合</span></a>
     </li>
     <li class="menu-item">
         <span>碎片笔记</span>

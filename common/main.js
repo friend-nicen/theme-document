@@ -462,6 +462,12 @@ $(function () {
     * 灯箱
     * */
     (function () {
+
+        /*屏蔽其他页面加载*/
+        if(typeof GLightbox == "undefined"){
+            return;
+        }
+
         const lightbox = GLightbox({
             selector: '.glightbox',
             touchNavigation: true,
@@ -526,7 +532,7 @@ $(function () {
     * 回复评论时自动滚动到指定位置
     * */
     if(location.search.indexOf('replytocom') != -1){
-       let top= ($('.comment-form').position().top-100);
+        let top= ($('.comment-form').position().top-100);
         $('html').get(0).scrollTop=top;
     }
 
