@@ -9,6 +9,8 @@ body .index {
         display: flex;
         flex-wrap: wrap;
         list-style: none;
+        padding: 0;
+        padding-left: 0.3rem;
         justify-content: space-between; }
         body .index .main-main .main-content .list li {
           width: 49%;
@@ -54,5 +56,16 @@ body .index {
                 margin-top: 0.3rem;
                 font-size: 0.80rem;
                 color: var(--theme-text-secondary); }
+
+@media (max-width: 1024px) {
+  body .index .main-main .main-content {
+    padding: 1.5rem 0.5rem; }
+    body .index .main-main .main-content .list {
+      padding: 0; }
+      body .index .main-main .main-content .list li {
+        width: 100%; } }
+@media (max-width: 480px) {
+  body .index .main-main .main-content {
+    padding: 0.2rem 0 !important; } }
 
 /*# sourceMappingURL=page.css.map */

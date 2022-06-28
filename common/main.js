@@ -468,9 +468,11 @@ $(function () {
 
             if (img.attr('src').indexOf("baitian") == -1) {
                 localStorage.removeItem('night');
+                $('meta[name=theme-color]').attr('content','#ffffff');
                 img.attr('src', ROOT + '/assets/images/baitian.svg').attr("title", '切换夜间模式');
             } else {
                 localStorage.setItem('night', 1);
+                $('meta[name=theme-color]').attr('content','#141414');
                 img.attr('src', ROOT + '/assets/images/anhei.svg').attr("title", '切换白天模式');
             }
         })
@@ -621,7 +623,7 @@ $(function () {
     }
 
     function toShow(){
-        $(this).find('.sub-menu').toggle(50);
+        $(this).find('.sub-menu').toggle();
     }
 
     enquire.register("screen and (max-width: 1024px)", {
