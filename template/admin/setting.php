@@ -130,7 +130,7 @@ function document_theme_register() {
 	register_setting( 'document_theme', "document_author_beijin" ); //作者卡片背景
 	register_setting( 'document_theme', "document_icp" ); //备案号
 	register_setting( 'document_theme', "document_donate" ); //赞赏
-
+    register_setting( 'document_theme', "document_baidu" ); //百度站长
 
 	/*
 	 * __ ，多语言翻译函数
@@ -199,7 +199,17 @@ function document_theme_register() {
 			'label_for' => "document_donate"
 		]
 	);
-
+    add_settings_field(
+        'document_baidu', // as of WP 4.6 this value is used only internally
+        // use $args' label_for to populate the id inside the callback
+        '百度站长推送Token',
+        'document_theme_field_input',
+        'document_theme',
+        'document_theme_section',
+        [
+            'label_for' => "document_baidu"
+        ]
+    );
 	add_settings_field(
 		'document_author_nickname', // as of WP 4.6 this value is used only internally
 		// use $args' label_for to populate the id inside the callback
