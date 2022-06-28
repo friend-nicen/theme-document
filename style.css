@@ -56,7 +56,7 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
     --theme-error-text-color: #660000;
     --theme-first-index-title: 0.78rem;
     --theme-secondary-index-title: 0.78rem;
-    --theme-third-index-title: 0.78rem; }
+    --theme-third-index-title: 0.78rem ; }
 
 @font-face {
     font-family: 'webfont';
@@ -161,7 +161,7 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
     scrollbar-width: thin;
     scrollbar-color: var(--theme-color) var(--theme-bg-color);
     line-height: 1.8;
-    -webkit-tap-highlight-color: transparent !important; }
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important; }
 
 pre * {
     color: #65a4e3; }
@@ -184,31 +184,31 @@ p {
     --theme-text-mini-color: #ebebeb99;
     --theme-hover-shadow: #DFDFDF2D;
     --theme-header-color: #141414;
-    --theme-header-border: #141414; }
+    --theme-header-border: #141414 ; }
 
 .theme-one {
-    --theme-color: #f5222d; }
+    --theme-color: #f5222d ; }
 
 .theme-two {
-    --theme-color: #fa541c; }
+    --theme-color: #fa541c ; }
 
 .theme-three {
-    --theme-color: #fadb14; }
+    --theme-color: #fadb14 ; }
 
 .theme-four {
-    --theme-color: #3eaf7c; }
+    --theme-color: #3eaf7c ; }
 
 .theme-five {
-    --theme-color: #13c2c2; }
+    --theme-color: #13c2c2 ; }
 
 .theme-six {
-    --theme-color: #1890ff; }
+    --theme-color: #1890ff ; }
 
 .theme-seven {
-    --theme-color: #722ed1; }
+    --theme-color: #722ed1 ; }
 
 .theme-eight {
-    --theme-color: #eb2f96; }
+    --theme-color: #eb2f96 ; }
 
 ::-webkit-scrollbar {
     -webkit-appearance: none;
@@ -1302,10 +1302,15 @@ body .index .i-article .i-article-right img {
     color: var(--theme-text-secondary);
     font-size: var(--theme-secondary); }
 
-.password p input {
+.password p input[type=password] {
     border: 1px solid #cfd4db;
     padding: 0 0.45rem;
-    margin-right: 0.5rem; }
+    margin-right: 0.5rem;
+    border-radius: 2px;
+    outline: none; }
+.password p input[type=password]:hover, .password p input[type=password]:focus {
+    box-shadow: 0 0 5px 2px var(--theme-color-20);
+    border-color: var(--theme-color); }
 
 .password p input[type=submit] {
     background-color: var(--theme-color);
@@ -1589,7 +1594,8 @@ body .index .i-article .i-article-right img {
         opacity: 1;
         visibility: visible;
         box-shadow: none;
-        display: none; }
+        display: none;
+        background-color: transparent; }
     html body .main-header .right .menu .menu-item .sub-menu .sub-menu-item a {
         margin: 0; }
     html body .main-header .right .menu .readMode {
@@ -1620,6 +1626,8 @@ body .index .i-article .i-article-right img {
 @media (min-width: 768px) and (max-width: 1024px) {
     html {
         min-width: unset; }
+    html body .password img {
+        width: 50%; }
     html body .main-container .main-main {
         width: 80%; }
     html body .main-container #space {
@@ -1632,6 +1640,8 @@ body .index .i-article .i-article-right img {
 @media (min-width: 481px) and (max-width: 767px) {
     html {
         min-width: unset; }
+    html body .password img {
+        width: 45%; }
     html body .main-container .main-main {
         width: 95%; }
     html body .main-container #space {
@@ -1649,6 +1659,8 @@ body .index .i-article .i-article-right img {
         min-width: unset; }
     html body h1 {
         margin-top: 0; }
+    html body .password img {
+        width: 60%; }
     html body .main-container .main-main {
         width: 96.5%; }
     html body .main-container .main-main .main-content {
@@ -1665,6 +1677,18 @@ body .index .i-article .i-article-right img {
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden; }
+    html body .password p {
+        width: 70%;
+        flex-wrap: wrap;
+        text-align: center;
+        margin: 0 auto; }
+    html body .password p label {
+        color: transparent; }
+    html body .password p label input {
+        height: 2rem;
+        width: 100%; }
+    html body .password p input[type=submit] {
+        margin-top: 1rem; }
     html body #author {
         display: none; }
     html body #publish {

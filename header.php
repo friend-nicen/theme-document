@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn" xmlns="http://www.w3.org/1999/html">
 <head>
+<meta name="theme-color" content="#ffffff" />
 <meta charset="<?php bloginfo( 'charset' ); ?>"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title><?php title() ?></title>
@@ -28,7 +29,9 @@
     /*同步阅读模式 */
     let night = localStorage.getItem('night');
     if (!!night) {
-        $('html').addClass('dark')
+        /*同步谷歌状态栏*/
+        $('meta[name=theme-color]').attr('content','#141414');
+        $('html').addClass('dark');//暗黑主题
         $(function () {
             $('.readMode img').attr('src', ROOT + '/assets/images/anhei.svg').attr("title", '切换白天模式')
         });
