@@ -4,23 +4,12 @@
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title><?php if ( is_page() || is_single() ) {
-        the_title();
-        echo "－";
-        bloginfo( 'name' );
-    } else {
-        bloginfo( 'name' );
-        echo "－";
-		documents( 'document_subtitle' );
-    } ?></title>
+<title><?php title() ?></title>
 <meta name="keywords" content="<?php documents( 'document_keywords' ); ?>"/>
-<?php if(is_single()){ ?>
-<meta name="description" content="<?php getExcerpt( get_the_excerpt(),$post->post_password ); ?>"/>
-<?php }else{ ?>
-<meta name="description" content="<?php documents( 'document_description' ); ?>"/>
-<?php } ?>
+<meta name="description" content="<?php description()  ?>"/>
 <link href="<?= $url; ?>/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
 <?php wp_head(); ?>
+
 <script>
     <?php echo (is_single())?'window.Current='.get_the_ID().";":""; ?>
     /*同步rem单位大小*/
@@ -54,6 +43,8 @@
         <img class="logo" src="<?php documents( 'document_logo_url' ); ?>" title="logo"/>
         <a href="/" title="回到首页"><h2 class="title tooltip" data-hint="<?php echo bloginfo( 'name' ); ?>"><?php echo bloginfo( 'name' ); ?> </h2></a>
     </div>
+    <!--移动端展开导航栏-->
+    <div class="daohang iconfont icon-daohangmoren"></div>
     <!--  右边导航栏  -->
     <div class="right">
         <!--  搜索图标  -->

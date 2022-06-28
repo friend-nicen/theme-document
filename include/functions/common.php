@@ -221,6 +221,7 @@ function getExcerpt($content, $password)
 function getLinks()
 {
 
+	$site_url=site_url();
     $links = []; //存储链接
 
     $links[] = get_home_url(); //首页
@@ -244,17 +245,56 @@ function getLinks()
 
     if (count($terms) > 0) {
         foreach ($terms as $term) {
-            $links[] = get_category_link($term->term_id);
+	        $links[]=$site_url.'/category/'.$term->slug;
         }
     }
 
     $tags = get_terms("post_tag");
-
-    foreach ($tags as $tag) {
-        $links[] = get_tag_link($tag->term_id);
-    }
-
+	if (count($tags) > 0) {
+	    foreach ($tags as $tag) {
+		    $links[]=$site_url.'/tag/'.$tag->slug;
+	    }
+	}
     return $links;
 
 }
+
+
+
+/*
+ * 标题
+ * */
+function title(){
+	if ( is_page() || is_single() ) {
+		the_title();
+		echo "－";
+		bloginfo( 'name' );
+	}elseif (is_category() || is_tag()){
+		echo strip_tags(get_the_archive_title());
+		echo "－";
+		bloginfo( 'name' );
+	}
+	else {
+		bloginfo( 'name' );
+		echo "－";
+		documents( 'document_subtitle' );
+	}
+}
+
+
+/*
+ * 站点关键字
+ * */
+function description(){
+	if(is_single() || is_page()){
+		getExcerpt( get_the_excerpt(),$post->post_password );
+	}elseif (is_category() || is_tag()){
+		echo strip_tags(get_the_archive_title());
+		echo "下的所有文章";
+	}
+	else{
+		documents( 'document_description' );
+	}
+}
+
 

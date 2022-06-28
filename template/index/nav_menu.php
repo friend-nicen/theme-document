@@ -1,5 +1,6 @@
+
 <ul class="menu">
-    <li class="readMode menu-item">
+    <li class="menu-item readMode">
         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/baitian.svg" title="切换夜间模式"/>
     </li>
     <li class="menu-item">

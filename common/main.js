@@ -39,8 +39,6 @@ $(function () {
 
     /*导航栏初始化*/
     (function () {
-
-
         /*
         * 给目录添加展开伸缩图标
         * */
@@ -240,7 +238,7 @@ $(function () {
         /*
         * 渲染完毕后显示，防抖动闪烁
         * */
-        $('.main-left').css('opacity',1);
+        $('.main-left').css('opacity', 1);
 
         /*
         *
@@ -254,16 +252,10 @@ $(function () {
             /*
             * 屏蔽点击滚动时的事件监听
             * */
-
             if (!watchScroll) return;
-
             let thats = main;
-
-
             let top = thats.get(0).scrollTop;
-
             let collects = thats.find(".main-content").find("h1,h2,h3,h4");
-
             let position = null;
 
             for (let i = 0; i < collects.length; i++) {
@@ -298,7 +290,7 @@ $(function () {
             * 屏蔽导航变化时的自动滚动
             * */
 
-            needScroll = false;
+            needScroll = false;//标记不需要滚动
             $("a[href='#" + collects.eq(position).attr("id") + "']").parent().trigger('click');
 
 
@@ -314,11 +306,11 @@ $(function () {
         let main = $('html');
         let toTop = $('.toTop');
         let progress = $('#progress');
-
-
         let navigator = $('#navigator'); //文章导航
-        let space=$('#space');
+        let space = $('#space');
 
+
+        console.log("滚动")
 
         /*
         * 判断是否存在文章导航
@@ -329,19 +321,44 @@ $(function () {
             navigator.css('left', pos.left);
             navigator.css('top', pos.top);
             navigator.show();
+
+            /*
+            * 跟随屏幕大小变化，调整目录的位置
+            * */
+            enquire.register("screen and (min-width:1024px)", {
+                /*屏幕大于1024时监听屏幕大小，更新目录导航位置*/
+                match() {
+                    $(window).on("resize", function () {
+                        navigator.css("left", space.position().left)
+                    })
+                },
+                /*屏幕小于1024时取消监听屏幕大小*/
+                unmatch() {
+                    $(window).off("resize", function () {
+                        navigator.css("left", space.position().left)
+                    });
+                }
+            });
         }
 
 
+        /*
+        * html的scrollTop在微信端无法正常获取值
+        * */
+
 
         /*初始化加载后的首次进度*/
-        progress.text((((main.get(0).scrollTop + main.get(0).clientHeight) / main.get(0).scrollHeight) * 100).toFixed(0) + "%")
+        progress.text((((window.scrollY + main.get(0).clientHeight) / main.get(0).scrollHeight) * 100).toFixed(0) + "%")
 
         /*
         * 返回顶部按钮被点击
         * */
         $('.toTop').click(function () {
-            main.animate({scrollTop: 0}, 200);
+            main.animate({scrollTop: 0}, 200, "linear", function () {
+                window.scrollTo(0, 0);
+            });
         });
+
 
         /*
         * 监控阅读进度
@@ -350,10 +367,11 @@ $(function () {
 
             let that = main.get(0);
 
+
             /*
             * 判断是否需要显示
             * */
-            if (that.scrollTop > 0) {
+            if (window.scrollY > 0) {
                 toTop.css('visibility', 'visible');//显示回到顶部
             } else {
                 toTop.css('visibility', 'hidden');
@@ -362,7 +380,7 @@ $(function () {
             /*
             * 同步阅读进度
             * */
-            progress.text((((that.scrollTop + that.clientHeight) / that.scrollHeight) * 100).toFixed(0) + "%")
+            progress.text((((window.scrollY + that.clientHeight) / that.scrollHeight) * 100).toFixed(0) + "%")
         })
 
 
@@ -372,26 +390,27 @@ $(function () {
 
         let isFixed = false;
         let right = $("#right");
+
         if (right.length != 0) {
 
             let position = right.position();
-
 
             /*
             * 计算触发stiky的临界值（窗口顶部到容器底部的总高度）,减去的底部间距
             * */
             let bottom = right.get(0).offsetHeight + position.top + (1.5 * rem)
-
             let value = bottom - window.innerHeight;
 
 
-            $(window).on('scroll', function () {
+            /*
+            * 滚动、屏幕大小变化时，动态更新右侧侧边栏的位置
+            * */
+            function toFixed() {
 
                 let main = $('html').get(0);
-
+                let fixed = $('#fixed');
                 if (right.length == 0 || isFixed) return;
                 isFixed = true;
-
 
 
                 /*
@@ -400,7 +419,7 @@ $(function () {
 
                 if (main.scrollTop > value) {
 
-                    right.css('left', position.left);
+                    right.css('left', fixed.position().left + rem);
                     right.css('bottom', '0.5rem');
                     right.css('position', 'fixed');
 
@@ -410,9 +429,33 @@ $(function () {
 
                 isFixed = false;
 
-            })
-        }
+            }
 
+
+            /*
+            * 判断是否需要监听右侧侧边栏位置更新
+            * */
+            enquire.register("screen and (min-width:1024px)", {
+                /*屏幕大于1024时监听屏幕大小，更新目录导航位置*/
+                match() {
+                    $(window).on('scroll', toFixed); //页面滚动时更新
+                    $(window).on('resize', toFixed); //页面大小变化时更新
+                },
+                /*屏幕小于1024时取消监听屏幕大小*/
+                unmatch() {
+                    $(window).off('scroll', toFixed); //页面滚动时更新
+                    $(window).off('resize', toFixed); //页面大小变化时更新
+                },
+                /*页面加载时判断是否需要监听更新位置*/
+                setup() {
+                    if (window.innerWidth > 1024) {
+                        toFixed(); //页面初始化时更新一次
+                    }
+                }
+            });
+
+
+        }
 
 
         /*
@@ -464,7 +507,7 @@ $(function () {
     (function () {
 
         /*屏蔽其他页面加载*/
-        if(typeof GLightbox == "undefined"){
+        if (typeof GLightbox == "undefined") {
             return;
         }
 
@@ -472,8 +515,8 @@ $(function () {
             selector: '.glightbox',
             touchNavigation: true,
             loop: true,
-            zoomable:true,
-            draggable:true,
+            zoomable: true,
+            draggable: true,
             autoplayVideos: true
         });
     })();
@@ -531,10 +574,68 @@ $(function () {
     /*
     * 回复评论时自动滚动到指定位置
     * */
-    if(location.search.indexOf('replytocom') != -1){
-        let top= ($('.comment-form').position().top-100);
-        $('html').get(0).scrollTop=top;
+    if (location.search.indexOf('replytocom') != -1) {
+        let top = ($('.comment-form').position().top - 100);
+        $('html').get(0).scrollTop = top;
     }
+
+
+    /*
+    * 移动端监听导航栏菜单
+    * */
+
+
+    /*
+    * 动态菜单宽度
+    * */
+    let navWidth = '60%';
+
+
+    function expandNav() {
+
+        let right = $(".right");
+        let daohang = $('.daohang');
+
+        /*
+        * 判断宽度
+        * */
+        if (window.innerWidth > 475) {
+            right.css('width', '45%');
+            navWidth = '45%';
+        } else {
+            right.css('width', '60%');
+            navWidth = '60%';
+        }
+
+
+        if (daohang.hasClass('icon-cha')) {
+            right.css('left', '-' + navWidth)
+            daohang.removeClass('icon-cha');
+            daohang.addClass('icon-daohangmoren');
+        } else {
+            right.css('left', 0);
+            daohang.addClass('icon-cha');
+            daohang.removeClass('icon-daohangmoren');
+        }
+
+    }
+
+    function toShow(){
+        $(this).find('.sub-menu').toggle(50);
+    }
+
+    enquire.register("screen and (max-width: 1024px)", {
+        match() {
+            $(".daohang").on('click', expandNav);
+            $('.menu-item').on('click',toShow);
+        },
+        /*屏幕大于1024时取消监听屏幕大小*/
+        unmatch() {
+            $(".daohang").off('click', expandNav);
+            $('.menu-item').off('click',toShow);
+        }
+    });
+
 
 });
 
