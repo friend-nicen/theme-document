@@ -14,7 +14,7 @@ if ( comments_open() ) {
 	$nickname = $isLogin ? ( $adminUserInfo->exists() ? $adminUserInfo->display_name : '' ) : htmlspecialchars( $currentCommenter['comment_author'] );
 	$email    = $isLogin ? ( $adminUserInfo->exists() ? $adminUserInfo->user_email : '' ) : htmlspecialchars( $currentCommenter['comment_author_email'] );
 	$webUrl   = $isLogin ? site_url() : htmlspecialchars( $currentCommenter['comment_author_url'] );
-	$avatar   = $isLogin ? get_avatar_url( $adminUserInfo->ID ) : get_template_directory_uri() . '/assets/images/avatar.png';
+	$avatar   = $isLogin ? get_avatar_url( $adminUserInfo->ID ) : get_template_directory_uri() . '/assets/images/avatar.png?ver='.filemtime(get_template_directory() . '/assets/images/avatar.png');
 
 	$reply_to_id = isset( $_GET['replytocom'] ) ? (int) $_GET['replytocom'] : false;
 

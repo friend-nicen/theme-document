@@ -65,12 +65,12 @@ function switch_theme_self()
     add_option("document_logo_url", '/wp-content/themes/document/assets/images/logo.png'); //主题logo
     add_option("document_author_nickname", '友人a丶'); //作者昵称
     add_option("document_author_profession", 'PHPer'); //作者昵称
-    add_option("document_author_beijin", '/wp-content/themes/document/assets/images/beijin.jpg'); //作者卡片背景
-    add_option("document_author_avatar", '/wp-content/themes/document/assets/images/avatar.png'); //作者logo
+    add_option("document_author_beijin", '/wp-content/themes/document/assets/images/bg.jpg'); //作者卡片背景
+    add_option("document_author_avatar", '/wp-content/themes/document/assets/images/avatars.jpg'); //作者logo
     add_option("document_author_description", '前端、PHPer，做更好的自己。'); //作者描述
     add_option("document_footer", '前端、PHPer，做更好的自己。'); //插入页脚的内容
-    add_option("document_Gravatar", 'gravatar.loli.net/avatar'); //插入页脚的内容
-    add_option("document_icp", '中国10086'); //ICP备案号
+    add_option("document_Gravatar", 'gravatar.loli.net/avatar'); //默认替换的gavatar源
+    add_option("document_icp", 'ICP中国10086'); //ICP备案号
     add_option("document_donate", '/wp-content/themes/document/assets/images/avatar.png'); //赞赏码
     add_option("document_baidu", ''); //百度站长
 
@@ -255,7 +255,7 @@ function load_source()
     wp_enqueue_script('jquerys', 'https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js', false);
     wp_enqueue_script('enquire', 'https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/enquire.js/2.1.6/enquire.js', false);
 
-    wp_enqueue_script('main', $url . '/common/main.js', array(), filemtime($root . '/common/main.js'), false);
+    wp_enqueue_script('main', $url . '/common/main.min.js', array(), filemtime($root . '/common/main.min.js'), false);
 
     /*主题的style.css*/
     wp_enqueue_style('main-styles', get_stylesheet_uri(), array(), filemtime($root . '/style.css'));
