@@ -310,8 +310,6 @@ $(function () {
         let space = $('#space');
 
 
-        console.log("滚动")
-
         /*
         * 判断是否存在文章导航
         * 记录数据

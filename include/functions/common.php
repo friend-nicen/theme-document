@@ -228,6 +228,9 @@ function getLinks()
 
     query_posts("nopaging=true&posts_per_page=-1");
 
+	/*
+	 * 比遍历文章
+	 * */
     while (have_posts()) {
         the_post();
         $links[] = get_the_permalink();
@@ -237,10 +240,16 @@ function getLinks()
 
     $pages = get_pages();
 
+	/*
+	 * 遍历页面
+	 * */
     foreach ($pages as $page) {
         $links[] = get_page_link($page->ID);
     }
 
+	/*
+	 * 遍历目录
+	 * */
     $terms = get_terms('category', 'orderby=name&hide_empty=0');
 
     if (count($terms) > 0) {
@@ -249,6 +258,9 @@ function getLinks()
         }
     }
 
+	/*
+	 * 遍历标签
+	 * */
     $tags = get_terms("post_tag");
 	if (count($tags) > 0) {
 	    foreach ($tags as $tag) {
@@ -265,10 +277,16 @@ function getLinks()
  * 标题
  * */
 function title(){
+	/*
+	 * 文章和页面
+	 * */
 	if ( is_page() || is_single() ) {
 		the_title();
 		echo "－";
 		bloginfo( 'name' );
+	/*
+	 * 目录和标签
+	 * */
 	}elseif (is_category() || is_tag()){
 		echo strip_tags(get_the_archive_title());
 		echo "－";
@@ -287,6 +305,7 @@ function title(){
  * */
 function description(){
 	if(is_single() || is_page()){
+		/*获取文章摘要*/
 		getExcerpt( get_the_excerpt(),$post->post_password );
 	}elseif (is_category() || is_tag()){
 		echo strip_tags(get_the_archive_title());

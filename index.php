@@ -8,6 +8,8 @@ if ( ! have_posts() ) {
 	get_header();
 	?>
     <main class="main-container index">
+	    <?php /*get_template_part( './template/main/sidebar-left' ); */?>
+
         <div class="main-main">
         <?php get_template_part( './template/index/result' ); ?>
         <!--  文章  -->
@@ -48,6 +50,7 @@ if ( ! have_posts() ) {
             <!--底部信息-->
 	        <?php get_template_part( './template/index/footer' ); ?>
         </div>
+	  <?php /*get_template_part( './template/main/sidebar-right' ); */?>
     </main>
 	<?php get_footer();
 } ?>
