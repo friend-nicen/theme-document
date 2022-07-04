@@ -41,12 +41,12 @@
 	    ?>
     </li>
     <li class="menu-item">
-        <a href="/pages" title="文章聚合" target="_blank"><span>文章聚合</span></a>
+        <a href="<?php documents( 'document_pages' ); ?>" title="文章聚合" target="_blank"><span>文章聚合</span></a>
     </li>
     <li class="menu-item">
         <span>碎片笔记</span>
     </li>
     <li class="menu-item">
-        <span>留言板</span>
+        <a href="<?php documents( 'document_board' ); ?>" title="留言板" target="_blank"><span>留言板</span></a>
     </li>
 </ul>

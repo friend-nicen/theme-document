@@ -24,11 +24,13 @@ if ( ! have_posts() ) {
                         <div class="i-article-info">
                             <ul>
 								<?php
-								$author   = get_the_author_meta( 'display_name', $post->post_author );
-								$category = ( get_the_category() )[0]->cat_name;
+                                    $author   = get_the_author_meta( 'display_name', $post->post_author );
+                                    $category = ( get_the_category() )[0]->cat_name;
+                                    $link=get_category_link(( get_the_category() )[0]->term_id);
+                                    $url=get_the_author_meta( 'user_url', $post->post_author);
 								?>
-                                <li class="first" id="author"><i class="iconfont icon-chuangzuozhejieshao"></i><?= $author; ?></li>
-                                <li><i class="iconfont icon-fenlei"></i><?= $category; ?></li>
+                                <li class="first" id="author"><i class="iconfont icon-chuangzuozhejieshao"></i><a href="<?=$url ?>" title=" <?= $author; ?>"> <?= $author; ?></a></li>
+                                <li><i class="iconfont icon-fenlei"></i><a href="<?=$link ?>" title=" <?= $category; ?>"> <?= $category; ?></a></li>
                                 <li id="publish"><i class="iconfont icon-shijian"></i><?= the_time( "Y-m-d" ); ?></li>
                                 <li><i class="iconfont icon-icon-test"></i><?= getPostViews( get_the_ID() ); ?>热度</li>
                                 <li style="border:none"><i

@@ -2,6 +2,7 @@
 /*
  * 如果开启了评论
  * */
+
 if ( comments_open() ) {
 
 	//是否登录
@@ -14,7 +15,8 @@ if ( comments_open() ) {
 	$nickname = $isLogin ? ( $adminUserInfo->exists() ? $adminUserInfo->display_name : '' ) : htmlspecialchars( $currentCommenter['comment_author'] );
 	$email    = $isLogin ? ( $adminUserInfo->exists() ? $adminUserInfo->user_email : '' ) : htmlspecialchars( $currentCommenter['comment_author_email'] );
 	$webUrl   = $isLogin ? site_url() : htmlspecialchars( $currentCommenter['comment_author_url'] );
-	$avatar   = $isLogin ? get_avatar_url( $adminUserInfo->ID ) : get_template_directory_uri() . '/assets/images/avatar.png?ver='.filemtime(get_template_directory() . '/assets/images/avatar.png');
+    $default=get_template_directory_uri() . '/assets/images/avatar.png?ver='.filemtime(get_template_directory() . '/assets/images/avatar.png');
+	$avatar   = $isLogin ? (get_avatar_url( $adminUserInfo->ID )??$default):$default ;
 
 	$reply_to_id = isset( $_GET['replytocom'] ) ? (int) $_GET['replytocom'] : false;
 
@@ -22,10 +24,13 @@ if ( comments_open() ) {
 		$comment = get_comment( $reply_to_id );
 	}//获取当前回复的评论
 
-}
-
-
-?>
+}else{ ?>
+<div class="div-info">
+    <div class="header" style="padding: 20px;text-align: center">
+        评论区未打开，无法接收留言！
+    </div>
+</div>
+<?php exit();} ?>
 
 
 <div class="div-info">

@@ -131,6 +131,9 @@ function document_theme_register() {
 	register_setting( 'document_theme', "document_icp" ); //备案号
 	register_setting( 'document_theme', "document_donate" ); //赞赏
     register_setting( 'document_theme', "document_baidu" ); //百度站长
+    register_setting( 'document_theme', "document_board" ); //留言板
+    register_setting( 'document_theme', "document_pages" ); //文章聚合
+
 
 	/*
 	 * __ ，多语言翻译函数
@@ -188,6 +191,28 @@ function document_theme_register() {
 			'label_for' => "document_logo_url"
 		]
 	);
+    add_settings_field(
+        'document_board', // as of WP 4.6 this value is used only internally
+        // use $args' label_for to populate the id inside the callback
+        '留言板链接',
+        'document_theme_field_input',
+        'document_theme',
+        'document_theme_section',
+        [
+            'label_for' => "document_board"
+        ]
+    );
+    add_settings_field(
+        'document_pages', // as of WP 4.6 this value is used only internally
+        // use $args' label_for to populate the id inside the callback
+        '文章聚合链接',
+        'document_theme_field_input',
+        'document_theme',
+        'document_theme_section',
+        [
+            'label_for' => "document_pages"
+        ]
+    );
 	add_settings_field(
 		'document_donate', // as of WP 4.6 this value is used only internally
 		// use $args' label_for to populate the id inside the callback
