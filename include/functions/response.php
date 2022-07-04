@@ -45,7 +45,7 @@ if (isset($_GET['bad'])) {
 
 
 /*
- * 踩
+ * 链接提交
  * */
 
 if (isset($_GET['submit'])) {
@@ -78,4 +78,16 @@ if (isset($_GET['submit'])) {
      * 输出推送结果
      * */
     exit($result);
+}
+
+
+ /*
+ * 链接遍历
+ * */
+if (isset($_GET['sitemap'])) {
+	if(!is_writable($_SERVER['DOCUMENT_ROOT'])){
+		 exit('根目录不可写，站点地图生成失败！');
+	}
+	echo "站点地图生成成功！";
+    exit(file_put_contents('sitemap.txt',implode("\n", getLinks()),LOCK_EX));
 }

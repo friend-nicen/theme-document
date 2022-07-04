@@ -37,6 +37,8 @@ function reload()
         'document_footer' => get_option("document_footer"), //插入页脚的内容
         'document_donate' => get_option("document_donate"), //赞赏
         'document_baidu' => get_option("document_baidu"), //百度站长推送
+        'document_board' => get_option("document_board"), //留言页面链接
+        'document_pages' => get_option("document_pages"), //文章聚合
     ];
 
 }
@@ -73,6 +75,8 @@ function switch_theme_self()
     add_option("document_icp", 'ICP中国10086'); //ICP备案号
     add_option("document_donate", '/wp-content/themes/document/assets/images/avatar.png'); //赞赏码
     add_option("document_baidu", ''); //百度站长
+    add_option("document_pages", ''); //文章聚合
+    add_option("document_board", ''); //留言板
 
     reload();//刷新主题选项
 }
@@ -472,6 +476,7 @@ add_filter('excerpt_length', 'article_excerpt_lengths', 999);
 function add_page_template($page_templates)
 {
     $page_templates['template/page/posts.php'] = '文章聚合';
+    $page_templates['template/page/board.php'] = '留言板';
     return $page_templates;
 }
 
