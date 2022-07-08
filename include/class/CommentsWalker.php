@@ -1,11 +1,12 @@
 <?php
-/**
- * Nav Menu API: Walker_Nav_Menu class
- *
- * @package WordPress
- * @subpackage Nav_Menus
- * @since 4.6.0
- */
+
+/*
+ * 评论的格式化输出
+ * @author 友人a丶
+ * @date 2022-07-08
+ * */
+
+
 
 /**
  * Core class used to implement an HTML list of nav menu items.

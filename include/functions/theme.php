@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * 主题相关操作
+ * @author 友人a丶
+ * @date 2022-07-08
+ * */
+
+
+
+
 
 /*
  * 主题选项
@@ -96,6 +105,10 @@ function admin_init()
 
     //禁止Gutenberg编辑器
     add_filter('use_block_editor_for_post', '__return_false');
+    //禁止新版小工具
+    add_filter( 'gutenberg_use_widgets_block_editor', '__return_false' );
+    add_filter( 'use_widgets_block_editor', '__return_false');
+
     remove_action('wp_enqueue_scripts', 'wp_common_block_scripts_and_styles');
 
 

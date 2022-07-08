@@ -1,4 +1,14 @@
 <?php
+
+/*
+ * 全局公共函数
+ * @author 友人a丶
+ * @date 2022-07-08
+ * */
+
+
+
+
 /*文章浏览次数+1*/
 function setPostViews($postID)
 {
@@ -304,6 +314,9 @@ function title(){
  * 站点关键字
  * */
 function description(){
+
+    global $post;
+
 	if(is_single() || is_page()){
 		/*获取文章摘要*/
 		getExcerpt( get_the_excerpt(),$post->post_password );

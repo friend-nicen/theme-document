@@ -1,4 +1,13 @@
 <?php
+
+/*
+ * 文章分页
+ * @author 友人a丶
+ * @date 2022-07-08
+ * */
+
+
+
 $pagination = get_the_posts_pagination( array(
 	'prev_next'          => false,
 	'current'            => max( 1, get_query_var( 'paged' ) ),  //当前页码

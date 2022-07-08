@@ -1,3 +1,15 @@
+<?php
+
+/*
+ * 作者信息卡片样式
+ * @author 友人a丶
+ * @date 2022-07-08
+ * */
+
+
+
+?>
+
 <!--作者信息-->
 <div class="author">
     <div class="author-beijin">

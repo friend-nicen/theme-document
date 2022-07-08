@@ -1,4 +1,14 @@
-<?php $url = get_template_directory_uri();//主题url?>
+<?php
+
+/*
+ * 全局顶部模板
+ * @author 友人a丶
+ * @date 2022-07-08
+ * */
+
+$url = get_template_directory_uri();//主题url
+
+?>
 <!DOCTYPE html>
 <html lang="zh-cn" xmlns="http://www.w3.org/1999/html">
 <head>

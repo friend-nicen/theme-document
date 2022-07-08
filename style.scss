@@ -31,10 +31,10 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   --theme-third-level-title: 0.96rem;
   --theme-fourth-level-title: 0.78rem;
   --theme-color: #1890ff;
-  --theme-color-20: #42b98320;
+  --theme-color-20:  #{rgba(#42b983,.20)};
   --theme-text-color: #262626;
   --theme-text-secondary: #888888;
-  --theme-text-mini-color: #00000090;
+  --theme-text-mini-color: #{rgba(#000000,0.6)};
   --theme-text-mini: 0.71rem;
   --theme-text-more-mini: 0.63rem;
   --theme-text-super-mini: 0.4rem;
@@ -45,7 +45,7 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   --theme-header-border: #e1e1e1;
   --theme-hover-bg: #444;
   --theme-hover-color: white;
-  --theme-hover-shadow: #00000020;
+  --theme-hover-shadow: #{rgba(#000000,0.2)};
   --theme-code-bg: #eeeeee;
   --theme-code-text: #4e6e8e;
   --theme-success-bg-color: #f3f4f5;
@@ -218,14 +218,14 @@ p {
 }
 
 .dark {
-  --theme-text-color: #ffffffde;
+  --theme-text-color: #{rgba(#ffffff,.87)};
   --theme-bg-color: var(--theme-black);
-  --theme-text-secondary: #ebebeb99;
+  --theme-text-secondary: #{rgba(#ebebeb,.99)};
   --theme-hover-bg: var(--theme-text-color);
   --theme-hover-color: var(--theme-black);
   --theme-front-color: #2a2a2b;
-  --theme-text-mini-color: #ebebeb99;
-  --theme-hover-shadow: #DFDFDF2D;
+  --theme-text-mini-color: #{rgba(#ebebeb,.99)};
+  --theme-hover-shadow:  #{rgba(#DFDFDF,.18)};
   --theme-header-color: #141414;
   --theme-header-border: #141414;
 }
@@ -531,6 +531,73 @@ html {
                 }
               }
             }
+          }
+        }
+      }
+    }
+
+
+    /*请输入密码样式*/
+    .password {
+      width: 100%;
+      height: 100vh;
+      padding-top: calc(60px + 4.5rem);
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column;
+
+      img {
+        width: 25%;
+        margin-bottom: 2rem;
+      }
+
+      p {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--theme-text-secondary);
+        font-size: var(--theme-secondary);
+        width: 70%;
+        flex-wrap: wrap;
+        text-align: center;
+        margin: 0 auto;
+
+
+        input {
+          &[type=password] {
+            border: 1px solid #cfd4db;
+            padding: 0 0.45rem;
+            margin-right: 0.5rem;
+            border-radius: 2px;
+            outline: none;
+
+            &:hover, &:focus {
+              box-shadow: 0 0 5px 2px var(--theme-color-20);
+              border-color: var(--theme-color);
+            }
+          }
+
+          &[type=submit] {
+            background-color: var(--theme-color);
+            border: none;
+            color: white;
+            border-radius: 4px;
+            height: 60%;
+            padding: 0 1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+          }
+        }
+
+
+        label {
+          color: transparent;
+          margin-top: -0.8rem;
+
+          input {
+            height: 1.8rem;
+            width: 100%;
           }
         }
       }
@@ -1018,6 +1085,24 @@ html {
           margin-bottom: 1.5rem;
           border-radius: 4px;
 
+          /*面包屑导航的样式*/
+          .breadcrumb{
+            border-bottom: 1px solid #e1e1e1;
+            font-size: 0.8rem;
+            color: var(--theme-text-secondary);
+            padding: 0rem 0 0.9rem 0;
+
+            a{
+              color:inherit;
+              font-size: inherit;
+
+              &:hover{
+                color: var(--theme-text-color);
+                transform: scale(1.1);
+              }
+            }
+          }
+
           a {
             text-decoration: none;
           }
@@ -1340,71 +1425,6 @@ html {
 
           .plain, a {
             color: var(--theme-text-color);
-          }
-        }
-
-        .password {
-          width: 100%;
-          height: 100vh;
-          padding-top: calc(60px + 4.5rem);
-          display: flex;
-          justify-content: flex-start;
-          align-items: center;
-          flex-direction: column;
-
-          img {
-            width: 25%;
-            margin-bottom: 2rem;
-          }
-
-          p {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: var(--theme-text-secondary);
-            font-size: var(--theme-secondary);
-            width: 70%;
-            flex-wrap: wrap;
-            text-align: center;
-            margin: 0 auto;
-
-
-            input {
-              &[type=password] {
-                border: 1px solid #cfd4db;
-                padding: 0 0.45rem;
-                margin-right: 0.5rem;
-                border-radius: 2px;
-                outline: none;
-
-                &:hover, &:focus {
-                  box-shadow: 0 0 5px 2px var(--theme-color-20);
-                  border-color: var(--theme-color);
-                }
-              }
-
-              &[type=submit] {
-                background-color: var(--theme-color);
-                border: none;
-                color: white;
-                border-radius: 4px;
-                height: 60%;
-                padding: 0 1rem;
-                cursor: pointer;
-                margin-top: 1rem;
-              }
-            }
-
-
-            label {
-              color: transparent;
-              margin-top: -0.8rem;
-
-              input {
-                height: 1.8rem;
-                width: 100%;
-              }
-            }
           }
         }
 
@@ -2107,6 +2127,10 @@ html {
 
       .main-container {
         .main-main {
+          .non-result {
+            padding: 0.8rem 1rem;
+          }
+
           .main-content {
             .main-article {
               .container-image {

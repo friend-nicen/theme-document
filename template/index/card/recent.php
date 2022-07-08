@@ -1,4 +1,12 @@
+<?php
 
+/*
+ * 侧边栏最新文章
+ * @author 友人a丶
+ * @date 2022-07-08
+ * */
+
+?>
 
 <div class="div-info">
 	<div class="header">
