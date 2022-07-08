@@ -1,4 +1,12 @@
 <?php
+
+/*
+ * 全局底部模板
+ * @author 友人a丶
+ * @date 2022-07-08
+ * */
+
+
 global $documents;
 ?>
 <div class="main-bottom">

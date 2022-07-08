@@ -1,5 +1,11 @@
 <?php
-    $author   = get_the_author_meta( 'display_name', $post->post_author );
+/*
+ * 文章信息样式
+ * @author 友人a丶
+ * @date 2022-07-08
+ * */
+
+$author   = get_the_author_meta( 'display_name', $post->post_author );
 ?>
 <!--文章信息-->
 <div class="div-info">

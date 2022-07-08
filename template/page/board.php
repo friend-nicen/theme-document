@@ -1,4 +1,11 @@
 <?php
+
+/*
+ * 留言的模板页面
+ * @author 友人a丶
+ * @date 2022-07-08
+ * */
+
 get_header();//加载顶部内容
 ?>
     <main class="main-container">

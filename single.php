@@ -1,4 +1,14 @@
 <?php
+
+
+/*
+ * 文章页面模板
+ * @author 友人a丶
+ * @date 2022-07-08
+ * */
+
+
+
 setPostViews( get_the_ID() );//阅读次数加1
 get_header();//加载顶部内容
 
@@ -15,6 +25,8 @@ if ( post_password_required() ) {
         <!--  文章  -->
         <div class="main-main">
             <article class="main-content">
+                <!-- 面包屑导航 -->
+                <?php get_template_part( './template/index/breadcrumb' ); ?>
                 <?php get_template_part( './template/index/article-header' ); ?>
                 <!--  文章内容  -->
                 <div class="main-article">

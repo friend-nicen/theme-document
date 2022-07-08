@@ -1,8 +1,15 @@
 <?php
-    $author   = get_the_author_meta( 'display_name', $post->post_author );
-    $category = ( get_the_category() )[0]->cat_name;
-    $link=get_category_link(( get_the_category() )[0]->term_id);
-    $url=get_the_author_meta( 'user_url', $post->post_author);
+
+/*
+ * 文章顶部模板
+ * @author 友人a丶
+ * @date 2022-07-08
+ * */
+
+$author   = get_the_author_meta( 'display_name', $post->post_author );
+$category = ( get_the_category() )[0]->cat_name;
+$link=get_category_link(( get_the_category() )[0]->term_id);
+$url=get_the_author_meta( 'user_url', $post->post_author);
 ?>
 <!--  标题  -->
 <h1>

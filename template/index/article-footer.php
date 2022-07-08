@@ -1,4 +1,12 @@
 <?php
+
+/*
+ * 文章底部模板
+ * @author 友人a丶
+ * @date 2022-07-08
+ * */
+
+
 $next     = get_next_post();//下一篇文章
 $previous = get_previous_post();//上一篇
 global $documents;

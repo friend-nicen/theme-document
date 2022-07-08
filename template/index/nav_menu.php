@@ -1,4 +1,13 @@
+<?php
 
+/*
+ * 顶部导航栏模板
+ * @author 友人a丶
+ * @date 2022-07-08
+ * */
+
+
+?>
 <ul class="menu">
     <li class="menu-item readMode">
         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/baitian.svg" title="切换夜间模式"/>

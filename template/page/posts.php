@@ -1,4 +1,11 @@
 <?php
+/*
+ * 文章聚合的模板页面
+ * @author 友人a丶
+ * @date 2022-07-08
+ * */
+
+
 get_header();
 query_posts("nopaging=true&posts_per_page=-1&orderby=modified");//查询所有文章，安装更新日期
 ?>

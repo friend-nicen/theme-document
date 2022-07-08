@@ -1,7 +1,14 @@
 <?php
+
 /*
- * 如果不存在结果
+ * 文章列表模板
+ * @author 友人a丶
+ * @date 2022-07-08
  * */
+
+
+
+/*如果不存在结果*/
 if ( ! have_posts() ) {
 	get_template_part( './template/index/empty' );
 } else {

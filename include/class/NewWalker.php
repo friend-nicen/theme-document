@@ -1,11 +1,12 @@
 <?php
-/**
- * Nav Menu API: Walker_Nav_Menu class
- *
- * @package WordPress
- * @subpackage Nav_Menus
- * @since 4.6.0
- */
+
+/*
+ * 菜单的格式化输出
+ * @author 友人a丶
+ * @date 2022-07-08
+ * */
+
+
 
 /**
  * Core class used to implement an HTML list of nav menu items.
@@ -69,7 +70,7 @@ class NewWalker extends Walker_Nav_Menu {
 		$attributes .= ! empty( $item->target ) ? ' target="' . esc_attr( $item->target ) . '"' : '';
 		$attributes .= ! empty( $item->xfn ) ? ' rel="' . esc_attr( $item->xfn ) . '"' : '';
 		$attributes .= ! empty( $item->url ) ? ' href="' . esc_attr( $item->url ) . '"' : '';
-		$attributes .= 'title='. $item->title;
+		$attributes .= ' title='. $item->title;
 		$attributes .= '';
 
 		//添加a的样式
