@@ -57,31 +57,6 @@ $(function () {
         })
 
 
-        /*
-        * 目录的显示、隐藏事件
-        *
-        $('.first-index i').click(function () {
-			return;
-            let that = $(this);
-            let dom = that.parent().parent().next().children('div');
-
-            while(dom.is('.secondary-index')){
-                dom.toggle(100);
-                dom = dom.parent().next().children('div');
-            }
-
-            that.toggleClass('rotate');
-
-        })
-        */
-
-        /*
-        * 全部展开、关闭
-        *
-        $('.main-top .iconfont').click(function () {
-            $('.first-index').next("ul").toggle(100);
-        })
-        */
 
         /*
         * 给目录绑定滚动到索引的事件
@@ -396,7 +371,7 @@ $(function () {
             /*
             * 计算触发stiky的临界值（窗口顶部到容器底部的总高度）,减去的底部间距
             * */
-            let bottom = right.get(0).offsetHeight + position.top + (1.5 * rem)
+            let bottom = right.get(0).offsetHeight + position.top + (1.5 * rem);
             let value = bottom - window.innerHeight;
 
 
@@ -413,12 +388,23 @@ $(function () {
 
                 /*
                 * 当窗口高度+滚动高度=bottom，代表可以触发stiky 固定右边内容了；
+                * 临界值
                 * */
 
                 if (main.scrollTop > value) {
 
                     right.css('left', fixed.position().left + rem);
-                    right.css('bottom', '0.5rem');
+
+                    /*
+                    * 如果块的高度小于屏幕高度
+                    * 应该从top定位
+                    * */
+                    if(value>0){
+                        right.css('bottom', '0.5rem');
+                    }else{
+                        right.css('top', fixed.position().top);
+                    }
+
                     right.css('position', 'fixed');
 
                 } else {

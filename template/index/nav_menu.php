@@ -33,15 +33,15 @@
 		?>
     </li>
     <li class="menu-item">
-        <span>文章归档</span>
+        <span>快速阅读</span>
 		<i class="iconfont icon-you-copy-copy-copy"></i>
 	    <?php
 	    /*
 		 * 判断菜单是否已经被分配，分配则显示菜单
 		 * */
-	    if ( has_nav_menu( 'top-leval' ) ) {
+	    if ( has_nav_menu( 'top-leval2' ) ) {
 		    wp_nav_menu( [
-			    'theme_location' => 'top-leval',
+			    'theme_location' => 'top-leval2',
 			    'menu_class'     => 'sub-menu',
 			    'container'      => 'ul',
 			    'walker'         => ( new NewWalker() )
