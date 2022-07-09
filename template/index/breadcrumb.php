@@ -14,7 +14,7 @@ if (empty(get_the_category())) {
     $no_category = true;
 } else {
     $category = get_the_category()[0]->cat_name;//目录名
-    $tags = get_the_tags()[0]->name;//目录名
+    $link = get_category_link(get_the_category()[0]->term_id);//目录地址
     $no_category = false;
 }
 
@@ -24,7 +24,7 @@ if (empty(get_the_category())) {
 if (empty(get_the_tags())) {
     $no_tag = true;
 } else {
-    $link = get_category_link(get_the_category()[0]->term_id);//目录地址
+    $tags = get_the_tags()[0]->name;//目录名
     $linkTag = get_term_link(get_the_tags()[0]->term_id);//目录地址
     $no_tag = false;
 }
