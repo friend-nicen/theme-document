@@ -33,11 +33,18 @@ include_once get_template_directory().'/include/class/CommentsWalker.php';//自�
 include_once get_template_directory().'/template/admin/setting.php';//自定义后台
 
 
+/*
+ * 加载小部件
+ * */
+include_once get_template_directory().'/include/functions/widget.php';
+
 
 /*
  * 注册菜单
  * */
 register_nav_menus(['top-leval' => '顶部导航' ]);
+register_nav_menus(['top-leval2' => '顶部导航2' ]);
+
 
 /*
  * 关闭登陆后前台显示工具栏

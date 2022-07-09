@@ -120,12 +120,7 @@ function document_theme_register() {
 	register_setting( 'document_theme', "document_subtitle" ); //主题首页副标题
 	register_setting( 'document_theme', "document_keywords" ); //主题关键字
 	register_setting( 'document_theme', "document_description" ); //主题描述
-	register_setting( 'document_theme', "document_logo_url" ); //主题logo
-	register_setting( 'document_theme', "document_author_nickname" ); //作者昵称
-	register_setting( 'document_theme', "document_author_profession" ); //作者昵称
-	register_setting( 'document_theme', "document_author_avatar" ); //作者logo
-	register_setting( 'document_theme', "document_author_description" ); //作者描述
-	register_setting( 'document_theme', "document_footer" ); //插入页脚的内容
+    register_setting( 'document_theme', "document_footer" ); //插入页脚的内容
 	register_setting( 'document_theme', "document_Gravatar" ); //头像
 	register_setting( 'document_theme', "document_author_beijin" ); //作者卡片背景
 	register_setting( 'document_theme', "document_icp" ); //备案号
@@ -235,62 +230,6 @@ function document_theme_register() {
             'label_for' => "document_baidu"
         ]
     );
-	add_settings_field(
-		'document_author_nickname', // as of WP 4.6 this value is used only internally
-		// use $args' label_for to populate the id inside the callback
-		'作者昵称',
-		'document_theme_field_input',
-		'document_theme',
-		'document_theme_section',
-		[
-			'label_for' => "document_author_nickname"
-		]
-	);
-	add_settings_field(
-		'document_author_profession', // as of WP 4.6 this value is used only internally
-		// use $args' label_for to populate the id inside the callback
-		'作者职业',
-		'document_theme_field_input',
-		'document_theme',
-		'document_theme_section',
-		[
-			'label_for' => "document_author_profession"
-		]
-	);
-	add_settings_field(
-		'document_author_avatar', // as of WP 4.6 this value is used only internally
-		// use $args' label_for to populate the id inside the callback
-		'作者头像',
-		'document_theme_field_input',
-		'document_theme',
-		'document_theme_section',
-		[
-			'label_for' => "document_author_avatar"
-		]
-	);
-	add_settings_field(
-		'document_author_beijin', // as of WP 4.6 this value is used only internally
-		// use $args' label_for to populate the id inside the callback
-		'作者卡片背景',
-		'document_theme_field_input',
-		'document_theme',
-		'document_theme_section',
-		[
-			'label_for' => "document_author_beijin"
-		]
-	);
-	add_settings_field(
-		'document_author_description', // as of WP 4.6 this value is used only internally
-		// use $args' label_for to populate the id inside the callback
-		'作者描述',
-		'document_theme_field_textarea',
-		'document_theme',
-		'document_theme_section',
-		[
-			'label_for' => "document_author_description"
-		]
-	);
-
 
 	add_settings_field(
 		'document_icp', // as of WP 4.6 this value is used only internally

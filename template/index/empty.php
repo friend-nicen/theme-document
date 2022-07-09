@@ -25,7 +25,7 @@ $page_css = $url . '/assets/404/404.css';
     <meta name="keywords" content="404">
     <meta name="description" content="404">
     <link href="<?= $url; ?>/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
-    <link rel='stylesheet' href='<?= $page_404; ?>' type='text/css'/>
+    <link rel='stylesheet' href='<?= $page_css; ?>' type='text/css'/>
 </head>
 <body>
 <div class="joe_page_404">
