@@ -8,7 +8,7 @@
 
 开源地址
 
-Github：[https://github.com/Mengess/document](https://github.com/Mengess/document)
+Github：[https://github.com/friend-nicen/theme-document](https://github.com/friend-nicen/theme-document)
 
 Gitee：[https://gitee.com/friend-nicen/theme-document](https://gitee.com/friend-nicen/theme-document)
 
@@ -130,3 +130,8 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
 1. 重构侧边栏，拆分成四个可自定义的小部件。
 2. 增加文章顶部的面包屑导航。
 3. 修复因为QQ、微信浏览器不支持16进制透明颜色导致阴影失效的BUG。
+
+## 20220710更新
+
+1. 修改了Github仓库地址
+2. 新增自定义Smtp邮件发送功能，开启后用户评论、回复时自动会发送邮件通知。

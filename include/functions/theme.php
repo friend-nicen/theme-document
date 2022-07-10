@@ -45,6 +45,14 @@ function reload()
         'document_baidu' => get_option("document_baidu"), //百度站长推送
         'document_board' => get_option("document_board"), //留言页面链接
         'document_pages' => get_option("document_pages"), //文章聚合
+
+        'document_smtp_open' => get_option("document_smtp_open"), //是否开启smtp
+        'document_smtp_server' => get_option("document_smtp_server"), //是否开启smtp
+        'document_smtp_port' => get_option("document_smtp_port"), //服务器端口
+        'document_smtp_protocol' => get_option("document_smtp_protocol"),  //传输协议
+        'document_smtp_acccount' => get_option("document_smtp_acccount"),  //邮件账户
+        'document_smtp_password' => get_option("document_smtp_password"), //邮件密码
+
     ];
 
 }
@@ -78,6 +86,13 @@ function switch_theme_self()
     add_option("document_baidu", ''); //百度站长
     add_option("document_pages", ''); //文章聚合
     add_option("document_board", ''); //留言板
+
+    add_option("document_smtp_open", '0'); //是否开启smtp
+    add_option("document_smtp_server", ''); //smtp服务器
+    add_option("document_smtp_port", ''); //服务器端口
+    add_option("document_smtp_protocol", ''); //传输协议
+    add_option("document_smtp_acccount", ''); //邮件账户
+    add_option("document_smtp_password", ''); //邮件密码
 
     reload();//刷新主题选项
 }
