@@ -73,6 +73,21 @@ function document_theme_field_input( $args ) {
 	<?php
 }
 
+
+/*
+ * 域输出
+ * */
+function document_theme_field_password( $args ) {
+    // 获取我们使用 register_setting() 注册的字段的值
+    $setting = get_option( $args['label_for'] );
+    // 输出字段
+    ?>
+    <input type="password" style="width: 50%" name="<?php echo $args['label_for']; ?>"
+           value="<?php echo isset( $setting ) ? $setting : ''; ?>"/>
+    <?php
+}
+
+
 /*
  * 域输出
  * */
@@ -107,6 +122,28 @@ function document_theme_field_select( $args ) {
 }
 
 
+/*
+ * 单选
+ * */
+function document_theme_smtp_select( $args ) {
+    // 获取我们使用 register_setting() 注册的字段的值
+    $setting = get_option( $args['label_for'] );
+    ?>
+    <select style="width: 50%;" name="<?php echo $args['label_for']; ?>"
+            value="<?php echo isset( $setting ) ? $setting : ''; ?>">
+        <option <?php echo $setting == "1" ? 'selected' : ''; ?> value="1">
+            开启
+        </option>
+        <option <?php echo $setting == "0" ? 'selected' : ''; ?>
+                value="0">
+            关闭
+        </option>
+    </select>
+    <?php
+}
+
+
+
 
 
 
@@ -129,15 +166,24 @@ function document_theme_register() {
     register_setting( 'document_theme', "document_board" ); //留言板
     register_setting( 'document_theme', "document_pages" ); //文章聚合
 
+    /*smtp相关配置*/
+    register_setting( 'document_theme', "document_smtp_open" ); //是否开启smtp
+    register_setting( 'document_theme', "document_smtp_server" ); //邮件服务器
+    register_setting( 'document_theme', "document_smtp_port" ); //服务器端口
+    register_setting( 'document_theme', "document_smtp_protocol" ); //传输协议
+    register_setting( 'document_theme', "document_smtp_acccount" ); //邮件账户
+    register_setting( 'document_theme', "document_smtp_password" ); //邮件密码
 
-	/*
-	 * __ ，多语言翻译函数
-	 * */
+
+    /*
+     * __ ，多语言翻译函数
+     * */
 
 	/*
 	 * 添加分节
 	 * */
-	add_settings_section( 'document_theme_section', "", null, 'document_theme' );
+	add_settings_section( 'document_theme_section', "基础设置", null, 'document_theme' );
+    add_settings_section( 'document_theme_smtp', "SMTP设置", null, 'document_theme' );
 
 	/*
 	 * 注册输入域
@@ -265,6 +311,97 @@ function document_theme_register() {
 			'label_for' => "document_footer"
 		]
 	);
+
+
+
+    /*
+     *smtp 相关设置
+     * */
+
+
+
+
+
+    add_settings_field(
+        'document_smtp_open', // as of WP 4.6 this value is used only internally
+        // use $args' label_for to populate the id inside the callback
+        '是否开启SMTP',
+        'document_theme_smtp_select',
+        'document_theme',
+        'document_theme_smtp',
+        [
+            'label_for' => "document_smtp_open"
+        ]
+    );
+
+    add_settings_field(
+        'document_smtp_server', // as of WP 4.6 this value is used only internally
+        // use $args' label_for to populate the id inside the callback
+        'SMTP服务器',
+        'document_theme_field_input',
+        'document_theme',
+        'document_theme_smtp',
+        [
+            'label_for' => "document_smtp_server"
+        ]
+    );
+
+
+    add_settings_field(
+        'document_smtp_port', // as of WP 4.6 this value is used only internally
+        // use $args' label_for to populate the id inside the callback
+        '服务器端口',
+        'document_theme_field_input',
+        'document_theme',
+        'document_theme_smtp',
+        [
+            'label_for' => "document_smtp_port"
+        ]
+    );
+
+    add_settings_field(
+        'document_smtp_protocol', // as of WP 4.6 this value is used only internally
+        // use $args' label_for to populate the id inside the callback
+        '传输协议',
+        'document_theme_field_input',
+        'document_theme',
+        'document_theme_smtp',
+        [
+            'label_for' => "document_smtp_protocol"
+        ]
+    );
+
+
+
+    add_settings_field(
+        'document_smtp_acccount', // as of WP 4.6 this value is used only internally
+        // use $args' label_for to populate the id inside the callback
+        '邮件账号',
+        'document_theme_field_input',
+        'document_theme',
+        'document_theme_smtp',
+        [
+            'label_for' => "document_smtp_acccount"
+        ]
+    );
+
+    add_settings_field(
+        'document_smtp_password', // as of WP 4.6 this value is used only internally
+        // use $args' label_for to populate the id inside the callback
+        '账号密码',
+        'document_theme_field_password',
+        'document_theme',
+        'document_theme_smtp',
+        [
+            'label_for' => "document_smtp_password"
+        ]
+    );
+
+
+
+
+
+
 
 }
 

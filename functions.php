@@ -38,28 +38,12 @@ include_once get_template_directory().'/template/admin/setting.php';//自定义�
  * */
 include_once get_template_directory().'/include/functions/widget.php';
 
+/*
+ * 加载smtp
+ * */
+include_once get_template_directory().'/include/functions/smtp.php';
 
 /*
- * 注册菜单
+ * 覆盖wordpress默认设置
  * */
-register_nav_menus(['top-leval' => '顶部导航' ]);
-register_nav_menus(['top-leval2' => '顶部导航2' ]);
-
-
-/*
- * 关闭登陆后前台显示工具栏
- * */
-show_admin_bar( false );
-
-/*
- * 主题功能
- * */
-add_theme_support( 'post-thumbnails'); //开启主题缩略图
-add_theme_support( 'menus'); //开启主题菜单功能
-add_theme_support( 'widgets'); //开启自定义侧边栏
-add_theme_support( 'widgets-block-editor'); //开启自定义侧边栏
-remove_filter('the_content', 'wptexturize');  //关闭文章转义
-reload(); //加载主题选项，获取主题需要的选项数据
-
-
-
+include_once get_template_directory().'/include/functions/initialize.php';

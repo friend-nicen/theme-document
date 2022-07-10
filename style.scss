@@ -1437,6 +1437,7 @@ html {
               border-radius: 4px;
             }
 
+
             .comment-header {
               width: 100%;
               padding: 0 0.35rem;
@@ -1450,6 +1451,8 @@ html {
                 display: flex;
                 justify-content: flex-start;
                 align-items: center;
+
+
 
                 .comment-avatar {
                   display: flex;
@@ -1658,6 +1661,10 @@ html {
 
                 .url {
                   font-size: var(--theme-third-level-title);
+                }
+
+                .says{
+                  margin-left: 0.3rem;
                 }
 
                 .avatar {

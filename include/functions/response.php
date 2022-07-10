@@ -84,6 +84,7 @@ if (isset($_GET['submit'])) {
  /*
  * 链接遍历
  * */
+
 if (isset($_GET['sitemap'])) {
 	if(!is_writable($_SERVER['DOCUMENT_ROOT'])){
 		 exit('根目录不可写，站点地图生成失败！');
