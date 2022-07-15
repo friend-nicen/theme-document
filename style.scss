@@ -21,22 +21,22 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   主题变量
 */
 :root {
-  --theme-text: 0.83rem;
+  --theme-text: 0.9rem;
   --theme-header-size: 1.08rem;
   --theme-white: #f1f2f9;
   --theme-black: #212121;
-  --theme-secondary: 0.78rem;
+  --theme-secondary: 0.83rem;
   --theme-first-level-title: 1.50rem;
   --theme-secondary-level-title: 1.2rem;
-  --theme-third-level-title: 0.96rem;
-  --theme-fourth-level-title: 0.78rem;
+  --theme-third-level-title: 1rem;
+  --theme-fourth-level-title: 0.9rem;
   --theme-color: #1890ff;
   --theme-color-20:  #{rgba(#42b983,.20)};
   --theme-text-color: #262626;
-  --theme-text-secondary: #888888;
-  --theme-text-mini-color: #{rgba(#000000,0.6)};
-  --theme-text-mini: 0.71rem;
-  --theme-text-more-mini: 0.63rem;
+  --theme-text-secondary:  #{rgba(#000000,0.65)};
+  --theme-text-mini-color: #{rgba(#000000,0.65)};
+  --theme-text-mini: 0.81rem;
+  --theme-text-more-mini: 0.71rem;
   --theme-text-super-mini: 0.4rem;
   --theme-li-padding: 1.2rem;
   --theme-bg-color: var(--theme-white);
@@ -64,7 +64,6 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   --theme-secondary-index-title: 0.78rem;
   --theme-third-index-title: 0.78rem;
 }
-
 
 /*标题字体库*/
 @font-face {
@@ -209,7 +208,10 @@ pre * {
 
 p {
   margin: 0 0 0.83rem 0;
-  font-weight: 400;
+  font-weight: normal;
+  word-wrap:break-word;
+  word-break: break-all;
+  word-spacing:normal;
 }
 
 ::selection {
@@ -1088,7 +1090,7 @@ html {
           /*面包屑导航的样式*/
           .breadcrumb{
             border-bottom: 1px solid #e1e1e1;
-            font-size: 0.8rem;
+            font-size: var(--theme-text-mini);
             color: var(--theme-text-secondary);
             padding: 0rem 0 0.9rem 0;
 
@@ -1109,7 +1111,7 @@ html {
 
           .article-info ul {
             list-style: none;
-            white-space: nowrap;
+            display: flex;
             margin: 0;
             padding: 0 0 0.1rem 0;
             margin-bottom: 0.83rem;
@@ -1192,11 +1194,10 @@ html {
               color: var(--theme-color);
               word-wrap: break-word;
               word-spacing: normal;
+              word-break: break-all;
 
               &:visited, &:active {
                 color: var(--theme-color);
-                word-wrap: break-word;
-                word-spacing: normal;
               }
             }
 
@@ -1384,7 +1385,7 @@ html {
                 }
 
                 a {
-                  font-size: var(--theme-text);
+                  font-size: var(--theme-secondary);
                   color: inherit;
                   text-decoration: none;
                   white-space: nowrap;
@@ -1527,7 +1528,9 @@ html {
               .comment-content {
                 width: 100%;
                 margin-bottom: 0.7rem;
-                padding: 0.3rem 0.5rem;
+                padding: 0.35rem 0.5rem;
+                color: var(--theme-text-secondary);
+                font-size: var(--theme-secondary);
               }
 
               .comment-container {
@@ -1682,6 +1685,7 @@ html {
                 width: 100%;
                 padding-left: 3.5rem;
                 margin: 0.83rem 0 0 0;
+
               }
 
               .comment-awaiting-moderation {
@@ -1931,7 +1935,7 @@ html {
 
               .i-article-title {
                 font-size: 1.1rem;
-                font-weight: 500;
+                font-weight: 510;
                 color: inherit;
                 display: flex;
                 text-overflow: ellipsis;
@@ -1949,6 +1953,9 @@ html {
 
               .i-article-excerpt {
                 font-size: 0.80rem;
+                word-wrap:break-word;
+                word-break: break-all;
+                word-spacing:normal;
                 color: var(--theme-text-secondary);
                 margin-top: 0.6rem;
                 display: -webkit-box;
@@ -1966,6 +1973,7 @@ html {
                 ul {
                   list-style: none;
                   margin: 0;
+                  white-space: nowrap;
                   padding: 0 0 1.05rem 0;
                   border-bottom: 1px solid #e1e1e1;
 
@@ -2238,14 +2246,32 @@ html {
 @media (max-width: 480px) {
   :root {
     --theme-first-level-title: 1.3rem;
+    --theme-text: 0.95rem;
+    --theme-secondary: 0.85rem;
+    --theme-text-mini: 0.81rem;
+    --theme-text-more-mini: 0.71rem;
+    --theme-secondary-level-title: 1.2rem;
+    --theme-third-level-title: 1.1rem;
+    --theme-fourth-level-title: 1rem;
+    --theme-header-size: 1.15rem;
   }
 
   html {
     min-width: unset;
 
     body {
+
       h1 {
-        margin-top: 0;
+        margin-top: 0.6rem;
+        line-height: 1.5;
+      }
+
+      .main-header{
+        height: 55px;
+        border-top: 1px solid var(--theme-header-border);
+        .daohang{
+            font-size: 1.45rem;
+        }
       }
 
       .password img {
@@ -2253,11 +2279,22 @@ html {
       }
 
       .main-container {
+
+        margin-top: calc(55px + 0.5rem);
+
         .main-main {
           width: 96.5%;
 
+          .main-bottom{
+            padding: 0 0.3rem;
+          }
+
+
           .main-content {
-            padding: 1.6rem 0.9rem 0 0.9rem;
+            padding:1.1rem 0.9rem 0 0.9rem;
+            .breadcrumb{
+                padding-bottom: 0.75rem;
+            }
           }
         }
 
@@ -2267,7 +2304,7 @@ html {
       }
 
       .index .main-main .main-content {
-
+        padding:  1.45rem 0.9rem 0 0.9rem;
         .i-article {
 
           .i-article-right {
