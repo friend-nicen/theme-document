@@ -1,10 +1,3 @@
-
-/*
- * 文章聚合页面样式
- * @author 友人a丶
- * @date 2022-07-08
- * */
-
 html {
   body .index {
 
@@ -106,20 +99,22 @@ html {
 
 
 @media (max-width: 1024px) {
-  body .index {
+  html {
+    body .index {
 
-    .main-main {
+      .main-main {
 
-      .main-content {
+        .main-content {
 
-        padding: 1.5rem 0.5rem;
+          padding: 1.5rem 0.5rem;
 
-        .list {
+          .list {
 
-          padding: 0;
+            padding: 0;
 
-          li {
-            width: 100%;
+            li {
+              width: 100%;
+            }
           }
         }
       }
@@ -128,12 +123,14 @@ html {
 }
 
 @media (max-width: 480px) {
-  body .index {
-
-    .main-main {
-
-      .main-content {
-        padding: 0.2rem 0 !important;
+  html {
+    body .index {
+      margin-top: calc(55px + 1rem);
+      .main-main {
+        width: 96.5%;
+        .main-content {
+          padding: 0.2rem 0 !important;
+        }
       }
     }
   }
