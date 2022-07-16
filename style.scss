@@ -198,7 +198,10 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   box-sizing: border-box;
   scrollbar-width: thin;
   scrollbar-color: var(--theme-color) var(--theme-bg-color);
-  line-height: 1.8;
+  line-height: 1.75;
+  word-wrap:break-word;
+  word-break: break-all;
+  word-spacing:normal;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
 }
 
@@ -209,9 +212,6 @@ pre * {
 p {
   margin: 0 0 0.83rem 0;
   font-weight: normal;
-  word-wrap:break-word;
-  word-break: break-all;
-  word-spacing:normal;
 }
 
 ::selection {
@@ -1192,9 +1192,6 @@ html {
 
             a {
               color: var(--theme-color);
-              word-wrap: break-word;
-              word-spacing: normal;
-              word-break: break-all;
 
               &:visited, &:active {
                 color: var(--theme-color);
@@ -1626,7 +1623,7 @@ html {
           }
 
           .comment_list {
-            padding: 0.5rem 0.5rem;
+            padding: 0.5rem 0;
             margin-top: 0.2rem;
 
             * {
@@ -1648,7 +1645,7 @@ html {
               display: flex;
               flex-wrap: wrap;
               border-top: 1px solid #e1e1e170;
-              padding: 1rem;
+              padding: 1rem 0;
 
 
               a{
@@ -1953,9 +1950,6 @@ html {
 
               .i-article-excerpt {
                 font-size: 0.80rem;
-                word-wrap:break-word;
-                word-break: break-all;
-                word-spacing:normal;
                 color: var(--theme-text-secondary);
                 margin-top: 0.6rem;
                 display: -webkit-box;
@@ -2280,7 +2274,13 @@ html {
 
       .main-container {
 
-        margin-top: calc(55px + 0.5rem);
+
+
+        margin-top: calc(55px + 0.8rem);
+
+        .div-info{
+          padding: 0.1rem 1rem 0.83rem 1.1rem;
+        }
 
         .main-main {
           width: 96.5%;
