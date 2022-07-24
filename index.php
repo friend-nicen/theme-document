@@ -59,7 +59,7 @@ if ( ! have_posts() ) {
             <!--底部信息-->
 	        <?php get_template_part( './template/index/footer' ); ?>
         </div>
-	  <?php /*get_template_part( './template/main/sidebar-right' ); */?>
+	    <?php get_template_part( './template/index/sidebar-right' ); ?>
     </main>
 	<?php get_footer();
 } ?>
