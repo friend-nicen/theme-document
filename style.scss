@@ -21,23 +21,27 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   主题变量
 */
 :root {
-  --theme-text: 0.9rem;
-  --theme-header-size: 1.08rem;
-  --theme-white: #f1f2f9;
-  --theme-black: #212121;
-  --theme-secondary: 0.83rem;
+
+  --theme-text-super-mini: 0.4rem;
+  --theme-text-mini: 0.76rem;
+  --theme-text-more-mini: 0.69rem;
+  --theme-text: 0.84rem;
+  --theme-header-size: 1.1rem;
+  --theme-secondary: 0.78rem;
   --theme-first-level-title: 1.50rem;
   --theme-secondary-level-title: 1.2rem;
-  --theme-third-level-title: 1rem;
-  --theme-fourth-level-title: 0.9rem;
+  --theme-third-level-title: 0.96rem;
+  --theme-fourth-level-title: 0.78rem;
+
+
+  --theme-white: #f1f2f9;
+  --theme-black: #212121;
   --theme-color: #1890ff;
-  --theme-color-20:  #{rgba(#42b983,.20)};
+  --theme-color-20: #{rgba(#42b983,.20)};
   --theme-text-color: #262626;
-  --theme-text-secondary:  #{rgba(#000000,0.65)};
+  --theme-text-secondary: #{rgba(#000000,0.65)};
   --theme-text-mini-color: #{rgba(#000000,0.65)};
-  --theme-text-mini: 0.81rem;
-  --theme-text-more-mini: 0.71rem;
-  --theme-text-super-mini: 0.4rem;
+
   --theme-li-padding: 1.2rem;
   --theme-bg-color: var(--theme-white);
   --theme-front-color: white;
@@ -172,6 +176,7 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   content: "";
 }
 
+
 .icon-jihua:before {
   content: "";
 }
@@ -199,9 +204,9 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   scrollbar-width: thin;
   scrollbar-color: var(--theme-color) var(--theme-bg-color);
   line-height: 1.75;
-  word-wrap:break-word;
+  word-wrap: break-word;
   word-break: break-all;
-  word-spacing:normal;
+  word-spacing: normal;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
 }
 
@@ -227,7 +232,7 @@ p {
   --theme-hover-color: var(--theme-black);
   --theme-front-color: #2a2a2b;
   --theme-text-mini-color: #{rgba(#ebebeb,.99)};
-  --theme-hover-shadow:  #{rgba(#DFDFDF,.18)};
+  --theme-hover-shadow: #{rgba(#DFDFDF,.18)};
   --theme-header-color: #141414;
   --theme-header-border: #141414;
 }
@@ -598,7 +603,7 @@ html {
           margin-top: -0.8rem;
 
           input {
-            height: 1.8rem;
+            height: 2rem;
             width: 100%;
           }
         }
@@ -1088,17 +1093,17 @@ html {
           border-radius: 4px;
 
           /*面包屑导航的样式*/
-          .breadcrumb{
+          .breadcrumb {
             border-bottom: 1px solid #e1e1e1;
             font-size: var(--theme-text-mini);
             color: var(--theme-text-secondary);
             padding: 0rem 0 0.9rem 0;
 
-            a{
-              color:inherit;
+            a {
+              color: inherit;
               font-size: inherit;
 
-              &:hover{
+              &:hover {
                 color: var(--theme-text-color);
                 transform: scale(1.1);
               }
@@ -1125,7 +1130,7 @@ html {
               font-size: var(--theme-text-mini);
               color: var(--theme-text-mini-color);
 
-              a{
+              a {
                 color: inherit;
                 font-size: inherit;
               }
@@ -1451,7 +1456,6 @@ html {
                 align-items: center;
 
 
-
                 .comment-avatar {
                   display: flex;
                   justify-content: center;
@@ -1648,8 +1652,8 @@ html {
               padding: 1rem 0;
 
 
-              a{
-                color:inherit;
+              a {
+                color: inherit;
                 font-size: inherit;
               }
 
@@ -1663,7 +1667,7 @@ html {
                   font-size: var(--theme-third-level-title);
                 }
 
-                .says{
+                .says {
                   margin-left: 0.3rem;
                 }
 
@@ -1931,7 +1935,7 @@ html {
               overflow: hidden;
 
               .i-article-title {
-                font-size: 1.1rem;
+                font-size: 1.15rem;
                 font-weight: 510;
                 color: inherit;
                 display: flex;
@@ -1980,7 +1984,7 @@ html {
                     font-size: var(--theme-text-mini);
                     color: var(--theme-text-mini-color);
 
-                    a{
+                    a {
                       color: inherit;
                       font-size: inherit;
                     }
@@ -2033,6 +2037,21 @@ html {
   }
 
 }
+
+
+@media (max-width: 1600px) {
+  :root {
+    --theme-text: 0.9rem;
+    --theme-secondary: 0.83rem;
+    --theme-first-level-title: 1.50rem;
+    --theme-secondary-level-title: 1.2rem;
+    --theme-third-level-title: 1rem;
+    --theme-fourth-level-title: 0.9rem;
+    --theme-text-mini: 0.81rem;
+    --theme-text-more-mini: 0.71rem;
+  }
+}
+
 
 
 /*
@@ -2242,16 +2261,18 @@ html {
     --theme-first-level-title: 1.3rem;
     --theme-text: 0.95rem;
     --theme-secondary: 0.85rem;
-    --theme-text-mini: 0.81rem;
-    --theme-text-more-mini: 0.71rem;
-    --theme-secondary-level-title: 1.2rem;
-    --theme-third-level-title: 1.1rem;
-    --theme-fourth-level-title: 1rem;
+    --theme-text-mini: 0.85rem;
+    --theme-text-more-mini: 0.75rem;
+    --theme-secondary-level-title: 1.05rem;
+    --theme-third-level-title: 1rem;
+    --theme-fourth-level-title: 0.95rem;
     --theme-header-size: 1.15rem;
   }
 
+
   html {
     min-width: unset;
+
 
     body {
 
@@ -2260,11 +2281,25 @@ html {
         line-height: 1.5;
       }
 
-      .main-header{
+   h2{
+        font-weight:bold!important;
+      }
+      h3{
+        font-weight:bold;
+      }
+       h4{
+        font-weight:bold;
+      }
+      #category{
+        padding-left:0!important;
+      }
+
+      .main-header {
         height: 55px;
         border-top: 1px solid var(--theme-header-border);
-        .daohang{
-            font-size: 1.45rem;
+
+        .daohang {
+          font-size: 1.45rem;
         }
       }
 
@@ -2275,25 +2310,25 @@ html {
       .main-container {
 
 
-
         margin-top: calc(55px + 0.8rem);
 
-        .div-info{
+        .div-info {
           padding: 0.1rem 1rem 0.83rem 1.1rem;
         }
 
         .main-main {
           width: 96.5%;
 
-          .main-bottom{
+          .main-bottom {
             padding: 0 0.3rem;
           }
 
 
           .main-content {
-            padding:1.1rem 0.9rem 0 0.9rem;
-            .breadcrumb{
-                padding-bottom: 0.75rem;
+            padding: 1.1rem 0.6rem 0 0.6rem;
+
+            .breadcrumb {
+              padding-bottom: 0.75rem;
             }
           }
         }
@@ -2304,7 +2339,8 @@ html {
       }
 
       .index .main-main .main-content {
-        padding:  1.45rem 0.9rem 0 0.9rem;
+        padding: 1.45rem 0.9rem 0 0.9rem;
+
         .i-article {
 
           .i-article-right {
@@ -2317,6 +2353,7 @@ html {
 
           .i-article-left {
             .i-article-title {
+              font-size: 1.1rem;
               a {
                 white-space: nowrap;
                 text-overflow: ellipsis;
