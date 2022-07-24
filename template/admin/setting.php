@@ -158,6 +158,7 @@ function document_theme_register() {
 	register_setting( 'document_theme', "document_keywords" ); //主题关键字
 	register_setting( 'document_theme', "document_description" ); //主题描述
     register_setting( 'document_theme', "document_footer" ); //插入页脚的内容
+	register_setting( 'document_theme', "document_logo_url" ); //站点logo
 	register_setting( 'document_theme', "document_Gravatar" ); //头像
 	register_setting( 'document_theme', "document_author_beijin" ); //作者卡片背景
 	register_setting( 'document_theme', "document_icp" ); //备案号

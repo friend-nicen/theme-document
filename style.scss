@@ -28,10 +28,10 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   --theme-text: 0.84rem;
   --theme-header-size: 1.1rem;
   --theme-secondary: 0.78rem;
-  --theme-first-level-title: 1.50rem;
-  --theme-secondary-level-title: 1.2rem;
+  --theme-first-level-title: 1.35rem;
+  --theme-secondary-level-title: 1.15rem;
   --theme-third-level-title: 0.96rem;
-  --theme-fourth-level-title: 0.78rem;
+  --theme-fourth-level-title: 0.84rem;
 
 
   --theme-white: #f1f2f9;
@@ -51,7 +51,7 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   --theme-hover-color: white;
   --theme-hover-shadow: #{rgba(#000000,0.2)};
   --theme-code-bg: #eeeeee;
-  --theme-code-text: #4e6e8e;
+  --theme-code-text: #da1039;
   --theme-success-bg-color: #f3f4f5;
   --theme-success-line-color: #42b983;
   --theme-success-title-color: #2c3e50;
@@ -397,6 +397,9 @@ html {
       box-sizing: border-box;
       border-bottom: 1px solid var(--theme-header-border);
 
+      transition-property: all;
+      transition-duration: 0.1s;
+
       a {
         color: inherit;
         font-size: inherit;
@@ -427,6 +430,7 @@ html {
       }
 
       .daohang {
+        cursor: pointer;
         display: none;
       }
 
@@ -680,7 +684,7 @@ html {
           align-items: center;
           font-size: var(--theme-third-level-title);
           width: 100%;
-          padding: 0.15rem 0 5px 0;
+          padding: 0.35rem 0 0.3rem 0;
           border-bottom: 1px solid #e1e1e1;
 
           * {
@@ -1534,6 +1538,13 @@ html {
                 font-size: var(--theme-secondary);
               }
 
+              input{
+                font-size: var(--theme-secondary);
+                &::placeholder{
+                  font-size: inherit;
+                }
+              }
+
               .comment-container {
                 display: flex;
                 width: 100%;
@@ -1787,6 +1798,7 @@ html {
         height: 1.8rem;
         width: 1.6rem;
         outline: none;
+        white-space: nowrap;
         position: relative;
         box-sizing: content-box;
         display: flex;
@@ -1994,11 +2006,11 @@ html {
                     }
 
                     &:hover {
-                      color: #000;
+                      color: var(--theme-text-color);
                       transform: scale(1.1);
 
                       .iconfont {
-                        color: #000;
+                        color: var(--theme-text-color);
                       }
                     }
 
@@ -2039,18 +2051,6 @@ html {
 }
 
 
-@media (max-width: 1600px) {
-  :root {
-    --theme-text: 0.9rem;
-    --theme-secondary: 0.83rem;
-    --theme-first-level-title: 1.50rem;
-    --theme-secondary-level-title: 1.2rem;
-    --theme-third-level-title: 1rem;
-    --theme-fourth-level-title: 0.9rem;
-    --theme-text-mini: 0.81rem;
-    --theme-text-more-mini: 0.71rem;
-  }
-}
 
 
 
@@ -2310,22 +2310,23 @@ html {
       .main-container {
 
 
-        margin-top: calc(55px + 0.8rem);
+        margin-top: 55px;
 
         .div-info {
           padding: 0.1rem 1rem 0.83rem 1.1rem;
+
         }
 
         .main-main {
-          width: 96.5%;
+          width: 100%;
 
           .main-bottom {
-            padding: 0 0.3rem;
+            padding: 0 1.5rem;
           }
 
 
           .main-content {
-            padding: 1.1rem 0.6rem 0 0.6rem;
+            padding: 1.1rem 1rem 0 1rem;
 
             .breadcrumb {
               padding-bottom: 0.75rem;

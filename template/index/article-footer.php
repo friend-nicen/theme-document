@@ -16,11 +16,11 @@ global $documents;
     <div class="donate">
         <div>予人玫瑰，手有余香</div>
         <div class="qrcode">
-            <button>赞赏</button>
-            <div class="imgIn">
+            <a href="<?=$documents['document_donate']?>"><button>赞赏</button></a>
+            <!--<div class="imgIn">
                 <div class="angle"></div>
-                <img src="<?=$documents['document_donate']?>" title="赞赏"/>
-            </div>
+                <img src="" title="赞赏"/>
+            </div>-->
         </div>
     </div>
     <div class="footer-nav">

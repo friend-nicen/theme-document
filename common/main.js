@@ -37,7 +37,7 @@ $(function () {
     };
 
 
-    /*导航栏初始化*/
+    /*阅读导航栏初始化*/
     (function () {
         /*
         * 给目录添加展开伸缩图标
@@ -88,7 +88,7 @@ $(function () {
 
     let isScroll = false; //防止重复触发目录滚动
 
-    /*目录初始化*/
+    /*阅读目录初始化*/
     (function () {
 
 
@@ -619,6 +619,65 @@ $(function () {
         unmatch() {
             $(".daohang").off('click', expandNav);
             $('.menu-item').off('click',toShow);
+        }
+    });
+
+    /*
+    * 移动端向下阅读时隐藏导航栏，上滑显示导航栏
+    * mode boolean true 下滑显示 false 上移隐藏
+    *
+    * */
+    let timer=null; //计时器
+    let header=$('.main-header'); //导航栏对象
+
+    let toggleHeader=function () {
+
+
+        /*
+        * 导航栏本身高度64
+        * */
+        if(window.scrollY<64){
+            header.css('opacity',"1");
+            clearTimeout(timer);
+            timer=null;
+            return;
+        }
+
+
+        if(timer){
+            return;
+        }
+
+        let old_top=window.scrollY;//记录初值
+
+        /*
+        * 交流+延时判断
+        * */
+        timer=setTimeout(()=>{
+
+            let new_top=window.scrollY;//记录初值
+            if(new_top<old_top){
+                header.css('opacity',"1");
+            }else{
+                header.css('opacity',"0");
+            }
+            clearTimeout(timer);
+            timer=null;
+        },200)
+    }
+
+
+    /*
+    * 屏幕大小监听
+    * */
+    enquire.register("screen and (max-width: 480px)", {
+        match() {
+            console.log(666);
+           $(window).on('scroll',toggleHeader)
+        },
+        /*屏幕大于1024时取消监听屏幕大小*/
+        unmatch() {
+            $(window).off('scroll',toggleHeader)
         }
     });
 
