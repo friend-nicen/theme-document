@@ -716,7 +716,7 @@ html {
       #fixed {
         min-width: 16.6rem;
         padding: 0;
-        margin: 0 1rem;
+        margin: 0 0 0 1rem;
 
         .main-right {
           flex-shrink: 0;
@@ -1837,6 +1837,10 @@ html {
      */
     .index {
       justify-content: center;
+
+      #fixed {
+        margin: 0 0 0 1rem;
+      }
 
       .main-main {
         /*搜索结果*/

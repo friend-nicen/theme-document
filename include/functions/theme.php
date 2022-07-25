@@ -15,10 +15,15 @@ $documents = [];
 /*
  * 输出主题选项
  * */
-function documents($index)
+function documents($index,$flag=false)
 {
     global $documents;
-    echo $documents[$index];
+
+    if(!$flag){
+        echo $documents[$index];
+    }else{
+        return $documents[$index];
+    }
 }
 
 /*
@@ -40,11 +45,14 @@ function reload()
         'document_author_avatar' => get_option("document_author_avatar"),//作者logo
         'document_author_beijin' => get_option("document_author_beijin"), //插入页脚的内容
         'document_author_description' => get_option("document_author_description"),//作者描述
+
         'document_footer' => get_option("document_footer"), //插入页脚的内容
         'document_donate' => get_option("document_donate"), //赞赏
         'document_baidu' => get_option("document_baidu"), //百度站长推送
         'document_board' => get_option("document_board"), //留言页面链接
         'document_pages' => get_option("document_pages"), //文章聚合
+
+        'document_column' => get_option("document_column"), //首页单栏还是双栏
 
         'document_smtp_open' => get_option("document_smtp_open"), //是否开启smtp
         'document_smtp_server' => get_option("document_smtp_server"), //是否开启smtp
@@ -86,6 +94,8 @@ function switch_theme_self()
     add_option("document_baidu", ''); //百度站长
     add_option("document_pages", ''); //文章聚合
     add_option("document_board", ''); //留言板
+
+    add_option("document_column", '0'); //首页单双栏
 
     add_option("document_smtp_open", '0'); //是否开启smtp
     add_option("document_smtp_server", ''); //smtp服务器
