@@ -1302,6 +1302,8 @@ html {
           font-size: 1rem; }
     html body .index {
       justify-content: center; }
+    html body .index #fixed {
+      margin: 0 0 0 1rem; }
       html body .index .main-main {
         /*搜索结果*/ }
         html body .index .main-main .non-result {

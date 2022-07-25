@@ -167,6 +167,10 @@ function document_theme_register() {
     register_setting( 'document_theme', "document_board" ); //留言板
     register_setting( 'document_theme', "document_pages" ); //文章聚合
 
+    register_setting( 'document_theme', "document_column" ); //首页单双栏
+
+
+
     /*smtp相关配置*/
     register_setting( 'document_theme', "document_smtp_open" ); //是否开启smtp
     register_setting( 'document_theme', "document_smtp_server" ); //邮件服务器
@@ -301,7 +305,20 @@ function document_theme_register() {
 		]
 	);
 
-	add_settings_field(
+    add_settings_field(
+        'document_column', // as of WP 4.6 this value is used only internally
+        // use $args' label_for to populate the id inside the callback
+        '首页显示单栏还是双栏',
+        'document_theme_smtp_select',
+        'document_theme',
+        'document_theme_section',
+        [
+            'label_for' => "document_column"
+        ]
+    );
+
+
+    add_settings_field(
 		'document_footer', // as of WP 4.6 this value is used only internally
 		// use $args' label_for to populate the id inside the callback
 		'页脚附加代码',
