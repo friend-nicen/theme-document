@@ -179,5 +179,5 @@ function comment_notify($comment_id)
     }
 }
 
-/*add_action('comment_post', 'comment_notify');*/
+add_action('comment_post', 'comment_notify');
 add_action('comment_unapproved_to_approved', 'comment_notify');

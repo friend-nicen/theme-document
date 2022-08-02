@@ -30,11 +30,12 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   --theme-fourth-level-title: 0.84rem;
   --theme-white: #f1f2f9;
   --theme-black: #212121;
-  --theme-color: #1890ff;
+  --theme-color: #42b983;
   --theme-color-20: rgba(66, 185, 131, 0.2);
   --theme-text-color: #262626;
   --theme-text-secondary: rgba(0, 0, 0, 0.65);
   --theme-text-mini-color: rgba(0, 0, 0, 0.65);
+  --theme-margin-bottom:1rem;
   --theme-li-padding: 1.2rem;
   --theme-bg-color: var(--theme-white);
   --theme-front-color: white;
@@ -174,7 +175,7 @@ pre * {
   color: #65a4e3; }
 
 p {
-  margin: 0 0 0.83rem 0;
+  margin: 0 0 var(--theme-margin-bottom) 0;
   font-weight: normal; }
 
 ::selection {
@@ -298,20 +299,18 @@ html {
      */ }
     html body h1, html body h2, html body h3, html body h4 {
       font-weight: 550;
+      margin: 0 0 var(--theme-margin-bottom) 0;
       cursor: pointer; }
     html body h1 {
       font-weight: 510;
       font-size: var(--theme-first-level-title);
-      margin: 1rem 0 0.81rem 0; }
+      margin-top: 1rem; }
     html body h2 {
-      font-size: var(--theme-secondary-level-title);
-      margin: 0 0 0.83rem 0; }
+      font-size: var(--theme-secondary-level-title); }
     html body h3 {
-      font-size: var(--theme-third-level-title);
-      margin: 0 0 0.83rem 0; }
+      font-size: var(--theme-third-level-title); }
     html body h4 {
-      font-size: var(--theme-fourth-level-title);
-      margin: 0 0 0.83rem 0; }
+      font-size: var(--theme-fourth-level-title); }
     html body .main-header {
       display: flex;
       position: fixed;
@@ -547,7 +546,7 @@ html {
       html body .main-container #fixed {
         min-width: 16.6rem;
         padding: 0;
-        margin: 0 1rem; }
+        margin: 0 1rem 0 1rem; }
         html body .main-container #fixed .main-right {
           flex-shrink: 0;
           height: fit-content;
@@ -832,7 +831,7 @@ html {
             display: flex;
             margin: 0;
             padding: 0 0 0.1rem 0;
-            margin-bottom: 0.83rem; }
+            margin-bottom: var(--theme-margin-bottom); }
             html body .main-container .main-main .main-content .article-info ul li {
               padding: 0 0.45rem;
               cursor: pointer;
@@ -879,7 +878,7 @@ html {
           html body .main-container .main-main .main-content .main-article ul, html body .main-container .main-main .main-content .main-article ol, html body .main-container .main-main .main-content .main-article dl {
             margin: 0;
             padding: 0;
-            margin-bottom: 0.83rem;
+            margin-bottom: var(--theme-margin-bottom);
             margin-left: 2rem; }
           html body .main-container .main-main .main-content .main-article ul li, html body .main-container .main-main .main-content .main-article ol li, html body .main-container .main-main .main-content .main-article dl li {
             margin-top: 1px; }
@@ -897,9 +896,13 @@ html {
             border-radius: 4px; }
           html body .main-container .main-main .main-content .main-article .custom-container {
             border-radius: 3px;
-            margin: 0 0 1rem 0;
-            padding: 0.8rem 1.22rem 0.8rem 1.22rem; }
+            margin: 0 0 var(--theme-margin-bottom) 0;
+            padding: 0.8rem 1.22rem 0.7rem 1.22rem; }
+            html body .main-container .main-main .main-content .main-article .custom-container p:last-child {
+              margin-bottom: 0;
+            }
             html body .main-container .main-main .main-content .main-article .custom-container .content {
+              font-size: var(--theme-secondary);
               padding: 0.8rem 0 0 0; }
             html body .main-container .main-main .main-content .main-article .custom-container .title {
               font-weight: 550; }
@@ -935,7 +938,7 @@ html {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 0 auto 0.83rem auto; }
+            margin: 0 auto var(--theme-margin-bottom) auto; }
             html body .main-container .main-main .main-content .main-article .container-image img {
               cursor: pointer;
               border-radius: 5px;
@@ -1211,7 +1214,7 @@ html {
               display: block;
               width: 100%;
               padding-left: 3.5rem;
-              margin: 0.83rem 0 0 0; }
+              margin: 0.85rem 0 0 0; }
             html body .main-container .main-main .div-info .comment_list li .comment-body .comment-awaiting-moderation {
               margin: 1.2rem 3.5rem;
               color: var(--theme-color); }
@@ -1302,8 +1305,8 @@ html {
           font-size: 1rem; }
     html body .index {
       justify-content: center; }
-    html body .index #fixed {
-      margin: 0 0 0 1rem; }
+      html body .index #fixed {
+        margin: 0 0 0 1rem; }
       html body .index .main-main {
         /*搜索结果*/ }
         html body .index .main-main .non-result {
@@ -1384,7 +1387,7 @@ html {
               width: fit-content;
               overflow: hidden; }
               html body .index .main-main .main-content .i-article .i-article-left .i-article-title {
-                font-size: 1.15rem;
+                font-size: 1.12rem;
                 font-weight: 510;
                 color: inherit;
                 display: flex;
@@ -1398,6 +1401,7 @@ html {
               html body .index .main-main .main-content .i-article .i-article-left .i-article-excerpt {
                 font-size: 0.80rem;
                 color: var(--theme-text-secondary);
+                min-height: 2.5rem;
                 margin-top: 0.6rem;
                 display: -webkit-box;
                 -webkit-line-clamp: 2;
@@ -1538,17 +1542,6 @@ html {
 @media (min-width: 768px) and (max-width: 1024px) {
   html {
     min-width: unset; }
-    html body .main-container .main-main {
-      width: 95%; }
-    html body .main-container #space, html body .main-container #fixed {
-      display: none; } }
-
-/*
-  平板
-*/
-@media (min-width: 768px) and (max-width: 1024px) {
-  html {
-    min-width: unset; }
     html body .password img {
       width: 50%; }
     html body .main-container .main-main {
@@ -1577,14 +1570,17 @@ html {
     --theme-first-level-title: 1.3rem;
     --theme-text: 0.95rem;
     --theme-secondary: 0.85rem;
-    --theme-text-mini: 0.85rem;
+    --theme-text-mini: 0.75rem;
     --theme-text-more-mini: 0.75rem;
     --theme-secondary-level-title: 1.05rem;
     --theme-third-level-title: 1rem;
     --theme-fourth-level-title: 0.95rem;
-    --theme-header-size: 1.15rem; }
+    --theme-header-size: 1.15rem;
+    --theme-margin-bottom:1.1rem; }
   html {
     min-width: unset; }
+    html p {
+      margin: 0 0 1.3rem 0; }
     html body h1 {
       margin-top: 0.6rem;
       line-height: 1.5; }
@@ -1598,15 +1594,19 @@ html {
       padding-left: 0 !important; }
     html body .main-header {
       height: 55px;
-      border-top: 1px solid var(--theme-header-border); }
+      border-top: 1px solid var(--theme-header-border);
+      border-bottom: none;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); }
       html body .main-header .daohang {
         font-size: 1.45rem; }
     html body .password img {
       width: 60%; }
+    html body .password p label input {
+      height: 2.5rem; }
     html body .main-container {
       margin-top: 55px; }
       html body .main-container .div-info {
-        padding: 0.1rem 1rem 0.83rem 1.1rem; }
+        padding: 0.1rem 1rem 0.85rem 1.1rem; }
       html body .main-container .main-main {
         width: 100%; }
         html body .main-container .main-main .main-bottom {
