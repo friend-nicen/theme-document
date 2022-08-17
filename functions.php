@@ -11,6 +11,9 @@
  * */
 
 
+date_default_timezone_set('PRC');
+
+
 /*
  * 加载一些通用方法
  * */

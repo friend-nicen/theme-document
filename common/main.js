@@ -445,21 +445,17 @@ $(function () {
         /*
         * 阅读模式切换（白天、黑暗）
         * */
-        $('.readMode').click(function () {
-            $('html').toggleClass('dark');
 
-            let img = $(this).find('img');
-
-            if (img.attr('src').indexOf("baitian") == -1) {
-                localStorage.removeItem('night');
-                $('meta[name=theme-color]').attr('content','#ffffff');
-                img.attr('src', ROOT + '/assets/images/baitian.svg').attr("title", '切换夜间模式');
+        /*
+        * 阅读模式切换（白天、黑暗）
+        * */
+        $('.read-mode').click(function () {
+            if ($(this).find('i').hasClass("icon-yueliang")) {
+                toggleTheme(false); //切换白天模式
             } else {
-                localStorage.setItem('night', 1);
-                $('meta[name=theme-color]').attr('content','#141414');
-                img.attr('src', ROOT + '/assets/images/anhei.svg').attr("title", '切换白天模式');
+                toggleTheme(true); //切换暗黑模式
             }
-        })
+        });
 
 
     })();

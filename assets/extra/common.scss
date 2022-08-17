@@ -1,0 +1,93 @@
+
+* {
+  font-size: var(--theme-text);
+  color: var(--theme-text-color);
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: var(--theme-color) var(--theme-bg-color);
+  line-height: 1.75;
+  word-wrap: break-word;
+  word-break: break-all;
+  word-spacing: normal;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+}
+
+pre * {
+  color: #65a4e3;
+}
+
+p {
+  margin: 0 0 var(--theme-margin-bottom) 0;
+  font-weight: normal;
+}
+
+::selection {
+  background-color: var(--theme-color);
+  color: white;
+}
+
+
+
+
+/*
+  滚动条样式
+*/
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  background: transparent;
+  width: 6px !important;
+  height: 6px !important;
+}
+
+:hover::-webkit-scrollbar-thumb {
+  display: block;
+  border-radius: 4px;
+  box-shadow: 0 0 0 2px transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--theme-color);
+  border-radius: 4px;
+  border-style: solid;
+  border-color: transparent;
+  border-width: 2px;
+  background-clip: padding-box;
+}
+
+
+/*
+  文字提示
+*/
+.tooltip {
+  position: relative;
+
+  &:hover {
+    &:before {
+      position: absolute;
+      top: calc(100% + 5px);
+      left: 5%;
+      width: 0;
+      height: 0;
+      content: " ";
+      border: 5px solid transparent;
+      border-bottom-color: #2c3e50;
+    }
+
+    &:after {
+      position: absolute;
+      top: calc(100% + 0.81rem);
+      left: 1%;
+      z-index: 100;
+      padding: 10px 0.81rem;
+      box-shadow: 0 0 5px 1px rgba(44, 62, 80, 0.5);
+      font-size: 0.5rem;
+      color: white;
+      content: attr(data-hint);
+      background-color: #2c3e50;
+      white-space: nowrap;
+      line-height: 1.5;
+      letter-spacing: 1px;
+      border-radius: 0.45rem;
+    }
+  }
+}

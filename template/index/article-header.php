@@ -9,8 +9,8 @@
 $author   = get_the_author_meta( 'display_name', $post->post_author );
 
 if(!is_page()) {
-	$category = ( get_the_category() )[0]->cat_name;
-	$link=get_category_link(( get_the_category() )[0]->term_id);
+    $category = getCategory(get_the_ID()); //获取文章分类
+    $link = @get_category_link((get_the_category())[0]->term_id);
 }
 
 $url=get_the_author_meta( 'user_url', $post->post_author);

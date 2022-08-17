@@ -18,35 +18,7 @@ $url = get_template_directory_uri();//主题url
 <title><?php title() ?></title>
 <meta name="keywords" content="<?php documents( 'document_keywords' ); ?>"/>
 <meta name="description" content="<?php description()  ?>"/>
-<link href="<?= $url; ?>/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
 <?php wp_head(); ?>
-
-<script>
-    <?php echo (is_single())?'window.Current='.get_the_ID().";":""; ?>
-    /*同步rem单位大小*/
-    window.ROOT = "<?=$url ; ?>";
-    let l = () => {
-        let r = document.documentElement, o = r.offsetWidth / 100;
-        o < 17 && (o = 17), r.style.fontSize = o + "px", window.rem = o
-    };
-    window.onresize = l;
-    l();
-    /*同步主题*/
-    let theme = localStorage.getItem('theme-color');
-    if (!!theme) {
-        $('html').addClass(theme)
-    }
-    /*同步阅读模式 */
-    let night = localStorage.getItem('night');
-    if (!!night) {
-        /*同步谷歌状态栏*/
-        $('meta[name=theme-color]').attr('content','#141414');
-        $('html').addClass('dark');//暗黑主题
-        $(function () {
-            $('.readMode img').attr('src', ROOT + '/assets/images/anhei.svg').attr("title", '切换白天模式')
-        });
-    }
-</script>
 </head>
 <body>
 <!--顶部导航栏-->

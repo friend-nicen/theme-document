@@ -283,50 +283,65 @@ function getLinks()
 
 
 
+
 /*
  * 标题
  * */
-function title(){
-	/*
-	 * 文章和页面
-	 * */
-	if ( is_page() || is_single() ) {
-		the_title();
-		echo "－";
-		bloginfo( 'name' );
-	/*
-	 * 目录和标签
-	 * */
-	}elseif (is_category() || is_tag()){
-		echo strip_tags(get_the_archive_title());
-		echo "－";
-		bloginfo( 'name' );
-	}
-	else {
-		bloginfo( 'name' );
-		echo "－";
-		documents( 'document_subtitle' );
-	}
+function title()
+{
+    /*
+     * 文章和页面
+     * */
+    if (is_page() || is_single()) {
+        the_title();
+        echo "－";
+        bloginfo('name');
+        /*
+         * 目录和标签
+         * */
+    } elseif (is_category() || is_tag()) {
+        echo preg_replace('/.*?： ?/', '', strip_tags(get_the_archive_title()));
+        echo "－";
+        bloginfo('name');
+    } else {
+        bloginfo('name');
+        echo "－";
+        documents('document_subtitle');
+    }
 }
 
 
 /*
- * 站点关键字
+ * 获取分类
  * */
-function description(){
+function getCategory($id){
+    $cat=get_the_category($id);
+    if($cat){
+        return $cat[0]->name;
+    }else{
+        return "暂无分类";
+    }
+}
+
+
+
+/*
+ * 站点描述
+ * */
+function description()
+{
 
     global $post;
 
-	if(is_single() || is_page()){
-		/*获取文章摘要*/
-		getExcerpt( get_the_excerpt(),$post->post_password );
-	}elseif (is_category() || is_tag()){
-		echo strip_tags(get_the_archive_title());
-		echo "下的所有文章";
-	}
-	else{
-		documents( 'document_description' );
-	}
+    if (is_single() || is_page()) {
+        /*获取文章摘要*/
+       getExcerpt(get_the_excerpt(), $post->post_password);
+    } elseif (is_category() || is_tag()) {
+        echo preg_replace('/\n/', '', strip_tags(term_description()));
+    } else {
+        documents('document_description');
+    }
 }
+
 
 

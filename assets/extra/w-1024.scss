@@ -1,0 +1,120 @@
+@media (max-width: 1024px) {
+  html {
+    min-width: unset;
+
+    body {
+
+      .main-header {
+        min-width: unset;
+        padding: 0 1rem 0 1.25rem;
+
+        .daohang {
+          display: block;
+          font-size: 1.6rem;
+        }
+
+        .right {
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: flex-start;
+          position: fixed;
+          top: 0;
+          left: -60%;
+          width: 60%;
+          background-color: var(--theme-header-color);
+          padding: 1rem 0.7rem;
+          box-shadow: 0 12px 32px var(--theme-hover-shadow);
+          transition-property: all;
+          transition-duration: 0.3s;
+          overflow: auto;
+
+          &::-webkit-scrollbar {
+            display: none;
+          }
+
+          .search {
+            height: 35px;
+            width: 85%;
+            flex-shrink: 0;
+          }
+
+          .search-icon {
+            height: unset;
+            left: 1.3rem;
+            line-height: normal;
+            top: calc(1rem + 9px);
+          }
+
+          .menu {
+            align-content: center;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0;
+            width: 100%;
+            height: unset;
+            margin-top: 1rem;
+
+            .menu-item {
+              width: 90%;
+              margin-top: 0.8rem;
+              margin-left: 0.5rem;
+              justify-content: space-between;
+              font-weight: lighter;
+              flex-wrap: wrap;
+
+              i {
+                line-height: normal;
+              }
+
+              span {
+                font-size: 1rem;
+              }
+
+              .sub-menu {
+                width: 100%;
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                box-shadow: none;
+                display: none;
+                background-color: transparent;
+
+                .sub-menu-item a {
+                  margin: 0;
+                }
+              }
+            }
+
+            .read-mode {
+              position: absolute !important;
+              top: calc(1rem + 9px);
+              right: 12px;
+              margin-top: 0;
+              height: fit-content;
+              width: fit-content;
+
+            }
+          }
+        }
+      }
+
+      .main-container {
+        .main-main {
+          .non-result {
+            padding: 0.8rem 1rem;
+          }
+
+          .main-content {
+            .main-article {
+              .container-image {
+                img {
+                  max-width: 100%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

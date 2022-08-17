@@ -9,8 +9,8 @@
 
 ?>
 <ul class="menu">
-    <li class="menu-item readMode">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/baitian.svg" title="切换夜间模式"/>
+    <li class="menu-item read-mode">
+        <i class="iconfont icon-baitian-qing"></i>
     </li>
     <li class="menu-item">
         <a href="/" title="回到首页"><span>首页</span></a>

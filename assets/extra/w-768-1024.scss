@@ -1,0 +1,21 @@
+@media (min-width: 768px) and (max-width: 1024px) {
+  html {
+    min-width: unset;
+
+    body {
+      .password img {
+        width: 50%;
+      }
+
+      .main-container {
+        .main-main {
+          width: 80%;
+        }
+
+        #space, #fixed {
+          display: none;
+        }
+      }
+    }
+  }
+}

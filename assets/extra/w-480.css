@@ -1,0 +1,66 @@
+@media (max-width: 480px) {
+  :root {
+    --theme-first-level-title: 1.3rem;
+    --theme-text: 0.95rem;
+    --theme-secondary: 0.85rem;
+    --theme-text-mini: 0.75rem;
+    --theme-text-more-mini: 0.75rem;
+    --theme-secondary-level-title: 1.05rem;
+    --theme-third-level-title: 1rem;
+    --theme-fourth-level-title: 0.95rem;
+    --theme-header-size: 1.15rem;
+    --theme-margin-bottom:1.1rem; }
+  html {
+    min-width: unset; }
+    html p {
+      margin: 0 0 1.3rem 0; }
+    html body h1 {
+      margin-top: 0.6rem;
+      line-height: 1.5; }
+    html body h2 {
+      font-weight: bold !important; }
+    html body h3 {
+      font-weight: bold; }
+    html body h4 {
+      font-weight: bold; }
+    html body #category {
+      padding-left: 0 !important; }
+    html body .main-header {
+      height: 55px;
+      border-top: 1px solid var(--theme-header-border);
+      border-bottom: none;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); }
+      html body .main-header .daohang {
+        font-size: 1.45rem; }
+    html body .password img {
+      width: 60%; }
+    html body .password p label input {
+      height: 2.5rem; }
+    html body .main-container {
+      margin-top: 55px; }
+      html body .main-container .div-info {
+        padding: 0.1rem 1rem 0.85rem 1.1rem; }
+      html body .main-container .main-main {
+        width: 100%; }
+        html body .main-container .main-main .main-bottom {
+          padding: 0 1.5rem; }
+        html body .main-container .main-main .main-content {
+          padding: 1.1rem 1rem 0 1rem; }
+          html body .main-container .main-main .main-content .breadcrumb {
+            padding-bottom: 0.75rem; }
+      html body .main-container #space, html body .main-container #fixed {
+        display: none; }
+    html body .index .main-main .main-content {
+      padding: 1.45rem 0.9rem 0 0.9rem; }
+      html body .index .main-main .main-content .i-article .i-article-right {
+        margin-left: 0.6rem; }
+        html body .index .main-main .main-content .i-article .i-article-right img {
+          height: 50%; }
+      html body .index .main-main .main-content .i-article .i-article-left .i-article-title {
+        font-size: 1.1rem; }
+        html body .index .main-main .main-content .i-article .i-article-left .i-article-title a {
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden; }
+    html body #author, html body #publish {
+      display: none; } }
