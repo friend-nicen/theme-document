@@ -1538,11 +1538,11 @@ html {
           html body .main-container .main-main .main-content h1 {
             margin-top: 0.6rem;
             line-height: 1.5; }
-          html body .main-container .main-main .main-content h2 {
+          html body .main-container .main-main .main-content .main-article h2 {
             font-weight: bold !important; }
-          html body .main-container .main-main .main-content h3 {
+          html body .main-container .main-main .main-content .main-article h3 {
             font-weight: bold; }
-          html body .main-container .main-main .main-content h4 {
+          html body .main-container .main-main .main-content .main-article h4 {
             font-weight: bold; }
           html body .main-container .main-main .main-content .breadcrumb {
             padding-bottom: 0.75rem; }
