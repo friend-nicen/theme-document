@@ -12,7 +12,6 @@ $url = get_template_directory_uri();//主题url
 <!DOCTYPE html>
 <html lang="zh-cn" xmlns="http://www.w3.org/1999/html">
 <head>
-<meta name="theme-color" content="#ffffff" />
 <meta charset="<?php bloginfo( 'charset' ); ?>"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title><?php title() ?></title>

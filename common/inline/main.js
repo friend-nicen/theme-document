@@ -9,8 +9,6 @@ function toggleTheme(flag=true){
         $('html').removeClass('personal');
         //标记暗黑模式
         localStorage.setItem('night', 1);
-        //同步谷歌状态栏颜色
-        $('meta[name=theme-color]').attr('content', '#141414');
         //改变图标
         $(function () {
             $('.read-mode i').removeClass("icon-baitian-qing");
@@ -23,8 +21,6 @@ function toggleTheme(flag=true){
         $('html').addClass('personal');
         //移除暗黑模式标记
         localStorage.removeItem('night');
-        //同步谷歌状态栏颜色
-        $('meta[name=theme-color]').attr('content', $('html').css("--theme-color"));
         //改变图标
         $(function () {
             $('.read-mode i').removeClass("icon-yueliang");
@@ -42,9 +38,11 @@ let l = () => {
 };
 window.onresize = l;l();
 
-
-/*同步谷歌状态栏*/
-$('meta[name=theme-color]').attr('content', $('html').css("--theme-color"));
+/*同步主题*/
+let theme = localStorage.getItem('theme-color');
+if (!!theme) {
+    $('html').addClass(theme)
+}
 /*同步阅读模式 */
 let night = localStorage.getItem('night');
 
@@ -53,6 +51,4 @@ let night = localStorage.getItem('night');
 * */
 if (!!night) {
     toggleTheme(true); //切换暗黑
-    /*同步谷歌状态栏*/
-    $('meta[name=theme-color]').attr('content', '#141414');
 }

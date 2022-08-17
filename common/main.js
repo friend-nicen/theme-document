@@ -2,13 +2,6 @@
 $(function () {
 
     /*
-    * 控制台输出作者信息
-    * */
-    console.log('%cTheme of Document Ver1.0 By 友人a丶', 'background-color:#000000;color:white;padding:3px 6px;border-radius:8px;')
-    console.log('%cBlog：nicen.cn', 'background-color:#000000;color:white;padding:3px 6px;border-radius:8px;');
-
-
-    /*
     * 防止子容器触发父容器的滚动
     * */
     $.fn.scrollUnique = function () {
@@ -442,9 +435,9 @@ $(function () {
         }
 
 
-        /*
-        * 阅读模式切换（白天、黑暗）
-        * */
+
+
+
 
         /*
         * 阅读模式切换（白天、黑暗）
