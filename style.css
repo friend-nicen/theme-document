@@ -65,8 +65,8 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
 @font-face {
   font-family: 'webfont';
   font-display: swap;
-  src: url("../font/webfont_0jpwawfzyo3v.eot");
-  src: url("../font/webfont_0jpwawfzyo3v.eot?#iefix") format("embedded-opentype"), url("../font/webfont_0jpwawfzyo3v.woff2") format("woff2"), url("../font/webfont_0jpwawfzyo3v.woff") format("woff"), url("../font/webfont_0jpwawfzyo3v.ttf") format("truetype"), url("../font/webfont_0jpwawfzyo3v.svg#NotoSansHans-DemiLight") format("svg"); }
+  src: url("assets/font/webfont_0jpwawfzyo3v.eot");
+  src: url("assets/font/webfont_0jpwawfzyo3v.eot?#iefix") format("embedded-opentype"), url("assets/font/webfont_0jpwawfzyo3v.woff2") format("woff2"), url("assets/font/webfont_0jpwawfzyo3v.woff") format("woff"), url("assets/font/webfont_0jpwawfzyo3v.ttf") format("truetype"), url("assets/font/webfont_0jpwawfzyo3v.svg#NotoSansHans-DemiLight") format("svg"); }
 
 @font-face {
   font-family: "iconfont";
@@ -391,6 +391,9 @@ html {
           html body .main-header .right .menu .iconfont {
             font-size: var(--theme-secondary);
             margin-right: 2px; }
+          html body .main-header .right .menu .read-mode i {
+            color: var(--theme-color);
+            font-size: var(--theme-text); }
           html body .main-header .right .menu .menu-item {
             display: inline-flex;
             align-items: center;

@@ -140,6 +140,14 @@ html {
             margin-right: 2px;
           }
 
+          .read-mode{
+            i{
+              color:var(--theme-color);
+              font-size: var(--theme-text);
+            }
+
+          }
+
 
           .menu-item {
             display: inline-flex;
