@@ -42,9 +42,10 @@ add_action('phpmailer_init', 'mail_smtp');
  * */
 function wp_mail_error($wp_error)
 {
-    $file=get_template_directory().'/common/log/smtp_fail.txt';//记录发送失败的信息
-    if(is_writable($file)){
-
+	$log_path=get_template_directory().'/common/log';//日志路径
+    $file=$log_path.'/smtp_fail.txt';//记录发送失败的信息
+	
+    if(is_writable($log_path)){
         $text=date("Y-m-d H:i:s",time()).'，'.implode(",",$wp_error->get_error_messages())."\n";
         return file_put_contents($file,$text,FILE_APPEND);
     }
@@ -57,9 +58,12 @@ function wp_mail_error($wp_error)
  * */
 function wp_mail_successed($mail_data)
 {
-    $file=get_template_directory().'/common/log/smtp_success.txt';//记录发送失败的信息
-    if(is_writable($file)){
-        $text=date("Y-m-d H:i:s",time()).'，给'.implode(',',$mail_data['to'])."发送成功！\n";
+
+	$log_path=get_template_directory().'/common/log';//日志路径
+    $file=$log_path.'/smtp_fail.txt';//记录发送失败的信息
+	
+    if(is_writable($log_path)){
+         $text=date("Y-m-d H:i:s",time()).'，给'.implode(',',$mail_data['to'])."发送成功！\n";
         return file_put_contents($file,$text,FILE_APPEND);
     }
 }
