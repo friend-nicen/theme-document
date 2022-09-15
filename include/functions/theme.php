@@ -309,6 +309,14 @@ function load_source()
 
         wp_enqueue_style('prism', $url . '/common/prism/prism.css', array(), filemtime($root . '/common/prism/prism.css'));
         wp_enqueue_style('glightboxs', $url . '/common/glightbox/glightbox.min.css', array(), filemtime($root . '/common/glightbox/glightbox.min.css'));
+		
+		
+    /*
+     * 内联的js
+     * */
+    wp_add_inline_script( "main-sub", preg_replace('/\s/','',vsprintf( '
+			window.Current = "%s";'
+        , [get_the_ID()] )), 'before' );
 
     }
 
@@ -317,7 +325,7 @@ function load_source()
      * 页面加载的资源
      * */
     if (is_page("文章聚合")) {
-        wp_enqueue_style('page', $url . '/assets/page/page.css', array(), filemtime($root . '/assets/page/page.css'));
+        wp_enqueue_style('page', $url . '/common/page/page.css', array(), filemtime($root . '/common/page/page.css'));
     }
 
     /*
