@@ -320,13 +320,18 @@ function load_source()
 
     }
 
+	
+  
+
 
     /*
      * 页面加载的资源
      * */
-    if (is_page("文章聚合")) {
+	$template=get_page_template_slug( get_queried_object_id() );
+    if (strpos($template,"template/page/posts.php") !== false) {
         wp_enqueue_style('page', $url . '/common/page/page.css', array(), filemtime($root . '/common/page/page.css'));
     }
+
 
     /*
      * 内联的js
