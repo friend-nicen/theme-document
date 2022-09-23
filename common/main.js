@@ -55,7 +55,6 @@ $(function () {
         * 给目录绑定滚动到索引的事件
         * */
         $('.scroll a').click(function (e) {
-            e.preventDefault(); //阻止默认事件
 
             let that = $(this);
             let index = $(that.attr('href'));
