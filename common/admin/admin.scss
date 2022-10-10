@@ -1,0 +1,113 @@
+[v-cloak] {
+  display: none;
+}
+
+#VueApp {
+
+  .ant-form-item-children {
+    dd, li {
+      margin-bottom: 0;
+    }
+  }
+
+  .ant-input {
+    box-sizing: border-box;
+    margin: 0;
+    font-variant: tabular-nums;
+    list-style: none;
+    font-feature-settings: "tnum";
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 32px;
+    padding: 4px 11px;
+    color: rgba(0, 0, 0, .65);
+    font-size: 14px;
+    line-height: 1.5;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    transition: all .3s;
+
+    &:focus {
+      outline: 0 !important;
+      box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2) !important;
+    }
+
+    &:focus, &:hover {
+      border-color: #40a9ff !important;
+      border-right-width: 1px !important;
+    }
+  }
+
+
+  .card-container {
+    background: #f5f5f5;
+    overflow: hidden;
+    padding: 24px;
+
+
+    & > .ant-tabs-card {
+
+      & > .ant-tabs-bar {
+        border-color: #fff;
+
+        .ant-tabs-tab {
+          border-color: transparent;
+          background: transparent;
+        }
+
+        .ant-tabs-tab-active {
+          border-color: #fff;
+          background: #fff;
+        }
+      }
+
+      & > .ant-tabs-content {
+
+        min-height: 150px;
+        margin-top: -16px;
+
+
+        & > .ant-tabs-tabpane {
+          background: #fff;
+          padding: 36px 30px 10px 30px;
+        }
+
+        .ant-form-item-label {
+          label {
+            display: flex;
+            align-items: center;
+          }
+        }
+
+
+        .m-colorPicker {
+
+          display: inline-flex;
+
+          .colorBtn {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            margin-right: 15px;
+            cursor: pointer;
+            border: 1px solid #818181;
+          }
+
+          .box {
+            box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.15);
+          }
+        }
+
+
+      }
+    }
+  }
+
+
+  .m-colorPicker .box {
+    position: fixed;
+  }
+}

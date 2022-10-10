@@ -6,7 +6,7 @@
  * */
 global $post;
 $author = get_the_author_meta( 'display_name', $post->post_author );
-if ( is_single() ) {
+if ( is_singular() ) {
 	?>
     <!--文章信息-->
     <div class="div-info">

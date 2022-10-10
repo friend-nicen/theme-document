@@ -1,8 +1,19 @@
+/*
+  1024已下的样式
+*/
 @media (max-width: 1024px) {
   html {
     min-width: unset;
 
     body {
+
+      .main-container {
+        justify-content: center;
+
+        .main-main {
+          margin-left: 0;
+        }
+      }
 
       .main-header {
         min-width: unset;
@@ -18,11 +29,12 @@
           justify-content: flex-start;
           align-items: flex-start;
           position: fixed;
+
           top: 0;
-          left: -60%;
+          left: -70%;
           width: 60%;
-          background-color: var(--theme-header-color);
-          padding: 1rem 0.7rem;
+          background: var(--theme-sub-menu-bg-color);
+          padding: 1rem 0.7rem 1rem 0.7rem;
           box-shadow: 0 12px 32px var(--theme-hover-shadow);
           transition-property: all;
           transition-duration: 0.3s;
@@ -32,17 +44,46 @@
             display: none;
           }
 
-          .search {
-            height: 35px;
-            width: 85%;
-            flex-shrink: 0;
-          }
 
-          .search-icon {
-            height: unset;
-            left: 1.3rem;
-            line-height: normal;
-            top: calc(1rem + 9px);
+          .menu-left {
+
+            /*background-color: var(--theme-front-color);*/
+            /*border: 1px solid #f3f3f3;*/
+
+            margin: 0;
+            padding: 0 0.2rem;
+            width: 100%;
+
+
+            &:hover{
+              box-shadow: 0 0 5px 2px var(--theme-color-20);
+              border-color: var(--theme-color);
+            }
+
+            .search-div {
+              display: flex;
+              width: 100%;
+
+              .iconfont {
+                display: none;
+              }
+
+              .search {
+                height: 35px;
+                width: 100%;
+                flex-shrink: 0;
+                padding: 0 1rem 0 0.6rem;
+                color: var(--theme-sub-menu-font-color);
+
+              }
+            }
+
+            .search-icon {
+              height: unset;
+              margin-right: 0.2rem;
+              line-height: normal;
+              color: var(--theme-sub-menu-font-color);
+            }
           }
 
           .menu {
@@ -52,15 +93,19 @@
             padding: 0;
             width: 100%;
             height: unset;
-            margin-top: 1rem;
 
             .menu-item {
-              width: 90%;
-              margin-top: 0.8rem;
-              margin-left: 0.5rem;
+              width: 100%;
+              margin: 0;
+              box-sizing: border-box;
+              padding: 0.5rem 1rem;
+              color: var(--theme-sub-menu-font-color);
               justify-content: space-between;
               font-weight: lighter;
               flex-wrap: wrap;
+              font-size: var(--theme-third-level-title);
+
+              border-bottom: 1px solid rgba(0, 0, 0, .05);
 
               i {
                 line-height: normal;
@@ -70,31 +115,45 @@
                 font-size: 1rem;
               }
 
-              .sub-menu {
-                width: 100%;
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                box-shadow: none;
-                display: none;
-                background-color: transparent;
+            }
 
-                .sub-menu-item a {
-                  margin: 0;
+
+            /*
+              如果拥有子菜单
+            */
+            .menu-item-has-children {
+              & > a {
+                &:after {
+                  display: none;
                 }
               }
+
+              .sub-menu {
+                display: none;
+              }
+
             }
+
 
             .read-mode {
               position: absolute !important;
-              top: calc(1rem + 9px);
+              display: none;
+              top: 1rem;
+              z-index: 50;
               right: 12px;
               margin-top: 0;
               height: fit-content;
               width: fit-content;
+              color: var(--theme-front-color);
 
+              img {
+                width: 1.2rem;
+                padding: 0;
+              }
             }
           }
+
+
         }
       }
 

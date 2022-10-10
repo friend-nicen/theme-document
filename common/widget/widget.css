@@ -1,0 +1,9 @@
+.widget-liquid-right #jq-tabs {
+  border: none; }
+  .widget-liquid-right #jq-tabs ul {
+    display: flex; }
+  .widget-liquid-right #jq-tabs .ui-widget-header {
+    background-color: transparent;
+    border: none; }
+  .widget-liquid-right #jq-tabs .ui-tabs-panel {
+    padding: 0; }

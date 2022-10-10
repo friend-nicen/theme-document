@@ -19,7 +19,7 @@
                                 type: 'listbox',
                                 name: 'lang',
                                 label: '选择语言',
-                                values:[
+                                values: [
                                     {
                                         "text": "markup",
                                         "value": "markup"
@@ -155,7 +155,7 @@
                             }
                         ],
                         onsubmit: function (e) {
-                            var code = e.data.code.replace(/\r\n/gmi, '\n'),lang = e.data.lang;
+                            var code = e.data.code.replace(/\r\n/gmi, '\n'), lang = e.data.lang;
                             code = tinymce.html.Entities.encodeAllRaw(code);
                             ed.insertContent(`<pre class="line-numbers language-${lang}"><code class="language-${lang}">${code}\n</code></pre>&nbsp;`);
                         }

@@ -1,44 +1,4 @@
-:root {
-  --theme-text-super-mini: 0.4rem;
-  --theme-text-mini: 0.76rem;
-  --theme-text-more-mini: 0.69rem;
-  --theme-text: 0.84rem;
-  --theme-header-size: 1.1rem;
-  --theme-secondary: 0.78rem;
-  --theme-first-level-title: 1.35rem;
-  --theme-secondary-level-title: 1.15rem;
-  --theme-third-level-title: 0.96rem;
-  --theme-fourth-level-title: 0.84rem;
-  --theme-white: #f1f2f9;
-  --theme-black: #212121;
-  --theme-color: #42b983;
-  --theme-color-20: rgba(66, 185, 131, 0.2);
-  --theme-text-color: #262626;
-  --theme-text-secondary: rgba(0, 0, 0, 0.65);
-  --theme-text-mini-color: rgba(0, 0, 0, 0.65);
-  --theme-margin-bottom:1rem;
-  --theme-li-padding: 1.2rem;
-  --theme-bg-color: var(--theme-white);
-  --theme-front-color: white;
-  --theme-header-color: var(--theme-front-color);
-  --theme-header-border: #e1e1e1;
-  --theme-hover-bg: #444;
-  --theme-hover-color: white;
-  --theme-hover-shadow: rgba(0, 0, 0, 0.2);
-  --theme-code-bg: #eeeeee;
-  --theme-code-text: #da1039;
-  --theme-success-bg-color: #f3f4f5;
-  --theme-success-line-color: #42b983;
-  --theme-success-title-color: #2c3e50;
-  --theme-success-text-color: #2c3e50;
-  --theme-alert-bg-color: #fffae3;
-  --theme-alert-title-color: #ad9000;
-  --theme-alert-line-color: #e7c000;
-  --theme-alert-text-color: #746000;
-  --theme-error-bg-color: #ffe0e0;
-  --theme-error-title-color: #990000;
-  --theme-error-line-color: #cc0000;
-  --theme-error-text-color: #660000;
-  --theme-first-index-title: 0.78rem;
-  --theme-secondary-index-title: 0.78rem;
-  --theme-third-index-title: 0.78rem; }
+@charset "UTF-8";
+/*
+  主题所有变量
+*/

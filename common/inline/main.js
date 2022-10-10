@@ -52,3 +52,22 @@ let night = localStorage.getItem('night');
 if (!!night) {
     toggleTheme(true); //切换暗黑
 }
+
+/*
+* 获取元素在网页的实际top
+* */
+$.fn.getTop = function () {
+
+    let position=this.position();
+    /*
+    * 为0代表有很多offsetTop要计算
+    * */
+    if(position.top !== 0){
+        return position.top;
+    }else{
+        let html = $('html').get(0);
+        return this.get(0).getBoundingClientRect().top + html.scrollTop;
+    }
+
+
+}

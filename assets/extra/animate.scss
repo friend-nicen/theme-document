@@ -1,0 +1,14 @@
+/*
+  站点用到的动画
+*/
+@keyframes rotate {
+  0% {
+    transform:rotate(0deg);
+  }
+  50%{
+    transform:rotate(180deg);
+  }
+  to {
+    transform:rotate(360deg);
+  }
+}

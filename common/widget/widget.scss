@@ -1,0 +1,16 @@
+
+.widget-liquid-right{
+  #jq-tabs{
+    border: none;
+    ul{
+      display:flex;
+    }
+    .ui-widget-header{
+      background-color: transparent;
+      border: none;
+    }
+    .ui-tabs-panel{
+      padding: 0;
+    }
+  }
+}

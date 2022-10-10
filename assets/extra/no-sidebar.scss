@@ -1,0 +1,19 @@
+/*
+  不显示侧边栏
+*/
+html {
+  body {
+    .no-sidebar {
+      justify-content: center;
+      .main-main {
+        margin-left: 0;
+      }
+    }
+    .no-left {
+      justify-content: center;
+      .main-main {
+        margin-left: 0;
+      }
+    }
+  }
+}

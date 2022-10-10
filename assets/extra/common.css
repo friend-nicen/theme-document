@@ -1,4 +1,7 @@
 @charset "UTF-8";
+/*
+公共初始化
+*/
 * {
   font-size: var(--theme-text);
   color: var(--theme-text-color);
@@ -15,7 +18,7 @@ pre * {
   color: #65a4e3; }
 
 p {
-  margin: 0 0 var(--theme-margin-bottom) 0;
+  margin: 0 0 0.83rem 0;
   font-weight: normal; }
 
 ::selection {

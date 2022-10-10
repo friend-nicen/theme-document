@@ -2,268 +2,13 @@
 $(function () {
 
     /*
-    * 防止子容器触发父容器的滚动
+    * 回复评论时自动滚动到指定位置
     * */
-    $.fn.scrollUnique = function () {
-        return $(this).each(function () {
-            var eventType = 'mousewheel';
-            // 火狐是DOMMouseScroll事件
-            if (document.mozHidden !== undefined) {
-                eventType = 'DOMMouseScroll';
-            }
-            $(this).on(eventType, function (event) {
-                // 一些数据
-                var scrollTop = this.scrollTop,
-                    scrollHeight = this.scrollHeight,
-                    height = this.clientHeight;
+    if (location.search.indexOf('replytocom') != -1) {
+        let top = ($('.comment-form').getTop() - 100);
+        $('html').get(0).scrollTop = top;
+    }
 
-                var delta = (event.originalEvent.wheelDelta) ? event.originalEvent.wheelDelta : -(event.originalEvent.detail || 0);
-
-                if ((delta > 0 && scrollTop <= delta) || (delta < 0 && scrollHeight - height - scrollTop <= -1 * delta)) {
-                    // IE浏览器下滚动会跨越边界直接影响父级滚动，因此，临界时候手动边界滚动定位
-                    this.scrollTop = delta > 0 ? 0 : scrollHeight;
-                    // 向上滚 || 向下滚
-                    event.preventDefault();
-                }
-            });
-        });
-    };
-
-
-    /*阅读导航栏初始化*/
-    (function () {
-        /*
-        * 给目录添加展开伸缩图标
-        * */
-        $('.first-index').each(function () {
-            let that = $(this);
-            if (that.parent().next().children('div').is('.secondary-index')) {
-                that.prepend('<i class="iconfont icon-xiangxiazhankai1"></i>');
-            }
-        })
-
-        $('.secondary-index').each(function () {
-            let that = $(this);
-            if (that.parent().next().children('div').is('.thrid-index')) {
-                that.prepend('<i class="iconfont icon-xiangxiazhankai1"></i>');
-            }
-        })
-
-
-
-        /*
-        * 给目录绑定滚动到索引的事件
-        * */
-        $('.scroll a').click(function (e) {
-
-            let that = $(this);
-            let index = $(that.attr('href'));
-
-            if (index.length > 0) {
-                $('html').animate({scrollTop: index.get(0).offsetTop}, 200);
-            }
-        })
-
-    })();
-
-
-    /*
-    * 屏蔽文章导航滚动事件向上传递
-    * */
-    (function () {
-        $('.scroll').scrollUnique();
-        $('.scroll').on('scroll', function (e) {
-            e.stopPropagation(); //停止向上传递事件
-        })
-    })();
-
-
-    let isScroll = false; //防止重复触发目录滚动
-
-    /*阅读目录初始化*/
-    (function () {
-
-
-        /*导航跳转*/
-        function goto(Index) {
-
-
-            let tops = Index[0].offsetTop;
-
-            line.height(Index.height());//初始化滚动条高度
-            line.css("top", `${tops}px`);//索引条开始滑动
-
-            /*
-            * 判断外层容器是否需要滚动
-            * */
-
-            /*向下*/
-            let scroll = $('.scroll').get(0); //可滚动的导航
-
-            /*
-            * 文章滚动时，目录自动翻页向下、向上
-            * */
-            if (tops >= (scroll.scrollTop + scroll.offsetHeight)) {
-
-                /*防止重复触发滚动*/
-                if (isScroll) {
-                    return;
-                }
-
-                isScroll = true;
-                $(scroll).animate({scrollTop: tops - 100}, 200, function () {
-                    isScroll = false;
-                })
-            }
-            /*向上*/
-            if (tops < scroll.scrollTop) {
-
-                /*防止重复触发滚动*/
-                if (isScroll) {
-                    return;
-                }
-                isScroll = true;
-
-                $(scroll).animate({scrollTop: ((tops - scroll.offsetHeight) < 0 ? 0 : tops - scroll.offsetHeight + 100)}, 200, function () {
-                    isScroll = false;
-                })
-            }
-            /*
-            * 同步滚动文章页面
-            * */
-
-            if (!needScroll) {
-                needScroll = true;
-                return;
-            }
-
-
-            let anchor = main.find(Index.find('div a').attr("href"));
-
-            watchScroll = false;//屏蔽滚动监听
-
-            if (anchor.length != 0) {
-
-                let top = anchor.get(0).offsetTop;
-
-                /*
-                * 滚动锚点标记
-                * */
-                main.animate({scrollTop: top}, 200, function () {
-                    watchScroll = true;
-                });
-
-            }
-
-        }
-
-        function clear() {
-            $('.main-container .main-left .first-index').css('color', '');//移除所有一级索引的颜色
-            $('.main-container .main-left .secondary-index').css('color', '');//移除所有二级索引的颜色
-            $('.main-container .main-left .third-index').css('color', '');//移除所有三级索引的颜色
-        }
-
-
-        /*绑定一级索引标签的事件*/
-        $("body").on("click", '.first-index', function () {
-            clear();
-            goto($(this));
-            $(this).css('color', 'var(--theme-color)');//被选中的一级索引变为主题色
-        })
-
-        /*绑定二级索引标签的事件*/
-        $("body").on("click", '.secondary-index', function () {
-            clear();
-            goto($(this));
-            $(this).css('color', 'var(--theme-color)');//被选中的二级索引变为主题色
-            $(this).parent().parent().prev('.first-index').css('color', 'var(--theme-color)');//被选中的一级索引变为主题色
-        })
-
-        /*绑定三级索引标签的事件*/
-        $("body").on("click", '.third-index', function () {
-            clear();
-            goto($(this));
-            $(this).css('color', 'var(--theme-color)');//被选中的三级索引变为主题色
-            $(this).parent().parent().prev('.secondary-index').css('color', 'var(--theme-color)');//被选中的二级索引变为主题色
-            $(this).parent().parent().parent().parent().prev('.first-index').css('color', 'var(--theme-color)');//被选中的二级索引变为主题色
-        })
-
-
-        /*
-         * 初始化导航栏滚动条
-         * */
-        let needScroll = true;
-        let watchScroll = true;
-
-        let line = $(".main-container .line");
-        let main = $('html');
-        //获取第一个一级索引标题的DOM
-        let firstIndex = $('.main-container .main-left li div:first');
-        needScroll = false;//屏蔽第一次滚动
-        firstIndex.trigger('click');//默认第一个目录
-
-        /*
-        * 渲染完毕后显示，防抖动闪烁
-        * */
-        $('.main-left').css('opacity', 1);
-
-        /*
-        *
-        * 内容滚动同步导航栏
-        * */
-
-        let timer = null;
-
-        $(window).on('scroll', function () {
-
-            /*
-            * 屏蔽点击滚动时的事件监听
-            * */
-            if (!watchScroll) return;
-            let thats = main;
-            let top = thats.get(0).scrollTop;
-            let collects = thats.find(".main-content").find("h1,h2,h3,h4");
-            let position = null;
-
-            for (let i = 0; i < collects.length; i++) {
-
-                /*
-                * 获取循环的jq对象
-                * */
-                let that = collects.eq(i);
-
-                /*
-                * 无锚点，挑出本次循环
-                * */
-                if (!that.attr('id')) {
-                    continue;
-                }
-
-                /*
-                * 判断高度
-                * */
-                if (that.get(0).offsetTop > top) {
-                    position = i;
-                    break;
-                }
-
-            }
-
-            /*
-            * 刷新导航栏
-            * */
-
-            /*
-            * 屏蔽导航变化时的自动滚动
-            * */
-
-            needScroll = false;//标记不需要滚动
-            $("a[href='#" + collects.eq(position).attr("id") + "']").parent().trigger('click');
-
-
-        });
-
-    })();
 
     /*
     * 回到顶部、阅读进度监控
@@ -273,44 +18,10 @@ $(function () {
         let main = $('html');
         let toTop = $('.toTop');
         let progress = $('#progress');
-        let navigator = $('#navigator'); //文章导航
-        let space = $('#space');
-
-
-        /*
-        * 判断是否存在文章导航
-        * 记录数据
-        * */
-        if (navigator.length > 0) {
-            let pos = space.position();
-            navigator.css('left', pos.left);
-            navigator.css('top', pos.top);
-            navigator.show();
-
-            /*
-            * 跟随屏幕大小变化，调整目录的位置
-            * */
-            enquire.register("screen and (min-width:1024px)", {
-                /*屏幕大于1024时监听屏幕大小，更新目录导航位置*/
-                match() {
-                    $(window).on("resize", function () {
-                        navigator.css("left", space.position().left)
-                    })
-                },
-                /*屏幕小于1024时取消监听屏幕大小*/
-                unmatch() {
-                    $(window).off("resize", function () {
-                        navigator.css("left", space.position().left)
-                    });
-                }
-            });
-        }
-
 
         /*
         * html的scrollTop在微信端无法正常获取值
         * */
-
 
         /*初始化加载后的首次进度*/
         progress.text((((window.scrollY + main.get(0).clientHeight) / main.get(0).scrollHeight) * 100).toFixed(0) + "%")
@@ -350,21 +61,279 @@ $(function () {
 
 
         /*
-        * 右边内容栏的sticky效果
+        * 阅读模式切换（白天、黑暗）
         * */
+        $('.read-mode').click(function () {
+            if ($(this).find('i').hasClass("icon-yueliang")) {
+                toggleTheme(false); //切换白天模式
+            } else {
+                toggleTheme(true); //切换暗黑模式
+            }
+        });
+
+    })();
+
+
+    /*
+    *
+    * 灯箱
+    * */
+    (function () {
+        /*屏蔽其他页面加载*/
+        if (typeof GLightbox == "undefined") {
+            return;
+        }
+        /*初始化灯箱*/
+        GLightbox({
+            selector: '.glightbox',
+            touchNavigation: true,
+            loop: true,
+            zoomable: true,
+            draggable: true,
+            autoplayVideos: true
+        });
+    })();
+
+
+    /*
+    * 文章搜索
+    * */
+    (function () {
+        /*
+        * 点击搜索按钮弹出搜索框
+        * */
+        $('.icon-sousuo').on("click", function (event) {
+
+            let search = $('.search-div');
+            let right = $('.right');
+            /*
+            * 搜索还是未搜索
+            * */
+            if (search.css('display') == 'none') {
+
+                $('ul.menu').fadeOut(500, function () {
+                    right.css({
+                        'justify-content': 'center'
+                    }).find('.search-div').css('display', 'flex');
+
+                    $('#search').focus();
+                });
+
+
+            } else {
+                let search = $('#search');
+                if (search.val() == "") {
+
+                } else {
+                    location.href = location.origin + "?s=" + search.val();
+                }
+            }
+        });
+
+        /*
+        * 回车时开始搜索
+        * */
+        $('#search').on("keypress", function (event) {
+            let that = $(this);
+            if (that.val() == "") {
+
+            } else {
+                if (event.keyCode == "13") {
+                    location.href = location.origin + "?s=" + that.val();
+                }
+            }
+        });
+
+        $('.search-div .iconfont').click(function () {
+
+            let right = $('.right');
+            let menu = $('ul.menu');
+
+            right.css({
+                'display': 'none',
+                'justify-content': 'space-between'
+            }).find('.search-div').hide(function () {
+                right.css({
+                    'display': 'flex',
+                });
+                menu.fadeIn(200);
+            });
+
+        })
+
+    })();
+
+
+    /*
+    * 动态菜单宽度
+    * */
+    (function () {
+
+        let navWidth = '60%';
+
+
+        /*
+        * 展开导航
+        * */
+        function expandNav() {
+
+            let right = $(".right");
+            let daohang = $('.daohang');
+
+            if (daohang.hasClass('icon-cha')) {
+                right.css('left', '-' + navWidth)
+                daohang.removeClass('icon-cha');
+                daohang.addClass('icon-daohangmoren');
+            } else {
+                right.css('left', 0);
+                daohang.addClass('icon-cha');
+                daohang.removeClass('icon-daohangmoren');
+            }
+
+        }
+
+        enquire.register("screen and (max-width: 1024px)", {
+            match() {
+                $(".daohang").on('click', expandNav);
+            },
+            /*屏幕大于1024时取消监听屏幕大小*/
+            unmatch() {
+                $(".daohang").off('click', expandNav);
+            }
+        });
+
+    })();
+
+
+    /*
+    * 固定右边栏
+    * */
+    (function () {
+        /*
+         * 右边内容栏的sticky效果
+         * */
+        window.computed = () => {
+        };//暴露到全局
+        window.toFixed = () => {
+        };//暴露到全局
 
         let isFixed = false;
-        let right = $("#right");
+        let html = $('html');
+        let fixed = $('#fixed');
+        let right = $('#right');
+        let main = $(".main-main");
+
+        let footerHeight = $('.main-bottom').height(); //底部高度
+
+        /*
+        * 左侧固定
+        * 判断是否有左边栏
+        * */
+        let space = $('#space');
+
+        if (space.length > 0) {
+            var topTop = $('#space').getTop();
+            var navigator = $('#navigator');
+            var topHeight = navigator.outerHeight();
+            var topOffset = innerHeight - topHeight - topTop;
+        }
+
 
         if (right.length != 0) {
 
-            let position = right.position();
+
+            let muchBottom = 0;//右边栏底部距离
+
+            let _static, _absolute;
 
             /*
-            * 计算触发stiky的临界值（窗口顶部到容器底部的总高度）,减去的底部间距
+            * 右侧是不变的
             * */
-            let bottom = right.get(0).offsetHeight + position.top + (1.5 * rem);
-            let value = bottom - window.innerHeight;
+
+            let react_fixed = fixed.get(0).getBoundingClientRect();
+            let fixed_top = fixed.getTop();
+            _static = fixed_top + react_fixed.height - innerHeight;
+
+
+            /*
+            * 动态计算位置
+            * */
+            function computed() {
+
+                let react_main = main.get(0).getBoundingClientRect();
+                /*
+                * 保持static，变成fixed的临界值
+                * 因为底部出现时，看的是上方的滚动距离 -innerHeight 的位置滚出屏幕了，代表main的底部出现了
+                * */
+                _absolute = main.getTop() + react_main.height - innerHeight;
+
+            }
+
+            computed(); //初始计算
+            window.computed = computed;//暴露到全局
+
+
+            /*
+            * 固定左侧偏移
+            * */
+
+            let isfixedLeft = false;
+
+            function fixedLeft() {
+
+                let html_scrollTop = html.scrollTop();
+
+                if (html_scrollTop >= _absolute) {
+
+                    isfixedLeft = true;
+
+                    /*左侧文章开始偏移*/
+                    /*左侧top+高度+偏移量*/
+                    if ((topTop + topHeight + html_scrollTop) >= (_absolute + innerHeight)) {
+                        navigator.css('top', topTop + topOffset - (html_scrollTop - _absolute));
+                    }
+
+                } else {
+                    if (isfixedLeft) {
+                        /*左侧文章开始复位*/
+                        navigator.animate({
+                            top: topTop
+                        }, 'fast')
+
+                        isfixedLeft = false;
+                    }
+                }
+            }
+
+
+            /*
+            * 计算
+            *
+            * 已经滚动的距离+屏幕的高度>=main-main的top+height，代表要absolute固定到底部
+            * 已经滚动的距离+屏幕的高度>= #fixed的top+height，代表要fixed
+            *     如果块小于屏幕高度，应该直接top到顶部
+            *     如果块大于屏幕高度，应该直接bottom到底部
+            *
+            * 已经滚动的距离+屏幕的高度 < #fixed的top+height，static
+            *
+            *
+            * 如果块大于main-main,应该直接保持static
+            *
+            * rect 获取的top=dom绝对于容器的top-滚动的距离；
+            *
+            * 所以当前top+初始top=滚动距离
+            * 初始top=滚动距离+当前top
+            *
+            * right不存在、isFixed防抖时，不需要触发
+            *
+            * 还应该减去屏幕高度，代表临界值在屏幕底部出现时的位置
+            *
+            * 进行高度比较时，应该+上屏幕高度
+            *
+            *
+            *
+            * 如果左边大于右边，右边没有占满屏幕？应该保持fixed
+            * */
 
 
             /*
@@ -372,18 +341,29 @@ $(function () {
             * */
             function toFixed() {
 
-                let main = $('html').get(0);
-                let fixed = $('#fixed');
-                if (right.length == 0 || isFixed) return;
-                isFixed = true;
+                if (space.length > 0) {
+                    fixedLeft();//左侧位置检测
+                }
 
+
+                if (right.length == 0 || isFixed) return;
 
                 /*
-                * 当窗口高度+滚动高度=bottom，代表可以触发stiky 固定右边内容了；
-                * 临界值
+                * 右侧大于左侧，保持static
                 * */
+                if (_static > _absolute) {
+                    return;
+                }
 
-                if (main.scrollTop > value) {
+                isFixed = true;//标记正在滚动
+
+
+                let html_scrollTop = html.scrollTop();
+
+                /*
+                * 大于保持静态，小于保持绝对
+                * */
+                if (html_scrollTop > _static && html_scrollTop < _absolute) {
 
                     right.css('left', fixed.position().left + rem);
 
@@ -391,21 +371,49 @@ $(function () {
                     * 如果块的高度小于屏幕高度
                     * 应该从top定位
                     * */
-                    if(value>0){
-                        right.css('bottom', '0.5rem');
-                    }else{
-                        right.css('top', fixed.position().top);
+
+                    if ((_static + innerHeight) > innerHeight) {
+                        right.css('top', '');
+                        right.css('bottom', '0');
+                    } else {
+                        right.css('bottom', '');
+                        right.css('top', fixed_top);
                     }
 
+                    /*右侧固定定位*/
                     right.css('position', 'fixed');
 
                 } else {
-                    right.css('position', 'static');
+
+                    /*
+                      * 底部固定
+                      * */
+
+                    if ((footerHeight + right.height() + 70) <= innerHeight) {
+
+                        /*右侧固定定位*/
+                        right.css('bottom', '');
+                        right.css('top', fixed_top);
+                        right.css('position', 'fixed');
+
+                    } else if (html_scrollTop >= _absolute) {
+
+                        /*右侧绝对定位*/
+                        right.css('position', 'absolute');
+                        right.css('top', '');
+                        right.css('bottom', muchBottom);
+
+                    } else {
+                        /*右侧静态定位*/
+                        right.css('position', 'static');
+                    }
                 }
 
                 isFixed = false;
-
             }
+
+
+            window.toFixed = toFixed;//暴露到全局
 
 
             /*
@@ -429,26 +437,218 @@ $(function () {
                     }
                 }
             });
+        }
+
+    })();
 
 
+    /*
+    * 移动端向下阅读时隐藏导航栏，上滑显示导航栏
+    * mode boolean true 下滑显示 false 上移隐藏
+    *
+    * */
+    (function () {
+        let timer = null; //计时器
+        let header = $('.main-header'); //导航栏对象
+
+        let toggleHeader = function () {
+
+
+            /*
+            * 导航栏本身高度64
+            * */
+            if (window.scrollY < 64) {
+                header.css('opacity', "1");
+                clearTimeout(timer);
+                timer = null;
+                return;
+            }
+
+
+            /*
+            * 防抖
+            * */
+            if (timer) {
+                return;
+            }
+
+            let old_top = window.scrollY;//记录初值
+
+            /*
+            * 交流+延时判断
+            * */
+            timer = setTimeout(() => {
+
+                let new_top = window.scrollY;//记录初值
+                if (new_top < old_top) {
+                    header.css('opacity', "1");
+                } else {
+                    header.css('opacity', "0");
+                }
+                clearTimeout(timer);
+                timer = null;
+            }, 200)
         }
 
 
-
-
-
-
         /*
-        * 阅读模式切换（白天、黑暗）
+        * 屏幕大小监听
         * */
-        $('.read-mode').click(function () {
-            if ($(this).find('i').hasClass("icon-yueliang")) {
-                toggleTheme(false); //切换白天模式
-            } else {
-                toggleTheme(true); //切换暗黑模式
+        enquire.register("screen and (max-width: 480px)", {
+            match() {
+                $(window).on('scroll', toggleHeader)
+            },
+            /*屏幕大于1024时取消监听屏幕大小*/
+            unmatch() {
+                $(window).off('scroll', toggleHeader)
             }
         });
 
+    })();
+
+
+    /*
+    * 动态加载下一页
+    * */
+    (function () {
+
+
+        /*
+        * 改变加载效果
+        * */
+        function change(load, flag = true) {
+
+            let icon = load.find(".iconfont");
+
+            if (flag) {
+                icon.css('display', 'inline-block'); //显示加载效果
+                icon.addClass("animate-rotate"); //显示加载动画
+                load.find('span').text("加载中..."); //加载文字
+            } else {
+                icon.hide(); //显示加载效果
+                icon.removeClass("animate-rotate"); //显示加载动画
+
+                /*判断是否还有下一页*/
+                if (load.data('next')) {
+                    load.find('span').text("点击查看更多"); //加载文字
+                } else {
+                    load.find('span').text("没有更多了"); //加载文字
+                }
+
+            }
+
+        }
+
+        /*
+        * 动态绑定点击加载时间
+        * */
+        $(".main-content").on('click', '.loadnext', function () {
+
+            let load = $(this);
+
+            /*
+            * 没有下一页了
+            * */
+            if (load.data('next') == "") {
+                return;
+            }
+
+            change(load); //显示加载效果
+
+            $.post(load.data('next'), 'pagination=yes', function (res) {
+
+                load.parent().before($(res).find('.i-article')); //插入加载的文章
+                /*
+                * 修改下一页的链接
+                * */
+
+                load.data("next", $(res).find('.loadnext').data('next'));
+
+                computed(); //重新定位位置
+                toFixed(); //重定位
+
+                change(load, false); //显示加载效果
+            })
+
+        })
+
+    })();
+
+
+    /*
+    * 是否需要动态栏目
+    * */
+    (function () {
+
+        /*
+        * 如果开启了动态栏目
+        * */
+        if (DYNAMIC) {
+
+            /*
+            * 如果动态栏目被点击
+            * */
+            $(".dynamic .tab").on('click', function () {
+
+                let that = $(this);
+                let tabs = $('.dynamic .tab'); //所有tab
+
+                /*
+                * 已经显示就不加载
+                * */
+                if (that.hasClass('active-tab')) {
+                    return;
+                }
+
+                /*
+                  * 改变激活的css状态
+                  * */
+                tabs.removeClass('active-tab');
+                that.addClass('active-tab');
+
+
+                /*
+                * 判断是否已经有加载的，已加载直接显示
+                * */
+                let tabPane = $('#' + that.data('key'));
+
+                $('div.article-list').hide();
+
+                if (tabPane.length > 0) {
+                    tabPane.show();
+                    return;
+                }
+
+                /*
+                * 显示加载动画
+                * */
+                $('#dynamic').css('display', 'flex');
+
+                /*
+                * 如果没有就需要加载数据
+                * 制定容器，加载数据，插入容器
+                * */
+                let dom = $(`<div id="${that.data('key')}" class="article-list"></div>`);
+                let main = $('.hasDynamic');
+
+                /*
+                * 加载数据
+                * */
+                $.post(that.data('url'), 'pagination=yes', function (res) {
+                    dom.append($(res).find('.i-article')); //插入加载的文章
+                    dom.append($(res).find('.pagination')); //插入加载的文章
+                    main.append(dom);
+                    $('#dynamic').hide(); //关闭加载动画
+                    dom.show();
+                    computed(); //重新定位位置
+                    toFixed(); //重定位
+                })
+
+
+            })
+
+
+        }
 
     })();
 
@@ -459,216 +659,11 @@ $(function () {
     (function () {
 
         let html = $('html');
-
+        /*改变主题色*/
         $('.theme-color div').click(function () {
-            let theme = $(this).attr('class');
-            if (html.hasClass('dark')) {
-                html.removeClass();
-                html.addClass(['dark', theme]);
-            } else {
-                html.removeClass();
-                html.addClass(theme);
-            }
-            localStorage.setItem('theme-color', theme);
+            let theme = $(this).css('background-color');
+            html.css('--theme-color', theme);
         })
     })();
-
-
-    /*
-    *
-    * 灯箱
-    * */
-    (function () {
-
-        /*屏蔽其他页面加载*/
-        if (typeof GLightbox == "undefined") {
-            return;
-        }
-
-        const lightbox = GLightbox({
-            selector: '.glightbox',
-            touchNavigation: true,
-            loop: true,
-            zoomable: true,
-            draggable: true,
-            autoplayVideos: true
-        });
-    })();
-
-
-    /*
-    * 文章踩、文章点赞
-    * */
-    (function () {
-
-        $('.icp-beian div').click(function () {
-
-            /*
-            * 判断点赞的是哪一个
-            * */
-            if ($('.icp-beian div').index(this) == 0) {
-                /*
-                * 点赞
-                * */
-                let that = $(this);
-                $.post(location.pathname + "?nice=" + Current, function (res) {
-                    that.find('span').text(parseInt(that.find('span').text()) + 1);
-                });
-            } else {
-                /*
-                  * 踩
-                  * */
-                let that = $(this);
-                $.post(location.pathname + "?bad=" + Current, function (res) {
-                    that.find('span').text(parseInt(that.find('span').text()) + 1);
-                });
-            }
-
-        });
-    })();
-
-    /*
-    * 文章搜索
-    * */
-    (function () {
-
-        $('#search').on("keypress", function (event) {
-            let that = $(this);
-            if (that.val() == "") {
-                return
-            } else {
-                if (event.keyCode == "13") {
-                    location.href = location.origin + "?s=" + that.val();
-                }
-            }
-        });
-    })();
-
-
-    /*
-    * 回复评论时自动滚动到指定位置
-    * */
-    if (location.search.indexOf('replytocom') != -1) {
-        let top = ($('.comment-form').position().top - 100);
-        $('html').get(0).scrollTop = top;
-    }
-
-
-    /*
-    * 移动端监听导航栏菜单
-    * */
-
-
-    /*
-    * 动态菜单宽度
-    * */
-    let navWidth = '60%';
-
-
-    function expandNav() {
-
-        let right = $(".right");
-        let daohang = $('.daohang');
-
-        /*
-        * 判断宽度
-        * */
-        if (window.innerWidth > 475) {
-            right.css('width', '45%');
-            navWidth = '45%';
-        } else {
-            right.css('width', '60%');
-            navWidth = '60%';
-        }
-
-
-        if (daohang.hasClass('icon-cha')) {
-            right.css('left', '-' + navWidth)
-            daohang.removeClass('icon-cha');
-            daohang.addClass('icon-daohangmoren');
-        } else {
-            right.css('left', 0);
-            daohang.addClass('icon-cha');
-            daohang.removeClass('icon-daohangmoren');
-        }
-
-    }
-
-    function toShow(){
-        $(this).find('.sub-menu').toggle();
-    }
-
-    enquire.register("screen and (max-width: 1024px)", {
-        match() {
-            $(".daohang").on('click', expandNav);
-            $('.menu-item').on('click',toShow);
-        },
-        /*屏幕大于1024时取消监听屏幕大小*/
-        unmatch() {
-            $(".daohang").off('click', expandNav);
-            $('.menu-item').off('click',toShow);
-        }
-    });
-
-    /*
-    * 移动端向下阅读时隐藏导航栏，上滑显示导航栏
-    * mode boolean true 下滑显示 false 上移隐藏
-    *
-    * */
-    let timer=null; //计时器
-    let header=$('.main-header'); //导航栏对象
-
-    let toggleHeader=function () {
-
-
-        /*
-        * 导航栏本身高度64
-        * */
-        if(window.scrollY<64){
-            header.css('opacity',"1");
-            clearTimeout(timer);
-            timer=null;
-            return;
-        }
-
-
-        if(timer){
-            return;
-        }
-
-        let old_top=window.scrollY;//记录初值
-
-        /*
-        * 交流+延时判断
-        * */
-        timer=setTimeout(()=>{
-
-            let new_top=window.scrollY;//记录初值
-            if(new_top<old_top){
-                header.css('opacity',"1");
-            }else{
-                header.css('opacity',"0");
-            }
-            clearTimeout(timer);
-            timer=null;
-        },200)
-    }
-
-
-    /*
-    * 屏幕大小监听
-    * */
-    enquire.register("screen and (max-width: 480px)", {
-        match() {
-            console.log(666);
-           $(window).on('scroll',toggleHeader)
-        },
-        /*屏幕大于1024时取消监听屏幕大小*/
-        unmatch() {
-            $(window).off('scroll',toggleHeader)
-        }
-    });
-
-
 });
 
