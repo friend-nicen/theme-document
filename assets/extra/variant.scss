@@ -1,3 +1,6 @@
+/*
+  主题所有变量
+*/
 :root {
 
   --theme-text-super-mini: 0.4rem;
@@ -11,39 +14,76 @@
   --theme-third-level-title: 0.96rem;
   --theme-fourth-level-title: 0.84rem;
 
-
-  --theme-white: #f1f2f9;
-  --theme-black: #212121;
-  --theme-color: #42b983;
+  --theme-white: #f5f7fd;
+  --theme-black: #333;
+  --theme-color: #a4672e;
   --theme-color-20: #{rgba(#42b983,.20)};
   --theme-text-color: #262626;
   --theme-text-secondary: #{rgba(#000000,0.65)};
   --theme-text-mini-color: #{rgba(#000000,0.65)};
 
-  --theme-margin-bottom:1rem;
   --theme-li-padding: 1.2rem;
   --theme-bg-color: var(--theme-white);
-  --theme-front-color: white;
-  --theme-header-color: var(--theme-front-color);
+
+  --theme-pre: #ccc;
+  --theme-front-main-color: #fff;
+
+  --theme-front-color: #fafbfc;
+
+  --theme-header-color: var(--theme-color);
   --theme-header-border: #e1e1e1;
+
+
   --theme-hover-bg: #444;
   --theme-hover-color: white;
-  --theme-hover-shadow: #{rgba(#000000,0.2)};
+  --theme-hover-shadow: #{rgba(#000000,0.1)};
   --theme-code-bg: #eeeeee;
-  --theme-code-text: #da1039;
+  --theme-code-text: #4e6e8e;
+
   --theme-success-bg-color: #f3f4f5;
   --theme-success-line-color: #42b983;
   --theme-success-title-color: #2c3e50;
   --theme-success-text-color: #2c3e50;
+
   --theme-alert-bg-color: #fffae3;
   --theme-alert-title-color: #ad9000;
   --theme-alert-line-color: #e7c000;
   --theme-alert-text-color: #746000;
+
   --theme-error-bg-color: #ffe0e0;
   --theme-error-title-color: #990000;
   --theme-error-line-color: #cc0000;
   --theme-error-text-color: #660000;
+
   --theme-first-index-title: 0.78rem;
   --theme-secondary-index-title: 0.78rem;
   --theme-third-index-title: 0.78rem;
+
+
+
+  .theme-one {
+    --theme-color: #f5222d; }
+
+  .theme-two {
+    --theme-color: #fa541c; }
+
+  .theme-three {
+    --theme-color: #fadb14; }
+
+  .theme-four {
+    --theme-color: #3eaf7c; }
+
+  .theme-five {
+    --theme-color: #13c2c2; }
+
+  .theme-six {
+    --theme-color: #1890ff; }
+
+  .theme-seven {
+    --theme-color: #722ed1; }
+
+  .theme-eight {
+    --theme-color: #eb2f96; }
+
+
 }

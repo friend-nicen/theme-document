@@ -5,10 +5,14 @@
  * @author 友人a丶
  * @date 2022-07-08
  * */
-
-
-global $documents; //主题全局选项
-echo $documents['document_footer'];//额外的页脚内容
+get_template_part( './template/index/footer' );
+nicen_theme_config('document_footer_tongji');
+/*
+ * 是否显示结构化数据
+ * */
+if(nicen_theme_showStructure()){
+    get_template_part( './template/index/structure' );
+}
 wp_footer();//wordpress底部代码
 ?>
 </body>

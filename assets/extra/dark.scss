@@ -1,0 +1,39 @@
+/*
+  暗黑模式变量
+*/
+.dark {
+  --theme-text-color: #{rgba(#ffffff,.87)};
+  --theme-bg-color: var(--theme-black);
+
+  /*
+    暗黑模式，导航栏样式
+  */
+  --theme-header-bg-color: #141414;
+  --theme-header-font-color: white;
+  --theme-sub-menu-bg-color: #141414;
+  --theme-sub-menu-font-color: white;
+  --theme-header-border-color:transparent;
+  --theme-header-shadow-color:transparent;
+
+  /*
+    页脚
+  */
+  --theme-footer-bg-color: #141414;
+  --theme-footer-font-color: white;
+
+
+  --theme-text-secondary: #{rgba(#ebebeb,.99)};
+  --theme-hover-bg: var(--theme-text-color);
+  --theme-hover-color: var(--theme-black);
+
+  --theme-front-color: #2a2a2b;
+  --theme-text-mini-color: #{rgba(#ebebeb,.99)};
+  --theme-hover-shadow: #{rgba(#DFDFDF,.5)};
+  --theme-header-color: #141414;
+  --theme-header-border: #141414;
+  --theme-front-main-color: #2a2a2b;
+  --theme-pre: #{rgba(#ffffff,.87)};
+
+
+
+}

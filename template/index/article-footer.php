@@ -9,14 +9,13 @@
 
 $next     = get_next_post();//下一篇文章
 $previous = get_previous_post();//上一篇
-global $documents;
 ?>
 
 <footer>
     <div class="donate">
-        <div>予人玫瑰，手有余香</div>
+        <div><?=nicen_theme_config("document_copyright");?></div>
         <div class="qrcode">
-            <a href="<?=$documents['document_donate']?>"><button>赞赏</button></a>
+            <a href="<?=nicen_theme_config('document_donate_url');?>"><button>赞赏</button></a>
             <!--<div class="imgIn">
                 <div class="angle"></div>
                 <img src="" title="赞赏"/>

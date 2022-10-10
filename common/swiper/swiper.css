@@ -1,0 +1,73 @@
+@charset "UTF-8";
+.swiper {
+  width: 100%;
+  margin-bottom: 1.2rem; }
+  .swiper .swiper-slide {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-areas: "a b" "a c"; }
+    .swiper .swiper-slide .swiper-item {
+      height: 160px;
+      position: relative;
+      overflow: hidden;
+      /*
+        所属目录
+      */ }
+      .swiper .swiper-slide .swiper-item:hover img {
+        transform: scale(1.3); }
+      .swiper .swiper-slide .swiper-item img {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        transition: all 0.3s; }
+      .swiper .swiper-slide .swiper-item .modal {
+        position: absolute;
+        left: 0;
+        top: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        z-index: 99;
+        background-color: rgba(0, 0, 0, 0.3);
+        text-decoration: none; }
+        .swiper .swiper-slide .swiper-item .modal * {
+          color: white;
+          font-size: var(--theme-text-mini); }
+        .swiper .swiper-slide .swiper-item .modal .bottom {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          padding: 0.6rem 0.8rem; }
+          .swiper .swiper-slide .swiper-item .modal .bottom .title {
+            width: 100%; }
+        .swiper .swiper-slide .swiper-item .modal .category {
+          width: fit-content;
+          padding: 0 0.5rem;
+          margin: 0.45rem 0.35rem;
+          border-radius: 5px;
+          background-color: rgba(0, 0, 0, 0.6); }
+          .swiper .swiper-slide .swiper-item .modal .category:hover {
+            color: white;
+            transform: scale(1);
+            background-color: var(--theme-color); }
+    .swiper .swiper-slide .swiper-a {
+      grid-area: a;
+      height: inherit;
+      max-height: 320px; }
+    .swiper .swiper-slide .swiper-b {
+      grid-area: b; }
+    .swiper .swiper-slide .swiper-c {
+      grid-area: c; }
+
+/*
+  ##平板电脑/Ipad竖屏
+  ##768px - 1024px
+*/
+@media (max-width: 1024px) {
+  .swiper .swiper-slide {
+    grid-template-areas: "a a" "b c";
+    grid-template-columns: 50% 50%; } }

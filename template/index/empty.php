@@ -6,7 +6,7 @@
  * @date 2022-07-08
  * */
 
-$url = get_template_directory_uri();//主题url
+$url      = get_template_directory_uri();//主题url
 $page_404 = $url . '/assets/images/empty.svg';
 $page_css = $url . '/common/404/404.css';
 ?>
@@ -32,7 +32,7 @@ $page_css = $url . '/common/404/404.css';
     <div class="error">
         <img src="<?= $page_404; ?>" alt="404">
         <h3 class="title">“没有相关搜索结果哦”</h3>
-        <a href="/" class="error_link">回到主页</a>
+        <a href="javascript:history.back(-1)" class="error_link">回到上一页</a>
     </div>
 </div>
 </body>

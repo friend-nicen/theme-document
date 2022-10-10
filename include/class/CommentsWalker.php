@@ -7,7 +7,6 @@
  * */
 
 
-
 /**
  * Core class used to implement an HTML list of nav menu items.
  *
@@ -24,11 +23,12 @@ class CommentsWalker extends Walker_Comment {
 		if ( $comment && '0' == $comment->comment_approved && ! $show_pending_links ) {
 			$comment_text = wp_kses( $comment_text, array() );
 		}
-		
-		return '<div class="comment-content">'.$comment_text."</div>";
+
+		return '<div class="comment-content">' . $comment_text . "</div>";
 	}
 
 }
+
 ?>
 
 
