@@ -64,9 +64,10 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
 /*标题字体库*/
 @font-face {
   font-family: 'webfont';
-  font-display: swap;
-  src: url("assets/font/webfont_0jpwawfzyo3v.eot");
-  src: url("assets/font/webfont_0jpwawfzyo3v.eot?#iefix") format("embedded-opentype"), url("assets/font/webfont_0jpwawfzyo3v.woff2") format("woff2"), url("assets/font/webfont_0jpwawfzyo3v.woff") format("woff"), url("assets/font/webfont_0jpwawfzyo3v.ttf") format("truetype"), url("assets/font/webfont_0jpwawfzyo3v.svg#NotoSansHans-DemiLight") format("svg"); }
+  font-weight: 400;
+  src: url("./assets/font/jvCAx4yMYVNwLkPwjfDmG.woff2") format("woff2"),
+  url("./assets/font/jvCAx4yMYVNwLkPwjfDmG.woff")  format("woff");
+}
 
 @font-face {
   font-family: "iconfont";
@@ -881,7 +882,7 @@ html {
             margin: 0;
             padding: 0;
             margin-bottom: var(--theme-margin-bottom);
-            margin-left: 2rem; }
+            margin-left: 1rem; }
           html body .main-container .main-main .main-content .main-article ul li, html body .main-container .main-main .main-content .main-article ol li, html body .main-container .main-main .main-content .main-article dl li {
             margin-top: 1px; }
           html body .main-container .main-main .main-content .main-article a {

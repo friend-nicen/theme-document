@@ -1,10 +1,13 @@
 @charset "UTF-8";
 /*标题字体库*/
+
 @font-face {
   font-family: 'webfont';
+  font-weight: 400;
+  src: url("//at.alicdn.com/wf/webfont/42ZBxd1yAoP6/ivexRTkZfA2kaRRkPPNu5.woff2") format("woff2"),
+  url("//at.alicdn.com/wf/webfont/42ZBxd1yAoP6/grr-8UALC8uGLFOBnBNe2.woff") format("woff");
   font-display: swap;
-  src: url("../font/webfont_0jpwawfzyo3v.eot");
-  src: url("../font/webfont_0jpwawfzyo3v.eot?#iefix") format("embedded-opentype"), url("../font/webfont_0jpwawfzyo3v.woff2") format("woff2"), url("../font/webfont_0jpwawfzyo3v.woff") format("woff"), url("../font/webfont_0jpwawfzyo3v.ttf") format("truetype"), url("../font/webfont_0jpwawfzyo3v.svg#NotoSansHans-DemiLight") format("svg"); }
+}
 
 @font-face {
   font-family: "iconfont";

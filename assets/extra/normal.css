@@ -605,7 +605,7 @@ html {
             margin: 0;
             padding: 0;
             margin-bottom: var(--theme-margin-bottom);
-            margin-left: 2rem; }
+            margin-left: 1rem; }
           html body .main-container .main-main .main-content .main-article ul li, html body .main-container .main-main .main-content .main-article ol li, html body .main-container .main-main .main-content .main-article dl li {
             margin-top: 1px; }
           html body .main-container .main-main .main-content .main-article a {
