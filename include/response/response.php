@@ -33,17 +33,7 @@ function nicen_theme_auth() {
  * */
 if ( isset( $_GET['nice'] ) ) {
 	if ( is_numeric( $_GET['nice'] ) ) {
-		setPostNice( $_GET['nice'] );
-
-		/*
-		 * 增加作者点赞次数
-		 * */
-
-		$query = new WP_Query( array( 'p' => $_GET['nice'] ) );
-		$auhor = $query->post->post_author; //作者id
-
-		setAuthorNice( $auhor );//作者获赞总数+1
-
+		nicen_theme_setPostNice( $_GET['nice'] );
 
 		exit( json_encode( [
 			'code'   => 1,
@@ -57,7 +47,7 @@ if ( isset( $_GET['nice'] ) ) {
  * */
 if ( isset( $_GET['bad'] ) ) {
 	if ( is_numeric( $_GET['bad'] ) ) {
-		setPostBad( $_GET['bad'] );
+		nicen_theme_setPostBad( $_GET['bad'] );
 		exit( json_encode( [
 			'code'   => 1,
 			'errMsg' => "踩成功！"
@@ -93,7 +83,7 @@ if ( isset( $_GET['submit'] ) ) {
 		CURLOPT_URL            => $api,
 		CURLOPT_POST           => true,
 		CURLOPT_RETURNTRANSFER => true,
-		CURLOPT_POSTFIELDS     => implode( "\n", getLinks() ),
+		CURLOPT_POSTFIELDS     => implode( "\n", nicen_theme_getLinks() ),
 		CURLOPT_HTTPHEADER     => array( 'Content-Type: text/plain' ),
 	);
 
@@ -124,9 +114,9 @@ if ( isset( $_GET['sitemap'] ) ) {
 			'result' => '根目录不可写，站点地图生成失败！'
 		] ) );
 	}
-	if ( file_put_contents( 'sitemap.txt', implode( "\n", getLinks() ), LOCK_EX ) ) {
+	if ( file_put_contents( 'sitemap.txt', implode( "\n", nicen_theme_getLinks() ), LOCK_EX ) ) {
 		exit( json_encode( [
-			'code'   => 0,
+			'code'   => 1,
 			'result' => '站点地图生成成功！'
 		] ) );
 	} else {

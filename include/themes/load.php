@@ -66,6 +66,19 @@ function nicen_theme_load_source() {
 	} else {
 		wp_add_inline_script( "main", 'const DYNAMIC=false;', 'before' );
 	}
+	
+	
+	/*
+	 * 文章ID
+	 * */
+	if ( is_singular() ) {
+		/*
+		 * 内联的js
+		 * */
+		wp_add_inline_script( "main-sub", preg_replace( '/\s/', '', vsprintf( '
+			window.Current = "%s";'
+			, [ get_the_ID() ] ) ), 'before' );
+	}
 
 	/*
 	 * 内联的js
