@@ -14,6 +14,14 @@ Github：[https://github.com/friend-nicen/theme-document](https://github.com/fri
 
 Gitee：[https://gitee.com/friend-nicen/theme-document](https://gitee.com/friend-nicen/theme-document)
 
+# 2022-10-11更新
+
+更新到2.0版本，风格不变，代码差不多都重构优化了一下，新增了很多实用的功能，后台截图如下（点击图片放大查看），时间有限其它的就不叙述了：
+![基本设置](https://nicen.cn/wp-content/uploads/2022/06/1665419985715.png)
+![首页设置](https://nicen.cn/wp-content/uploads/2022/06/1665419976060.png)
+![页脚设置](https://nicen.cn/wp-content/uploads/2022/06/1665419953959.png)
+![导航栏设置](https://nicen.cn/wp-content/uploads/2022/06/1665419985715.png)
+
 # 安装之前
 
 通过重新安装空白的wordpress使用本主题进行测试，按照如下步骤安装后，未发现问题。
