@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*
-Theme Name: destination
+Theme Name: Document
 Theme URI: https://nicen.cn
 Author: 友人a丶
 Author URI: https://nicen.cn
@@ -8,7 +8,7 @@ Description: 一个基于文档类型的博客主题，更加方便的记录、�
 Version: 1.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: destination
+Text Domain: Document
 Tags: 文档,自适应,主题切换,阅读进度跟随
 */
 /* 基于1920*938的窗口  */
@@ -41,6 +41,7 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   --theme-front-color: #fafbfc;
   --theme-header-color: var(--theme-color);
   --theme-header-border: #e1e1e1;
+  --theme-margin-bottom:0.85rem;
   --theme-hover-bg: #444;
   --theme-hover-color: white;
   --theme-hover-shadow: rgba(0, 0, 0, 0.1);
@@ -468,7 +469,7 @@ html {
               border-radius: 0.45rem;
               transition: all 0.25s;
               top: 66px;
-              left: 0;
+              left: -1.2rem;
               list-style: none; }
               html body .main-header .right .menu .menu-item .sub-menu .menu-item {
                 margin: 0;
@@ -1089,7 +1090,7 @@ html {
               margin: 0;
               padding: 0;
               margin-bottom: 0.83rem;
-              margin-left: 1rem; }
+              margin-left: 1.25rem; }
             html body .main-container .main-main .main-content .main-article ul li, html body .main-container .main-main .main-content .main-article ol li, html body .main-container .main-main .main-content .main-article dl li {
               margin-top: 1px; }
             html body .main-container .main-main .main-content .main-article a {
