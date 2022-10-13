@@ -161,33 +161,7 @@ function nicen_theme_getPostBad( $postID ) {
 function nicen_theme_navigator() {
 
 
-	if ( is_home() ) {
-
-		$replace   = '';
-		$h1_number = 1; //h1个数
-
-		if ( have_posts() ) {
-			while ( have_posts() ) {
-				the_post();
-
-				$title = get_the_title();
-
-				$replace .= '<li>
-							<div class="first-index">
-								<div><a href="#h2' . get_the_ID() . '" title="' . $title . '">' . $h1_number . '. ' . $title . '</a></div>
-							</div>
-						</li>';
-
-				$h1_number ++;
-			}
-
-			wp_reset_query(); //重置文章指指针
-		}
-
-
-		return $replace;
-	} else {
-
+	if ( is_single() ) {
 		$content = get_the_content();
 
 		$h1_number = 1; //h1个数
@@ -232,6 +206,30 @@ function nicen_theme_navigator() {
 			}
 
 		}
+
+		return $replace;
+	} else {
+		$replace   = '';
+		$h1_number = 1; //h1个数
+
+		if ( have_posts() ) {
+			while ( have_posts() ) {
+				the_post();
+
+				$title = get_the_title();
+
+				$replace .= '<li>
+							<div class="first-index">
+								<div><a href="#h2' . get_the_ID() . '" title="' . $title . '">' . $h1_number . '. ' . $title . '</a></div>
+							</div>
+						</li>';
+
+				$h1_number ++;
+			}
+
+			wp_reset_query(); //重置文章指指针
+		}
+
 
 		return $replace;
 	}
