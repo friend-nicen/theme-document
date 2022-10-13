@@ -177,8 +177,6 @@ function nicen_theme_navigator() {
 								<div><a href="#h2' . get_the_ID() . '" title="' . $title . '">' . $h1_number . '. ' . $title . '</a></div>
 							</div>
 						</li>';
-
-				$h1_number ++;
 			}
 
 			wp_reset_query(); //重置文章指指针
