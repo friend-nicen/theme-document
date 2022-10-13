@@ -18,7 +18,8 @@ if ( ! have_posts() && is_search() ) {
 	get_header();
 
 	?>
-    <main class="main-container index <?php echo nicen_theme_showSidebar(); ?>">
+    <main class="main-container index">
+		<?php get_template_part( './template/index/sidebar-index-left' ); ?>
         <div class="main-main">
 			<?php
 			/*
@@ -31,11 +32,11 @@ if ( ! have_posts() && is_search() ) {
 			<?php get_template_part( './template/index/result' ); ?>
             <!--  文章  -->
             <section class="main-content <?php /*根据不同分页输出不同样式*/
-            echo nicen_theme_getPagiantionType() == 2 ? "nopage" : "";
-            echo nicen_theme_config( 'document_dynamic', false ) && is_home() == 1 ? "hasDynamic" : "";
-            ?>">
+			echo nicen_theme_getPagiantionType() == 2 ? "nopage" : "";
+			echo nicen_theme_config( 'document_dynamic', false ) && is_home() == 1 ? "hasDynamic" : "";
+			?>">
                 <!--动态加载文章-->
-	            <?php get_template_part( './template/index/dynamic' ); ?>
+				<?php get_template_part( './template/index/dynamic' ); ?>
                 <!--文章列表-->
 				<?php get_template_part( './template/index/article-list' ); ?>
             </section>

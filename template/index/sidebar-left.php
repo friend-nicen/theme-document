@@ -10,7 +10,7 @@
  * */
 if ( nicen_theme_showCatelog() ) {
 
-	$catelog = nicen_theme_navigator( get_the_content() );
+	$catelog = nicen_theme_navigator();
 
 	if ( ! empty( $catelog ) ) {
 

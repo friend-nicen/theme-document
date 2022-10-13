@@ -29,7 +29,7 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   --theme-fourth-level-title: 0.84rem;
   --theme-white: #f5f7fd;
   --theme-black: #333;
-  --theme-color: #a4672e;
+  --theme-color: #3eaf7c;
   --theme-color-20: rgba(66, 185, 131, 0.2);
   --theme-text-color: #262626;
   --theme-text-secondary: rgba(0, 0, 0, 0.65);
@@ -112,12 +112,6 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   --theme-pre: rgba(255, 255, 255, 0.87); }
 
 /*图标库*/
-/*标题字体库*/
-@font-face {
-  font-family: 'webfont';
-  font-weight: 400;
-  src: url("./assets/font/jvCAx4yMYVNwLkPwjfDmG.woff2") format("woff2"), url("./assets/font/jvCAx4yMYVNwLkPwjfDmG.woff") format("woff"); }
-
 @font-face {
   font-family: "iconfont";
   /* Project id 3434890 */
@@ -355,8 +349,7 @@ html {
       font-size: var(--theme-first-level-title);
       margin-top: 1rem; }
     html body h2 {
-      font-size: var(--theme-secondary-level-title);
-      margin: 0 0 0.83rem 0; }
+      font-size: var(--theme-secondary-level-title); }
     html body h3 {
       font-size: var(--theme-third-level-title); }
     html body h4 {
@@ -568,6 +561,7 @@ html {
     html body .main-container {
       margin-top: calc(60px + 1rem);
       display: flex;
+      justify-content: center;
       height: 100%;
       position: relative;
       overflow: hidden;
@@ -802,30 +796,14 @@ html {
                 overflow: hidden;
                 white-space: nowrap;
                 text-overflow: ellipsis; }
-              html body .main-container #space #navigator .scroll li .first-index div a {
-                color: inherit;
-                font-size: inherit;
-                text-decoration: none; }
-                html body .main-container #space #navigator .scroll li .first-index div a:visited, html body .main-container #space #navigator .scroll li .first-index div a:active {
+                html body .main-container #space #navigator .scroll li .first-index div a, html body .main-container #space #navigator .scroll li .secondary-index div a, html body .main-container #space #navigator .scroll li .third-index div a {
                   color: inherit;
                   font-size: inherit;
                   text-decoration: none; }
-              html body .main-container #space #navigator .scroll li .secondary-index div a {
-                color: inherit;
-                font-size: inherit;
-                text-decoration: none; }
-                html body .main-container #space #navigator .scroll li .secondary-index div a:visited, html body .main-container #space #navigator .scroll li .secondary-index div a:active {
-                  color: inherit;
-                  font-size: inherit;
-                  text-decoration: none; }
-              html body .main-container #space #navigator .scroll li .third-index div a {
-                color: inherit;
-                font-size: inherit;
-                text-decoration: none; }
-                html body .main-container #space #navigator .scroll li .third-index div a:visited, html body .main-container #space #navigator .scroll li .third-index div a:active {
-                  color: inherit;
-                  font-size: inherit;
-                  text-decoration: none; }
+                  html body .main-container #space #navigator .scroll li .first-index div a:visited, html body .main-container #space #navigator .scroll li .first-index div a:active, html body .main-container #space #navigator .scroll li .secondary-index div a:visited, html body .main-container #space #navigator .scroll li .secondary-index div a:active, html body .main-container #space #navigator .scroll li .third-index div a:visited, html body .main-container #space #navigator .scroll li .third-index div a:active {
+                    color: inherit;
+                    font-size: inherit;
+                    text-decoration: none; }
               html body .main-container #space #navigator .scroll li i {
                 color: inherit;
                 float: left;
@@ -844,6 +822,15 @@ html {
               font-weight: normal; }
             html body .main-container #space #navigator .scroll .first .first-index:hover, html body .main-container #space #navigator .scroll .first .secondary-index:hover, html body .main-container #space #navigator .scroll .first .third-index:hover {
               color: var(--theme-color); }
+          html body .main-container #space #navigator .index-scroll {
+            margin-bottom: 0.7rem; }
+            html body .main-container #space #navigator .index-scroll li .first-index div, html body .main-container #space #navigator .index-scroll li .secondary-index div, html body .main-container #space #navigator .index-scroll li .third-index div {
+              display: -webkit-box;
+              -webkit-line-clamp: 2;
+              -webkit-box-orient: vertical;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: normal; }
           html body .main-container #space #navigator .divider {
             font-size: var(--theme-text-mini); }
           html body .main-container #space #navigator .icp-beian {
@@ -970,7 +957,6 @@ html {
         padding: 0;
         height: fit-content;
         margin: 0;
-        margin-left: calc((100% - 55% - 18.6rem) / 2);
         margin-bottom: 1rem; }
         html body .main-container .main-main .div-info {
           margin-bottom: 0; }
@@ -1745,22 +1731,7 @@ html {
 */
 @media (min-width: 1024px) and (max-width: 1580px) {
   html body .main-container .main-main {
-    width: 55%;
-    margin-left: calc((100% - 55% - 16.6rem) / 2); } }
-
-/*不显示侧边栏时，就需要这个了*/
-/*
-  不显示侧边栏
-*/
-html body .no-sidebar {
-  justify-content: center; }
-  html body .no-sidebar .main-main {
-    margin-left: 0; }
-
-html body .no-left {
-  justify-content: center; }
-  html body .no-left .main-main {
-    margin-left: 0; }
+    width: 55%; } }
 
 /* 1024px以下的屏幕 */
 /*

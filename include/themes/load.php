@@ -32,16 +32,27 @@ function nicen_theme_load_source() {
 
 
 	/*
-	 * 文章页面加载的资源
+	 * 是否显示文章目录
 	 * */
 	if ( is_single() ) {
-
-		/*
-		 * 是否显示目录
-		 * */
 		if ( nicen_theme_config( "document_single_show_catalog", false ) ) {
 			wp_enqueue_script( 'main-monitor', $url . '/common/inline/monitor.js', array(), filemtime( $root . '/common/inline/monitor.js' ), false );
 		}
+	}
+	if ( is_home() ) {
+		if ( nicen_theme_config( "document_show_left_nav", false ) ) {
+			wp_enqueue_script( 'main-monitor', $url . '/common/inline/monitor.js', array(), filemtime( $root . '/common/inline/monitor.js' ), false );
+		}
+	}
+	if ( is_category() || is_tag() || is_search() ) {
+		if ( nicen_theme_config( "document_show_else_left_nav", false ) ) {
+			wp_enqueue_script( 'main-monitor', $url . '/common/inline/monitor.js', array(), filemtime( $root . '/common/inline/monitor.js' ), false );
+		}
+	}
+	/*
+	 * 文章页面加载的资源
+	 * */
+	if ( is_single() ) {
 
 		wp_enqueue_script( 'glightboxs', $url . '/common/glightbox/glightbox.min.js', array(), filemtime( $root . '/common/glightbox/glightbox.min.js' ), false );
 		wp_enqueue_script( 'prism', $url . '/common/prism/prism.js', array(), filemtime( $root . '/common/prism/prism.js' ), false );
@@ -66,8 +77,8 @@ function nicen_theme_load_source() {
 	} else {
 		wp_add_inline_script( "main", 'const DYNAMIC=false;', 'before' );
 	}
-	
-	
+
+
 	/*
 	 * 文章ID
 	 * */

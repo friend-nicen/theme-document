@@ -275,7 +275,12 @@ const ADMIN = [
 					],
 					[
 						'id'       => 'document_show_sidebar',
-						'title'    => '显示侧边栏',
+						'title'    => '显示右侧边栏',
+						'callback' => 'nicen_theme_form_switch',
+					],
+					[
+						'id'       => 'document_show_left_nav',
+						'title'    => '显示左侧文章导航',
 						'callback' => 'nicen_theme_form_switch',
 					],
 					[
@@ -381,11 +386,16 @@ const ADMIN = [
 				'fields' => [
 					[
 						'id'       => 'document_else_show_sidebar',
-						'title'    => '显示侧边栏',
+						'title'    => '显示右侧边栏',
 						'callback' => 'nicen_theme_form_switch',
 						'args'     => [
 							'tip' => '分类页面、标签页面、搜索页面是否显示侧边栏'
 						]
+					],
+					[
+						'id'       => 'document_show_else_left_nav',
+						'title'    => '显示左侧文章导航',
+						'callback' => 'nicen_theme_form_switch',
 					],
 					[
 						'id'       => 'document_else_pagination',
@@ -509,12 +519,15 @@ define( "CONFIG", [
 	//主题描述
 
 
-	'document_else_pagination'   => 1,
+	'document_else_pagination'    => 1,
 	//显示分页的类型，默认动态分页
-	'document_else_show_sidebar' => 1,
+	'document_else_show_sidebar'  => 1,
 	//分类、标签栏目是否显示侧边栏
+	'document_show_else_left_nav' => 1,
+	//栏目文章导航
 
-
+	'document_show_left_nav'        => 1,
+	//首页文章导航
 	'document_show_sidebar'         => 1,
 	//首页显示侧边栏
 	"document_publish_show"         => '30',

@@ -16,7 +16,7 @@ if ( post_password_required() ) {
 	get_template_part( './template/index/password' );
 } else {
 	?>
-    <main class="main-container <?php /*针对是否显示侧边栏进行处理*/ echo showSidebar(); ?>">
+    <main class="main-container">
         <!--  文章  -->
         <div class="main-main">
             <article class="main-content">
