@@ -230,7 +230,6 @@ function nicen_theme_navigator() {
 			wp_reset_query(); //重置文章指指针
 		}
 
-
 		return $replace;
 	}
 
