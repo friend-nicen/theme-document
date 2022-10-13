@@ -587,8 +587,6 @@ function nicen_theme_showCatelog() {
 
 	if ( is_single() ) {
 		return nicen_theme_config( "document_single_show_catalog", false );
-	} else if ( is_home() ) {
-		return nicen_theme_config( "document_single_show_catalog", false );
 	} else {
 		return 0;
 	}
