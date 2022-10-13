@@ -349,8 +349,7 @@ html {
       font-size: var(--theme-first-level-title);
       margin-top: 1rem; }
     html body h2 {
-      font-size: var(--theme-secondary-level-title);
-      margin: 0 0 0.83rem 0; }
+      font-size: var(--theme-secondary-level-title); }
     html body h3 {
       font-size: var(--theme-third-level-title); }
     html body h4 {
