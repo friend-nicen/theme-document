@@ -22,6 +22,7 @@
   --theme-text-secondary: #{rgba(#000000,0.65)};
   --theme-text-mini-color: #{rgba(#000000,0.65)};
 
+  --theme-margin-bottom:1rem;
   --theme-li-padding: 1.2rem;
   --theme-bg-color: var(--theme-white);
 
@@ -32,9 +33,6 @@
 
   --theme-header-color: var(--theme-color);
   --theme-header-border: #e1e1e1;
-
-
-  --theme-margin-bottom:0.85rem;
 
   --theme-hover-bg: #444;
   --theme-hover-color: white;
