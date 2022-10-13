@@ -250,7 +250,7 @@ div.code-toolbar > .toolbar {
     top: .3em;
     right: .2em;
     transition: opacity .3s ease-in-out;
-    opacity: 0
+    opacity: 1
 }
 
 div.code-toolbar:hover > .toolbar {
@@ -285,10 +285,8 @@ div.code-toolbar > .toolbar > .toolbar-item > button {
 div.code-toolbar > .toolbar > .toolbar-item > a, div.code-toolbar > .toolbar > .toolbar-item > button, div.code-toolbar > .toolbar > .toolbar-item > span {
     color: #bbb;
     font-size: .8em;
-    padding: 0 .5em;
+    padding: 0 .5em 0 0;
     background: #f5f2f0;
-    background: rgba(224, 224, 224, .2);
-    box-shadow: 0 2px 0 0 rgba(0, 0, 0, .2);
     border-radius: .5em
 }
 

@@ -31,12 +31,13 @@ html {
     h1, h2, h3, h4 {
       font-weight: 550;
       cursor: pointer;
+      margin: 0 0 var(--theme-margin-bottom) 0;
     }
 
     h1 {
       font-weight: 510;
       font-size: var(--theme-first-level-title);
-      margin: 1rem 0 0.81rem 0;
+      margin-top: 1rem;
     }
 
     h2 {
@@ -46,12 +47,10 @@ html {
 
     h3 {
       font-size: var(--theme-third-level-title);
-      margin: 0 0 0.83rem 0;
     }
 
     h4 {
       font-size: var(--theme-fourth-level-title);
-      margin: 0 0 0.83rem 0;
     }
 
 
@@ -985,7 +984,7 @@ html {
           .dynamic {
             display: flex;
             height: 2.5rem;
-            margin: 0.5rem 0 1.2rem 0;
+            margin: 0.5rem 0 0.38rem 0;
             border-bottom: 1px solid #e1e1e1;
 
             ul.list {
@@ -1081,7 +1080,7 @@ html {
             display: flex;
             margin: 0;
             padding: 0 0 0.1rem 0;
-            margin-bottom: 0.83rem;
+            margin-bottom: var(--theme-margin-bottom);
 
             li {
               padding: 0 0.45rem;
@@ -1133,8 +1132,8 @@ html {
             ul, ol, dl {
               margin: 0;
               padding: 0;
-              margin-bottom: 0.83rem;
-              margin-left:1.25rem;
+              margin-bottom: var(--theme-margin-bottom);
+              margin-left: 1.25rem;
             }
 
             ul li, ol li, dl li {
@@ -1161,20 +1160,25 @@ html {
 
             .custom-container {
               border-radius: 3px;
-              margin: 0 0 1rem 0;
-              padding: 0.8rem 1.22rem 0.8rem 1.22rem;
+              margin: 0 0 var(--theme-margin-bottom) 0;
+              padding: 0.8rem 1.22rem 0.7rem 1.22rem;
 
               .content {
+                font-size: var(--theme-secondary);
                 padding: 0.8rem 0 0 0;
               }
 
               .title {
                 font-weight: 550;
               }
+
+              p:last-child {
+                margin-bottom: 0;
+              }
             }
 
             .success {
-              border-left: 0.41rem solid var(--theme-success-line-color);
+              border-left: 0.31rem solid var(--theme-success-line-color);
               background-color: var(--theme-success-bg-color);
 
               .content {
@@ -1191,7 +1195,7 @@ html {
             }
 
             .alert {
-              border-left: 0.41rem solid var(--theme-alert-line-color);
+              border-left: 0.31rem solid var(--theme-alert-line-color);
               background-color: var(--theme-alert-bg-color);
 
               .content {
@@ -1208,7 +1212,7 @@ html {
             }
 
             .error {
-              border-left: 0.41rem solid var(--theme-error-line-color);
+              border-left: 0.31rem solid var(--theme-error-line-color);
               background-color: var(--theme-error-bg-color);
 
               .content {
@@ -1240,7 +1244,7 @@ html {
               display: flex;
               flex-direction: column;
               align-items: center;
-              margin: 0 auto 0.83rem auto;
+              margin: 0 auto var(--theme-margin-bottom) auto;
 
               img {
                 cursor: pointer;
@@ -1933,6 +1937,11 @@ html {
             }
           }
 
+
+          .article-list {
+            overflow: hidden;
+          }
+
           .i-article {
             margin-bottom: 1.05rem;
             display: flex;
@@ -1942,7 +1951,7 @@ html {
             padding: 0 0 1.05rem 0;
 
             &:first-of-type {
-              margin-top: 1rem;
+              margin-top: 0.85rem;
             }
 
 
