@@ -1,10 +1,21 @@
+<?php
+/*文章序列*/
+$prefix = "";
+
+if ( isset( $_POST['pagination'] ) ) {
+	if ( ! is_home() ) {
+		$prefix = get_queried_object()->term_id;
+	}
+}
+?>
+
 <!--  文章  -->
 <div id="default" class="article-list">
 	<?php if ( have_posts() ) : while ( have_posts() ): the_post(); ?>
         <article class="i-article">
 
             <div class="i-article-left">
-                <h2 class="i-article-title">
+                <h2 id="<?= $prefix; ?>h2<?= get_the_ID(); ?>" class="i-article-title">
                     <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
                 </h2>
                 <div class="i-article-excerpt"><?php nicen_theme_getExcerpt( get_the_excerpt(), $post->post_password ); ?></div>
@@ -35,7 +46,8 @@
                         <li>
                             <i class="iconfont icon-shijian"></i><?= nicen_theme_timeToString( get_the_time( "Y-m-d H:i:s" ) ); ?>
                         </li>
-                        <li><i class="iconfont icon-icon-test"></i><?= nicen_theme_getPostViews( get_the_ID() ); ?>热度</li>
+                        <li><i class="iconfont icon-icon-test"></i><?= nicen_theme_getPostViews( get_the_ID() ); ?>热度
+                        </li>
                         <li style="border:none"><i
                                     class="iconfont icon-pinglun"></i><?= get_comments_number(); ?>评论
                         </li>

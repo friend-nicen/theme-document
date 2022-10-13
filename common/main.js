@@ -223,7 +223,7 @@ $(function () {
         let right = $('#right');
         let main = $(".main-main");
 
-        let footerHeight = $('.main-bottom').height(); //底部高度
+        let footerHeight = $('.main-bottom').outerHeight(); //底部高度
 
         /*
         * 左侧固定
@@ -232,12 +232,11 @@ $(function () {
         let space = $('#space');
 
         if (space.length > 0) {
-            var topTop = $('#space').getTop();
             var navigator = $('#navigator');
             var topHeight = navigator.outerHeight();
+            var topTop = $('#space').getTop();
             var topOffset = innerHeight - topHeight - topTop;
         }
-
 
         if (right.length != 0) {
 
@@ -260,12 +259,24 @@ $(function () {
             * */
             function computed() {
 
+                if (space.length > 0) {
+                    topTop = $('#space').getTop();
+                    topOffset = innerHeight - topHeight - topTop;
+                }
+
                 let react_main = main.get(0).getBoundingClientRect();
                 /*
                 * 保持static，变成fixed的临界值
                 * 因为底部出现时，看的是上方的滚动距离 -innerHeight 的位置滚出屏幕了，代表main的底部出现了
                 * */
                 _absolute = main.getTop() + react_main.height - innerHeight;
+
+                /*
+                * 中间小于右边时取右边
+                * */
+                if (_absolute < _static) {
+                    _absolute = _static;
+                }
 
             }
 
@@ -276,7 +287,6 @@ $(function () {
             /*
             * 固定左侧偏移
             * */
-
             let isfixedLeft = false;
 
             function fixedLeft() {
@@ -290,7 +300,36 @@ $(function () {
                     /*左侧文章开始偏移*/
                     /*左侧top+高度+偏移量*/
                     if ((topTop + topHeight + html_scrollTop) >= (_absolute + innerHeight)) {
-                        navigator.css('top', topTop + topOffset - (html_scrollTop - _absolute));
+
+                        /*
+                        * 最小不会小于#space的Top
+                        * */
+                        let top = topTop + topOffset - (html_scrollTop - _absolute);
+
+                        /*最小top*/
+                        let min = space.getTop();
+
+                        /*
+                        * 如果需要的top小于最小top
+                        * 文并且章导航大于文章列表高度
+                        * 重置为60
+                        * */
+                        if (min > top && navigator.height() > main.height()) {
+                            top = min;
+                        }
+
+                        /*
+                        * 如果导航栏+文章目录+底部 小于屏幕高度
+                        * */
+
+                        let max = footerHeight + 60 + navigator.height() + (2 * rem);
+
+                        if (max < innerHeight) {
+                            console.log(top)
+                            top = min;
+                        }
+
+                        navigator.css('top', top);
                     }
 
                 } else {
@@ -345,7 +384,9 @@ $(function () {
                     fixedLeft();//左侧位置检测
                 }
 
-
+                /*
+                * 如果没有右边栏
+                * */
                 if (right.length == 0 || isFixed) return;
 
                 /*
@@ -398,10 +439,17 @@ $(function () {
 
                     } else if (html_scrollTop >= _absolute) {
 
-                        /*右侧绝对定位*/
-                        right.css('position', 'absolute');
-                        right.css('top', '');
-                        right.css('bottom', muchBottom);
+
+                        /*
+                        * 如果右边最长，就不需要触发绝对定位
+                        * */
+                        if (_absolute != _static) {
+                            /*右侧绝对定位*/
+                            right.css('position', 'absolute');
+                            right.css('top', '');
+                            right.css('bottom', muchBottom);
+                        }
+
 
                     } else {
                         /*右侧静态定位*/
@@ -557,7 +605,8 @@ $(function () {
 
             $.post(load.data('next'), 'pagination=yes', function (res) {
 
-                load.parent().before($(res).find('.i-article')); //插入加载的文章
+                let list = $(res).find('.i-article');
+                load.parent().before(list); //插入加载的文章
                 /*
                 * 修改下一页的链接
                 * */
@@ -566,8 +615,32 @@ $(function () {
 
                 computed(); //重新定位位置
                 toFixed(); //重定位
-
                 change(load, false); //显示加载效果
+
+                /*
+                * 添加文章目录
+                * */
+                let catelog = $("#navigator .scroll ul");
+
+                let number = catelog.find('li').length;
+
+                list.each(function (index, item) {
+
+                    let linkId = $(item).find("h2").attr("id");
+                    let title = $(item).find("h2 a").text();
+
+                    catelog.append(`<li>
+                                       <div class="first-index">
+                                           <div>
+                                               <a href="#${linkId}" title="${title}">
+                                               ${(index + number + 1)}. ${title}
+                                               </a>
+                                            </div>
+                                       </div>
+                                  </li>`);
+                });
+
+
             })
 
         })
@@ -585,18 +658,76 @@ $(function () {
         * */
         if (DYNAMIC) {
 
+            let activeTabs = 0;
+
+
+            Object.defineProperty(window, 'activeTab', {
+                set(value) {
+
+                    /*
+                    * 加载目录树
+                    * */
+
+                    if (activeTabs != value) {
+
+                        let list = $("#navigator .scroll ul");
+
+                        list.removeWithLeakage(); //移除所有子元素
+
+                        let catelist = $("#navigator .scroll");
+
+                        let insert = `<ul>`;
+
+                        /*
+                        * 获取被激活的目录
+                        * */
+                        let catelog = $(".main-main .article-list:visible .i-article");
+
+                        /*
+                        * 插入文章目录
+                        * */
+                        catelog.each(function (index, item) {
+
+                            let linkId = $(item).find("h2").attr("id");
+                            let title = $(item).find("h2 a").text();
+
+                            insert += `<li>
+                                       <div class="first-index">
+                                           <div>
+                                               <a href="#${linkId}" title="${title}">
+                                               ${(index + 1)}. ${title}
+                                               </a>
+                                            </div>
+                                       </div>
+                                  </li>`;
+                        })
+
+                        catelist.append(insert + `</ul>`); //插入目录
+                        activeTabs = value; //同步值
+                    }
+
+
+                }, get() {
+                    return activeTabs;
+                }
+            })
+
             /*
             * 如果动态栏目被点击
+            * 需要改变侧边导航
             * */
             $(".dynamic .tab").on('click', function () {
 
                 let that = $(this);
                 let tabs = $('.dynamic .tab'); //所有tab
 
+                let index = tabs.index(that);
+
                 /*
                 * 已经显示就不加载
                 * */
                 if (that.hasClass('active-tab')) {
+                    activeTab = index;//同步key
                     return;
                 }
 
@@ -614,8 +745,14 @@ $(function () {
 
                 $('div.article-list').hide();
 
+                /*
+                * 已加载不重新加载
+                * */
                 if (tabPane.length > 0) {
                     tabPane.show();
+                    computed(); //重新定位位置
+                    toFixed(); //重定位
+                    activeTab = index;//同步key
                     return;
                 }
 
@@ -635,13 +772,22 @@ $(function () {
                 * 加载数据
                 * */
                 $.post(that.data('url'), 'pagination=yes', function (res) {
-                    dom.append($(res).find('.i-article')); //插入加载的文章
+
+                    let list = $(res).find('.i-article');
+
+                    dom.append(list); //插入加载的文章
                     dom.append($(res).find('.pagination')); //插入加载的文章
                     main.append(dom);
                     $('#dynamic').hide(); //关闭加载动画
                     dom.show();
                     computed(); //重新定位位置
                     toFixed(); //重定位
+
+
+                    /*
+                    * 如果是加载下一页
+                    * */
+                    activeTab = index;//同步key
                 })
 
 

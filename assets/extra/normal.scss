@@ -374,6 +374,7 @@ html {
     .main-container {
       margin-top: calc(60px + 1rem);
       display: flex;
+      justify-content: center;
       height: 100%;
       position: relative;
       overflow: hidden;
@@ -706,43 +707,20 @@ html {
                 overflow: hidden;
                 white-space: nowrap;
                 text-overflow: ellipsis;
-              }
 
-              .first-index div a {
-                color: inherit;
-                font-size: inherit;
-                text-decoration: none;
-
-                &:visited, &:active {
+                a {
                   color: inherit;
                   font-size: inherit;
                   text-decoration: none;
+
+                  &:visited, &:active {
+                    color: inherit;
+                    font-size: inherit;
+                    text-decoration: none;
+                  }
                 }
               }
 
-              .secondary-index div a {
-                color: inherit;
-                font-size: inherit;
-                text-decoration: none;
-
-                &:visited, &:active {
-                  color: inherit;
-                  font-size: inherit;
-                  text-decoration: none;
-                }
-              }
-
-              .third-index div a {
-                color: inherit;
-                font-size: inherit;
-                text-decoration: none;
-
-                &:visited, &:active {
-                  color: inherit;
-                  font-size: inherit;
-                  text-decoration: none;
-                }
-              }
 
               i {
                 color: inherit;
@@ -776,6 +754,24 @@ html {
 
               .first-index:hover, .secondary-index:hover, .third-index:hover {
                 color: var(--theme-color);
+              }
+            }
+          }
+
+          .index-scroll {
+            margin-bottom: 0.7rem;
+
+            li {
+              .first-index, .secondary-index, .third-index {
+                div {
+                  display: -webkit-box;
+                  -webkit-line-clamp: 2;
+                  -webkit-box-orient: vertical;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: normal;
+
+                }
               }
             }
           }
@@ -960,7 +956,6 @@ html {
         padding: 0;
         height: fit-content;
         margin: 0;
-        margin-left: calc((100% - 55% - 18.6rem) / 2);
         margin-bottom: 1rem;
 
 

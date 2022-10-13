@@ -18,7 +18,7 @@ if ( post_password_required() ) {
 	get_template_part( './template/index/password' );
 } else {
 	?>
-    <main class="main-container <?php /*针对是否显示侧边栏进行处理*/ echo nicen_theme_showSidebar(); ?>">
+    <main class="main-container">
         <!--  侧边目录  -->
 	    <?php get_template_part( './template/index/sidebar-left' ); ?>
         <!--  文章  -->
