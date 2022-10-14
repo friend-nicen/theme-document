@@ -2010,6 +2010,7 @@ html {
                     padding: 0 0.5rem;
                     border-radius: 5px;
                     background-color: #{rgba(#000000,0.6)};
+                    border-right: none;
 
                     &:hover {
                       color: white;
@@ -2067,9 +2068,11 @@ html {
               border-radius: 10px;
 
               a {
-                height: 94%;
                 display: flex;
                 overflow: hidden;
+
+                height: 94%;
+                width: 100%;
 
 
                 img {
