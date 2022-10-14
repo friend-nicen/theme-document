@@ -111,6 +111,16 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   --theme-front-main-color: #2a2a2b;
   --theme-pre: rgba(255, 255, 255, 0.87); }
 
+
+/*标题字体库*/
+@font-face {
+  font-family: 'webfont';
+  font-weight: 400;
+  src: url("./assets/font/jvCAx4yMYVNwLkPwjfDmG.woff2") format("woff2"),
+  url("./assets/font/jvCAx4yMYVNwLkPwjfDmG.woff") format("woff");
+}
+
+
 /*图标库*/
 @font-face {
   font-family: "iconfont";
@@ -1671,7 +1681,8 @@ html {
                   color: white;
                   padding: 0 0.5rem;
                   border-radius: 5px;
-                  background-color: rgba(0, 0, 0, 0.6); }
+                  background-color: rgba(0, 0, 0, 0.6);
+                  border-right: none; }
                   html body .index .main-main .main-content .i-article .i-article-left .i-article-info ul .category:hover {
                     color: white;
                     transform: scale(1);
@@ -1708,9 +1719,10 @@ html {
             align-items: center;
             border-radius: 10px; }
             html body .index .main-main .main-content .i-article .i-article-right a {
-              height: 94%;
               display: flex;
-              overflow: hidden; }
+              overflow: hidden;
+              height: 94%;
+              width: 100%; }
               html body .index .main-main .main-content .i-article .i-article-right a img {
                 width: 100%;
                 height: 100%;
