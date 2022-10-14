@@ -34,7 +34,7 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   --theme-text-color: #262626;
   --theme-text-secondary: rgba(0, 0, 0, 0.65);
   --theme-text-mini-color: rgba(0, 0, 0, 0.65);
-  --theme-margin-bottom:1rem;
+  --theme-margin-bottom: 1rem;
   --theme-li-padding: 1.2rem;
   --theme-bg-color: var(--theme-white);
   --theme-pre: #ccc;
@@ -62,22 +62,30 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   --theme-first-index-title: 0.78rem;
   --theme-secondary-index-title: 0.78rem;
   --theme-third-index-title: 0.78rem; }
-  :root .theme-one {
-    --theme-color: #f5222d; }
-  :root .theme-two {
-    --theme-color: #fa541c; }
-  :root .theme-three {
-    --theme-color: #fadb14; }
-  :root .theme-four {
-    --theme-color: #3eaf7c; }
-  :root .theme-five {
-    --theme-color: #13c2c2; }
-  :root .theme-six {
-    --theme-color: #1890ff; }
-  :root .theme-seven {
-    --theme-color: #722ed1; }
-  :root .theme-eight {
-    --theme-color: #eb2f96; }
+
+.theme-one {
+  --theme-color: #f5222d!important; }
+
+.theme-two {
+  --theme-color: #fa541c!important; }
+
+.theme-three {
+  --theme-color: #fadb14!important; }
+
+.theme-four {
+  --theme-color: #3eaf7c!important; }
+
+.theme-five {
+  --theme-color: #13c2c2!important; }
+
+.theme-six {
+  --theme-color: #1890ff!important; }
+
+.theme-seven {
+  --theme-color: #722ed1!important; }
+
+.theme-eight {
+  --theme-color: #eb2f96!important; }
 
 /*暗黑模式变量*/
 /*
@@ -111,7 +119,6 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   --theme-front-main-color: #2a2a2b;
   --theme-pre: rgba(255, 255, 255, 0.87); }
 
-
 /*标题字体库*/
 @font-face {
   font-family: 'webfont';
@@ -119,8 +126,6 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   src: url("./assets/font/jvCAx4yMYVNwLkPwjfDmG.woff2") format("woff2"),
   url("./assets/font/jvCAx4yMYVNwLkPwjfDmG.woff") format("woff");
 }
-
-
 /*图标库*/
 @font-face {
   font-family: "iconfont";

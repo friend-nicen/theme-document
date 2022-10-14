@@ -18,6 +18,9 @@
             <div class="theme-color">
                 <ul>
                     <li>
+                        <div class="personal"></div>
+                    </li>
+                    <li>
                         <div class="theme-one"></div>
                     </li>
                     <li>

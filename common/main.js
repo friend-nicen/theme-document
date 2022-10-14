@@ -808,8 +808,15 @@ $(function () {
         /*改变主题色*/
         $('.theme-color div').click(function () {
             let theme = $(this).css('background-color');
-            html.css('--theme-color', theme);
+
+            let size = html.css('font-size'); //字体大小
+            
+            html.attr("style", `font-size:${size};--theme-color:${theme}!important; `);
+            localStorage.setItem('theme-color', $(this).attr('class'));
+
         })
+
     })();
+
 });
 
