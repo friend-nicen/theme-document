@@ -286,7 +286,7 @@ div.code-toolbar > .toolbar > .toolbar-item > a, div.code-toolbar > .toolbar > .
     color: #bbb;
     font-size: .8em;
     padding: 0 .5em 0 0;
-    background: #f5f2f0;
+    background: transparent;
     border-radius: .5em
 }
 

@@ -6,7 +6,7 @@
  * @author 友人a丶
  * @date 2022-07-08
  * */
-
+nicen_theme_setPostViews( get_the_ID() );//阅读次数加1
 get_header();//加载顶部内容
 
 /*

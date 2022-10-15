@@ -103,32 +103,14 @@ $(function () {
         * 点击搜索按钮弹出搜索框
         * */
         $('.icon-sousuo').on("click", function (event) {
-
-            let search = $('.search-div');
-            let right = $('.right');
-            /*
-            * 搜索还是未搜索
-            * */
-            if (search.css('display') == 'none') {
-
-                $('ul.menu').fadeOut(500, function () {
-                    right.css({
-                        'justify-content': 'center'
-                    }).find('.search-div').css('display', 'flex');
-
-                    $('#search').focus();
-                });
-
-
+            let that = $('#search');
+            if (that.val() == "") {
+                return
             } else {
-                let search = $('#search');
-                if (search.val() == "") {
-
-                } else {
-                    location.href = location.origin + "?s=" + search.val();
-                }
+                location.href = location.origin + "?s=" + that.val();
             }
         });
+
 
         /*
         * 回车时开始搜索
@@ -136,7 +118,7 @@ $(function () {
         $('#search').on("keypress", function (event) {
             let that = $(this);
             if (that.val() == "") {
-
+                return
             } else {
                 if (event.keyCode == "13") {
                     location.href = location.origin + "?s=" + that.val();
@@ -144,22 +126,6 @@ $(function () {
             }
         });
 
-        $('.search-div .iconfont').click(function () {
-
-            let right = $('.right');
-            let menu = $('ul.menu');
-
-            right.css({
-                'display': 'none',
-                'justify-content': 'space-between'
-            }).find('.search-div').hide(function () {
-                right.css({
-                    'display': 'flex',
-                });
-                menu.fadeIn(200);
-            });
-
-        })
 
     })();
 
@@ -620,8 +586,11 @@ $(function () {
                 /*
                 * 添加文章目录
                 * */
-                let catelog = $("#navigator .scroll ul");
 
+                /*无目录时终止*/
+                if($("#space").is(":visible")) return;
+
+                let catelog = $("#navigator .scroll ul");
                 let number = catelog.find('li').length;
 
                 list.each(function (index, item) {
@@ -667,7 +636,8 @@ $(function () {
                     /*
                     * 加载目录树
                     * */
-
+                    if($("#space").is(":visible")) return;
+                    
                     if (activeTabs != value) {
 
                         let list = $("#navigator .scroll ul");
@@ -810,7 +780,7 @@ $(function () {
             let theme = $(this).css('background-color');
 
             let size = html.css('font-size'); //字体大小
-            
+
             html.attr("style", `font-size:${size};--theme-color:${theme}!important; `);
             localStorage.setItem('theme-color', $(this).attr('class'));
 

@@ -31,7 +31,7 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   --theme-black: #333;
   --theme-color: #3eaf7c;
   --theme-color-20: rgba(66, 185, 131, 0.2);
-  --theme-text-color: #262626;
+  --theme-text-color: #303133;
   --theme-text-secondary: rgba(0, 0, 0, 0.65);
   --theme-text-mini-color: rgba(0, 0, 0, 0.65);
   --theme-margin-bottom: 1rem;
@@ -118,6 +118,16 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   --theme-header-border: #141414;
   --theme-front-main-color: #2a2a2b;
   --theme-pre: rgba(255, 255, 255, 0.87); }
+
+
+/*标题字体库*/
+@font-face {
+  font-family: 'webfont';
+  font-weight: 400;
+  src: url("./assets/font/jvCAx4yMYVNwLkPwjfDmG.woff2") format("woff2"),
+  url("./assets/font/jvCAx4yMYVNwLkPwjfDmG.woff") format("woff");
+}
+
 
 /*图标库*/
 @font-face {
@@ -1111,12 +1121,17 @@ html {
               html body .main-container .main-main .main-content .main-article .custom-container .content {
                 font-size: var(--theme-secondary);
                 padding: 0.8rem 0 0 0; }
+                html body .main-container .main-main .main-content .main-article .custom-container .content * {
+                  font-size: var(--theme-secondary); }
               html body .main-container .main-main .main-content .main-article .custom-container .title {
+                font-size: var(--theme-third-level-title);
                 font-weight: 550; }
+                html body .main-container .main-main .main-content .main-article .custom-container .title * {
+                  font-size: var(--theme-third-level-title); }
               html body .main-container .main-main .main-content .main-article .custom-container p:last-child {
                 margin-bottom: 0; }
             html body .main-container .main-main .main-content .main-article .success {
-              border-left: 0.31rem solid var(--theme-success-line-color);
+              border-left: 0.21rem solid var(--theme-success-line-color);
               background-color: var(--theme-success-bg-color); }
               html body .main-container .main-main .main-content .main-article .success .content {
                 color: var(--theme-success-text-color); }
@@ -1125,7 +1140,7 @@ html {
               html body .main-container .main-main .main-content .main-article .success .title {
                 color: var(--theme-success-title-color); }
             html body .main-container .main-main .main-content .main-article .alert {
-              border-left: 0.31rem solid var(--theme-alert-line-color);
+              border-left: 0.21rem solid var(--theme-alert-line-color);
               background-color: var(--theme-alert-bg-color); }
               html body .main-container .main-main .main-content .main-article .alert .content {
                 color: var(--theme-alert-text-color); }
@@ -1134,7 +1149,7 @@ html {
               html body .main-container .main-main .main-content .main-article .alert .title {
                 color: var(--theme-alert-title-color); }
             html body .main-container .main-main .main-content .main-article .error {
-              border-left: 0.31rem solid var(--theme-error-line-color);
+              border-left: 0.21rem solid var(--theme-error-line-color);
               background-color: var(--theme-error-bg-color); }
               html body .main-container .main-main .main-content .main-article .error .content {
                 color: var(--theme-error-text-color); }
@@ -1316,6 +1331,8 @@ html {
               margin-bottom: 1.2rem;
               border: none;
               box-shadow: unset !important; }
+              html body .main-container .main-main .div-info .comment-form .comment-form-main .comment-container input {
+                font-size: var(--theme-secondary); }
               html body .main-container .main-main .div-info .comment-form .comment-form-main .comment-container * {
                 height: 2.1rem;
                 padding: 0 0.5rem; }
@@ -1381,7 +1398,7 @@ html {
             font-style: normal !important; }
           html body .main-container .main-main .div-info .comment_list ul {
             list-style: none;
-            padding-left: 2.5rem; }
+            padding-left: 1rem; }
           html body .main-container .main-main .div-info .comment_list .front {
             margin-bottom: 0;
             padding-left: 0; }
@@ -1883,8 +1900,8 @@ html {
 @media (max-width: 480px) {
   :root {
     --theme-first-level-title: 1.25rem;
-    --theme-text: 0.95rem;
-    --theme-secondary: 0.85rem;
+    --theme-text: 0.91rem;
+    --theme-secondary: 0.83rem;
     --theme-text-mini: 0.75rem;
     --theme-text-more-mini: 0.75rem;
     --theme-secondary-level-title: 1.05rem;
@@ -1917,7 +1934,9 @@ html {
       html body .main-container {
         margin-top: 55px; }
         html body .main-container .div-info {
-          padding: .1rem 1rem .85rem 1.1rem; }
+          padding: .1rem 1rem .85rem 1rem; }
+          html body .main-container .div-info .comment_list {
+            padding: 0.5rem 0.5rem 3rem 0; }
         html body .main-container .main-main {
           width: 100%; }
           html body .main-container .main-main .non-result {
@@ -1962,7 +1981,7 @@ html {
           flex-direction: column;
           justify-content: space-between; }
           html body .index .main-main .main-content .i-article .i-article-left .i-article-title {
-            font-size: var(--theme-text); }
+            font-size: var(--theme-fourth-level-title); }
             html body .index .main-main .main-content .i-article .i-article-left .i-article-title a {
               display: -webkit-box;
               -webkit-line-clamp: 2;
