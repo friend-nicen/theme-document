@@ -52,12 +52,17 @@ function nicen_theme_init_shortcode()
     {
 
         $content = do_shortcode($content);
-        $title = do_shortcode($atts['title']);
+
+        if (isset($atts['title'])) {
+            $title = '<div class="title">'
+                . do_shortcode($atts['title']) .
+                '</div>';
+        } else {
+            $title = '';
+        }
 
         return '<div class="custom-container success">
-    <div class="title">
-     ' . $title . '
-    </div>
+  ' . $title . '
     <div class="content">
       ' . $content . '
     </div>
@@ -70,12 +75,18 @@ function nicen_theme_init_shortcode()
     {
 
         $content = do_shortcode($content);
-        $title = do_shortcode($atts['title']);
+
+        if (isset($atts['title'])) {
+            $title = '<div class="title">'
+                . do_shortcode($atts['title']) .
+                '</div>';
+        } else {
+            $title = '';
+        }
+
 
         return '<div class="custom-container error">
-    <div class="title">
-     ' . $title . '
-    </div>
+  ' . $title . '
     <div class="content">
       ' . $content . '
     </div>
@@ -88,12 +99,17 @@ function nicen_theme_init_shortcode()
     {
 
         $content = do_shortcode($content);
-        $title = do_shortcode($atts['title']);
+
+        if (isset($atts['title'])) {
+            $title = '<div class="title">'
+                . do_shortcode($atts['title']) .
+                '</div>';
+        } else {
+            $title = '';
+        }
 
         return '<div class="custom-container alert">
-    <div class="title">
-     ' . $title . '
-    </div>
+  ' . $title . '
     <div class="content">
       ' . $content . '
     </div>

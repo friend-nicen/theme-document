@@ -239,16 +239,25 @@ $(function () {
                 }
 
                 /*
-                * 判断高度
+                * 获取屏幕已经滚动的高度
                 * */
                 let domTop = that.getTop() - 75;
 
+                /*
+                * 当前阅读的是最靠近顶部的前一个标题
+                * */
                 if (domTop > top) {
-                    position = i;
+                    if (i != 0) {
+                        position = i - 1;
+                    } else {
+                        position = i;
+                    }
                     break;
                 }
 
             }
+
+            console.log(collects.eq(position))
 
             /*
             * 屏蔽导航变化时的自动滚动
