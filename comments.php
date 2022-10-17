@@ -54,8 +54,8 @@ if ( nicen_theme_showComments() ) {
                             <img src="<?= $avatar ?>" alt="默认头像" title="默认头像"/>
                         </div>
                         <div class="comment-info">
-                            <div class="comment-info-top"><?php echo ( ! $comment ) ? '发表评论' : '回复 ' . $comment->comment_author . '的评论'; ?></div>
-                            <div class="comment-info-bottom"><?php echo $isLogin ? $nickname . '，做更好的自己！' : '匿名网友'; ?></div>
+                            <div class="comment-info-top"><?php echo $isLogin ? $nickname : '匿名网友'; ?></div>
+                            <div class="comment-info-bottom"><?php echo ( ! $comment ) ? '参与讨论，一起做更好的自己！' : '回复 ' . $comment->comment_author . '的评论'; ?></div>
                         </div>
                     </div>
                     <div class="comment-loginout">

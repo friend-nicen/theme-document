@@ -12,13 +12,13 @@
   --theme-header-font-color: white;
   --theme-sub-menu-bg-color: #141414;
   --theme-sub-menu-font-color: white;
-  --theme-header-border-color:transparent;
-  --theme-header-shadow-color:transparent;
+  --theme-header-border-color: transparent;
+  --theme-header-shadow-color: transparent;
 
   /*
     页脚
   */
-  --theme-footer-bg-color: #141414;
+  --theme-footer-bg-color: transparent;
   --theme-footer-font-color: white;
 
 
@@ -34,6 +34,7 @@
   --theme-front-main-color: #2a2a2b;
   --theme-pre: #{rgba(#ffffff,.87)};
 
-
+  --theme-pre-code-bg: #141414;
+  --theme-pre-code-shadow: transparent;
 
 }

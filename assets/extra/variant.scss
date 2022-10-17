@@ -18,7 +18,7 @@
   --theme-black: #333;
   --theme-color: #3eaf7c;
   --theme-color-20: #{rgba(#42b983,.20)};
-  --theme-text-color: #303133;
+  --theme-text-color: #262626;
   --theme-text-secondary: #{rgba(#000000,0.65)};
   --theme-text-mini-color: #{rgba(#000000,0.65)};
 
@@ -61,37 +61,39 @@
   --theme-third-index-title: 0.78rem;
 
 
+  --theme-pre-code-bg: #f7f7f7;
+  --theme-pre-code-shadow: #fff;
 }
 
 
 .theme-one {
-  --theme-color: #f5222d!important;
+  --theme-color: #f5222d !important;
 }
 
 .theme-two {
-  --theme-color: #fa541c!important;
+  --theme-color: #fa541c !important;
 }
 
 .theme-three {
-  --theme-color: #fadb14!important;
+  --theme-color: #fadb14 !important;
 }
 
 .theme-four {
-  --theme-color: #3eaf7c!important;
+  --theme-color: #3eaf7c !important;
 }
 
 .theme-five {
-  --theme-color: #13c2c2!important;
+  --theme-color: #13c2c2 !important;
 }
 
 .theme-six {
-  --theme-color: #1890ff!important;
+  --theme-color: #1890ff !important;
 }
 
 .theme-seven {
-  --theme-color: #722ed1!important;
+  --theme-color: #722ed1 !important;
 }
 
 .theme-eight {
-  --theme-color: #eb2f96!important;
+  --theme-color: #eb2f96 !important;
 }
