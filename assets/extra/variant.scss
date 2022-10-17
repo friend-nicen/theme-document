@@ -3,6 +3,7 @@
 */
 :root {
 
+  /*基础样式变量*/
   --theme-text-super-mini: 0.4rem;
   --theme-text-mini: 0.76rem;
   --theme-text-more-mini: 0.69rem;
@@ -14,6 +15,7 @@
   --theme-third-level-title: 0.96rem;
   --theme-fourth-level-title: 0.84rem;
 
+  /*主题文件样式变量*/
   --theme-white: #f5f7fd;
   --theme-black: #333;
   --theme-color: #3eaf7c;
@@ -41,6 +43,7 @@
   --theme-code-bg: #eeeeee;
   --theme-code-text: #4e6e8e;
 
+  /*文字块样式变量*/
   --theme-success-bg-color: #f3f4f5;
   --theme-success-line-color: #42b983;
   --theme-success-title-color: #2c3e50;
@@ -56,13 +59,24 @@
   --theme-error-line-color: #cc0000;
   --theme-error-text-color: #660000;
 
+  /*文章导航、目录样式变量*/
   --theme-first-index-title: 0.78rem;
   --theme-secondary-index-title: 0.78rem;
   --theme-third-index-title: 0.78rem;
 
 
+  /*代码块样式*/
   --theme-pre-code-bg: #f7f7f7;
   --theme-pre-code-shadow: #fff;
+
+  /*底部标签样式变量*/
+  --theme-label-bg: #aaa;
+  --theme-label-color: #fff;
+  --theme-label-hover: #8d8d8d;
+
+  --theme-emoji-size:1.3rem;
+
+  --theme-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.22);
 }
 
 

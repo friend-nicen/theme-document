@@ -12,14 +12,44 @@ $previous = get_previous_post();//上一篇
 ?>
 
 <footer>
-    <div class="donate">
-        <div><?=nicen_theme_config("document_copyright");?></div>
-        <div class="qrcode">
-            <a href="<?=nicen_theme_config('document_donate_url');?>"><button>赞赏</button></a>
-            <!--<div class="imgIn">
-                <div class="angle"></div>
-                <img src="" title="赞赏"/>
-            </div>-->
+    <div class="article-footer">
+        <!--版权-->
+        <div class="copyright"><?= nicen_theme_config( "document_copyright" ); ?></div>
+
+        <!--赞赏-->
+        <div class="donate">
+            <a href="<?= nicen_theme_config( 'document_donate_url' ); ?>">
+                <button>赞赏</button>
+            </a>
+        </div>
+
+        <!--标签-->
+        <div class="label">
+            <i class="iconfont icon-biaoqian"></i>
+            <ul>
+				<?php
+				/*遍历输出标签*/
+				$tags = get_the_tags();
+
+				if ( empty( $tags ) ) {
+					echo "<li>暂无标签</li>";
+				} else {
+
+					/*
+					 * 遍历标签
+					 * */
+					foreach ( $tags as $tag ) {
+
+						$name = $tag->name; //标签名
+						$link = get_term_link( $tag->term_id ); //标签链接
+
+						echo "<li><a title='" . $name . "' href='" . $link . "'/>" . $name . "</li>";
+					}
+
+
+				}
+				?>
+            </ul>
         </div>
     </div>
     <div class="footer-nav">

@@ -257,8 +257,6 @@ $(function () {
 
             }
 
-            console.log(collects.eq(position))
-
             /*
             * 屏蔽导航变化时的自动滚动
             * */

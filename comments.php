@@ -54,7 +54,7 @@ if ( nicen_theme_showComments() ) {
                             <img src="<?= $avatar ?>" alt="默认头像" title="默认头像"/>
                         </div>
                         <div class="comment-info">
-                            <div class="comment-info-top"><?php echo $isLogin ? $nickname : '匿名网友'; ?></div>
+                            <div class="comment-info-top"><?php echo $isLogin ? $nickname : '恨相知晚'; ?></div>
                             <div class="comment-info-bottom"><?php echo ( ! $comment ) ? '参与讨论，一起做更好的自己！' : '回复 ' . $comment->comment_author . '的评论'; ?></div>
                         </div>
                     </div>
@@ -71,10 +71,20 @@ if ( nicen_theme_showComments() ) {
                     <input type="hidden" name="comment_parent"
                            value=" <?php echo $reply_to_id ? $comment->comment_ID : ''; ?>">
                     <input type="hidden" name="comment_post_ID" value="<?= get_the_ID(); ?>" id="comment_post_ID">
-                    <textarea name="comment" maxlength="65525" placeholder="三言两语,安慰自己,冷言冷语,坚持自己" rows="5"
-                              class="comment-content"></textarea>
+                    <div class="comment-textarea">
+                        <textarea id="comment_content" name="comment" maxlength="65525"
+                                  placeholder="三言两语,安慰自己,冷言冷语,坚持自己" rows="5"
+                                  class="comment-content"></textarea>
+
+                        <i class="iconfont icon-biaoqing emoji"></i>
+
+						<?php get_template_part( './template/index/emoji' ); ?>
+
+                    </div>
+
                     <div class="comment-container">
-                        <input placeholder="昵称" name="author" type="text" class="comment-name" value="<?= $nickname ?>"
+                        <input placeholder="昵称" name="author" type="text" class="comment-name"
+                               value="<?= $nickname ?>"
                                required/>
                         <input placeholder="邮箱" name="email" type="email" class="comment-mail" value="<?= $email ?>"
                                required/>

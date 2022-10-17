@@ -39,6 +39,9 @@ function nicen_theme_load_source() {
 			wp_enqueue_script( 'main-monitor', $url . '/common/inline/monitor.js', array(), filemtime( $root . '/common/inline/monitor.js' ), false );
 		}
 	}
+	if ( is_singular() ) {
+		wp_enqueue_script( 'main-emoji', $url . '/common/inline/emoji.js', array(), filemtime( $root . '/common/inline/emoji.js' ), false );
+	}
 	if ( is_home() ) {
 		if ( nicen_theme_config( "document_show_left_nav", false ) ) {
 			wp_enqueue_script( 'main-monitor', $url . '/common/inline/monitor.js', array(), filemtime( $root . '/common/inline/monitor.js' ), false );

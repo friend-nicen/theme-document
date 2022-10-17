@@ -10,5 +10,6 @@ include_once get_template_directory() . '/include/themes/install.php'; //主题�
 include_once get_template_directory() . '/include/themes/initialize.php'; //初始化
 include_once get_template_directory() . '/include/themes/load.php'; //加载外部文件
 include_once get_template_directory() . '/include/themes/shortcode.php'; //短标签
+include_once get_template_directory() . '/include/themes/emoji.php'; //其它
 include_once get_template_directory() . '/include/themes/extra.php'; //其它
 

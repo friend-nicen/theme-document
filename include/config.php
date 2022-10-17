@@ -125,13 +125,13 @@ const ADMIN = [
 					],
 					[
 						'id'       => 'document_donate_url',
-						'title'    => '页面打赏链接',
+						'title'    => '页面打赏跳转链接',
 						'callback' => 'nicen_theme_form_input',
 					],
 					[
 						'id'       => 'document_copyright',
-						'title'    => '文章底部版权文字',
-						'callback' => 'nicen_theme_form_input',
+						'title'    => '文章底部版权说明',
+						'callback' => 'nicen_theme_form_textarea',
 					],
 				]
 			],
@@ -247,7 +247,8 @@ const ADMIN = [
 						'document_publish_show',
 						'document_pagination',
 						'document_searchnum',
-						'document_show_sidebar'
+						'document_show_sidebar',
+						'document_show_left_nav'
 					]
 				],
 

@@ -91,3 +91,18 @@ p {
     }
   }
 }
+
+/*
+  弹性布局
+*/
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin ellipsis {
+  text-decoration: none;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

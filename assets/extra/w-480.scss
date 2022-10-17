@@ -211,6 +211,26 @@
       #author {
         display: none;
       }
+
+
+      /*评论区*/
+      .main-container {
+        .main-main {
+          .div-info {
+            .comment-form {
+              .comment-form-main {
+                .comment-textarea {
+                  .emoji-list {
+                    width: 80%;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+
     }
   }
 }
