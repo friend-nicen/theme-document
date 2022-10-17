@@ -5,8 +5,8 @@
 
   :root {
     --theme-first-level-title: 1.25rem;
-    --theme-text: 0.91rem;
-    --theme-secondary: 0.83rem;
+    --theme-text: 0.95rem;
+    --theme-secondary: 0.85rem;
     --theme-text-mini: 0.75rem;
     --theme-text-more-mini: 0.75rem;
     --theme-secondary-level-title: 1.05rem;
@@ -67,10 +67,7 @@
         margin-top: 55px;
 
         .div-info {
-          padding: .1rem 1rem .85rem 1rem;
-          .comment_list {
-            padding: 0.5rem 0.5rem 3rem 0;
-          }
+          padding: .1rem 1rem .85rem 1.1rem;
         }
 
         .main-main {
@@ -166,7 +163,7 @@
             justify-content: space-between;
 
             .i-article-title {
-              font-size: var(--theme-fourth-level-title);
+              font-size: var(--theme-text);
 
 
               a {
