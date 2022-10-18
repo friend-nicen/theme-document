@@ -60,8 +60,10 @@ $(function () {
     $(".icon-biaoqing").click(function (e) {
         if (emoji.css("display") === "none") {
             emoji.css("display", "flex");
+            textarea.addClass("focus");
         } else {
             emoji.css("display", "none");
+            textarea.removeClass("focus");
         }
         e.stopPropagation();
     })
@@ -75,6 +77,7 @@ $(function () {
             e.stopPropagation();
             if (!$.contains(emoji.get(0), e.target)) {
                 emoji.css("display", "none");
+                textarea.removeClass("focus");
             }
         }
     );

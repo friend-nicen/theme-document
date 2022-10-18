@@ -136,13 +136,6 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   --theme-label-bg: #141414;
   --theme-label-hover: #2a2a2b; }
 
-/*标题字体库*/
-@font-face {
-  font-family: 'webfont';
-  font-weight: 400;
-  src: url("./assets/font/jvCAx4yMYVNwLkPwjfDmG.woff2") format("woff2"),
-  url("./assets/font/jvCAx4yMYVNwLkPwjfDmG.woff") format("woff");
-}
 
 /*图标库*/
 @font-face {
@@ -1343,6 +1336,10 @@ html {
                 padding: 0.35rem 0.5rem;
                 color: var(--theme-text-secondary);
                 font-size: var(--theme-secondary); }
+              html body .main-container .main-main .div-info .comment-form .comment-form-main .comment-textarea .focus {
+                box-shadow: 0 0 5px 2px var(--theme-color-20);
+                border-color: var(--theme-color);
+                outline: none; }
               html body .main-container .main-main .div-info .comment-form .comment-form-main .comment-textarea .emoji {
                 position: absolute;
                 right: 15px;

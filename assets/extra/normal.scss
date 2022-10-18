@@ -1493,6 +1493,12 @@ html {
                   font-size: var(--theme-secondary);
                 }
 
+                .focus {
+                  box-shadow: 0 0 5px 2px var(--theme-color-20);
+                  border-color: var(--theme-color);
+                  outline: none;
+                }
+
                 .emoji {
                   position: absolute;
                   right: 15px;
@@ -1523,7 +1529,7 @@ html {
                   border-radius: 5px;
 
 
-                  box-shadow: 0 12px 32px var(--theme-hover-shadow), 0 2px 6px var(--theme-hover-shadow),0 -2px 6px var(--theme-hover-shadow);
+                  box-shadow: 0 12px 32px var(--theme-hover-shadow), 0 2px 6px var(--theme-hover-shadow), 0 -2px 6px var(--theme-hover-shadow);
                   border: none;
                   background-color: var(--theme-front-color);
 
