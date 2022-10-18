@@ -12,19 +12,41 @@
  * @return void
  * 评论内提取表情
  */
-function nicen_theme_textToEmoji( $comment_id ) {
+function nicen_theme_textToEmoji( $comment_ID ) {
 
-	$comment = get_comment( $comment_id );
-	$html    = $comment->comment_content;
-	$path    = get_template_directory_uri() . "/assets/smilies/"; //主题目录
+    global $wpdb;
 
-	if ( preg_match( "/::(.*?)::/", $html ) ) {
-		$content = preg_replace( "/::(.*?)::/", "<img class='comments-emoji' src='" . $path . "$1.png' title='emoji'/>", $html );
-		wp_update_comment( [
-			"comment_ID"      => $comment_id,
-			"comment_content" => $content
-		] );
-	}
+
+    $comment = get_comment( $comment_ID );
+    $html    = $comment->comment_content;
+    $path    = get_template_directory_uri() . "/assets/smilies/"; //主题目录
+    $dir     = get_template_directory() . "/assets/smilies/"; //主题目录
+    /*
+     * 匹配是否有表情
+     * */
+
+    if ( preg_match_all( "/:(.+?):/", $html, $match ) ) {
+
+        $count = 0; //有效表情数量
+
+        /*判断表情是否存在*/
+        foreach ( $match[1] as $emoji ) {
+            if ( file_exists( $dir . $emoji . ".png" ) ) {
+                $html = preg_replace( "/:" . $emoji . ":/", "<img class='comments-emoji' src='" . $path . $emoji . ".png' title='emoji'/>", $html );
+                $count ++;
+            }
+        }
+
+        /*
+         * 判断有效的表情数量
+         * */
+        $wpdb->update( $wpdb->comments, [
+            "comment_ID"      => $comment_ID,
+            "comment_content" => $html
+        ], compact( 'comment_ID' ) );
+
+
+    }
 }
 
 

@@ -291,7 +291,6 @@ $(function () {
                         let max = footerHeight + 60 + navigator.height() + (2 * rem);
 
                         if (max < innerHeight) {
-                            console.log(top)
                             top = min;
                         }
 

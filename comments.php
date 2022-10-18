@@ -55,7 +55,7 @@ if ( nicen_theme_showComments() ) {
                         </div>
                         <div class="comment-info">
                             <div class="comment-info-top"><?php echo $isLogin ? $nickname : '恨相知晚'; ?></div>
-                            <div class="comment-info-bottom"><?php echo ( ! $comment ) ? '参与讨论，一起做更好的自己！' : '回复 ' . $comment->comment_author . '的评论'; ?></div>
+                            <div class="comment-info-bottom"><?php echo ( ! $comment ) ? '一起参与讨论！' : '回复 ' . $comment->comment_author . '的评论'; ?></div>
                         </div>
                     </div>
                     <div class="comment-loginout">

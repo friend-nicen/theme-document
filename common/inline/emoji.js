@@ -84,7 +84,7 @@ $(function () {
     * 插入表情
     * */
     $(".smilees").click(function () {
-        textarea.insertContent(`::${$(this).data("emoji")}::`);
+        textarea.insertContent(`:${$(this).data("emoji")}:`);
     })
 
 })
