@@ -35,6 +35,12 @@
  * do_settings_fields_user，初始化所有输入组件
  *
  * */
+
+/*
+ * 主题版本
+ * */
+const DOCUMENT_VERSION="1.2.5";
+
 const ADMIN = [
 	/*菜单设置*/
 	[
@@ -494,6 +500,13 @@ const ADMIN = [
 					],
 				]
 			],
+            [
+                "id" => "document_theme_update",
+                'title' => '关于主题',
+                'callback' => [
+                    "render" => "des_theme_update"
+                ],
+            ]
 		]
 	]
 ];

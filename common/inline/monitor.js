@@ -70,8 +70,9 @@ $(function () {
         })
     })();
 
-
-    let isScroll = false; //防止重复触发目录滚动
+    //防止重复触发目录滚动
+    //正在滚动是 左侧文章目录不重复滚动
+    let isScroll = false;
 
 
     /*阅读目录初始化*/
@@ -104,11 +105,16 @@ $(function () {
                     return;
                 }
 
+                /*标记正在滚动的状态*/
                 isScroll = true;
+
+
                 $(scroll).animate({scrollTop: tops - 100}, 200, function () {
                     isScroll = false;
                 })
             }
+
+
             /*向上*/
             if (tops < scroll.scrollTop) {
 
@@ -122,11 +128,22 @@ $(function () {
                     isScroll = false;
                 })
             }
+
+
             /*
             * 同步滚动文章页面
             * */
 
+
+            /*
+            * 判断文章是否需要滚动
+            * */
             if (!needScroll) {
+
+                /*
+                * 目录跟随文章
+                * 跟随完毕，恢复文章跟随目录点击
+                * */
                 needScroll = true;
                 return;
             }
@@ -134,10 +151,14 @@ $(function () {
 
             let anchor = main.find(Index.find('div a').attr("href"));
 
-            watchScroll = false;//屏蔽滚动监听
-
             if (anchor.length != 0) {
 
+
+                /*
+                * 标记文章正在滚动
+                * 屏蔽scroll监听事件
+                * */
+                watchScroll = false;//屏蔽滚动监听
 
                 let top = anchor.getTop() - 75;
 
@@ -188,8 +209,12 @@ $(function () {
         /*
          * 初始化导航栏滚动条
          * */
-        let needScroll = true;
-        let watchScroll = true;
+
+        //文章跟随目录点击
+        let needScroll = true;  //目录被点击，文章是否滚动
+
+        //目录跟随文章滚动
+        let watchScroll = true; //是否需要监听文章滚动
 
         let line = $(".main-container .line");
 
@@ -197,8 +222,10 @@ $(function () {
         //获取第一个一级索引标题的DOM
         let firstIndex = $('.main-container .main-left li div:first');
 
-        needScroll = false;//屏蔽第一次滚动
-        firstIndex.trigger('click');//默认第一个目录
+
+        //文章跟随目录点击
+        needScroll = false;//屏蔽第一次滚动，标记文章不需要进行滚动
+        firstIndex.trigger('click');//触发默认的第一个目录的点击事件
 
         /*
         * 渲染完毕后显示，防抖动闪烁
@@ -214,8 +241,11 @@ $(function () {
 
             /*
             * 屏蔽点击滚动时的事件监听
+            * 如果文章目录被点击后，文章正在滚动
             * */
             if (!watchScroll) return;
+
+
             let thats = main;
             let top = thats.get(0).scrollTop;
             let collects = thats.find(".main-content").find("h1,h2,h3,h4");
@@ -257,11 +287,22 @@ $(function () {
 
             }
 
+
+
             /*
-            * 屏蔽导航变化时的自动滚动
+            * 如果不判断，会导致needScroll不会重置
+            * 因为页面底部已经没有标签了。
             * */
-            needScroll = false;//标记不需要滚动
-            $("a[href='#" + collects.eq(position).attr("id") + "']").parent().trigger('click');
+            if(position === null) return;;
+
+
+            let parent = $("a[href='#" + collects.eq(position).attr("id") + "']").parent();
+            needScroll = false;//标记文章不需要跟随目录的点击而滚动
+            parent.trigger('click');
+
+
+
+
         });
 
     })();

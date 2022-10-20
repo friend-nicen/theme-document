@@ -317,7 +317,8 @@ jQuery(function () {
                 activeKey: tab,
                 loading:false,
                 resuming:false,
-                zhCN:zhCN
+                zhCN:zhCN,
+                version:""
             };
         },
         methods: {
@@ -393,6 +394,16 @@ jQuery(function () {
             lookSitemap(){
                 window.open('/sitemap.txt','_blank');
             }
+        },
+        created() {
+            let that = this;
+            /*同步插件更新日志*/
+            axios.get("https://weixin.nicen.cn/api/theme")
+                .then((res) => {
+                    if (res.data.code) {
+                        that.version = res.data.data.latest;
+                    }
+                })
         }
     });
 });
