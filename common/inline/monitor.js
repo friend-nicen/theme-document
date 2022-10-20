@@ -277,30 +277,30 @@ $(function () {
                 * 当前阅读的是最靠近顶部的前一个标题
                 * */
                 if (domTop > top) {
+                    /*
+                    * 特殊处理开始、结尾的目录
+                    * */
                     if (i != 0) {
                         position = i - 1;
                     } else {
                         position = i;
                     }
+
                     break;
                 }
 
             }
 
 
-
             /*
             * 如果不判断，会导致needScroll不会重置
             * 因为页面底部已经没有标签了。
             * */
-            if(position === null) return;;
-
+            if (position === null) position=collects.length-1;
 
             let parent = $("a[href='#" + collects.eq(position).attr("id") + "']").parent();
             needScroll = false;//标记文章不需要跟随目录的点击而滚动
             parent.trigger('click');
-
-
 
 
         });
