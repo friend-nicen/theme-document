@@ -587,7 +587,7 @@ $(function () {
                 * */
 
                 /*无目录时终止*/
-                if($("#space").is(":visible")) return;
+                if(!$("#space").is(":visible")) return;
 
                 let catelog = $("#navigator .scroll ul");
                 let number = catelog.find('li').length;
@@ -629,13 +629,16 @@ $(function () {
             let activeTabs = 0;
 
 
+            /*
+            * 切换tab时同步文章目录
+            * */
             Object.defineProperty(window, 'activeTab', {
                 set(value) {
 
                     /*
                     * 加载目录树
                     * */
-                    if($("#space").is(":visible")) return;
+                    if(!$("#space").is(":visible")) return;
                     
                     if (activeTabs != value) {
 
