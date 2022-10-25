@@ -14,6 +14,14 @@ Github：[https://github.com/friend-nicen/theme-document](https://github.com/fri
 
 Gitee：[https://gitee.com/friend-nicen/theme-document](https://gitee.com/friend-nicen/theme-document)
 
+# 2022-10-25更新
+
+1. 评论可以添加表情
+2. 编辑器可以插入表格
+3. 编辑器新增快捷下划线
+
+预览 - [https://nicen.cn/1552.html](https://nicen.cn/1552.html)
+
 # 2022-10-11更新
 
 更新到2.0版本，风格不变，代码差不多都重构优化了一下，新增了很多实用的功能，后台截图如下（点击图片放大查看），时间有限其它的就不叙述了：

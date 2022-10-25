@@ -37,6 +37,7 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   --theme-text-secondary: rgba(0, 0, 0, 0.65);
   --theme-text-mini-color: rgba(0, 0, 0, 0.65);
   --theme-margin-bottom: 1rem;
+  --theme-margin-bottom-max: 1.1rem;
   --theme-li-padding: 1.2rem;
   --theme-bg-color: var(--theme-white);
   --theme-pre: #ccc;
@@ -73,7 +74,7 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   --theme-label-bg: #aaa;
   --theme-label-color: #fff;
   --theme-label-hover: #8d8d8d;
-  --theme-emoji-size:1.3rem;
+  --theme-emoji-size: 1.3rem;
   --theme-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.22); }
 
 .theme-one {
@@ -135,16 +136,6 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   --theme-pre-code-shadow: transparent;
   --theme-label-bg: #141414;
   --theme-label-hover: #2a2a2b; }
-
-
-
-/*标题字体库*/
-@font-face {
-  font-family: 'webfont';
-  font-weight: 400;
-  src: url("./assets/font/jvCAx4yMYVNwLkPwjfDmG.woff2") format("woff2"),
-  url("./assets/font/jvCAx4yMYVNwLkPwjfDmG.woff") format("woff");
-}
 
 
 /*图标库*/
@@ -1202,6 +1193,17 @@ html {
                 font-size: var(--theme-text-mini);
                 color: var(--theme-text-secondary);
                 margin-top: 10px; }
+            html body .main-container .main-main .main-content .main-article table {
+              border-spacing: 0;
+              border-collapse: collapse;
+              margin: 0 0 var(--theme-margin-bottom-max) 0; }
+              html body .main-container .main-main .main-content .main-article table tr {
+                border-top: 1px solid #d0d7de; }
+                html body .main-container .main-main .main-content .main-article table tr:hover {
+                  background: rgba(60, 90, 100, 0.04); }
+                html body .main-container .main-main .main-content .main-article table tr td, html body .main-container .main-main .main-content .main-article table tr th {
+                  padding: 0.3rem 0.66rem;
+                  border: 1px solid #d0d7de; }
           html body .main-container .main-main .main-content footer {
             padding: 2.6rem 0 0 0;
             width: 100%; }
@@ -1979,7 +1981,8 @@ html {
     --theme-third-level-title: 1rem;
     --theme-fourth-level-title: 0.95rem;
     --theme-header-size: 1.15rem;
-    --theme-margin-bottom: 1.1rem; }
+    --theme-margin-bottom: 1.1rem;
+    --theme-margin-bottom-max: 1.2rem; }
   html {
     min-width: unset; }
     html body {

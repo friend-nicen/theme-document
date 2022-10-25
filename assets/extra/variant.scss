@@ -25,6 +25,7 @@
   --theme-text-mini-color: #{rgba(#000000,0.65)};
 
   --theme-margin-bottom: 1rem;
+  --theme-margin-bottom-max: 1.1rem;
 
   --theme-li-padding: 1.2rem;
   --theme-bg-color: var(--theme-white);
@@ -74,7 +75,7 @@
   --theme-label-color: #fff;
   --theme-label-hover: #8d8d8d;
 
-  --theme-emoji-size:1.3rem;
+  --theme-emoji-size: 1.3rem;
 
   --theme-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.22);
 }

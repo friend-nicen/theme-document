@@ -172,9 +172,10 @@ function nicen_theme_setting_load() {
 	global $plugin_page; //获取设置菜单的id
 
 	// 检查用户权限
-	if ( ! current_user_can( 'manage_options' ) ) {
+	/*if ( ! current_user_can( 'manage_options' ) ) {
 		return;
-	}
+	}*/
+
 	?>
     <div class="wrap" id="VueApp" v-cloak>
         <a-config-provider :locale="zhCN">

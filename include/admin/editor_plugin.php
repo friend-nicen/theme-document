@@ -15,10 +15,13 @@ function nicen_theme_admin_init() {
 	remove_action( 'wp_enqueue_scripts', 'wp_common_block_scripts_and_styles' );
 
 
-	//判断用户是否有编辑文章和页面的权限
-	if ( ! current_user_can( 'edit_posts' ) && ! current_user_can( 'edit_pages' ) ) {
+	//不进行权限判断
+	/*if ( ! current_user_can( 'edit_posts' ) && ! current_user_can( 'edit_pages' ) ) {
 		return;
-	}
+	}*/
+
+
+
 	//判断用户是否使用可视化编辑器
 	if ( get_user_option( 'rich_editing' ) == 'true' ) {
 		/*tinymce加载时引入插件的js*/
@@ -35,10 +38,20 @@ function nicen_theme_admin_init() {
 			$plugin_array['code']     = get_template_directory_uri() . '/common/plugins/code.js';/*指定要加载的插件*/
 			$plugin_array['lightbox'] = get_template_directory_uri() . '/common/plugins/lightbox.js';/*指定要加载的插件*/
 			$plugin_array['mark']     = get_template_directory_uri() . '/common/plugins/mark.js';/*指定要加载的插件*/
+			$plugin_array['table']    = get_template_directory_uri() . '/common/plugins/table.js';/*指定要加载的插件*/
+			$plugin_array['u']        = get_template_directory_uri() . '/common/plugins/u.js';/*指定要加载的插件*/
 
 
 			return $plugin_array;
 		} );
+
+
+		/*add_filter( 'tiny_mce_plugins', function ( $plugins ) {
+			$plugins[] = 'image';
+			$plugins[] = 'directionality';
+			return $plugins;
+		} );*/
+
 
 		/*过滤 TinyMCE 按钮的第一行列表（Visual 选项卡）,在可视编辑器中注册一个按钮*/
 		add_filter( 'mce_buttons', function ( $buttons ) {
@@ -52,7 +65,15 @@ function nicen_theme_admin_init() {
 			$buttons[] = 'code';
 			$buttons[] = 'lightbox';
 			$buttons[] = 'mark';
+			$buttons[] = 'table';
 
+			return $buttons;
+		} );
+
+		/*过滤 TinyMCE 按钮的第一行列表（Visual 选项卡）,在可视编辑器中注册一个按钮*/
+		add_filter( 'mce_buttons_2', function ( $buttons ) {
+			/*每一个按钮代表一个插件的类*/
+			array_unshift( $buttons, 'u' );
 			return $buttons;
 		} );
 	}

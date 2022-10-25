@@ -48,7 +48,7 @@ const ADMIN = [
 		"menu_title" => '主题选项',
 		'page_title' => '主题设置',
 		'callback'   => 'nicen_theme_setting_load',
-		'capablity'  => 'edit_themes',
+		'capablity'  => 'manage_options',
 		/*分节*/
 		"sections"   => [
 			[
