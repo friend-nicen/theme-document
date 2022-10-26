@@ -12,19 +12,19 @@
     <meta charset="<?php bloginfo( 'charset' ); ?>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<?php
-        /*是否显示主题自带的tdk* */
-        if ( nicen_theme_config( 'document_tdk', false ) ) {
-    ?>
+	/*是否显示主题自带的tdk* */
+	if ( nicen_theme_config( 'document_tdk', false ) ) {
+		?>
         <title><?php nicen_theme_title() ?></title>
         <meta name="keywords" content="<?php nicen_theme_config( 'document_keywords' ); ?>"/>
         <meta name="description" content="<?php nicen_theme_description() ?>"/>
-	<?php
-        }
-        if(nicen_theme_config('document_seo_og',false)){
-            echo nicen_theme_og(); //输出og协议内容
-        }
-    ?>
-    <?php /*wp_site_icon(); */?>
+		<?php
+	}
+	if ( nicen_theme_config( 'document_seo_og', false ) ) {
+		echo nicen_theme_og(); //输出og协议内容
+	}
+	?>
+	<?php /*wp_site_icon(); */ ?>
 	<?php wp_head(); ?>
 </head>
 <body>
@@ -32,9 +32,10 @@
 <header class="main-header">
     <!--  顶部左侧标题 和 logo -->
     <div class="left">
-        <a href="/" class="logo" title="返回首页">
+        <a href="<?php echo home_url(); ?>" class="logo" title="返回首页">
             <img src="<?php nicen_theme_config( 'document_logo_url' ); ?>" title="logo"/>
-            <h2 class="title tooltip" data-hint="<?php echo bloginfo( 'name' ); ?>"><?php echo bloginfo( 'name' ); ?> </h2>
+            <h2 class="title tooltip"
+                data-hint="<?php echo bloginfo( 'name' ); ?>"><?php echo bloginfo( 'name' ); ?> </h2>
         </a>
     </div>
     <!--移动端展开导航栏-->
@@ -42,7 +43,7 @@
     <!--  右边导航栏  -->
     <div class="right">
         <!--菜单栏-->
-	    <?php get_template_part( 'template/index/search' ); ?>
+		<?php get_template_part( 'template/index/search' ); ?>
 		<?php get_template_part( 'template/index/nav_menu' ); ?>
 
     </div>

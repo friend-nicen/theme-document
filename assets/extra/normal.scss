@@ -339,6 +339,10 @@ html {
               box-shadow: 0 0 5px 2px var(--theme-color-20);
               border-color: var(--theme-color);
             }
+
+            &::placeholder {
+              color: var(--theme-placeholder);
+            }
           }
 
           &[type=submit] {
@@ -1267,11 +1271,12 @@ html {
 
               tr {
                 border-top: 1px solid #d0d7de;
+
                 &:hover {
                   background: rgba(#3c5a64, 0.04);
                 }
 
-                td,th {
+                td, th {
                   padding: 0.3rem 0.66rem;
                   border: 1px solid #d0d7de;;
                 }
@@ -1495,7 +1500,7 @@ html {
 
                 &::placeholder {
                   font-size: var(--theme-secondary);
-                  color: var(--theme-text-secondary);
+                  color: var(--theme-placeholder);
                 }
 
                 &:hover, &:focus {
@@ -1598,6 +1603,9 @@ html {
 
                 input {
                   font-size: var(--theme-secondary);
+                  &::placeholder {
+                    color: var(--theme-placeholder);
+                  }
                 }
 
                 .comment-name {

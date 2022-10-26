@@ -98,8 +98,9 @@ function nicen_theme_load_source() {
 	 * 内联的js
 	 * */
 	wp_add_inline_script( "main-sub", preg_replace( '/\s/', '', vsprintf( '
-			window.ROOT = "%s";'
-		, [ $url ] ) ), 'before' );
+			window.ROOT = "%s";
+			window.HOME = "%s";'
+		, [ $url, home_url() ] ) ), 'before' );
 
 	/*
 	 * 内联的css

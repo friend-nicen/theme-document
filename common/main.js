@@ -121,7 +121,7 @@ $(function () {
                 return
             } else {
                 if (event.keyCode == "13") {
-                    location.href = location.origin + "?s=" + that.val();
+                    location.href = HOME + "?s=" + that.val();
                 }
             }
         });

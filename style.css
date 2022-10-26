@@ -75,7 +75,8 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   --theme-label-color: #fff;
   --theme-label-hover: #8d8d8d;
   --theme-emoji-size: 1.3rem;
-  --theme-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.22); }
+  --theme-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.22);
+  --theme-placeholder: #bfbfbf; }
 
 .theme-one {
   --theme-color: #f5222d !important; }
@@ -137,6 +138,14 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   --theme-label-bg: #141414;
   --theme-label-hover: #2a2a2b; }
 
+
+/*标题字体库*/
+@font-face {
+  font-family: 'webfont';
+  font-weight: 400;
+  src: url("./assets/font/jvCAx4yMYVNwLkPwjfDmG.woff2") format("woff2"),
+  url("./assets/font/jvCAx4yMYVNwLkPwjfDmG.woff") format("woff");
+}
 
 /*图标库*/
 @font-face {
@@ -579,6 +588,8 @@ html {
           html body .password p input[type=password]:hover, html body .password p input[type=password]:focus {
             box-shadow: 0 0 5px 2px var(--theme-color-20);
             border-color: var(--theme-color); }
+          html body .password p input[type=password]::placeholder {
+            color: var(--theme-placeholder); }
         html body .password p input[type=submit] {
           background-color: var(--theme-color);
           border: none;
@@ -1337,7 +1348,7 @@ html {
               background-color: var(--theme-front-main-color); }
               html body .main-container .main-main .div-info .comment-form .comment-form-main textarea::placeholder, html body .main-container .main-main .div-info .comment-form .comment-form-main input::placeholder {
                 font-size: var(--theme-secondary);
-                color: var(--theme-text-secondary); }
+                color: var(--theme-placeholder); }
               html body .main-container .main-main .div-info .comment-form .comment-form-main textarea:hover, html body .main-container .main-main .div-info .comment-form .comment-form-main textarea:focus, html body .main-container .main-main .div-info .comment-form .comment-form-main input:hover, html body .main-container .main-main .div-info .comment-form .comment-form-main input:focus {
                 box-shadow: 0 0 5px 2px var(--theme-color-20);
                 border-color: var(--theme-color);
@@ -1404,6 +1415,8 @@ html {
                 padding: 0 0.5rem; }
               html body .main-container .main-main .div-info .comment-form .comment-form-main .comment-container input {
                 font-size: var(--theme-secondary); }
+                html body .main-container .main-main .div-info .comment-form .comment-form-main .comment-container input::placeholder {
+                  color: var(--theme-placeholder); }
               html body .main-container .main-main .div-info .comment-form .comment-form-main .comment-container .comment-name {
                 width: 33%; }
               html body .main-container .main-main .div-info .comment-form .comment-form-main .comment-container .comment-mail {
