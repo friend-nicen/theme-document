@@ -12,6 +12,16 @@ if ( isset( $_POST['pagination'] ) ) {
 <!--  文章  -->
 <div id="default" class="article-list">
 	<?php if ( have_posts() ) : while ( have_posts() ): the_post(); ?>
+
+		<?php
+		/*
+		 * 文章过滤，搜素和首页不显示指定的不显示的标签和目录
+		 * */
+		if ( ! canShow() ) {
+			continue;
+		}
+		?>
+
         <article class="i-article">
 
             <div class="i-article-left">

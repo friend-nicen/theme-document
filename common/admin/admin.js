@@ -305,6 +305,20 @@ jQuery(function () {
         }):[];
 
 
+    /*
+    * 需要处理的数据
+    * */
+    THEME_CONFIG.document_no_display = THEME_CONFIG.document_no_display?
+        THEME_CONFIG.document_no_display.split(',')
+            .filter((item)=>{
+                if(item){
+                    return true;
+                }
+            }) .map((item) => {
+            return parseInt(item);
+        }):[];
+
+
     let vm = new Vue({
         el: "#VueApp",
         data() {
