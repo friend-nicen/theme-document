@@ -29,6 +29,7 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   --theme-third-level-title: 0.96rem;
   --theme-fourth-level-title: 0.84rem;
   /*主题文件样式变量*/
+  --theme-black-text: #333;
   --theme-white: #f5f7fd;
   --theme-black: #333;
   --theme-color: #3eaf7c;
@@ -108,6 +109,7 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
 */
 .dark {
   --theme-text-color: rgba(255, 255, 255, 0.87);
+  --theme-black-text: white;
   --theme-bg-color: var(--theme-black);
   /*
     暗黑模式，导航栏样式
@@ -138,14 +140,6 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   --theme-label-bg: #141414;
   --theme-label-hover: #2a2a2b; }
 
-
-/*标题字体库*/
-@font-face {
-  font-family: 'webfont';
-  font-weight: 400;
-  src: url("./assets/font/jvCAx4yMYVNwLkPwjfDmG.woff2") format("woff2"),
-  url("./assets/font/jvCAx4yMYVNwLkPwjfDmG.woff") format("woff");
-}
 
 /*图标库*/
 @font-face {
@@ -693,6 +687,21 @@ html {
               width: 100%; }
               html body .main-container #fixed .main-right .author .author-beijin img {
                 width: 100%; }
+            html body .main-container #fixed .main-right .author .statistic {
+              display: flex;
+              justify-content: space-between;
+              margin-top: 10px; }
+              html body .main-container #fixed .main-right .author .statistic .item {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                width: 33.3%; }
+                html body .main-container #fixed .main-right .author .statistic .item .top {
+                  font-size: var(--theme-text-mini);
+                  white-space: nowrap; }
+                html body .main-container #fixed .main-right .author .statistic .item .bottom {
+                  color: var(--theme-black-text);
+                  font-size: 1.1rem; }
             html body .main-container #fixed .main-right .author .offset {
               position: relative;
               padding: 0.45rem 0.5rem 1rem 0.5rem; }
@@ -925,7 +934,10 @@ html {
         border-radius: 4px;
         background-color: var(--theme-front-main-color);
         font-size: var(--theme-secondary);
-        color: var(--theme-text); }
+        color: var(--theme-text);
+        /*
+          评论小部件
+        */ }
         html body .main-container .div-info * {
           color: inherit; }
         html body .main-container .div-info .ul {
@@ -942,7 +954,7 @@ html {
           display: flex;
           list-style: none;
           flex-direction: column; }
-        html body .main-container .div-info .title {
+        html body .main-container .div-info .title, html body .main-container .div-info .comment-widget {
           width: 100%;
           white-space: nowrap;
           overflow: hidden;
@@ -950,18 +962,41 @@ html {
           padding: 0.2rem 0;
           margin-left: 3px;
           font-size: var(--theme-text-more-mini); }
-          html body .main-container .div-info .title a {
+          html body .main-container .div-info .title a, html body .main-container .div-info .comment-widget a {
             text-decoration: none;
             font-size: var(--theme-secondary);
             color: var(--theme-text-secondary); }
-            html body .main-container .div-info .title a:hover {
+            html body .main-container .div-info .title a:hover, html body .main-container .div-info .comment-widget a:hover {
               color: var(--theme-color); }
-            html body .main-container .div-info .title a .iconfont {
+            html body .main-container .div-info .title a .iconfont, html body .main-container .div-info .comment-widget a .iconfont {
               color: var(--theme-pre);
               display: inline-block;
               transform: rotate(-90deg);
               font-size: var(--theme-text-super-mini);
               margin-right: 3px; }
+        html body .main-container .div-info .comment-widget {
+          display: flex;
+          align-items: center;
+          align-items: flex-start;
+          padding-left: 0; }
+          html body .main-container .div-info .comment-widget .author-avatar {
+            width: 20px;
+            border-radius: 50%; }
+          html body .main-container .div-info .comment-widget a {
+            display: -webkit-box;
+            width: 90%;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis; }
+            html body .main-container .div-info .comment-widget a img {
+              width: 12px; }
+            html body .main-container .div-info .comment-widget a .name {
+              color: var(--theme-black-text);
+              margin: 0 3px;
+              font-size: var(--theme-text); }
+            html body .main-container .div-info .comment-widget a .comment-widget-content {
+              white-space: normal; }
         html body .main-container .div-info .header {
           display: flex;
           justify-content: space-between;
@@ -1208,13 +1243,11 @@ html {
               border-spacing: 0;
               border-collapse: collapse;
               margin: 0 0 var(--theme-margin-bottom-max) 0; }
-              html body .main-container .main-main .main-content .main-article table tr {
-                border-top: 1px solid #d0d7de; }
-                html body .main-container .main-main .main-content .main-article table tr:hover {
-                  background: rgba(60, 90, 100, 0.04); }
-                html body .main-container .main-main .main-content .main-article table tr td, html body .main-container .main-main .main-content .main-article table tr th {
-                  padding: 0.3rem 0.66rem;
-                  border: 1px solid #d0d7de; }
+              html body .main-container .main-main .main-content .main-article table tr:hover {
+                background: rgba(60, 90, 100, 0.04); }
+              html body .main-container .main-main .main-content .main-article table tr td, html body .main-container .main-main .main-content .main-article table tr th {
+                padding: 0.3rem 0.66rem;
+                border: 1px solid #d0d7de; }
           html body .main-container .main-main .main-content footer {
             padding: 2.6rem 0 0 0;
             width: 100%; }

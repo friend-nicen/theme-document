@@ -496,6 +496,31 @@ html {
               }
             }
 
+
+            .statistic {
+              display: flex;
+              justify-content: space-between;
+              margin-top: 10px;
+
+              .item {
+                @include flex-center;
+                flex-direction: column;
+                width: 33.3%;
+
+                .top {
+                  font-size: var(--theme-text-mini);
+                  white-space: nowrap;
+                }
+
+                .bottom {
+                  color: var(--theme-black-text);
+                  font-size: 1.1rem;
+                }
+
+              }
+            }
+
+
             .offset {
               position: relative;
               padding: 0.45rem 0.5rem 1rem 0.5rem;
@@ -544,6 +569,8 @@ html {
                 font-size: var(--theme-text-mini);
                 color: var(--theme-text-secondary);
               }
+
+
             }
           }
 
@@ -870,7 +897,7 @@ html {
           flex-direction: column;
         }
 
-        .title {
+        .title, .comment-widget {
           width: 100%;
           white-space: nowrap;
           overflow: hidden;
@@ -897,6 +924,49 @@ html {
               margin-right: 3px;
             }
           }
+        }
+
+        /*
+          评论小部件
+        */
+        .comment-widget {
+
+
+          @include flex-center;
+          align-items: flex-start;
+
+          padding-left: 0;
+
+          .author-avatar {
+            width: 20px;
+            border-radius: 50%;
+          }
+
+          a {
+
+            display: -webkit-box;
+            width: 90%;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+
+            img {
+              width: 12px;
+            }
+
+            .name {
+              color: var(--theme-black-text);
+              margin: 0 3px;
+              font-size: var(--theme-text);
+            }
+
+            .comment-widget-content {
+              white-space: normal;
+            }
+          }
+
         }
 
         .header {
@@ -1270,7 +1340,7 @@ html {
               margin: 0 0 var(--theme-margin-bottom-max) 0;
 
               tr {
-                border-top: 1px solid #d0d7de;
+
 
                 &:hover {
                   background: rgba(#3c5a64, 0.04);
@@ -1603,6 +1673,7 @@ html {
 
                 input {
                   font-size: var(--theme-secondary);
+
                   &::placeholder {
                     color: var(--theme-placeholder);
                   }

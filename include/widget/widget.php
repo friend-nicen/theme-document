@@ -8,6 +8,7 @@ include_once get_template_directory() . '/include/widget/components/Rand.php';//
 include_once get_template_directory() . '/include/widget/components/Swiper.php';//轮播
 include_once get_template_directory() . '/include/widget/components/Info.php';//文章信息
 include_once get_template_directory() . '/include/widget/components/Author.php';//作者信息
+include_once get_template_directory() . '/include/widget/components/NewComments.php';//作者信息
 /*
  * 注册侧边栏
  * */
@@ -21,6 +22,7 @@ function nicen_theme_add_sidebar() {
 	register_widget( "Swiper" );
 	register_widget( "Info" );
 	register_widget( "Author" );
+	register_widget( "NewComments" );
 
 	/*
 	 * 注册部件位置
