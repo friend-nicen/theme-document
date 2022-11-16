@@ -26,7 +26,7 @@ if ( nicen_theme_showComments() ) {
 		$nickname = $isLogin ? ( $adminUserInfo->exists() ? $adminUserInfo->display_name : '' ) : htmlspecialchars( $currentCommenter['comment_author'] );
 		$email    = $isLogin ? ( $adminUserInfo->exists() ? $adminUserInfo->user_email : '' ) : htmlspecialchars( $currentCommenter['comment_author_email'] );
 		$webUrl   = $isLogin ? site_url() : htmlspecialchars( $currentCommenter['comment_author_url'] );
-		$default  = get_template_directory_uri() . '/assets/images/avatar.png?ver=' . filemtime( get_template_directory() . '/assets/images/avatar.png' );
+		$default  = get_template_directory_uri() . '/assets/images/avatar.svg?ver=' . filemtime( get_template_directory() . '/assets/images/avatar.svg' );
 		$avatar   = $isLogin ? ( get_avatar_url( $adminUserInfo->ID ) ?? $default ) : $default;
 
 		$reply_to_id = isset( $_GET['replytocom'] ) ? (int) $_GET['replytocom'] : false;

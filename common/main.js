@@ -121,7 +121,7 @@ $(function () {
                 return
             } else {
                 if (event.keyCode == "13") {
-                    location.href = HOME + "?s=" + that.val();
+                    location.href = location.origin + "?s=" + that.val();
                 }
             }
         });
@@ -131,7 +131,7 @@ $(function () {
 
 
     /*
-    * 动态菜单宽度
+    * 动态移动端菜单宽度
     * */
     (function () {
 
@@ -185,11 +185,11 @@ $(function () {
 
         let isFixed = false;
         let html = $('html');
-        let fixed = $('#fixed');
-        let right = $('#right');
-        let main = $(".main-main");
+        let fixed = $('#fixed'); //右侧固定容器
+        let right = $('#right'); //右边栏
+        let main = $(".main-main"); //中间内容
 
-        let footerHeight = $('.main-bottom').outerHeight(); //底部高度
+        let footerHeight = $('.main-bottom').outerHeight(); //获取完整的DOM高度
 
         /*
         * 左侧固定
@@ -209,14 +209,18 @@ $(function () {
 
             let muchBottom = 0;//右边栏底部距离
 
-            let _static, _absolute;
+            let _static, _absolute; //存放中间内容和右边容器的高度
 
             /*
             * 右侧是不变的
             * */
 
             let react_fixed = fixed.get(0).getBoundingClientRect();
-            let fixed_top = fixed.getTop();
+            let fixed_top = fixed.getTop(); //右边栏距离网页顶部的距离
+
+            /*
+            * 计算右边栏底部和屏幕底部重合时，网页的滚动大小
+            * */
             _static = fixed_top + react_fixed.height - innerHeight;
 
 
@@ -369,7 +373,7 @@ $(function () {
                 /*
                 * 大于保持静态，小于保持绝对
                 * */
-                if (html_scrollTop > _static && html_scrollTop < _absolute) {
+                if (html_scrollTop >= _static && html_scrollTop <= _absolute) {
 
                     right.css('left', fixed.position().left + rem);
 
@@ -587,7 +591,7 @@ $(function () {
                 * */
 
                 /*无目录时终止*/
-                if(!$("#space").is(":visible")) return;
+                if ($("#space").is(":visible")) return;
 
                 let catelog = $("#navigator .scroll ul");
                 let number = catelog.find('li').length;
@@ -629,17 +633,14 @@ $(function () {
             let activeTabs = 0;
 
 
-            /*
-            * 切换tab时同步文章目录
-            * */
             Object.defineProperty(window, 'activeTab', {
                 set(value) {
 
                     /*
                     * 加载目录树
                     * */
-                    if(!$("#space").is(":visible")) return;
-                    
+                    if ($("#space").is(":visible")) return;
+
                     if (activeTabs != value) {
 
                         let list = $("#navigator .scroll ul");
