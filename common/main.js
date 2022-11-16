@@ -591,7 +591,7 @@ $(function () {
                 * */
 
                 /*无目录时终止*/
-                if ($("#space").is(":visible")) return;
+                if (!$("#space").is(":visible")) return;
 
                 let catelog = $("#navigator .scroll ul");
                 let number = catelog.find('li').length;
@@ -639,7 +639,7 @@ $(function () {
                     /*
                     * 加载目录树
                     * */
-                    if ($("#space").is(":visible")) return;
+                    if (!$("#space").is(":visible")) return;
 
                     if (activeTabs != value) {
 
