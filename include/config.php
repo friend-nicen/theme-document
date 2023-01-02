@@ -94,8 +94,25 @@ const ADMIN = [
                     [
                         'id' => 'document_thumbnail_default',
                         'title' => '默认缩略图',
-                        'callback' => 'nicen_theme_form_input',
+                        'callback' => 'nicen_theme_form_media',
                     ],
+	                [
+		                'id'       => 'document_thumbnail_position',
+		                'title'    => '缩略图显示位置',
+		                'callback' => 'nicen_theme_form_select',
+		                'args'     => [
+			                'options' => [
+				                [
+					                'label' => '文章列表右侧',
+					                'value' => 'right'
+				                ],
+				                [
+					                'label' => '文章列表左侧',
+					                'value' => 'left'
+				                ]
+			                ]
+		                ]
+	                ],
                     [
                         'id' => 'document_Gravatar',
                         'title' => 'Gravatar镜像服务器',
@@ -109,6 +126,10 @@ const ADMIN = [
                                 [
                                     'label' => 'loli',
                                     'value' => 'gravatar.loli.net/avatar'
+                                ],
+                                [
+                                    'label' => 'Cravatar',
+                                    'value' => 'cravatar.cn/avatar'
                                 ]
                             ]
                         ]
@@ -485,7 +506,7 @@ const ADMIN = [
                     [
                         'id' => 'document_logo_url',
                         'title' => '博客logo链接',
-                        'callback' => 'nicen_theme_form_input',
+                        'callback' => 'nicen_theme_form_media',
                     ],
                 ]
             ],
@@ -565,6 +586,7 @@ define("CONFIG", [
     //文章摘要字数
 
     'document_thumbnail' => 1,
+    "document_thumbnail_position" => "right",
     'document_thumbnail_default' => get_theme_root_uri() . '/destination/assets/images/default.png',
     "document_Gravatar" => 'gravatar.loli.net/avatar',
     //默认替换的gavatar源

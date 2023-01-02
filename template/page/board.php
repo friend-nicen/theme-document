@@ -15,7 +15,7 @@ get_header();//加载顶部内容
 			<?php get_template_part( './template/index/article-header' ); ?>
             <!--  文章内容  -->
             <div class="main-article">
-				<?= the_content() ?>
+				<?php echo the_content(); ?>
             </div>
 			<?php get_template_part( './template/index/fixed' ); ?>
         </article>

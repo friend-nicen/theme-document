@@ -4,12 +4,13 @@
   margin-bottom: 1.2rem; }
   .swiper .swiper-slide {
     display: grid;
-    grid-template-columns: 60% 40%;
+    grid-template-columns: 73% 27%;
     grid-template-areas: "a b" "a c"; }
     .swiper .swiper-slide .swiper-item {
-      height: 160px;
+      height: 175px;
       position: relative;
       overflow: hidden;
+      border-radius: 8px;
       /*
         所属目录
       */ }
@@ -19,6 +20,7 @@
         width: 100%;
         height: 100%;
         cursor: pointer;
+        border-radius: 8px;
         transition: all 0.3s; }
       .swiper .swiper-slide .swiper-item .modal {
         position: absolute;
@@ -41,9 +43,11 @@
           display: flex;
           flex-wrap: wrap;
           justify-content: space-between;
-          padding: 0.6rem 0.8rem; }
+          padding: 0.6rem 0.8rem 1.2rem; }
           .swiper .swiper-slide .swiper-item .modal .bottom .title {
-            width: 100%; }
+            width: 100%;
+            font-size: var(--theme-header-size);
+            margin-bottom: 10px; }
         .swiper .swiper-slide .swiper-item .modal .category {
           width: fit-content;
           padding: 0 0.5rem;
@@ -57,17 +61,43 @@
     .swiper .swiper-slide .swiper-a {
       grid-area: a;
       height: inherit;
-      max-height: 320px; }
+      height: 360px;
+      margin-right: 10px; }
     .swiper .swiper-slide .swiper-b {
       grid-area: b; }
+      .swiper .swiper-slide .swiper-b .modal .bottom {
+        padding: 0.6rem 0.8rem 0.5rem; }
+        .swiper .swiper-slide .swiper-b .modal .bottom .title {
+          margin-bottom: 5px;
+          font-size: var(--theme-text); }
     .swiper .swiper-slide .swiper-c {
+      margin-top: 10px;
       grid-area: c; }
+      .swiper .swiper-slide .swiper-c .modal .bottom {
+        padding: 0.6rem 0.8rem 0.5rem; }
+        .swiper .swiper-slide .swiper-c .modal .bottom .title {
+          margin-bottom: 5px;
+          font-size: var(--theme-text); }
 
 /*
   ##平板电脑/Ipad竖屏
   ##768px - 1024px
 */
+@media (min-width: 1024px) and (max-width: 1580px) {
+  .swiper .swiper-slide .swiper-item {
+    height: 155px; }
+  .swiper .swiper-slide .swiper-a {
+    height: 320px; } }
+
 @media (max-width: 1024px) {
   .swiper .swiper-slide {
     grid-template-areas: "a a" "b c";
-    grid-template-columns: 50% 50%; } }
+    grid-template-columns: 50% 50%; }
+    .swiper .swiper-slide .swiper-c {
+      margin: 0 0 0 10px; }
+    .swiper .swiper-slide .swiper-a {
+      margin: 0; }
+    .swiper .swiper-slide .swiper-c, .swiper .swiper-slide .swiper-b {
+      margin-top: 10px; }
+  .mobile {
+    display: none; } }

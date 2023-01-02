@@ -18,7 +18,6 @@ register_nav_menus( [ 'top-leval' => '顶部导航' ] );
  * 关闭登陆后前台显示工具栏
  * */
 show_admin_bar( false );
-
 /*
  * 主题功能
  * */

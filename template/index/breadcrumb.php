@@ -39,11 +39,11 @@ if ( nicen_theme_showBread() ) {
         现在位置: <a href="/" title="首页">首页</a>
 		<?php if ( ! $no_category ) { ?>
             /
-            <a href="<?= $link ?>" title=" <?= $category; ?>"> <?= $category; ?></a>
+            <a href="<?php echo $link ?>" title=" <?php echo $category; ?>"> <?php echo $category; ?></a>
 		<?php }
 		if ( ! $no_tag ) { ?>
             /
-            <a href="<?= $linkTag ?>" title=" <?= $tags; ?>"> <?= $tags; ?></a>
+            <a href="<?php echo $linkTag ?>" title=" <?php echo $tags; ?>"> <?php echo $tags; ?></a>
 		<?php } ?>
         / 正文
     </div>

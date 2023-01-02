@@ -39,9 +39,8 @@ function nicen_theme_load_source() {
 			wp_enqueue_script( 'main-monitor', $url . '/common/inline/monitor.js', array(), filemtime( $root . '/common/inline/monitor.js' ), false );
 		}
 	}
-	if ( is_singular() ) {
-		wp_enqueue_script( 'main-emoji', $url . '/common/inline/emoji.js', array(), filemtime( $root . '/common/inline/emoji.js' ), false );
-	}
+
+
 	if ( is_home() ) {
 		if ( nicen_theme_config( "document_show_left_nav", false ) ) {
 			wp_enqueue_script( 'main-monitor', $url . '/common/inline/monitor.js', array(), filemtime( $root . '/common/inline/monitor.js' ), false );
@@ -86,12 +85,17 @@ function nicen_theme_load_source() {
 	 * 文章ID
 	 * */
 	if ( is_singular() ) {
+
+		wp_enqueue_script( 'main-emoji', $url . '/common/inline/emoji.js', array(), filemtime( $root . '/common/inline/emoji.js' ), false );
+
 		/*
 		 * 内联的js
 		 * */
 		wp_add_inline_script( "main-sub", preg_replace( '/\s/', '', vsprintf( '
 			window.Current = "%s";'
 			, [ get_the_ID() ] ) ), 'before' );
+	} else {
+		wp_enqueue_script( 'main-index', $url . '/common/inline/index.js', array( 'main' ), filemtime( $root . '/common/inline/index.js' ), false );
 	}
 
 	/*

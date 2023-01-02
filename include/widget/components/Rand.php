@@ -17,8 +17,8 @@
 class Rand extends WP_Widget {
 	/** 构造函数 */
 	function __construct() {
-		parent::__construct( false, $name = '主题小工具【随机文章】', [
-			"description" => "显示指定类型的随机文章"
+		parent::__construct( false, $name = '主题小工具【文章列表】', [
+			"description" => "显示指定类型的文章列表"
 		] );
 	}
 
@@ -89,7 +89,8 @@ class Rand extends WP_Widget {
 			[
 				'1' => '最新文章',
 				'2' => '最近更新',
-				'3' => '随机文章'
+				'3' => '随机文章',
+				'4' => '热门文章'
 			]
 		);
 

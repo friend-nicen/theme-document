@@ -20,7 +20,7 @@ if ( post_password_required() ) {
 	?>
     <main class="main-container">
         <!--  侧边目录  -->
-	    <?php get_template_part( './template/index/sidebar-left' ); ?>
+		<?php get_template_part( './template/index/sidebar-left' ); ?>
         <!--  文章  -->
         <div class="main-main">
             <article class="main-content">
@@ -30,7 +30,7 @@ if ( post_password_required() ) {
 				<?php get_template_part( './template/index/article-header' ); ?>
                 <!--  文章内容  -->
                 <div class="main-article">
-					<?= the_content() ?>
+					<?php echo the_content(); ?>
                 </div>
                 <!-- 文章底部 -->
 				<?php get_template_part( './template/index/article-footer' ); ?>

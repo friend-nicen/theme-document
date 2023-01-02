@@ -77,25 +77,34 @@ if ( isset( $_GET['submit'] ) ) {
 
 	$site_url = site_url();//获取站点url
 
-	$api     = 'http://data.zz.baidu.com/urls?site=' . $site_url . '&token=' . $token;
-	$ch      = curl_init();
-	$options = array(
-		CURLOPT_URL            => $api,
-		CURLOPT_POST           => true,
-		CURLOPT_RETURNTRANSFER => true,
-		CURLOPT_POSTFIELDS     => implode( "\n", nicen_theme_getLinks() ),
-		CURLOPT_HTTPHEADER     => array( 'Content-Type: text/plain' ),
-	);
+	$api = 'http://data.zz.baidu.com/urls?site=' . $site_url . '&token=' . $token;
 
-	curl_setopt_array( $ch, $options );
-	$result = curl_exec( $ch );
+
+	/*
+ * 请求头模拟
+ * */
+	$headers = [
+		'User-Agent'   => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36',
+		'Content-Type' => 'text/plain'
+	];
+
+	/*
+	 * 请求数据
+	 * */
+	$res = wp_remote_post( $api, [
+		'body'      => implode( "\n", nicen_theme_getLinks() ),
+		'headers'   => $headers,
+		'sslverify' => false,
+		'timeout'   => 120,
+	] );
+
 
 	/*
 	 * 输出推送结果
 	 * */
 	exit( json_encode( [
 		'code'   => 0,
-		'result' => "$result"
+		'result' => wp_remote_retrieve_body( $res )
 	] ) );
 }
 
@@ -126,7 +135,6 @@ if ( isset( $_GET['sitemap'] ) ) {
 		] ) );
 	}
 }
-
 
 
 /*

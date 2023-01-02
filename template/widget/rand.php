@@ -5,10 +5,10 @@
  * @author 友人a丶
  * @date 2022-07-08
  * */
-
+global $table_prefix, $wpdb;
 ?>
 
-<div class="div-info <?php echo $show?'recent':''; ?>">
+<div class="div-info <?php echo $show ? 'recent' : ''; ?>">
     <div class="header">
         <ul>
             <li class="active"><?php echo $title; ?></li>
@@ -18,27 +18,45 @@
     <ul class="ul">
 
 		<?php
-        /*
-         * 判断显示类型
-         * */
-        switch (intval($type)){
-            case 1:
-	            query_posts( "showposts=" . $number );
-                break;
-	        case 2:
-		        query_posts("showposts=".$number."&orderby=modified");
-		        break;
-	        case 3:
-		        query_posts("posts_per_page=".$number."&orderby=rand");
-		        break;
-            default:
-	            query_posts( "showposts=" . $number );
-                break;
-        }
+		/*
+		 * 判断显示类型
+		 * */
+		switch ( intval( $type ) ) {
+			case 1:
+				query_posts( "showposts=" . $number );
+				break;
+			case 2:
+				query_posts( "showposts=" . $number . "&orderby=modified" );
+				break;
+			case 3:
+				query_posts( "posts_per_page=" . $number . "&orderby=rand" );
+				break;
+			case 4:
 
-        /*
-         * 递归显示文章
-         * */
+				/*
+				 * 获取浏览量最高的文章
+				 * */
+				$sql    = 'select `post_id`,`meta_value` from `' . $table_prefix . 'postmeta` where `meta_key` = "post_views_count" order by `meta_value`+0 DESC limit ' . $number;
+				$result = $wpdb->get_results( $sql, ARRAY_A );
+
+
+				$post_ids = array_map( fn( $item ) => $item['post_id'], $result );
+
+
+				query_posts( [
+						"post__in"  => $post_ids,
+						'showposts' => $number
+					]
+				);
+				break;
+			default:
+				query_posts( "showposts=" . $number );
+				break;
+		}
+
+		/*
+		 * 递归显示文章
+		 * */
 		while ( have_posts() ) {
 			the_post();//移动文字指定到此处
 
@@ -53,7 +71,7 @@
                         ' . get_the_title() . '
                         </div> 
                         <div class="datetime">
-                        ' . nicen_theme_timeToString(get_the_time( "Y-m-d H:i:s" )) . '
+                        ' . nicen_theme_timeToString( get_the_time( "Y-m-d H:i:s" ) ) . '
                         </div> 
                     </div>
                 </a>

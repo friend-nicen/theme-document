@@ -51,7 +51,7 @@ if ( nicen_theme_showComments() ) {
                     <!--评论者信息-->
                     <div class="comment-person">
                         <div class="comment-avatar">
-                            <img src="<?= $avatar ?>" alt="默认头像" title="默认头像"/>
+                            <img src="<?php echo $avatar ?>" alt="默认头像" title="默认头像"/>
                         </div>
                         <div class="comment-info">
                             <div class="comment-info-top"><?php echo $isLogin ? $nickname : '恨相知晚'; ?></div>
@@ -70,7 +70,8 @@ if ( nicen_theme_showComments() ) {
 					<?php wp_nonce_field( 'unfiltered-html-comment_' . get_the_ID(), '_wp_unfiltered_html_comment', false ); ?>
                     <input type="hidden" name="comment_parent"
                            value=" <?php echo $reply_to_id ? $comment->comment_ID : ''; ?>">
-                    <input type="hidden" name="comment_post_ID" value="<?= get_the_ID(); ?>" id="comment_post_ID">
+                    <input type="hidden" name="comment_post_ID" value="<?php echo get_the_ID(); ?>"
+                           id="comment_post_ID">
                     <div class="comment-textarea">
                         <textarea id="comment_content" name="comment" maxlength="65525"
                                   placeholder="三言两语,安慰自己,冷言冷语,坚持自己" rows="5"
@@ -84,11 +85,13 @@ if ( nicen_theme_showComments() ) {
 
                     <div class="comment-container">
                         <input placeholder="昵称" name="author" type="text" class="comment-name"
-                               value="<?= $nickname ?>"
+                               value="<?php echo $nickname ?>"
                                required/>
-                        <input placeholder="邮箱" name="email" type="email" class="comment-mail" value="<?= $email ?>"
+                        <input placeholder="邮箱" name="email" type="email" class="comment-mail"
+                               value="<?php echo $email ?>"
                                required/>
-                        <input placeholder="网址" name="url" type="url" class="comment-url" value="<?= $webUrl ?>"
+                        <input placeholder="网址" name="url" type="url" class="comment-url"
+                               value="<?php echo $webUrl ?>"
                                required/>
                     </div>
                 </div>

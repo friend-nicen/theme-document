@@ -28,8 +28,9 @@ function nicen_theme_replace_https_avatar($avatar)
  * 替换Gravatar镜像站地址
  * */
 add_filter('get_avatar', 'nicen_theme_replace_https_avatar');
-add_filter('get_avatar_url', 'nicen_theme_replace_https_avatar');
-
+add_filter( 'um_user_avatar_url_filter', 'nicen_theme_replace_https_avatar', 1 );
+add_filter( 'bp_gravatar_url', 'nicen_theme_replace_https_avatar', 1 );
+add_filter( 'get_avatar_url', 'nicen_theme_replace_https_avatar', 1 );
 
 /*
  * 修改文字摘要字数

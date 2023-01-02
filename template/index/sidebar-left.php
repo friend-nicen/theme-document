@@ -28,17 +28,17 @@ if ( nicen_theme_showCatelog() ) {
                     <div class="line"></div>
                     <!--文章导航-->
                     <ul>
-						<?= $catelog; ?>
+						<?php echo $catelog; ?>
                     </ul>
                 </div>
 
                 <div class="icp-beian">
                     <div>
-                        <span class="number"><?= nicen_theme_getPostNice( get_the_ID() ); ?></span>
+                        <span class="number"><?php echo nicen_theme_getPostNice( get_the_ID() ); ?></span>
                         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/zan.svg" title="点赞"/>
                     </div>
                     <div>
-                        <span class="number"><?= nicen_theme_getPostBad( get_the_ID() ); ?></span>
+                        <span class="number"><?php echo nicen_theme_getPostBad( get_the_ID() ); ?></span>
                         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/cai.svg" title="踩"/>
                     </div>
                 </div>

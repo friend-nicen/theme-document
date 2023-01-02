@@ -33,8 +33,8 @@ function widget_select( $that, $instance, $args, $options, $isArray = false ) {
 		<?php
 		foreach ( $options as $key => $value ) {
 			?>
-            <option value="<?= $key; ?>" <?php echo ( $isArray ? $value[ $args['index'] ] : $current ) == $key ? "selected" : ""; ?>>
-				<?= $value; ?>
+            <option value="<?php echo $key; ?>" <?php echo ( $isArray ? $value[ $args['index'] ] : $current ) == $key ? "selected" : ""; ?>>
+				<?php echo $value; ?>
             </option>
 		<?php } ?>
     </select>

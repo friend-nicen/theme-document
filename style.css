@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*
 Theme Name: Document
-Theme URI: https://nicen.cn
+Theme URI: https://nicen.cn/1552.html
 Author: 友人a丶
 Author URI: https://nicen.cn
 Description: 一个基于文档类型的博客主题，更加方便的记录、查询学习笔记
@@ -621,8 +621,7 @@ html {
       html body .main-container #fixed {
         min-width: 16.6rem;
         padding: 0;
-        margin: 0;
-        margin-left: 1rem;
+        margin: 0 0 0 1rem;
         height: fit-content; }
         html body .main-container #fixed .main-right {
           flex-shrink: 0;
@@ -760,7 +759,7 @@ html {
           background-color: var(--theme-front-main-color);
           min-height: 50vh;
           height: fit-content;
-          max-height: calc(100vh - 60px - 2.6rem);
+          max-height: calc(100vh - 60px - 2rem);
           margin: 0 1rem 0 0;
           flex-shrink: 0;
           min-width: 16.6rem;
@@ -1116,7 +1115,7 @@ html {
             border-bottom: 1px solid #e1e1e1;
             font-size: var(--theme-text-mini);
             color: var(--theme-text-secondary);
-            padding: 0rem 0 0.9rem 0; }
+            padding: 0 0 0.9rem 0; }
             html body .main-container .main-main .main-content .breadcrumb a {
               color: inherit;
               font-size: inherit; }
@@ -1160,10 +1159,21 @@ html {
             html body .main-container .main-main .main-content .main-article h2 {
               display: flex;
               justify-content: flex-start;
-              text-align: center;
+              align-items: center;
               padding: 0 0 0.25rem 0;
               border-bottom: 1px solid #e1e1e1;
-              font-weight: normal; }
+              font-weight: normal;
+              vertical-align: middle; }
+              html body .main-container .main-main .main-content .main-article h2:before {
+                display: block;
+                content: " ";
+                font-weight: 510;
+                border-radius: 5px;
+                width: 3px;
+                margin-top: 0.1rem;
+                height: 1rem;
+                margin-right: 0.6rem;
+                background-color: var(--theme-color); }
             html body .main-container .main-main .main-content .main-article h2，h3, html body .main-container .main-main .main-content .main-article h4 {
               position: relative;
               cursor: pointer; }
@@ -1776,10 +1786,10 @@ html {
           padding: 0 0 1.05rem 0; }
           html body .index .main-main .main-content .i-article:first-of-type {
             margin-top: 0.85rem; }
-          html body .index .main-main .main-content .i-article .i-article-left {
+          html body .index .main-main .main-content .i-article .i-article-summary {
             width: 100%;
             overflow: hidden; }
-            html body .index .main-main .main-content .i-article .i-article-left .i-article-title {
+            html body .index .main-main .main-content .i-article .i-article-summary .i-article-title {
               display: -webkit-box;
               -webkit-line-clamp: 2;
               -webkit-box-orient: vertical;
@@ -1789,12 +1799,12 @@ html {
               line-height: 1.55;
               color: inherit;
               text-overflow: ellipsis; }
-              html body .index .main-main .main-content .i-article .i-article-left .i-article-title a {
+              html body .index .main-main .main-content .i-article .i-article-summary .i-article-title a {
                 text-decoration: none;
                 font-size: inherit; }
-                html body .index .main-main .main-content .i-article .i-article-left .i-article-title a:hover {
+                html body .index .main-main .main-content .i-article .i-article-summary .i-article-title a:hover {
                   color: var(--theme-color); }
-            html body .index .main-main .main-content .i-article .i-article-left .i-article-excerpt {
+            html body .index .main-main .main-content .i-article .i-article-summary .i-article-excerpt {
               font-size: 0.80rem;
               color: var(--theme-text-secondary);
               margin: 0.6rem 0 1rem 0;
@@ -1802,32 +1812,37 @@ html {
               -webkit-line-clamp: 2;
               -webkit-box-orient: vertical;
               overflow: hidden;
-              text-overflow: ellipsis; }
-            html body .index .main-main .main-content .i-article .i-article-left .i-article-info {
+              text-overflow: ellipsis;
+              min-height: 2.5rem; }
+            html body .index .main-main .main-content .i-article .i-article-summary .i-article-info {
               margin-top: 0.6rem;
               font-size: 0.8rem;
               color: var(--theme-text-secondary);
               display: flex;
               justify-content: space-between; }
-              html body .index .main-main .main-content .i-article .i-article-left .i-article-info ul {
+              html body .index .main-main .main-content .i-article .i-article-summary .i-article-info ul {
                 list-style: none;
                 margin: 0;
                 white-space: nowrap;
                 padding: 0; }
-                html body .index .main-main .main-content .i-article .i-article-left .i-article-info ul .category {
+                html body .index .main-main .main-content .i-article .i-article-summary .i-article-info ul .category {
                   position: absolute;
                   top: 0.9rem;
                   right: 0.3rem;
+                  z-index: 99;
                   color: white;
                   padding: 0 0.5rem;
                   border-radius: 5px;
                   background-color: rgba(0, 0, 0, 0.6);
                   border-right: none; }
-                  html body .index .main-main .main-content .i-article .i-article-left .i-article-info ul .category:hover {
+                  html body .index .main-main .main-content .i-article .i-article-summary .i-article-info ul .category:hover {
                     color: white;
                     transform: scale(1);
                     background-color: var(--theme-color); }
-                html body .index .main-main .main-content .i-article .i-article-left .i-article-info ul li {
+                html body .index .main-main .main-content .i-article .i-article-summary .i-article-info ul .category-left {
+                  right: unset;
+                  left: 0.3rem; }
+                html body .index .main-main .main-content .i-article .i-article-summary .i-article-info ul li {
                   padding: 0 0.45rem;
                   border-right: 1px solid #e1e1e1;
                   cursor: pointer;
@@ -1835,21 +1850,21 @@ html {
                   white-space: nowrap;
                   font-size: var(--theme-text-mini);
                   color: var(--theme-text-mini-color); }
-                  html body .index .main-main .main-content .i-article .i-article-left .i-article-info ul li a {
+                  html body .index .main-main .main-content .i-article .i-article-summary .i-article-info ul li a {
                     color: inherit;
                     font-size: inherit; }
-                  html body .index .main-main .main-content .i-article .i-article-left .i-article-info ul li.first {
+                  html body .index .main-main .main-content .i-article .i-article-summary .i-article-info ul li.first {
                     padding: 0 0.45rem 0 0; }
-                  html body .index .main-main .main-content .i-article .i-article-left .i-article-info ul li:hover {
+                  html body .index .main-main .main-content .i-article .i-article-summary .i-article-info ul li:hover {
                     color: var(--theme-text-color);
                     transform: scale(1.1); }
-                    html body .index .main-main .main-content .i-article .i-article-left .i-article-info ul li:hover .iconfont {
+                    html body .index .main-main .main-content .i-article .i-article-summary .i-article-info ul li:hover .iconfont {
                       color: var(--theme-text-color); }
-                  html body .index .main-main .main-content .i-article .i-article-left .i-article-info ul li .iconfont {
+                  html body .index .main-main .main-content .i-article .i-article-summary .i-article-info ul li .iconfont {
                     font-size: var(--theme-text-mini);
                     color: var(--theme-text-mini-color);
                     margin-right: 0.24rem; }
-          html body .index .main-main .main-content .i-article .i-article-right {
+          html body .index .main-main .main-content .i-article .i-article-thumb {
             width: 24%;
             flex-shrink: 0;
             margin-left: 1.5rem;
@@ -1858,19 +1873,25 @@ html {
             display: flex;
             align-items: center;
             border-radius: 10px; }
-            html body .index .main-main .main-content .i-article .i-article-right a {
+            html body .index .main-main .main-content .i-article .i-article-thumb a {
               display: flex;
               overflow: hidden;
+              border-radius: 10px;
               height: 94%;
               width: 100%; }
-              html body .index .main-main .main-content .i-article .i-article-right a img {
+              html body .index .main-main .main-content .i-article .i-article-thumb a img {
                 width: 100%;
                 height: 100%;
                 max-height: 140px;
                 margin: 0;
+                border-radius: 10px;
                 transition: all;
-                transition-duration: 0.3s;
-                border-radius: 10px; }
+                transition-duration: 0.5s; }
+                html body .index .main-main .main-content .i-article .i-article-thumb a img:hover {
+                  transform: scale(1.35); }
+          html body .index .main-main .main-content .i-article .i-article-left {
+            margin: 0 1.5rem 0 0;
+            order: 1; }
       html body .index .main-main .nopage .i-article:last-of-type {
         margin-bottom: 0.5rem;
         border-bottom: none; }
@@ -1923,10 +1944,11 @@ html {
           /*border: 1px solid #f3f3f3;*/
           margin: 0;
           padding: 0 0.2rem;
-          width: 100%; }
-          html body .main-header .right .menu-left:hover {
-            box-shadow: 0 0 5px 2px var(--theme-color-20);
-            border-color: var(--theme-color); }
+          width: 100%;
+          /*&:hover{
+              box-shadow: 0 0 5px 2px var(--theme-color-20);
+              border-color: var(--theme-color);
+            }*/ }
           html body .main-header .right .menu-left .search-div {
             display: flex;
             width: 100%; }
@@ -2090,35 +2112,35 @@ html {
         padding: 1rem 0.9rem 0 0.9rem; }
         html body .index .main-main .main-content .i-article:first-of-type {
           margin-top: 1rem; }
-        html body .index .main-main .main-content .i-article .i-article-right {
+        html body .index .main-main .main-content .i-article .i-article-thumb {
           margin-left: 0.8rem;
           /*
               缩略图最小高度
             */ }
-          html body .index .main-main .main-content .i-article .i-article-right a {
+          html body .index .main-main .main-content .i-article .i-article-thumb a {
             display: flex;
             align-items: flex-start; }
-            html body .index .main-main .main-content .i-article .i-article-right a img {
+            html body .index .main-main .main-content .i-article .i-article-thumb a img {
               min-height: 64px;
               height: 60%; }
-        html body .index .main-main .main-content .i-article .i-article-left {
+        html body .index .main-main .main-content .i-article .i-article-summary {
           display: flex;
           flex-direction: column;
           justify-content: space-between; }
-          html body .index .main-main .main-content .i-article .i-article-left .i-article-title {
+          html body .index .main-main .main-content .i-article .i-article-summary .i-article-title {
             font-size: var(--theme-text); }
-            html body .index .main-main .main-content .i-article .i-article-left .i-article-title a {
+            html body .index .main-main .main-content .i-article .i-article-summary .i-article-title a {
               display: -webkit-box;
               -webkit-line-clamp: 2;
               -webkit-box-orient: vertical;
               overflow: hidden;
               text-overflow: ellipsis;
               line-height: 1.55; }
-          html body .index .main-main .main-content .i-article .i-article-left .i-article-excerpt {
+          html body .index .main-main .main-content .i-article .i-article-summary .i-article-excerpt {
             display: none; }
-          html body .index .main-main .main-content .i-article .i-article-left .i-article-info ul li {
+          html body .index .main-main .main-content .i-article .i-article-summary .i-article-info ul li {
             font-size: var(--theme-text-mini); }
-          html body .index .main-main .main-content .i-article .i-article-left .i-article-info .category {
+          html body .index .main-main .main-content .i-article .i-article-summary .i-article-info .category {
             display: none; }
       html body .index .main-main .hasDynamic {
         padding-top: 0; }
