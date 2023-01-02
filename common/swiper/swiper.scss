@@ -3,34 +3,36 @@
   width: 100%;
   margin-bottom: 1.2rem;
 
-  .swiper-slide{
+  .swiper-slide {
     display: grid;
-    grid-template-columns: 60% 40%;
+    grid-template-columns: 73% 27%;
     grid-template-areas: "a b"
                          "a c";
 
-    .swiper-item{
-      height: 160px;
+    .swiper-item {
+      height: 175px;
       position: relative;
       overflow: hidden;
+      border-radius: 8px;
 
-      &:hover{
+      &:hover {
         img {
           transform: scale(1.3);
         }
       }
 
-      img{
+      img {
         width: 100%;
         height: 100%;
         cursor: pointer;
-        transition:all 0.3s;
+        border-radius: 8px;
+        transition: all 0.3s;
       }
 
       /*
         所属目录
       */
-      .modal{
+      .modal {
 
         position: absolute;
         left: 0;
@@ -49,27 +51,29 @@
         text-decoration: none;
 
 
-        *{
-          color:white;
+        * {
+          color: white;
           font-size: var(--theme-text-mini);
         }
 
-        .bottom{
+        .bottom {
           width: 100%;
           display: flex;
           flex-wrap: wrap;
           justify-content: space-between;
 
-          padding: 0.6rem 0.8rem;
+          padding: 0.6rem 0.8rem 1.2rem;
 
-          .title{
+          .title {
             width: 100%;
+            font-size: var(--theme-header-size);
+            margin-bottom: 10px;
           }
 
         }
 
 
-        .category{
+        .category {
           width: fit-content;
           padding: 0 0.5rem;
           margin: 0.45rem 0.35rem;
@@ -84,21 +88,41 @@
         }
 
 
-
-
       }
     }
 
-    .swiper-a{
+    .swiper-a {
       grid-area: a;
       height: inherit;
-      max-height: 320px;
+      height: 360px;
+      margin-right: 10px;
     }
-    .swiper-b{
+
+    .swiper-b {
       grid-area: b;
+
+      .modal .bottom {
+        padding: 0.6rem 0.8rem 0.5rem;
+
+        .title {
+          margin-bottom: 5px;
+          font-size: var(--theme-text);
+        }
+      }
     }
-    .swiper-c{
+
+    .swiper-c {
+      margin-top: 10px;
       grid-area: c;
+
+      .modal .bottom {
+        padding: 0.6rem 0.8rem 0.5rem;
+
+        .title {
+          margin-bottom: 5px;
+          font-size: var(--theme-text);
+        }
+      }
     }
 
   }
@@ -111,13 +135,48 @@
   ##平板电脑/Ipad竖屏
   ##768px - 1024px
 */
+
+@media (min-width: 1024px) and (max-width: 1580px) {
+
+  .swiper {
+
+    .swiper-slide {
+      .swiper-item {
+        height: 155px;
+      }
+
+      .swiper-a {
+        height: 320px;
+      }
+
+    }
+  }
+}
+
 @media (max-width: 1024px) {
   .swiper {
     .swiper-slide {
       grid-template-areas: "a a"
                            "b c";
-      grid-template-columns: 50% 50% ;
+      grid-template-columns: 50% 50%;
+
+      .swiper-c {
+        margin: 0 0 0 10px;
+      }
+
+      .swiper-a {
+        margin: 0;
+      }
+
+      .swiper-c, .swiper-b {
+        margin-top: 10px;
+      }
     }
   }
+
+  .mobile {
+    display: none;
+  }
+
 
 }

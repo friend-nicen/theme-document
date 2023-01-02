@@ -8,7 +8,7 @@
 $default = get_template_directory_uri() . "/assets/images/default.png";
 
 ?>
-<div class="swiper mySwiper">
+<div class="swiper mySwiper <?php echo $show_in_mobile ? '' : 'mobile'; ?>">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
 			<?php
@@ -23,17 +23,26 @@ $default = get_template_directory_uri() . "/assets/images/default.png";
 						$class = "swiper-b";
 						break;
 					case 2:
-						$class = "swiper-n";
+						$class = "swiper-c";
 						break;
 				}
 				?>
                 <div class="swiper-item <?php echo $class; ?>">
-                    <a href="<?php echo $link[ $i ]; ?>" class="modal">
+                    <a href="<?php echo $link[ $i ]; ?>" title="<?php echo $title[ $i ]; ?>" target="_blank"
+                       class="modal">
                         <span class="category"><?php echo $category[ $i ]; ?></span>
                         <div class="bottom">
                             <div class="title"><?php echo $title[ $i ]; ?></div>
-                            <span><?php echo $datetime[ $i ]; ?></span>
-                            <span><i class="iconfont icon-icon-test"></i><?php echo $number[ $i ]; ?></span>
+
+							<?php
+							if ( ! empty( $datetime[ $i ] ) ) {
+								echo ' <span>' . $datetime[ $i ] . '</span>';
+							}
+							if ( ! empty( $number[ $i ] ) ) {
+								echo ' <span><i class="iconfont icon-icon-test"></i>' . $number[ $i ] . '</span>';
+							}
+							?>
+
                         </div>
                     </a>
                     <img src="<?php echo empty( $thumbnail[ $i ] ) ? $default : $thumbnail[ $i ]; ?>"/>

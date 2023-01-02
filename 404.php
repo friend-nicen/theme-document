@@ -25,14 +25,14 @@ $page_css = $url . '/common/404/404.css';
           content="width=device-width, user-scalable=no, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
     <meta name="keywords" content="404">
     <meta name="description" content="404">
-    <link href="<?= $url; ?>/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
-    <link rel='stylesheet' href='<?= $page_css; ?>' type='text/css'/>
+    <link href="<?php echo $url; ?>/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+    <link rel='stylesheet' href='<?php echo $page_css; ?>' type='text/css'/>
 
 </head>
 <body>
 <div class="joe_page_404">
     <div class="error">
-        <img src="<?= $page_404; ?>" alt="404">
+        <img src="<?php echo $page_404; ?>" alt="404">
         <h3 class="title">“未找到您要的资源”</h3>
         <a href="/" class="error_link">回到主页</a>
     </div>

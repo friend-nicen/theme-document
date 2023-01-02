@@ -388,8 +388,7 @@ html {
       #fixed {
         min-width: 16.6rem;
         padding: 0;
-        margin: 0;
-        margin-left: 1rem;
+        margin: 0 0 0 1rem;
         height: fit-content;
 
 
@@ -599,7 +598,7 @@ html {
           background-color: var(--theme-front-main-color);
           min-height: 50vh;
           height: fit-content;
-          max-height: calc(100vh - 60px - 2.6rem);
+          max-height: calc(100vh - 60px - 2rem);
           margin: 0 1rem 0 0;
           flex-shrink: 0;
           min-width: 16.6rem;
@@ -1126,7 +1125,7 @@ html {
             border-bottom: 1px solid #e1e1e1;
             font-size: var(--theme-text-mini);
             color: var(--theme-text-secondary);
-            padding: 0rem 0 0.9rem 0;
+            padding: 0 0 0.9rem 0;
 
             a {
               color: inherit;
@@ -1190,10 +1189,23 @@ html {
             h2 {
               display: flex;
               justify-content: flex-start;
-              text-align: center;
+              align-items: center;
               padding: 0 0 0.25rem 0;
               border-bottom: 1px solid #e1e1e1;
               font-weight: normal;
+              vertical-align: middle;
+
+              &:before {
+                display: block;
+                content: " ";
+                font-weight: 510;
+                border-radius: 5px;
+                width: 3px;
+                margin-top: 0.1rem;
+                height: 1rem;
+                margin-right: 0.6rem;
+                background-color: var(--theme-color);
+              }
             }
 
             h2，h3, h4 {
@@ -2150,7 +2162,7 @@ html {
             }
 
 
-            .i-article-left {
+            .i-article-summary {
               width: 100%;
               overflow: hidden;
 
@@ -2186,7 +2198,7 @@ html {
                 -webkit-box-orient: vertical;
                 overflow: hidden;
                 text-overflow: ellipsis;
-
+                min-height: 2.5rem;
               }
 
               .i-article-info {
@@ -2207,6 +2219,7 @@ html {
                     position: absolute;
                     top: 0.9rem;
                     right: 0.3rem;
+                    z-index: 99;
                     color: white;
                     padding: 0 0.5rem;
                     border-radius: 5px;
@@ -2218,6 +2231,11 @@ html {
                       transform: scale(1);
                       background-color: var(--theme-color);
                     }
+                  }
+
+                  .category-left {
+                    right: unset;
+                    left: 0.3rem;
                   }
 
 
@@ -2258,7 +2276,7 @@ html {
               }
             }
 
-            .i-article-right {
+            .i-article-thumb {
               width: 24%;
               flex-shrink: 0;
               margin-left: 1.5rem;
@@ -2271,7 +2289,7 @@ html {
               a {
                 display: flex;
                 overflow: hidden;
-
+                border-radius: 10px;
                 height: 94%;
                 width: 100%;
 
@@ -2281,13 +2299,22 @@ html {
                   height: 100%;
                   max-height: 140px;
                   margin: 0;
-                  transition: all;
-                  transition-duration: 0.3s;
-
                   border-radius: 10px;
+                  transition: all;
+                  transition-duration: 0.5s;
+
+                  &:hover {
+                    transform: scale(1.35);
+                  }
+
                 }
               }
 
+            }
+
+            .i-article-left {
+              margin: 0 1.5rem 0 0;
+              order: 1;
             }
           }
         }

@@ -28,9 +28,21 @@ function nicen_theme_add_sidebar() {
 	 * 注册部件位置
 	 * */
 	register_sidebar( array(
-		'name'         => '右侧边栏',
-		'id'           => 'sidebar',
-		'description'  => '站点侧边栏区域',
+		'name'         => '首页侧边栏',
+		'id'           => 'index_sidebar',
+		'description'  => '首页、栏目、标签页面的侧边栏区域',
+		'before_title' => '<h2>',
+		'after_title'  => '</h2>',
+	) );
+
+
+	/*
+	 * 注册部件位置
+	 * */
+	register_sidebar( array(
+		'name'         => '内容页右侧边栏',
+		'id'           => 'content_sidebar',
+		'description'  => '文章、页面的右侧边栏区域',
 		'before_title' => '<h2>',
 		'after_title'  => '</h2>',
 	) );

@@ -294,29 +294,29 @@ jQuery(function () {
     /*
     * 需要处理的数据
     * */
-    THEME_CONFIG.document_dynamic_list = THEME_CONFIG.document_dynamic_list?
+    THEME_CONFIG.document_dynamic_list = THEME_CONFIG.document_dynamic_list ?
         THEME_CONFIG.document_dynamic_list.split(',')
-        .filter((item)=>{
-            if(item){
-                return true;
-            }
-        }) .map((item) => {
+            .filter((item) => {
+                if (item) {
+                    return true;
+                }
+            }).map((item) => {
             return parseInt(item);
-        }):[];
+        }) : [];
 
 
     /*
     * 需要处理的数据
     * */
-    THEME_CONFIG.document_no_display = THEME_CONFIG.document_no_display?
+    THEME_CONFIG.document_no_display = THEME_CONFIG.document_no_display ?
         THEME_CONFIG.document_no_display.split(',')
-            .filter((item)=>{
-                if(item){
+            .filter((item) => {
+                if (item) {
                     return true;
                 }
-            }) .map((item) => {
+            }).map((item) => {
             return parseInt(item);
-        }):[];
+        }) : [];
 
 
     let vm = new Vue({
@@ -329,24 +329,39 @@ jQuery(function () {
             return {
                 data: THEME_CONFIG,
                 activeKey: tab,
-                loading:false,
-                resuming:false,
-                zhCN:zhCN,
-                version:""
+                loading: false,
+                resuming: false,
+                zhCN: zhCN,
+                version: "",
+                /* 媒体选择 */
+                media: null,
+                depend: null
             };
         },
         methods: {
+            /* 保存设置 */
             save() {
-                this.loading=true;
+                this.loading = true;
                 this.$refs['submit'].$el.submit();
             },
+            /* 显示媒体选择 */
+            showMedia(key) {
+                this.depend = key;
+                this.media.open();
+            },
+            /* 媒体库选择素材 */
+            selectMedia() {
+                const image = this.media.state().get('selection').toJSON()[0].url;
+                this.data[this.depend] = image; //更新数据
+            },
+            /* 恢复默认设置 */
             resume() {
-                let that=this;
+                let that = this;
                 load.confirm("确定要恢复主题的默认配置吗？", () => {
                     load.loading('正在恢复');
-                    that.resuming=true;
-
-                    axios.get('/?default=1&private='+that.data.document_private)
+                    that.resuming = true;
+                    /* 发起请求 */
+                    axios.get('/?default=1&private=' + that.data.document_private)
                         .then((res) => {
                             message.info(res.data.result);
                             location.reload();
@@ -358,9 +373,11 @@ jQuery(function () {
                 })
 
             },
+            /* 切换Tab */
             change(res) {
                 localStorage.setItem('nicen_theme_theme_tab', res);
             },
+            /* switch切换 */
             hasChange(res, events, field) {
                 if (res) {
                     this.data[field] = 1;
@@ -372,10 +389,10 @@ jQuery(function () {
             * 提交链接到百度
             * */
             postLink() {
-                let that=this;
+                let that = this;
                 load.confirm("确定提交站点所有URL到百度站长平台吗？", () => {
                     load.loading('正在提交');
-                    axios.get('/?submit=1&private='+that.data.document_private)
+                    axios.get('/?submit=1&private=' + that.data.document_private)
                         .then((res) => {
                             message.info(res.data.result);
                         }).catch((e) => {
@@ -389,10 +406,10 @@ jQuery(function () {
               * 生成站点地图
               * */
             sitemap() {
-                let that=this;
+                let that = this;
                 load.confirm("确定生成TXT站点地图？", () => {
                     load.loading('正在生成');
-                    axios.get('/?sitemap=1&private='+that.data.document_private)
+                    axios.get('/?sitemap=1&private=' + that.data.document_private)
                         .then((res) => {
                             message.info(res.data.result);
                         }).catch((e) => {
@@ -405,8 +422,8 @@ jQuery(function () {
             /*
             * 查看站点地图
             * */
-            lookSitemap(){
-                window.open('/sitemap.txt','_blank');
+            lookSitemap() {
+                window.open('/sitemap.txt', '_blank');
             }
         },
         created() {
@@ -417,7 +434,24 @@ jQuery(function () {
                     if (res.data.code) {
                         that.version = res.data.data.latest;
                     }
-                })
+                });
+
+            /* 加载媒体库 */
+            that.media = wp.media({
+                title: '选择或上传图片', // 窗口标题
+                button: {
+                    text: '选择', // 选择按钮文字
+                },
+                editable: true,
+                allowLocalEdits: true,
+                displaySettings: true,
+                displayUserSettings: true,
+                multiple: false // 是否允许多选
+            });
+
+            /* 媒体选择 */
+            that.media.on("select", that.selectMedia);
+
         }
     });
 });

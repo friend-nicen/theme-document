@@ -18,7 +18,7 @@ query_posts( "nopaging=true&posts_per_page=-1&orderby=modified" );//查询所有
 						the_post();//移动文字指定到此处 ?>
                         <li>
                             <a href="<?php the_permalink() ?>" title="<?php the_title() ?>">
-                                <div class="datetime"><?= the_time( "Y-m-d" ); ?></div>
+                                <div class="datetime"><?php echo the_time( "Y-m-d" ); ?></div>
                                 <div class="info">
                                     <div class="title">
 										<?php the_title() ?>
