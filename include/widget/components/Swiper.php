@@ -22,14 +22,17 @@ class Swiper extends WP_Widget {
 	 * */
 
 	function widget( $args, $instance ) {
-		$thumbnail = $this->getValue( $instance, 'wiget_thumbnail', nicen_theme_create_array( '', 5 ) ); //栏目id
-		$link      = $this->getValue( $instance, 'wiget_link', nicen_theme_create_array( '', 5 ) ); //栏目id
-		$category  = $this->getValue( $instance, 'category', nicen_theme_create_array( '', 5 ) ); //栏目id
-		$title     = $this->getValue( $instance, 'title', nicen_theme_create_array( '', 5 ) ); //栏目id
-		$datetime  = $this->getValue( $instance, 'datetime', nicen_theme_create_array( '', 5 ) ); //栏目id
-		$number    = $this->getValue( $instance, 'number', nicen_theme_create_array( '', 5 ) ); //栏目id
+		$thumbnail      = $this->getValue( $instance, 'wiget_thumbnail', nicen_theme_create_array( '', 5 ) ); //栏目id
+		$link           = $this->getValue( $instance, 'wiget_link', nicen_theme_create_array( '', 5 ) ); //栏目id
+		$category       = $this->getValue( $instance, 'category', nicen_theme_create_array( '', 5 ) ); //栏目id
+		$title          = $this->getValue( $instance, 'title', nicen_theme_create_array( '', 5 ) ); //栏目id
+		$datetime       = $this->getValue( $instance, 'datetime', nicen_theme_create_array( '', 5 ) ); //栏目id
+		$number         = $this->getValue( $instance, 'number', nicen_theme_create_array( '', 5 ) ); //栏目id
+		$show_in_mobile = $this->getValue( $instance, 'show_in_mobile', false ); //是否在移动端显示
 
-		include get_template_directory() . '/template/widget/swiper.php';//最新文章
+		/* 如果不是移动端 ，如果移动端也显示 */
+
+        include get_template_directory() . '/template/widget/swiper.php';//最新文章
 	}
 
 
@@ -63,6 +66,7 @@ class Swiper extends WP_Widget {
 	function form( $instance ) {
 		?>
         <div id="jq-tabs">
+
         <ul>
 			<?php
 			for ( $i = 0; $i < 3; $i ++ ) {
@@ -83,7 +87,7 @@ class Swiper extends WP_Widget {
 				'type'    => 'text',
 				'field'   => 'wiget_thumbnail',
 				'default' => $default,
-                'index'=>$i
+				'index'   => $i
 			], true );
 
 			widget_input( $this, $instance, [
@@ -91,7 +95,7 @@ class Swiper extends WP_Widget {
 				'type'    => 'text',
 				'field'   => 'wiget_link',
 				'default' => $default,
-				'index'=>$i
+				'index'   => $i
 			], true );
 
 			widget_input( $this, $instance, [
@@ -99,7 +103,7 @@ class Swiper extends WP_Widget {
 				'type'    => 'text',
 				'field'   => 'category',
 				'default' => $default,
-				'index'=>$i
+				'index'   => $i
 			], true );
 
 			widget_input( $this, $instance, [
@@ -107,7 +111,7 @@ class Swiper extends WP_Widget {
 				'type'    => 'text',
 				'field'   => 'title',
 				'default' => $default,
-				'index'=>$i
+				'index'   => $i
 			], true );
 
 			widget_input( $this, $instance, [
@@ -115,7 +119,7 @@ class Swiper extends WP_Widget {
 				'type'    => 'text',
 				'field'   => 'datetime',
 				'default' => $default,
-				'index'=>$i
+				'index'   => $i
 			], true );
 
 			widget_input( $this, $instance, [
@@ -123,10 +127,26 @@ class Swiper extends WP_Widget {
 				'type'    => 'text',
 				'field'   => 'number',
 				'default' => $default,
-				'index'=>$i
+				'index'   => $i
 			], true );
+
 			echo '</div>';
+
 		}
+
+
+		widget_select( $this, $instance,
+			[
+				'title'   => '移动端',
+				'field'   => 'show_in_mobile',
+				'default' => '0'
+			],
+			[
+				'0' => '不显示',
+				'1' => '显示',
+			]
+		);
+
 		echo "</div>";
 	}
 

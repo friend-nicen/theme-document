@@ -7,6 +7,20 @@ if ( isset( $_POST['pagination'] ) ) {
 		$prefix = get_queried_object()->term_id;
 	}
 }
+
+
+/*
+ * 判断缩略图显示的位置
+ * */
+if ( nicen_theme_config( 'document_thumbnail_position', false ) == "right" ) {
+	$position = ""; //默认为空
+	$cate_pos = "";
+} else {
+	$position = "style='order:2;'"; //默认为空
+	$cate_pos = "category-left";
+}
+
+
 ?>
 
 <!--  文章  -->
@@ -24,8 +38,8 @@ if ( isset( $_POST['pagination'] ) ) {
 
         <article class="i-article">
 
-            <div class="i-article-left">
-                <h2 id="<?= $prefix; ?>h2<?= get_the_ID(); ?>" class="i-article-title">
+            <div class="i-article-summary" <?php echo $position ?>>
+                <h2 id="<?php echo $prefix; ?>h2<?php echo get_the_ID(); ?>" class="i-article-title">
                     <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
                 </h2>
                 <div class="i-article-excerpt"><?php nicen_theme_getExcerpt( get_the_excerpt(), $post->post_password ); ?></div>
@@ -40,26 +54,30 @@ if ( isset( $_POST['pagination'] ) ) {
 
 
 						<?php if ( nicen_theme_getThumbnail() ) { ?>
-                            <li class="category">
-                                <a href="<?= $link ?>" title=" <?= $category; ?>"> <?= $category; ?></a>
+                            <li class="category <?php echo $cate_pos ?>">
+                                <a href="<?php echo $link ?>"
+                                   title=" <?php echo $category; ?>"> <?php echo $category; ?></a>
                             </li>
 						<?php } else { ?>
                             <li>
-                                <i class="iconfont icon-fenlei"></i><a href="<?= $link ?>"
-                                                                       title=" <?= $category; ?>"> <?= $category; ?></a>
+                                <i class="iconfont icon-fenlei"></i><a href="<?php echo $link ?>"
+                                                                       title=" <?php echo $category; ?>"> <?php echo $category; ?></a>
                             </li>
 						<?php } ?>
 
                         <li class="first" id="author"><i class="iconfont icon-chuangzuozhejieshao"></i><a
-                                    href="<?= $url ?>" title=" <?= $author; ?>"> <?= $author; ?></a></li>
+                                    href="<?php echo $url ?>"
+                                    title=" <?php echo $author; ?>"> <?php echo $author; ?></a></li>
 
                         <li>
-                            <i class="iconfont icon-shijian"></i><?= nicen_theme_timeToString( get_the_time( "Y-m-d H:i:s" ) ); ?>
+                            <i class="iconfont icon-shijian"></i><?php echo nicen_theme_timeToString( get_the_time( "Y-m-d H:i:s" ) ); ?>
                         </li>
-                        <li><i class="iconfont icon-icon-test"></i><?= nicen_theme_getPostViews( get_the_ID() ); ?>热度
+                        <li>
+                            <i class="iconfont icon-icon-test"></i><?php echo nicen_theme_getPostViews( get_the_ID() ); ?>
+                            热度
                         </li>
                         <li style="border:none"><i
-                                    class="iconfont icon-pinglun"></i><?= get_comments_number(); ?>评论
+                                    class="iconfont icon-pinglun"></i><?php echo get_comments_number(); ?>评论
                         </li>
                     </ul>
                 </div>

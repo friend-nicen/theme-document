@@ -25,7 +25,7 @@ if ( ! have_posts() && is_search() ) {
 			/*
 			 * 首页显示小工具
 			 * */
-			if ( is_home() ) {
+			if ( is_home() && is_active_sidebar( 'index' ) ) {
 				dynamic_sidebar( 'index' );
 			}
 			?>

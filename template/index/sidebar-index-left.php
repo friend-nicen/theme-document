@@ -29,7 +29,7 @@ if ( nicen_theme_showArticleCate() ) {
                     <div class="line"></div>
                     <!--文章导航-->
                     <ul>
-						<?= $catelog; ?>
+						<?php echo $catelog; ?>
                     </ul>
                 </div>
             </aside>
