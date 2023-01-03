@@ -7,15 +7,24 @@
  * */
 
 global $wpdb, $table_prefix; //数据库对象，表前缀
-$count_posts = wp_count_posts();
+$count_posts = wp_count_posts(); //文章数量
 
 $publish = 0; //已发布
-$catelog = wp_count_terms( 'category' ) + wp_count_terms( 'post_tag' ); //分类
 
-$comment = count( get_comments() );//评论总数
+/*$catelog = wp_count_terms('category') + wp_count_terms('post_tag');*/ //分类
 
-if ( $count_posts ) {
-	$publish = $count_posts->publish;
+/*
+ * 获取总浏览量
+ * */
+$sql = 'select sum(`meta_value`+0) As views from `' . $table_prefix . 'postmeta` where `meta_key` = "post_views_count"';
+$result = $wpdb->get_results($sql, ARRAY_A);
+$views = $result[0]['views']; //总阅读数
+
+$comment = count(get_comments());//评论总数
+
+if ($count_posts) {
+    /* 已发布的数量 */
+    $publish = $count_posts->publish;
 }
 
 
@@ -32,14 +41,14 @@ if ( $count_posts ) {
         </div>
         <div class="author-info">
             <div class="nickname">
-				<?php echo $nickname; ?>
+                <?php echo $nickname; ?>
             </div>
             <div class="tag">
-				<?php echo $profession; ?>
+                <?php echo $profession; ?>
             </div>
         </div>
         <div class="author-self">
-			<?php echo $description; ?>
+            <?php echo $description; ?>
         </div>
         <div class="statistic">
 
@@ -52,8 +61,8 @@ if ( $count_posts ) {
                 <span class="bottom"><?php echo $comment; ?></span>
             </div>
             <div class="item">
-                <span class="top">分类数</span>
-                <span class="bottom"><?php echo $catelog; ?></span>
+                <span class="top">阅读数</span>
+                <span class="bottom"><?php echo $views; ?></span>
             </div>
 
         </div>
