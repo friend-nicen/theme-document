@@ -232,10 +232,12 @@ $(function () {
 
                 if (space.length > 0) {
                     topTop = $('#space').getTop();
+                    topHeight = navigator.outerHeight(); //有侧边栏高度
                     topOffset = innerHeight - topHeight - topTop;
                 }
 
                 let react_main = main.get(0).getBoundingClientRect();
+
                 /*
                 * 保持static，变成fixed的临界值
                 * 因为底部出现时，看的是上方的滚动距离 -innerHeight 的位置滚出屏幕了，代表main的底部出现了
@@ -267,12 +269,22 @@ $(function () {
 
                 let html_scrollTop = html.scrollTop();
 
+
                 if (html_scrollTop >= _absolute) {
 
                     isfixedLeft = true;
+                    topHeight = navigator.outerHeight();
+                    topOffset = innerHeight - topHeight - topTop;
 
+                    
                     /*左侧文章开始偏移*/
                     /*左侧top+高度+偏移量*/
+                    /*
+                    * @param topHeight 左侧边栏高度
+                    * @param topTop, Top偏移值
+                    * */
+
+
                     if ((topTop + topHeight + html_scrollTop) >= (_absolute + innerHeight)) {
 
                         /*
@@ -302,10 +314,13 @@ $(function () {
                             top = min;
                         }
 
+
+
                         navigator.css('top', top);
                     }
 
                 } else {
+
                     if (isfixedLeft) {
                         /*左侧文章开始复位*/
                         navigator.animate({
@@ -530,8 +545,6 @@ $(function () {
 
     })();
 
-
-  
 
     /*
     * 主题色改变

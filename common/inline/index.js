@@ -106,8 +106,6 @@ $(function () {
         /* 判断是否为站内跳转 */
         const referer = document.referrer;
 
-        console.log(referer);
-
         if (DYNAMIC && (referer.indexOf(location.host) > -1)) {
             /* 保存被选的tab */
             let ActiveTab = localStorage.getItem("ActiveTab");
@@ -130,39 +128,40 @@ $(function () {
 
             let activeTabs = 0;
 
-
-            Object.defineProperty(window, 'activeTab', {
-                set(value) {
-
-                    /*
-                    * 加载目录树
-                    * */
-                    if (!$("#space").is(":visible")) return;
-
-                    if (activeTabs != value) {
-
-                        let list = $("#navigator .scroll ul");
-
-                        list.removeWithLeakage(); //移除所有子元素
-
-                        let catelist = $("#navigator .scroll");
-
-                        let insert = `<ul>`;
+            /* 为定义活动tab */
+            if(!window.activeTab){
+                Object.defineProperty(window, 'activeTab', {
+                    set(value) {
 
                         /*
-                        * 获取被激活的目录
+                        * 加载目录树
                         * */
-                        let catelog = $(".main-main .article-list:visible .i-article");
+                        if (!$("#space").is(":visible")) return;
 
-                        /*
-                        * 插入文章目录
-                        * */
-                        catelog.each(function (index, item) {
+                        if (activeTabs != value) {
 
-                            let linkId = $(item).find("h2").attr("id");
-                            let title = $(item).find("h2 a").text();
+                            let list = $("#navigator .scroll ul");
 
-                            insert += `<li>
+                            list.removeWithLeakage(); //移除所有子元素
+
+                            let catelist = $("#navigator .scroll");
+
+                            let insert = `<ul>`;
+
+                            /*
+                            * 获取被激活的目录
+                            * */
+                            let catelog = $(".main-main .article-list:visible .i-article");
+
+                            /*
+                            * 插入文章目录
+                            * */
+                            catelog.each(function (index, item) {
+
+                                let linkId = $(item).find("h2").attr("id");
+                                let title = $(item).find("h2 a").text();
+
+                                insert += `<li>
                                        <div class="first-index">
                                            <div>
                                                <a href="#${linkId}" title="${title}">
@@ -171,17 +170,18 @@ $(function () {
                                             </div>
                                        </div>
                                   </li>`;
-                        })
+                            })
 
-                        catelist.append(insert + `</ul>`); //插入目录
-                        activeTabs = value; //同步值
+                            catelist.append(insert + `</ul>`); //插入目录
+                            activeTabs = value; //同步值
+                        }
+
+
+                    }, get() {
+                        return activeTabs;
                     }
-
-
-                }, get() {
-                    return activeTabs;
-                }
-            })
+                })
+            }
 
             /*
             * 如果动态栏目被点击
