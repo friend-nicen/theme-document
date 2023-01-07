@@ -12,6 +12,16 @@ Github：[https://github.com/friend-nicen/theme-document](https://github.com/fri
 
 Gitee：[https://gitee.com/friend-nicen/theme-document](https://gitee.com/friend-nicen/theme-document)
 
+# 2023-01-07更新
+
+1. 新增文章推荐小工具
+2. 新增动态分页时，滚动到底部时自动加载（可设置是否开启）
+3. 新增开启/关闭显示Logo或标题的选项
+4. 新增支持修改站点部分功能默认的URL规则的功能。
+5. 新增文章底部版权信息、打赏按钮是否显示的选项。
+6. 新增自定义文章底部版权信息的功能，提供获取文章标题、固定链接、作者信息等标签
+7. 新增设置文章上/下一篇的相关文章的来源选项（所有文章和同栏目文章）
+
 # 2023-01-02更新
 
 1. 后台主题设置新增调用媒体库设置banner和logo

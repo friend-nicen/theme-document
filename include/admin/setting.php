@@ -7,7 +7,6 @@
 */
 
 
-
 /*
  * 注册菜单
  * */
@@ -27,12 +26,14 @@ function nicen_theme_menu_register() {
 add_action( 'admin_menu', 'nicen_theme_menu_register' );
 
 
-
 /*
  * 注册表单
  * */
 
 function nicen_theme_config_register() {
+
+	$title_count = 0; //需要显示的标题数量
+
 	foreach ( ADMIN as $item ) {
 		/*
 		 * 如果有分节
@@ -48,7 +49,7 @@ function nicen_theme_config_register() {
 					$section['id'],
 					$section['title'],
 					function () use ( $section ) {
-						return $section['callback']??[];
+						return $section['callback'] ?? [];
 					},
 					$item['id']
 				);
@@ -61,20 +62,27 @@ function nicen_theme_config_register() {
 					foreach ( $section['fields'] as $field ) {
 
 						/*
+						 * show_title，计数排重
+						 * */
+						if ( $field['id'] == "H1_title" ) {
+							$title_count ++;
+							$field['id'] = $field['id'] . $title_count;
+						}
+
+
+						/*
 						 * 注册字段
 						 * */
 						register_setting( $item['id'], $field['id'] ); //主题首页副标题
 
-						/*
-						 * 添加字段
-						 * */
+
 						add_settings_field(
 							$field['id'],
 							$field['title'],
 							$field['callback'],
 							$item['id'],
 							$section['id'],
-							$field['args']??[]
+							$field['args'] ?? []
 						);
 					}
 				}

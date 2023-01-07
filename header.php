@@ -33,9 +33,21 @@
     <!--  顶部左侧标题 和 logo -->
     <div class="left">
         <a href="<?php echo home_url(); ?>" class="logo" title="返回首页">
-            <img src="<?php nicen_theme_config( 'document_logo_url' ); ?>" title="logo"/>
-            <h2 class="title tooltip"
-                data-hint="<?php echo bloginfo( 'name' ); ?>"><?php echo bloginfo( 'name' ); ?> </h2>
+
+			<?php
+			/* 如果需要显示logo */
+			if ( nicen_theme_config( 'document_header_show_logo', false ) ) {
+				echo '<img src="' . nicen_theme_config( 'document_logo_url', false ) . '" title="logo"/>';
+			}
+
+			/* 如果需要显示标题*/
+			if ( nicen_theme_config( 'document_header_show_title', false ) ) {
+				echo '<h2 class="title tooltip"
+                data-hint="' . get_bloginfo( 'name' ) . '">' . get_bloginfo( 'name' ) . '</h2>';
+			}
+			?>
+
+
         </a>
     </div>
     <!--移动端展开导航栏-->

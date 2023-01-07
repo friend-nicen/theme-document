@@ -13,6 +13,14 @@
       .main-container {
         .main-main {
           width: 80%;
+          /* 文章推荐 */
+          .recommend {
+            .list {
+              .swiper-slide {
+                width: calc(25% - 12px);
+              }
+            }
+          }
         }
 
         #space, #fixed {

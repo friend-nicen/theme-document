@@ -10,6 +10,15 @@
 
         .main-main {
           width: 55%;
+
+          /* 文章推荐 */
+          .recommend {
+            .list {
+              .swiper-slide {
+                width: calc(25% - 12px);
+              }
+            }
+          }
         }
       }
     }

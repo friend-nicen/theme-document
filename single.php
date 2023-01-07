@@ -35,6 +35,14 @@ if ( post_password_required() ) {
                 <!-- 文章底部 -->
 				<?php get_template_part( './template/index/article-footer' ); ?>
             </article>
+
+			<?php
+			/* 底部推荐区域 */
+			if ( is_active_sidebar( 'content_down' ) ) {
+				dynamic_sidebar( 'content_down' );
+			}
+			?>
+
             <!-- 文章评论 -->
 			<?php comments_template(); ?>
         </div>

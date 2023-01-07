@@ -13,16 +13,22 @@ $previous = get_previous_post();//上一篇
 
 <footer>
     <div class="article-footer">
+
+
         <!--版权-->
-        <div class="copyright"><?php echo nicen_theme_config( "document_copyright" ); ?></div>
-
+		<?php if ( nicen_theme_config( "document_show_copyright", false ) ) { ?>
+            <div class="copyright">
+				<?php echo get_copyright(); ?>
+            </div>
+		<?php } ?>
         <!--赞赏-->
-        <div class="donate">
-            <a href="<?php echo nicen_theme_config( 'document_donate_url' ); ?>">
-                <button>赞赏</button>
-            </a>
-        </div>
-
+		<?php if ( nicen_theme_config( "document_show_donate", false ) ) { ?>
+            <div class="donate">
+                <a href="<?php nicen_theme_config( 'document_donate_url' ); ?>">
+                    <button>赞赏</button>
+                </a>
+            </div>
+		<?php } ?>
         <!--标签-->
         <div class="label">
             <i class="iconfont icon-biaoqian"></i>
@@ -52,21 +58,29 @@ $previous = get_previous_post();//上一篇
             </ul>
         </div>
     </div>
+
+	<?php
+	$equal         = nicen_theme_config( "document_assiciate_type", false ) == 1 ? false : true;
+	$next_post     = get_previous_post( $equal );
+	$previous_post = get_next_post( $equal );
+	?>
+
+
     <div class="footer-nav">
         <div class="to">
             <span class="text">上一篇</span>
-			<?php if ( ! empty( $next ) ) { ?>
-                <a href="<?php echo get_permalink( $next->ID ) ?>"
-                   title="<?php echo $next->post_title ?>"><?php echo $next->post_title ?></a>
+			<?php if ( ! empty( $next_post ) ) { ?>
+                <a href="<?php echo get_permalink( $next_post->ID ) ?>"
+                   title="<?php echo $next_post->post_title ?>"><?php echo $next_post->post_title ?></a>
 			<?php } else { ?>
                 <a href="/" title="首页">没有了</a>
 			<?php } ?>
         </div>
         <div class="to right">
             <span class="text">下一篇</span>
-			<?php if ( ! empty( $previous ) ) { ?>
-                <a href="<?php echo get_permalink( $previous->ID ) ?>"
-                   title="<?php echo $previous->post_title ?>"><?php echo $previous->post_title ?></a>
+			<?php if ( ! empty( $previous_post ) ) { ?>
+                <a href="<?php echo get_permalink( $previous_post->ID ) ?>"
+                   title="<?php echo $previous_post->post_title ?>"><?php echo $previous_post->post_title ?></a>
 			<?php } else { ?>
                 <a href="/" title="首页">没有了</a>
 			<?php } ?>
