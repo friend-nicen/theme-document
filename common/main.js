@@ -276,7 +276,7 @@ $(function () {
                     topHeight = navigator.outerHeight();
                     topOffset = innerHeight - topHeight - topTop;
 
-                    
+
                     /*左侧文章开始偏移*/
                     /*左侧top+高度+偏移量*/
                     /*
@@ -313,7 +313,6 @@ $(function () {
                         if (max < innerHeight) {
                             top = min;
                         }
-
 
 
                         navigator.css('top', top);

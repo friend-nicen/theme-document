@@ -3,7 +3,26 @@
   * */
 $(function () {
 
+    /*
+        节流
+     */
+    function throttle(cb, wait = 3000) {
+        let previous = 0;
+        return (...args) => {
+            const now = +new Date();
+            if (now - previous > wait) {
+                previous = now;
+                cb.apply(this, args);
+            }
+        }
+    }
+
+
     (function () {
+
+
+        let is_loading = false; //是否正在加载
+        let html = $("html"); //dom
 
 
         /*
@@ -52,6 +71,12 @@ $(function () {
 
             $.post(load.data('next'), 'pagination=yes', function (res) {
 
+                if (is_loading) {
+                    return;
+                }
+
+                is_loading = true;//标记正在加载
+
                 let list = $(res).find('.i-article');
                 load.parent().before(list); //插入加载的文章
                 /*
@@ -69,6 +94,8 @@ $(function () {
                 * */
 
                 /*无目录时终止*/
+                is_loading = false;//标记加载结束
+
                 if (!$("#space").is(":visible")) return;
 
                 let catelog = $("#navigator .scroll ul");
@@ -95,6 +122,30 @@ $(function () {
 
         })
 
+
+        /* 判断是否在主页 */
+        if (IN_HOME) {
+            if (!Auto_load_index) {
+                return
+            }
+        } else {
+            if (!Auto_load_else) {
+                return
+            }
+        }
+
+        /*
+        * 触底自动加载
+        * */
+        const load = throttle(() => {
+            $(".main-content .loadnext").click();
+        }, 500);
+
+        $(window).on("scroll", () => {
+            if ((html.scrollTop() + window.innerHeight + 1) >= html.innerHeight()) {
+                load();
+            }
+        });
     })();
 
 
@@ -129,7 +180,7 @@ $(function () {
             let activeTabs = 0;
 
             /* 为定义活动tab */
-            if(!window.activeTab){
+            if (!window.activeTab) {
                 Object.defineProperty(window, 'activeTab', {
                     set(value) {
 

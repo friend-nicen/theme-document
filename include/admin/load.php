@@ -11,7 +11,7 @@ function nicen_theme_admin_load_source() {
 	global $desination_configs;
 
 
-	wp_enqueue_script( 'vuejs', 'https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/vue/2.6.14/vue.min.js', false );
+	wp_enqueue_script( 'vuejs', 'https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/vue/2.6.14/vue.js', false );
 	wp_enqueue_script( 'moments', 'https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/moment.js/2.29.1/moment.min.js' );
 
 	wp_enqueue_script( 'antd', 'https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/ant-design-vue/1.7.8/antd.min.js', [ 'jquery' ] );

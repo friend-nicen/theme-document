@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*
 Theme Name: Document
-Theme URI: https://nicen.cn/1552.html
+Theme URI: https://nicen.cn
 Author: 友人a丶
 Author URI: https://nicen.cn
 Description: 一个基于文档类型的博客主题，更加方便的记录、查询学习笔记
@@ -103,6 +103,7 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
 .theme-eight {
   --theme-color: #eb2f96 !important; }
 
+/* 变量 */
 /*暗黑模式变量*/
 /*
   暗黑模式变量
@@ -1044,7 +1045,8 @@ html {
         padding: 0;
         height: fit-content;
         margin: 0;
-        margin-bottom: 1rem; }
+        margin-bottom: 1rem;
+        /* 文章推荐 */ }
         html body .main-container .main-main .div-info {
           margin-bottom: 0; }
         html body .main-container .main-main .main-content {
@@ -1053,7 +1055,7 @@ html {
           padding: 0 2rem;
           padding-top: 1rem;
           border-radius: 4px;
-          margin-bottom: 1.5rem;
+          margin-bottom: 1rem;
           background-color: var(--theme-front-main-color);
           /*
             动态文章加载
@@ -1583,6 +1585,99 @@ html {
               order: 4; }
               html body .main-container .main-main .div-info .comment_list li .comment-body .reply:hover {
                 color: var(--theme-text); }
+        html body .main-container .main-main .recommend {
+          margin-bottom: 1rem;
+          padding: 0;
+          overflow: hidden; }
+          html body .main-container .main-main .recommend .list {
+            width: 100%;
+            padding: 0 1rem 1rem;
+            margin: 0;
+            position: relative; }
+            html body .main-container .main-main .recommend .list .swiper-slide {
+              width: calc(20% - 12px);
+              display: inline-block;
+              margin: 1rem 12px 0 0;
+              border-radius: 4px;
+              flex-shrink: 0;
+              border: 1px solid rgba(0, 0, 0, 0.1);
+              transition-property: all;
+              transition-duration: 0.3s; }
+              html body .main-container .main-main .recommend .list .swiper-slide:hover {
+                box-shadow: 0 2px 10px 3px rgba(0, 0, 0, 0.15);
+                transform: translateY(-3px); }
+              html body .main-container .main-main .recommend .list .swiper-slide a {
+                display: flex;
+                flex-direction: column;
+                text-decoration: none;
+                height: 100%;
+                position: relative; }
+                html body .main-container .main-main .recommend .list .swiper-slide a .thumnbnail {
+                  width: 100%;
+                  height: 120px;
+                  border-top-left-radius: 4px;
+                  border-top-right-radius: 4px;
+                  overflow: hidden; }
+                  html body .main-container .main-main .recommend .list .swiper-slide a .thumnbnail img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover; }
+                html body .main-container .main-main .recommend .list .swiper-slide a .caption {
+                  font-size: var(--theme-text);
+                  color: var(--theme-text-color);
+                  margin: 0.8rem 0.65rem;
+                  display: -webkit-box;
+                  line-height: 1.5;
+                  -webkit-line-clamp: 2;
+                  -webkit-box-orient: vertical;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  min-height: 2.5rem; }
+                html body .main-container .main-main .recommend .list .swiper-slide a .detail {
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  margin: 0 0.5rem 0.5rem;
+                  white-space: nowrap; }
+                  html body .main-container .main-main .recommend .list .swiper-slide a .detail * {
+                    font-size: var(--theme-text-mini);
+                    color: var(--theme-text-mini-color); }
+                html body .main-container .main-main .recommend .list .swiper-slide a .category {
+                  position: absolute;
+                  top: 6px;
+                  left: 6px;
+                  width: fit-content;
+                  padding: 0 0.5rem;
+                  border-radius: 5px;
+                  font-size: var(--theme-text-mini);
+                  color: white;
+                  background-color: rgba(0, 0, 0, 0.6); }
+                  html body .main-container .main-main .recommend .list .swiper-slide a .category:hover {
+                    color: white;
+                    transform: scale(1);
+                    background-color: var(--theme-color); }
+            html body .main-container .main-main .recommend .list .swiper-button-next, html body .main-container .main-main .recommend .list .swiper-button-prev {
+              color: var(--theme-color); }
+          html body .main-container .main-main .recommend .empty {
+            display: flex;
+            align-items: center;
+            flex-direction: column; }
+            html body .main-container .main-main .recommend .empty img {
+              max-width: 25%;
+              min-height: 80px; }
+            html body .main-container .main-main .recommend .empty span {
+              margin-top: -25px;
+              margin-bottom: 20px;
+              font-size: var(--theme-text-mini);
+              color: var(--theme-text-mini-color); }
+        html body .main-container .main-main .no-title {
+          background-color: transparent; }
+          html body .main-container .main-main .no-title .list {
+            background-color: transparent;
+            padding: 0; }
+            html body .main-container .main-main .no-title .list .swiper-slide {
+              margin-top: 0;
+              background-color: white; }
     html body .main-bottom {
       width: 100%;
       text-align: center;
@@ -1904,7 +1999,10 @@ html {
 */
 @media (min-width: 1024px) and (max-width: 1580px) {
   html body .main-container .main-main {
-    width: 55%; } }
+    width: 55%;
+    /* 文章推荐 */ }
+    html body .main-container .main-main .recommend .list .swiper-slide {
+      width: calc(25% - 12px); } }
 
 /* 1024px以下的屏幕 */
 /*
@@ -2022,7 +2120,10 @@ html {
     html body .password img {
       width: 50%; }
     html body .main-container .main-main {
-      width: 80%; }
+      width: 80%;
+      /* 文章推荐 */ }
+      html body .main-container .main-main .recommend .list .swiper-slide {
+        width: calc(25% - 12px); }
     html body .main-container #space, html body .main-container #fixed {
       display: none; } }
 
@@ -2036,7 +2137,10 @@ html {
     html body .password img {
       width: 45%; }
     html body .main-container .main-main {
-      width: 95%; }
+      width: 95%;
+      /* 文章推荐 */ }
+      html body .main-container .main-main .recommend .list .swiper-slide {
+        width: calc(33.3% - 12px); }
     html body .main-container #space, html body .main-container #fixed {
       display: none; } }
 
@@ -2087,11 +2191,14 @@ html {
         html body .main-container .main-main {
           width: 100%; }
           html body .main-container .main-main .non-result {
-            margin-top: 1rem; }
+            margin-top: 1rem;
+            /* 文章推荐 */ }
             html body .main-container .main-main .non-result .in {
               font-size: var(--theme-header-size); }
               html body .main-container .main-main .non-result .in .belong {
                 font-size: inherit; }
+            html body .main-container .main-main .non-result .recommend .list .swiper-slide {
+              width: calc(50% - 12px); }
           html body .main-container .main-main .main-bottom {
             padding: 0 0.3rem; }
           html body .main-container .main-main .main-content {

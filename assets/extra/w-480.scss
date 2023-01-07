@@ -84,6 +84,15 @@
                 font-size: inherit;
               }
             }
+
+            /* 文章推荐 */
+            .recommend {
+              .list {
+                .swiper-slide {
+                  width: calc(50% - 12px);
+                }
+              }
+            }
           }
 
           .main-bottom {

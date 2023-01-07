@@ -256,7 +256,6 @@ function nicen_theme_getExcerpt( $content, $password, $flag = false ) {
 			return "这是一篇受保护的文章，输入密码后才能查看哈";
 		} else {
 			echo "这是一篇受保护的文章，输入密码后才能查看哈";
-
 			return;
 		}
 	}
@@ -474,7 +473,8 @@ function nicen_theme_showSidebar() {
 	/*
 	 * 如果没有激活的小部件
 	 * */
-	if ( ! is_active_sidebar( 'sidebar' ) ) {
+	if ( ( is_singular() && ! is_active_sidebar( 'content_sidebar' ) ) ||
+	     ( ! is_singular() && ! is_active_sidebar( 'index_sidebar' ) ) ) {
 		return 'no-sidebar';
 	}
 
@@ -482,13 +482,6 @@ function nicen_theme_showSidebar() {
 	 * 文章页
 	 * */
 	if ( is_single() ) {
-
-		/*
-		 * 如果显示目录
-		 * */
-		if ( nicen_theme_config( 'document_single_show_catalog', false ) ) {
-			return 'no-left';
-		}
 
 		/*
 		 * 如果不显示
@@ -903,3 +896,45 @@ function canShow() {
 	return true;
 
 }
+
+
+/*
+ * 转换文章底部的版权信息
+ * */
+function get_copyright() {
+
+	global $post; //指针
+
+	$copyright = nicen_theme_config( "document_copyright", false );
+
+	/* 替换文章标题 */
+	if ( strpos( $copyright, "#title#" ) !== false ) {
+		$copyright = str_replace( "#title#", get_the_title(), $copyright );
+	}
+
+	/* 文章url */
+	if ( strpos( $copyright, "#url#" ) !== false ) {
+		$copyright = str_replace( "#url#", get_the_permalink(), $copyright );
+	}
+
+	/* 作者信息 */
+	if ( strpos( $copyright, "#author#" ) !== false ) {
+
+		/*获取作者信息*/
+		$author = get_the_author_meta( 'display_name', $post->post_author );
+
+		$copyright = str_replace( "#author#", $author, $copyright );
+	}
+
+	/* 作者主页 */
+	if ( strpos( $copyright, "#author_home#" ) !== false ) {
+		$url       = get_the_author_meta( 'user_url', $post->post_author );
+		$copyright = str_replace( "#author_home#", $url, $copyright );
+	}
+
+	return $copyright;
+
+}
+
+
+

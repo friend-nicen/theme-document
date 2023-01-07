@@ -8,7 +8,7 @@
  * 注册小部件的同时 会按照规则插入 option
  * */
 
-class NewComments extends WP_Widget {
+class Comments extends WP_Widget {
 	/** 构造函数 */
 	function __construct() {
 		parent::__construct( false, $name = '主题小工具【最新评论】', [
@@ -25,7 +25,7 @@ class NewComments extends WP_Widget {
 		$title  = $this->getValue( $instance, 'title', '最新评论' );
 		$number = $this->getValue( $instance, 'number', 5 );; //评论数量
 
-		include get_template_directory() . '/template/widget/new-comments.php';//最新文章
+		include get_template_directory() . '/template/widget/comments.php';//最新文章
 
 	}
 

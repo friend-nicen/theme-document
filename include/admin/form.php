@@ -27,7 +27,9 @@
  *
  * */
 function nicen_theme_do_settings_fields_user( $page, $section, $callback = false ) {
+
 	global $wp_settings_fields;
+
 	if ( ! isset( $wp_settings_fields[ $page ][ $section ] ) ) {
 		return;
 	}
@@ -54,6 +56,15 @@ function nicen_theme_do_settings_fields_user( $page, $section, $callback = false
 			echo sprintf( '<a-form-item label=%s>', $field['title'] );
 			echo $field['callback']( $field['args'] );
 			echo '</a-form-item>';
+			continue;
+		}
+
+		/*
+         * 如果是文字说明
+         * */
+
+		if ( strpos( $field['id'], 'H1_title' ) !== false ) {
+			echo $field['callback']( $field['title'] );
 			continue;
 		}
 
@@ -182,7 +193,7 @@ function nicen_theme_setting_load() {
             <div>
                 <a-page-header
                         title="<?php echo esc_html( get_admin_page_title() ); ?>"
-                        :backIcon="false"
+                        :back-icon="false"
                         sub-title="加油">
                     <template #extra>
                         <a-button :loading="resuming" type="primary" @click="resume">
@@ -291,17 +302,28 @@ function nicen_theme_form_password( $args ) {
 /*
  * 文字说明
  * */
-function nicen_theme_form_text2( $args ) {
+function nicen_theme_form_text( $args ) {
 	?>
-    <div style='line-height: 1.8;width: 150%;word-wrap:break-word;word-spacing:normal; word-break: break-all;'><?php echo $args['info']; ?></div>
+    <div style='text-info'><?php echo $args['info']; ?></div>
 	<?php
 }
+
+/*
+ * 显示分节标题
+ * */
+function nicen_theme_form_title( $title ) {
+	?>
+    <h2 class="show_h2"><?php echo $title; ?></h2>
+	<?php
+}
+
 
 /*
  * 基础开关
  * */
 function nicen_theme_form_switch( $args ) {
 	?>
+
     <input name="<?php echo $args['label_for']; ?>" v-model="data.<?php echo $args['label_for']; ?>" hidden/>
     <a-switch
             name="<?php echo $args['label_for']; ?>"

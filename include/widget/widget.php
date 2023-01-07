@@ -8,7 +8,9 @@ include_once get_template_directory() . '/include/widget/components/Rand.php';//
 include_once get_template_directory() . '/include/widget/components/Swiper.php';//轮播
 include_once get_template_directory() . '/include/widget/components/Info.php';//文章信息
 include_once get_template_directory() . '/include/widget/components/Author.php';//作者信息
-include_once get_template_directory() . '/include/widget/components/NewComments.php';//作者信息
+include_once get_template_directory() . '/include/widget/components/Comments.php';//最新评论
+include_once get_template_directory() . '/include/widget/components/Recommend.php';//最新评论
+
 /*
  * 注册侧边栏
  * */
@@ -22,7 +24,8 @@ function nicen_theme_add_sidebar() {
 	register_widget( "Swiper" );
 	register_widget( "Info" );
 	register_widget( "Author" );
-	register_widget( "NewComments" );
+	register_widget( "Comments" );
+	register_widget( "Recommend" );
 
 	/*
 	 * 注册部件位置
@@ -31,6 +34,18 @@ function nicen_theme_add_sidebar() {
 		'name'         => '首页侧边栏',
 		'id'           => 'index_sidebar',
 		'description'  => '首页、栏目、标签页面的侧边栏区域',
+		'before_title' => '<h2>',
+		'after_title'  => '</h2>',
+	) );
+
+
+	/*
+	 * 注册部件位置
+	 * */
+	register_sidebar( array(
+		'name'         => '文章下方区域',
+		'id'           => 'content_down',
+		'description'  => '文章下方区域',
 		'before_title' => '<h2>',
 		'after_title'  => '</h2>',
 	) );
