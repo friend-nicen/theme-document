@@ -27,6 +27,18 @@ function nicen_theme_add_sidebar() {
 	register_widget( "Comments" );
 	register_widget( "Recommend" );
 
+
+	/*
+	 * 注册部件位置
+	 * */
+	register_sidebar( array(
+		'name'         => '首页顶部',
+		'id'           => 'index',
+		'description'  => '首页顶部区域',
+		'before_title' => '<h2>',
+		'after_title'  => '</h2>',
+	) );
+
 	/*
 	 * 注册部件位置
 	 * */
@@ -62,16 +74,7 @@ function nicen_theme_add_sidebar() {
 		'after_title'  => '</h2>',
 	) );
 
-	/*
-	 * 注册部件位置
-	 * */
-	register_sidebar( array(
-		'name'         => '首页顶部',
-		'id'           => 'index',
-		'description'  => '首页顶部区域',
-		'before_title' => '<h2>',
-		'after_title'  => '</h2>',
-	) );
+
 }
 
 /*

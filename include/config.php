@@ -361,8 +361,11 @@ const ADMIN = [
 					],
 					[
 						'id'       => 'document_show_left_nav',
-						'title'    => '显示左侧文章导航',
+						'title'    => '显示文章左侧阅读目录',
 						'callback' => 'nicen_theme_form_switch',
+						'args'     => [
+							'tip' => '文章没有目录时，会自动隐藏'
+						]
 					],
 					[
 						'id'       => 'document_searchnum',

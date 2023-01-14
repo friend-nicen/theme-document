@@ -29,7 +29,6 @@
         line-height: 1.5;
       }
 
-
       #category {
         padding-left: 0 !important;
       }
@@ -144,13 +143,22 @@
 
         .i-article {
 
+          margin-top: 0.9rem;
+          padding-bottom: 0.9rem;
+
+          h2 {
+            margin: 0;
+            min-height: 50px;
+          }
+
+
           &:first-of-type {
             margin-top: 1rem;
           }
 
           .i-article-thumb {
-
-            margin-left: 0.8rem;
+            width: 30%;
+            margin-left: 0.5rem;
 
             /*
               缩略图最小高度
@@ -158,12 +166,19 @@
             a {
               display: flex;
               align-items: flex-start;
+              height: 90%;
 
               img {
                 min-height: 64px;
-                height: 60%;
+                max-height: 75px;
+                height: 100%;
               }
             }
+          }
+
+          .i-article-left {
+            margin-right: 0.5rem;
+            margin-left: 0;
           }
 
           .i-article-summary {
@@ -191,9 +206,15 @@
             }
 
             .i-article-info {
+              margin-top: 0.25rem;
+
               ul {
                 li {
                   font-size: var(--theme-text-mini);
+
+                  &:nth-child(3) {
+                    padding-left: 0;
+                  }
                 }
               }
 

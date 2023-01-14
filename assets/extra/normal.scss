@@ -2426,12 +2426,12 @@ html {
               height: inherit;
               display: flex;
               align-items: center;
-              border-radius: 10px;
+              border-radius: 3px;
 
               a {
                 display: flex;
                 overflow: hidden;
-                border-radius: 10px;
+                border-radius: 3px;
                 height: 94%;
                 width: 100%;
 
@@ -2441,7 +2441,7 @@ html {
                   height: 100%;
                   max-height: 140px;
                   margin: 0;
-                  border-radius: 10px;
+                  border-radius: 3px;
                   transition: all;
                   transition-duration: 0.5s;
 

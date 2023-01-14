@@ -84,7 +84,7 @@ global $table_prefix, $wpdb;
 					/*
 					 * 获取浏览量最高的文章
 					 * */
-					if ( is_single() ) {
+					if ( is_single() && ! empty( $category ) ) {
 
 						$sql = 'select a.post_id,a.meta_value 
                                                 from `' . $table_prefix . 'postmeta` As a join `' . $table_prefix . 'term_relationships` as b on a.post_id = b.object_id 

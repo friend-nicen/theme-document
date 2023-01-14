@@ -43,6 +43,9 @@ function nicen_theme_load_source() {
 		if ( nicen_theme_config( "document_single_show_catalog", false ) ) {
 			wp_enqueue_script( 'main-monitor', $url . '/common/inline/monitor.js', array(), filemtime( $root . '/common/inline/monitor.js' ), false );
 		}
+		if ( is_active_sidebar( 'content_down' ) ) {
+			wp_enqueue_script( 'page-swiper', $url . '/common/inline/swiper.js', array(), filemtime( $root . '/common/inline/swiper.js' ), false );
+		}
 	}
 
 

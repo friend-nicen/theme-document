@@ -32,7 +32,7 @@ class Swiper extends WP_Widget {
 
 		/* 如果不是移动端 ，如果移动端也显示 */
 
-        include get_template_directory() . '/template/widget/swiper.php';//最新文章
+		include get_template_directory() . '/template/widget/swiper.php';//最新文章
 	}
 
 
@@ -82,7 +82,7 @@ class Swiper extends WP_Widget {
 
 			echo '<div id="tabs-' . ( $i + 1 ) . '">';
 
-			widget_input( $this, $instance, [
+			widget_media( $this, $instance, [
 				'title'   => '背景图片链接',
 				'type'    => 'text',
 				'field'   => 'wiget_thumbnail',
@@ -114,7 +114,7 @@ class Swiper extends WP_Widget {
 				'index'   => $i
 			], true );
 
-			widget_input( $this, $instance, [
+			widget_datepicker( $this, $instance, [
 				'title'   => '显示的时间',
 				'type'    => 'text',
 				'field'   => 'datetime',

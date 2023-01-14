@@ -811,14 +811,18 @@ function nicen_theme_getThumbnail() {
 
 	$mode = nicen_theme_config( 'document_thumbnail', false );
 
+
 	/*如果不显示*/
 	if ( ! $mode ) {
 		return false;
 	} else {
+
+		$thumb = get_the_post_thumbnail_url();
 		/*如果有缩略图*/
-		if ( has_post_thumbnail() ) {
-			return get_the_post_thumbnail_url();
+		if ( has_post_thumbnail() && $thumb ) {
+			return $thumb;
 		} else {
+
 			if ( $mode == 1 ) {
 				return false;
 			} else {
@@ -829,6 +833,7 @@ function nicen_theme_getThumbnail() {
 	}
 
 }
+
 
 
 /*

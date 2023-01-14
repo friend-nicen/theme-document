@@ -51,7 +51,11 @@ function nicen_theme_widget_admin_load() {
 	$url  = get_template_directory_uri();//主题url
 	wp_enqueue_style( 'widgetcss', $url . '/common/widget/widget.css', array(), filemtime( $root . '/common/widget/widget.css' ) );
 	wp_enqueue_style( 'jqueryuicss', 'https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jqueryui/1.12.1/jquery-ui.min.css', array() );
-	wp_enqueue_script( 'widgetjs', $url . '/common/widget/widget.js', array( 'jquery-ui-tabs' ), filemtime( $root . '/common/widget/widget.js' ), true );
+	wp_enqueue_script( 'widgetjs', $url . '/common/widget/widget.js', array(
+		'jquery-ui-tabs',
+		'jquery-ui-datepicker'
+	), filemtime( $root . '/common/widget/widget.js' ), true );
+
 }
 
 

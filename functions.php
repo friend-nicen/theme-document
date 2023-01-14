@@ -7,7 +7,6 @@
  * @date 2022-06-06
  * @life，加油
  * */
-date_default_timezone_set('PRC');
 include_once get_template_directory() . '/include/config.php'; //加载一些通用方法
 include_once get_template_directory() . '/include/functions/common.php'; //加载一些通用方法
 include_once get_template_directory() . '/include/response/response.php'; //处理前端ajax请求
