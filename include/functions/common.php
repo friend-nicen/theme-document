@@ -439,13 +439,16 @@ function nicen_theme_create_array( $value, $number ) {
 function nicen_theme_timeToString( $time ) {
 
 
-	$timestamp = strtotime( $time );
 
+	$timestamp = strtotime( $time );
 	$day = floor( ( time() - $timestamp ) / 3600 / 24 );
 
 	if ( $day < 1 ) {
+
 		$hour = floor( ( time() - $timestamp ) / 3600 );
+
 		if ( $hour < 1 ) {
+
 			$minute = floor( ( time() - $timestamp ) / 60 );
 
 			return $minute . '分钟前';
