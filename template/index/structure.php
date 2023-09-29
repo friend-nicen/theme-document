@@ -22,6 +22,6 @@
         "images": ["<?php echo nicen_theme_getThumb(); ?>"],
         "description": "<?php echo nicen_theme_getExcerpt(get_the_excerpt(), $post->post_password, true); ?> ",
         "pubDate": "<?php the_time('Y-m-d H:i:s') ?> ",
-        "upDate": "<?php echo get_post_modified_time('Y-m-d H:i:s') ?> "
+        "upDate": "<?php echo get_new_post_modified_time('Y-m-d H:i:s') ?> "
     }
 </script>

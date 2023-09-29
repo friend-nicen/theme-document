@@ -21,10 +21,11 @@ function nicen_theme_textToEmoji( $comment_ID ) {
     $html    = $comment->comment_content;
     $path    = get_template_directory_uri() . "/assets/smilies/"; //主题目录
     $dir     = get_template_directory() . "/assets/smilies/"; //主题目录
+
+    
     /*
      * 匹配是否有表情
      * */
-
     if ( preg_match_all( "/:(.+?):/", $html, $match ) ) {
 
         $count = 0; //有效表情数量

@@ -384,7 +384,7 @@ function nicen_theme_form_select( $args ) {
 
 
 /*
- * 单选
+ * 多选
  * */
 function nicen_theme_form_multi( $args ) {
 	?>

@@ -1,6 +1,6 @@
 <?php
 
-//删除仪表盘模块
+/* 删除仪表盘模块 */
 function example_remove_dashboard_widgets() {
     // Globalize the metaboxes array, this holds all the widgets for wp-admin
     global $wp_meta_boxes;
@@ -30,7 +30,7 @@ function remove_dashboard_meta() {
 add_action( 'admin_init', 'remove_dashboard_meta' );
 
 
-//wordpress删除仪表盘站点健康模块
+/* wordpress删除仪表盘站点健康模块 */
 function remove_dashboard_siteHealth() {
     remove_meta_box( 'dashboard_site_health', 'dashboard', 'normal' );
 }

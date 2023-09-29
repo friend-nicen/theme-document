@@ -11,7 +11,7 @@ function widget_input( $that, $instance, $args, $isArray = false ) {
     <input class="widefat" id="<?php echo $that->get_field_id( $args['field'] ); ?>"
            name="<?php echo $that->get_field_name( $args['field'] ) . ( $isArray ? '[]' : '' ); ?>"
            type="<?php echo $args['type'] ?>"
-           value="<?php echo $isArray ? $value[ $args['index'] ] : $value; ?>"/></label>
+           value="<?php echo  ($isArray && is_array($value)) ? $value[ $args['index'] ] : $value; ?>"/></label>
     </p>
 	<?php
 }
@@ -31,7 +31,7 @@ function widget_datepicker( $that, $instance, $args, $isArray = false ) {
            id="<?php echo $that->get_field_id( $args['field'] ); ?>"
            name="<?php echo $that->get_field_name( $args['field'] ) . ( $isArray ? '[]' : '' ); ?>"
            type="<?php echo $args['type'] ?>"
-           value="<?php echo $isArray ? $value[ $args['index'] ] : $value; ?>"/></label>
+           value="<?php echo ($isArray && is_array($value)) ? $value[ $args['index'] ] : $value; ?>"/></label>
     </p>
 	<?php
 	$count ++;
@@ -50,7 +50,7 @@ function widget_media( $that, $instance, $args, $isArray = false ) {
         <input class="widefat" id="<?php echo $that->get_field_id( $args['field'] ); ?>"
                name="<?php echo $that->get_field_name( $args['field'] ) . ( $isArray ? '[]' : '' ); ?>"
                type="<?php echo $args['type'] ?>"
-               value="<?php echo $isArray ? $value[ $args['index'] ] : $value; ?>"/></label>
+               value="<?php echo ($isArray && is_array($value)) ? $value[ $args['index'] ] : $value; ?>"/></label>
         <button style="margin-left: 10px;white-space: nowrap;" class="select-media" type="button">选择</button>
     </div>
 
@@ -76,7 +76,7 @@ function widget_select( $that, $instance, $args, $options, $isArray = false ) {
 		<?php
 		foreach ( $options as $key => $value ) {
 			?>
-            <option value="<?php echo $key; ?>" <?php echo ( $isArray ? $value[ $args['index'] ] : $current ) == $key ? "selected" : ""; ?>>
+            <option value="<?php echo $key; ?>" <?php echo (  ($isArray && is_array($value)) ? $value[ $args['index'] ] : $current ) == $key ? "selected" : ""; ?>>
 				<?php echo $value; ?>
             </option>
 		<?php } ?>

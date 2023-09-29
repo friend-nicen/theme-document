@@ -75,7 +75,7 @@ $(function () {
     $("body").click(function (e) {
             let that = $();
             e.stopPropagation();
-            if (!$.contains(emoji.get(0), e.target)) {
+            if (!$.contains(emoji.get(0), e.target) && emoji.length > 0) {
                 emoji.css("display", "none");
                 textarea.removeClass("focus");
             }

@@ -1207,7 +1207,7 @@ html {
               html body .main-container .main-main .main-content .main-article .custom-container .title {
                 font-weight: 550;
                 padding: 0 0 0.8rem 0; }
-              html body .main-container .main-main .main-content .main-article .custom-container p:last-child {
+              html body .main-container .main-main .main-content .main-article .custom-container ol:last-child, html body .main-container .main-main .main-content .main-article .custom-container ul:last-child, html body .main-container .main-main .main-content .main-article .custom-container p:last-child, html body .main-container .main-main .main-content .main-article .custom-container div:last-child {
                 margin-bottom: 0; }
             html body .main-container .main-main .main-content .main-article .success {
               border-left: 0.31rem solid var(--theme-success-line-color);

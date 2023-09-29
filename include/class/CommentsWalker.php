@@ -29,6 +29,4 @@ class CommentsWalker extends Walker_Comment {
 
 }
 
-?>
-
 

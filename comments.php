@@ -107,6 +107,7 @@ if ( nicen_theme_showComments() ) {
 						<?php wp_list_comments( [
 							'style'  => 'ul',
 							'type'   => 'all',
+                            'reverse_children'=>true,
 							'walker' => ( new CommentsWalker() )
 						] ); ?>
                     </ul>

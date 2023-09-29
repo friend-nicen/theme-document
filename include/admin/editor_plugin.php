@@ -46,13 +46,6 @@ function nicen_theme_admin_init() {
         } );
 
 
-        /*add_filter( 'tiny_mce_plugins', function ( $plugins ) {
-            $plugins[] = 'image';
-            $plugins[] = 'directionality';
-            return $plugins;
-        } );*/
-
-
         /*过滤 TinyMCE 按钮的第一行列表（Visual 选项卡）,在可视编辑器中注册一个按钮*/
         add_filter( 'mce_buttons', function ( $buttons ) {
             /*每一个按钮代表一个插件的类*/

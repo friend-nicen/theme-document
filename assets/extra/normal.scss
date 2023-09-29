@@ -1250,6 +1250,8 @@ html {
 
               .content {
                 font-size: var(--theme-secondary);
+
+
               }
 
               .title {
@@ -1257,11 +1259,14 @@ html {
                 padding: 0 0 0.8rem 0;
               }
 
-              p:last-child {
-                margin-bottom: 0;
+              ol, ul, p, div {
+                &:last-child {
+                  margin-bottom: 0;
+                }
               }
             }
 
+            
             .success {
               border-left: 0.31rem solid var(--theme-success-line-color);
               background-color: var(--theme-success-bg-color);

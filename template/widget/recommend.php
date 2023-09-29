@@ -133,7 +133,7 @@ global $table_prefix, $wpdb;
                                     </span>
                         </div>
                         <div class="category">
-							<?php echo nicen_make_getCategory( get_the_ID() ); ?>
+							<?php echo nicen_theme_getCategory( get_the_ID() ); ?>
                         </div>
                     </a>
                 </div>
