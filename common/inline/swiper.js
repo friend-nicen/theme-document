@@ -4,8 +4,6 @@
 
 $(function () {
 
-    console.log("jia ")
-
     const swiper_dom = $("#swiper");
 
     if (swiper_dom.length > 0) {

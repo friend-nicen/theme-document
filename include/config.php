@@ -71,7 +71,11 @@ const ADMIN = [
 						'title'    => '显示主题调色板',
 						'callback' => 'nicen_theme_form_switch',
 					],
-
+					[
+						'id'       => 'document_switch_adjust_date',
+						'title'    => '启用时区校准',
+						'callback' => 'nicen_theme_form_switch',
+					],
 					[
 						'id'       => 'document_Gravatar',
 						'title'    => 'Gravatar镜像服务器',
@@ -664,15 +668,17 @@ const ADMIN = [
  * */
 
 define( "CONFIG", [
-	"document_tdk"         => 1,
+	"document_tdk"                => 1,
 	//显示主题自带的tdk
-	"document_subtitle"    => '与你共享美好生活',
+	"document_subtitle"           => '与你共享美好生活',
 	//主题首页副标题
-	"document_keywords"    => 'desitination主题',
+	"document_keywords"           => 'desitination主题',
 	//主题关键字
-	"document_description" => '一款自由的博客主题',
+	"document_description"        => '一款自由的博客主题',
 	//主题描述
 
+	//时区校准
+	'document_switch_adjust_date' => 0,
 
 	'document_else_pagination'          => 1,
 	//显示分页的类型，默认动态分页
