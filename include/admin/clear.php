@@ -47,11 +47,10 @@ function remove_dashboard_siteHealth() {
 
 add_action( 'wp_dashboard_setup', 'remove_dashboard_siteHealth' );
 
+
 /**
  * 保留文章的反斜杠
  */
-add_filter( 'content_save_pre', 'keep_slash' );
-
 $document_content_save_pre = 1; //次数
 
 function keep_slash( $content ) {
@@ -63,3 +62,6 @@ function keep_slash( $content ) {
 	return str_replace( "\\", '\\\\', $content );
 }
 
+if (nicen_theme_config('document_switch_keep_slash', false)) {
+	add_filter( 'content_save_pre', 'keep_slash' );
+}

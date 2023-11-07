@@ -87,10 +87,19 @@ function modify_url() {
 /*
  * 主题初始化
  * */
-
-
 add_action( 'init', 'modify_url' );
-
-
 add_action( 'after_setup_theme', 'nicen_theme_initialize' ); //去除博客无用代码
 add_action( 'admin_init', 'nicen_theme_initialize' );//去除后台无用的东西
+
+
+
+/* 如果开启了时区校准 */
+if (nicen_theme_config('document_switch_adjust_date', false)) {
+	date_default_timezone_set( get_option( 'timezone_string' ) ); //设置时区
+}
+/* 如果是管理员，直接忽略文章密码 */
+if ( current_user_can( 'administrator' ) ) {
+	add_filter( 'post_password_required', '__return_false' );
+}
+
+

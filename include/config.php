@@ -76,6 +76,14 @@ const ADMIN = [
 						'title'    => '启用时区校准',
 						'callback' => 'nicen_theme_form_switch',
 					],
+                    [
+                        'id'       => 'document_switch_keep_slash',
+                        'title'    => '保留文章反斜杠',
+                        'callback' => 'nicen_theme_form_switch',
+                        'args'     => [
+                            'info' => 'Wp编辑器默认会把反斜杠当做转义符，结果就是整篇文章内的单反斜杠都会消失，开启这个后将会强制保留反斜杠，如果开启之后出现一些奇奇怪怪的问题，请关闭'
+                        ]
+                    ],
 					[
 						'id'       => 'document_Gravatar',
 						'title'    => 'Gravatar镜像服务器',
@@ -679,6 +687,9 @@ define( "CONFIG", [
 
 	//时区校准
 	'document_switch_adjust_date' => 0,
+
+    //保留反斜杠
+    'document_switch_keep_slash'=>0,
 
 	'document_else_pagination'          => 1,
 	//显示分页的类型，默认动态分页
