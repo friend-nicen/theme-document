@@ -75,13 +75,16 @@ const ADMIN = [
 						'id'       => 'document_switch_adjust_date',
 						'title'    => '启用时区校准',
 						'callback' => 'nicen_theme_form_switch',
+						'args'     => [
+							'tip' => '文章时间不对的可以开启这个'
+						]
 					],
                     [
                         'id'       => 'document_switch_keep_slash',
                         'title'    => '保留文章反斜杠',
                         'callback' => 'nicen_theme_form_switch',
                         'args'     => [
-                            'info' => 'Wp编辑器默认会把反斜杠当做转义符，结果就是整篇文章内的单反斜杠都会消失，开启这个后将会强制保留反斜杠，如果开启之后出现一些奇奇怪怪的问题，请关闭'
+                            'tip' => 'Wp编辑器默认会把反斜杠当做转义符，结果就是整篇文章内的单反斜杠都会消失，开启这个后将会强制保留反斜杠，如果开启之后出现一些奇奇怪怪的问题，请关闭'
                         ]
                     ],
 					[
