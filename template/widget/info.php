@@ -19,7 +19,7 @@ if ( is_singular() ) {
         <ul class="ul" style="margin-top: 0.5rem;">
             <li><?php echo $author; ?>创建于：<span><?php echo the_time( "Y-m-d H:i" ); ?></span></li>
             <li>最后编辑于：<span><?php echo get_new_post_modified_time( "Y-m-d H:i" ); ?></span></li>
-            <li>字数统计：<span><?php echo mb_strlen( get_the_content() ); ?></span></li>
+            <li>字数统计：<span><?php echo mb_strlen( strip_tags(get_the_content()) ); ?></span></li>
         </ul>
     </div>
 	<?php

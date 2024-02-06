@@ -163,6 +163,23 @@ function nicen_theme_getPostBad($postID)
 }
 
 
+/**
+ * @param $h
+ * @return mixed|string
+ * 匹配标题的文本内容
+ */
+function nicen_theme_getTextContent($h)
+{
+    /*  匹配标签 */
+    preg_match('/<h[234][^>]*>(.*?)<\/h[234]>/i', $h, $match);
+    /* 内容 */
+    if ($match) {
+        return $match[1];
+    } else {
+        return "";
+    }
+}
+
 /*
  * 根据文章内容生成侧边导航
  * */
@@ -171,13 +188,24 @@ function nicen_theme_navigator()
 
 
     if (is_single()) {
+
         $content = get_the_content();
 
         $h1_number = 1; //h1个数
         $h2_number = 1; //h2个数
         $h3_number = 1; //h3个数
 
-        $h = "/\[h2\][\s\S]*?\[\/h2\]|\[h1\][\s\S]*?\[\/h1\]|\[h3\][\s\S]*?\[\/h3\]/"; //匹配h1标题的正则
+        $tag_mode = nicen_theme_config("document_catelog_mode", false) === 'meta';
+
+        /* 判断目录读取模式 */
+        if ($tag_mode) {
+            $cat = ['h1', 'h2', 'h3']; //标签
+            $h = "/\[h2\][\s\S]*?\[\/h2\]|\[h1\][\s\S]*?\[\/h1\]|\[h3\][\s\S]*?\[\/h3\]/"; //匹配h1标题的正则
+        } else {
+            $cat = ['h2', 'h3', 'h4']; //标签
+            $content = html_entity_decode($content); //html反转义
+            $h = "/\<h2\>[\s\S]*?\<\/h2\>|\<h3\>[\s\S]*?\<\/h3\>|\<h4\>[\s\S]*?\<\/h4\>/"; //匹配h1标题的正则
+        }
 
 
         preg_match_all($h, $content, $match, PREG_OFFSET_CAPTURE);
@@ -188,24 +216,37 @@ function nicen_theme_navigator()
         foreach ($match[0] as $item) {
 
 
-            if (strpos($item[0], 'h1') !== false) {
-                $temp = str_replace(['[h1]', '[/h1]'], ['', ''], $item[0]);
+            if (strpos($item[0], $cat[0]) !== false) {
+                if ($tag_mode) {
+                    $temp = str_replace(['[h1]', '[/h1]'], ['', ''], $item[0]);
+                } else {
+                    $temp = nicen_theme_getTextContent($item[0]);
+                }
                 $replace .= '<li>
 							<div class="first-index">
 								<div><a href="#h2' . $h1_number . '" title="' . $temp . '">' . $temp . '</a></div>
 							</div>
 						</li>';
                 $h1_number++;
-            } else if (strpos($item[0], 'h2') !== false) {
-                $temp = str_replace(['[h2]', '[/h2]'], ['', ''], $item[0]);
+            } else if (strpos($item[0], $cat[1]) !== false) {
+                if ($tag_mode) {
+                    $temp = str_replace(['[h2]', '[/h2]'], ['', ''], $item[0]);
+                } else {
+                    $temp = nicen_theme_getTextContent($item[0]);
+                }
                 $replace .= '<li>
 							<div class="secondary-index">
 								<div><a href="#h3' . $h2_number . '" title="' . $temp . '">' . $temp . '</a></div>
 							</div>
 						</li>';
                 $h2_number++;
-            } else if (strpos($item[0], 'h3') !== false) {
-                $temp = str_replace(['[h3]', '[/h3]'], ['', ''], $item[0]);
+            } else if (strpos($item[0], $cat[2]) !== false) {
+
+                if ($tag_mode) {
+                    $temp = str_replace(['[h3]', '[/h3]'], ['', ''], $item[0]);
+                } else {
+                    $temp = nicen_theme_getTextContent($item[0]);
+                }
                 $replace .= '<li>
 							<div class="third-index">
 								<div><a href="#h4' . $h3_number . '" title="' . $temp . '">' . $temp . '</a></div>

@@ -929,6 +929,7 @@ html {
                 width: 1.2rem;
                 height: 1.2rem;
                 color: #2C3E50FF;
+                white-space: nowrap;
                 font-size: var(--theme-text-more-mini);
                 background-color: var(--theme-code-bg); }
               html body .main-container #space #navigator .icp-beian div img {
@@ -2271,3 +2272,9 @@ html {
         display: none; }
       html body .main-container .main-main .div-info .comment-form .comment-form-main .comment-textarea .emoji-list {
         width: 80%; } }
+
+
+u{
+  all: inherit!important;
+  text-decoration: underline!important;
+}
