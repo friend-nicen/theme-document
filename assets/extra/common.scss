@@ -5,13 +5,46 @@
   font-size: var(--theme-text);
   color: var(--theme-text-color);
   box-sizing: border-box;
-  scrollbar-width: thin;
-  scrollbar-color: var(--theme-color) var(--theme-bg-color);
   line-height: 1.75;
   word-wrap: break-word;
   word-break: break-all;
   word-spacing: normal;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+
+  /* 兼容最新版谷歌 */
+  @supports not selector(::-webkit-scrollbar) {
+    /*火狐浏览器滚动条样式*/
+    & {
+      scrollbar-width: thin;
+      scrollbar-color: var(--theme-color) var(--theme-bg-color);
+    }
+  }
+
+  /*
+    滚动条样式
+  */
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+    background: transparent;
+    width: 6px !important;
+    height: 6px !important;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    display: block;
+    border-radius: 4px;
+    box-shadow: 0 0 0 2px transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--theme-color);
+    border-radius: 4px;
+    border-style: solid;
+    border-color: transparent;
+    border-width: 2px;
+    background-clip: padding-box;
+  }
+
 }
 
 pre * {
@@ -29,30 +62,6 @@ p {
 }
 
 
-/*
-  滚动条样式
-*/
-::-webkit-scrollbar {
-  -webkit-appearance: none;
-  background: transparent;
-  width: 6px !important;
-  height: 6px !important;
-}
-
-:hover::-webkit-scrollbar-thumb {
-  display: block;
-  border-radius: 4px;
-  box-shadow: 0 0 0 2px transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--theme-color);
-  border-radius: 4px;
-  border-style: solid;
-  border-color: transparent;
-  border-width: 2px;
-  background-clip: padding-box;
-}
 
 
 /*
