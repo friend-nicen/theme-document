@@ -102,7 +102,7 @@ if ( isset( $_GET['baidu_submit'] ) ) {
 	while ( true ) {
 
 		/* 提取 */
-		$wait_submit = array_slice( $links, ( $page - 1 ) * 500, 500 );
+		$wait_submit = array_slice( $links, ( $page - 1 ) * 100, 100 );
 
 		/* 空了 */
 		if ( empty( $wait_submit ) ) {
@@ -119,6 +119,8 @@ if ( isset( $_GET['baidu_submit'] ) ) {
 
 		/* 结果 */
 		$result .= wp_remote_retrieve_body( $res );
+		/* 下一批 */
+		$page ++;
 	}
 
 
