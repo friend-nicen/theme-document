@@ -99,7 +99,9 @@ global $table_prefix, $wpdb;
 					}
 
 					$result   = $wpdb->get_results( $sql, ARRAY_A );
-					$post_ids = array_map( fn( $item ) => $item['post_id'], $result );
+					$post_ids = array_map( function ( $item ) {
+						return $item['post_id'];
+					}, $result );
 
 					query_posts( array_merge( $condition, [ "post__in" => $post_ids ] ) );
 					break;

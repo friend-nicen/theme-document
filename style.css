@@ -279,11 +279,31 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   word-break: break-all;
   word-spacing: normal;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+  /* 兼容最新版谷歌 */
   @supports not selector(::-webkit-scrollbar) {
-      scrollbar-width: thin;
-      scrollbar-color: var(--theme-color) var(--theme-bg-color);
+    scrollbar-width: thin;
+    scrollbar-color: var(--theme-color) var(--theme-bg-color);
   }
-}
+
+  /*
+    滚动条样式
+  */ }
+  *::-webkit-scrollbar {
+    -webkit-appearance: none;
+    background: transparent;
+    width: 6px !important;
+    height: 6px !important; }
+  *:hover::-webkit-scrollbar-thumb {
+    display: block;
+    border-radius: 4px;
+    box-shadow: 0 0 0 2px transparent; }
+  *::-webkit-scrollbar-thumb {
+    background: var(--theme-color);
+    border-radius: 4px;
+    border-style: solid;
+    border-color: transparent;
+    border-width: 2px;
+    background-clip: padding-box; }
 
 pre * {
   color: #65a4e3; }
@@ -292,34 +312,9 @@ p {
   margin: 0 0 var(--theme-margin-bottom) 0;
   font-weight: normal; }
 
-
-
-
 ::selection {
   background-color: var(--theme-color);
   color: white; }
-
-/*
-  滚动条样式
-*/
-::-webkit-scrollbar {
-  -webkit-appearance: none;
-  background: transparent;
-  width: 6px !important;
-  height: 6px !important; }
-
-:hover::-webkit-scrollbar-thumb {
-  display: block;
-  border-radius: 4px;
-  box-shadow: 0 0 0 2px transparent; }
-
-::-webkit-scrollbar-thumb {
-  background: var(--theme-color);
-  border-radius: 4px;
-  border-style: solid;
-  border-color: transparent;
-  border-width: 2px;
-  background-clip: padding-box; }
 
 /*
   文字提示
@@ -448,8 +443,7 @@ html {
             font-size: var(--theme-header-size);
             letter-spacing: 0.1rem;
             margin: 0 !important;
-            font-weight: 600;
-            font-family: webfont; }
+            font-weight: 600; }
       html body .main-header .daohang {
         cursor: pointer;
         display: none; }
@@ -935,7 +929,6 @@ html {
                 width: 1.2rem;
                 height: 1.2rem;
                 color: #2C3E50FF;
-                white-space: nowrap;
                 font-size: var(--theme-text-more-mini);
                 background-color: var(--theme-code-bg); }
               html body .main-container #space #navigator .icp-beian div img {
@@ -2278,9 +2271,3 @@ html {
         display: none; }
       html body .main-container .main-main .div-info .comment-form .comment-form-main .comment-textarea .emoji-list {
         width: 80%; } }
-
-
-u{
-  all: inherit!important;
-  text-decoration: underline!important;
-}

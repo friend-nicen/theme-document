@@ -12,6 +12,13 @@ Github：[https://github.com/friend-nicen/theme-document](https://github.com/fri
 
 Gitee：[https://gitee.com/friend-nicen/theme-document](https://gitee.com/friend-nicen/theme-document)
 
+# 2024-03-23
+
+1. 修复主题接口和wordpress数据导出操作冲突的问题
+2. 修复文章目录html解析模式无法正常点击跳转的问题
+3. 修改文章推荐小工具内的匿名函数使用方法
+4. 修复文章数量过多时，百度推送报错的问题，将百度站长工具链接推送调整为分批推送
+
 # 2023-01-07更新
 
 1. 新增文章推荐小工具

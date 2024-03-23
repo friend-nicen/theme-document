@@ -58,7 +58,7 @@ function nicen_theme_initialize() {
 /*
  * 修改url
  * */
-function modify_url() {
+function nicen_theme_modify_url() {
 
 	global $wp_rewrite;
 	$count = 0; //修改的数量
@@ -87,19 +87,86 @@ function modify_url() {
 /*
  * 主题初始化
  * */
-add_action( 'init', 'modify_url' );
+add_action( 'init', 'nicen_theme_modify_url' );
 add_action( 'after_setup_theme', 'nicen_theme_initialize' ); //去除博客无用代码
 add_action( 'admin_init', 'nicen_theme_initialize' );//去除后台无用的东西
 
 
-
 /* 如果开启了时区校准 */
-if (nicen_theme_config('document_switch_adjust_date', false)) {
+if ( nicen_theme_config( 'document_switch_adjust_date', false ) ) {
 	date_default_timezone_set( get_option( 'timezone_string' ) ); //设置时区
 }
+
+
 /* 如果是管理员，直接忽略文章密码 */
 if ( current_user_can( 'administrator' ) ) {
 	add_filter( 'post_password_required', '__return_false' );
 }
+
+
+/**
+ * @param $content
+ * html解析模式下，给内容添加ID
+ */
+function nicen_theme_fit_html_cat_mode( $content ) {
+
+	/* 如果显示文章目录 */
+	if ( nicen_theme_showCatelog() ) {
+
+		$header = [ 0, 0, 0 ]; //标题数量
+
+		/* 正则 */
+		$h   = "/\<h2[\s\S]*?\<\/h2\>|\<h3[\s\S]*?\<\/h3\>|\<h4[\s\S]*?\<\/h4\>/"; //匹配h1标题的正则
+		$cat = [ 'h2', 'h3', 'h4' ]; //标签
+		/* 替换内容，新增ID */
+
+		return preg_replace_callback( $h, function ( $match ) use ( $cat, &$header ) {
+
+			/* 标签匹配 */
+			if ( strpos( $match[0], $cat[0] ) !== false ) {
+
+				$content = str_replace( '<h2', "<h2 id='h2{$header[0]}' ", $match[0] );
+				$header[0] ++;
+
+			} else if ( strpos( $match[0], $cat[1] ) !== false ) {
+
+				$content = str_replace( '<h3', "<h3 id='h3{$header[1]}' ", $match[0] );
+				$header[1] ++;
+
+			} else if ( strpos( $match[0], $cat[2] ) !== false ) {
+
+				$content = str_replace( '<h4', "<h4 id='h4{$header[2]}' ", $match[0] );
+				$header[2] ++;
+			}
+
+			return $content;
+
+		}, $content );
+
+	} else {
+		return $content;
+	}
+
+
+}
+
+
+/**
+ * 是否需要显示文章目录
+ * 是html模式
+ */
+if ( nicen_theme_config( "document_catelog_mode", false ) === 'html' ) {
+	add_filter( 'the_content', 'nicen_theme_fit_html_cat_mode' );
+}
+
+
+
+
+
+
+
+
+
+
 
 
