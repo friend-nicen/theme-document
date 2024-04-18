@@ -19,6 +19,7 @@ Gitee：[https://gitee.com/friend-nicen/theme-document](https://gitee.com/friend
 | 时间         | 昵称  | 金额   |
 |------------|-----|------|
 | 2024-04-08 | 黯星丶 | 36.6 |
+| 2024-04-18 | 桩白墨 plough | 25 |
 
 # 打赏
 
