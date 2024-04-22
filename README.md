@@ -27,6 +27,10 @@ Gitee：[https://gitee.com/friend-nicen/theme-document](https://gitee.com/friend
 
 ![img.png](https://weixin.nicen.cn/images/weixin.jpg)
 
+# 2024-04-22更新
+
+1.修复动态分页时偶发重复加载的问题
+
 # 2024-04-08更新
 
 1.修复文章目录在html模式下跳转异常的问题
