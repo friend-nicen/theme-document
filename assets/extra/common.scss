@@ -12,13 +12,12 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
 
   /* 兼容最新版谷歌 */
-  /* @supports not selector(::-webkit-scrollbar) {
-     !*火狐浏览器滚动条样式*!
-     & {
-       scrollbar-width: thin;
-       scrollbar-color: var(--theme-color) var(--theme-bg-color);
-     }
-   }*/
+  /*@supports not selector(::-webkit-scrollbar) {
+    & {
+      scrollbar-width: thin;
+      scrollbar-color: var(--theme-color) var(--theme-bg-color);
+    }
+  }*/
 
   /*
     滚动条样式

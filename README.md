@@ -16,10 +16,10 @@ Gitee：[https://gitee.com/friend-nicen/theme-document](https://gitee.com/friend
 
 不定时更新..........
 
-| 时间         | 昵称  | 金额   |
-|------------|-----|------|
-| 2024-04-08 | 黯星丶 | 36.6 |
-| 2024-04-18 | 桩白墨 plough | 25 |
+| 时间         | 昵称         | 金额   |
+|------------|------------|------|
+| 2024-04-08 | 黯星丶        | 36.6 |
+| 2024-04-18 | 桩白墨 plough | 25   |
 
 # 打赏
 
@@ -27,13 +27,27 @@ Gitee：[https://gitee.com/friend-nicen/theme-document](https://gitee.com/friend
 
 ![img.png](https://weixin.nicen.cn/images/weixin.jpg)
 
+# 个人项目推荐
+
+## Wordpress免费远程图片本地化插件（wordpress插件后台搜索nicen-localize-image）
+
+Github：[https://github.com/friend-nicen/nicen-localize-image](https://github.com/friend-nicen/nicen-localize-image)
+
+Gitee：[https://gitee.com/friend-nicen/nicen-localize-image](https://gitee.com/friend-nicen/nicen-localize-image)
+
+# 2024-08-31更新
+
+1. 修复白天/黑夜模式切换，后台设置显示、隐藏无效的问题
+2. 更换灯箱插件（https://fengyuanchen.github.io/viewerjs/）
+3. 部分页面样式微调，修复部分BUG
+
 # 2024-04-22更新
 
-1.修复动态分页时偶发重复加载的问题
+1. 修复动态分页时偶发重复加载的问题
 
 # 2024-04-08更新
 
-1.修复文章目录在html模式下跳转异常的问题
+1. 修复文章目录在html模式下跳转异常的问题
 
 # 2024-03-23更新
 

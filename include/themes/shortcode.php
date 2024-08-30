@@ -123,9 +123,9 @@ function nicen_theme_init_shortcode()
         $title = do_shortcode($atts['title']);
 
         if (strpos($content, 'class') === false) {
-            $content = str_replace("<img", '<img class="glightbox"', $content);
+            $content = str_replace("<img", '<img class="viewerLightBox"', $content);
         } else {
-            $content = preg_replace("/class=\"(.*?)\"/", "class=\"$1 glightbox\"", $content);
+            $content = preg_replace("/class=\"(.*?)\"/", "class=\"$1 viewerLightBox\"", $content);
         }
 
         return '<div class="container-image">

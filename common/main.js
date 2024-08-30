@@ -79,19 +79,19 @@ $(function () {
     * 灯箱
     * */
     (function () {
-        /*屏蔽其他页面加载*/
-        if (typeof GLightbox == "undefined") {
+
+        /* 屏蔽其他页面加载 */
+        if (typeof Viewer == "undefined") {
             return;
         }
-        /*初始化灯箱*/
-        GLightbox({
-            selector: '.glightbox',
-            touchNavigation: true,
-            loop: true,
-            zoomable: true,
-            draggable: true,
-            autoplayVideos: true
-        });
+
+        /* 获取页面上的所有图片，初始化灯箱 */
+        document.querySelectorAll('.viewerLightBox').forEach((image) => {
+            new Viewer(image, {
+                navbar: false
+            });
+        })
+
     })();
 
 

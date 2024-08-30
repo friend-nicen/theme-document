@@ -21,6 +21,7 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   --theme-text-super-mini: 0.4rem;
   --theme-text-mini: 0.76rem;
   --theme-text-more-mini: 0.69rem;
+  --theme-text-more-mini-2: 0.62rem;
   --theme-text: 0.84rem;
   --theme-header-size: 1.1rem;
   --theme-secondary: 0.78rem;
@@ -255,9 +256,7 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   content: "\e626"; }
 
 /*动画效果*/
-/*
-  站点用到的动画
-*/
+/* 站点用到的动画 */
 @keyframes rotate {
   0% {
     transform: rotate(0deg); }
@@ -280,11 +279,12 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
   word-spacing: normal;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
   /* 兼容最新版谷歌 */
-  @supports not selector(::-webkit-scrollbar) {
-    scrollbar-width: thin;
-    scrollbar-color: var(--theme-color) var(--theme-bg-color);
-  }
-
+  /*@supports not selector(::-webkit-scrollbar) {
+    & {
+      scrollbar-width: thin;
+      scrollbar-color: var(--theme-color) var(--theme-bg-color);
+    }
+  }*/
   /*
     滚动条样式
   */ }
@@ -443,7 +443,8 @@ html {
             font-size: var(--theme-header-size);
             letter-spacing: 0.1rem;
             margin: 0 !important;
-            font-weight: 600; }
+            font-weight: 600;
+            font-family: webfont; }
       html body .main-header .daohang {
         cursor: pointer;
         display: none; }
@@ -677,7 +678,7 @@ html {
                   html body .main-container #fixed .main-right .recent .ul li a .article .caption:hover, html body .main-container #fixed .main-right .recent .ul li a .article .caption:active, html body .main-container #fixed .main-right .update .ul li a .article .caption:hover, html body .main-container #fixed .main-right .update .ul li a .article .caption:active {
                     color: var(--theme-color); }
                 html body .main-container #fixed .main-right .recent .ul li a .article .datetime, html body .main-container #fixed .main-right .update .ul li a .article .datetime {
-                  font-size: var(--theme-text-super-mini);
+                  font-size: var(--theme-text-more-mini-2);
                   color: var(--theme-text-mini-color); }
           html body .main-container #fixed .main-right .author {
             background-color: var(--theme-front-main-color);
@@ -930,7 +931,8 @@ html {
                 height: 1.2rem;
                 color: #2C3E50FF;
                 font-size: var(--theme-text-more-mini);
-                background-color: var(--theme-code-bg); }
+                background-color: var(--theme-code-bg);
+                white-space: nowrap; }
               html body .main-container #space #navigator .icp-beian div img {
                 width: 100%; }
       html body .main-container .div-info {
@@ -1179,6 +1181,8 @@ html {
             html body .main-container .main-main .main-content .main-article h2，h3, html body .main-container .main-main .main-content .main-article h4 {
               position: relative;
               cursor: pointer; }
+            html body .main-container .main-main .main-content .main-article > div {
+              margin-bottom: var(--theme-margin-bottom); }
             html body .main-container .main-main .main-content .main-article ul, html body .main-container .main-main .main-content .main-article ol, html body .main-container .main-main .main-content .main-article dl {
               margin: 0;
               padding: 0;
@@ -1976,7 +1980,7 @@ html {
               width: 100%; }
               html body .index .main-main .main-content .i-article .i-article-thumb a img {
                 width: 100%;
-                height: 100%;
+                object-fit: cover;
                 max-height: 140px;
                 margin: 0;
                 border-radius: 3px;

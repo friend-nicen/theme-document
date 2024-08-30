@@ -115,7 +115,7 @@ $(function () {
                 });
 
 
-            }).always(function () {
+            }).always(function() {
                 is_loading = false;//标记加载结束
             });
 
@@ -302,9 +302,7 @@ $(function () {
                     dom.append(list); //插入加载的文章
                     dom.append($(res).find('.pagination')); //插入加载的文章
                     main.append(dom);
-
                     $('#dynamic').hide(); //关闭加载动画
-
                     dom.show();
                     computed(); //重新定位位置
                     toFixed(); //重定位

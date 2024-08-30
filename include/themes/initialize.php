@@ -113,7 +113,7 @@ function nicen_theme_fit_html_cat_mode( $content ) {
 	/* 如果显示文章目录 */
 	if ( nicen_theme_showCatelog() ) {
 
-		$header = [ 1, 1, 1 ]; //标题数量
+		$header = [ 0, 0, 0 ]; //标题数量
 
 		/* 正则 */
 		$h   = "/\<h2[\s\S]*?\<\/h2\>|\<h3[\s\S]*?\<\/h3\>|\<h4[\s\S]*?\<\/h4\>/"; //匹配h1标题的正则

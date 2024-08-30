@@ -30,7 +30,7 @@ if ( post_password_required() ) {
 				<?php get_template_part( './template/index/article-header' ); ?>
                 <!--  文章内容  -->
                 <div class="main-article">
-					<?php the_content(); ?>
+					<?php echo the_content(); ?>
                 </div>
                 <!-- 文章底部 -->
 				<?php get_template_part( './template/index/article-footer' ); ?>

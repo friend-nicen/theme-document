@@ -120,7 +120,7 @@ if ( isset( $_GET['baidu_submit'] ) ) {
 		/* 结果 */
 		$result .= wp_remote_retrieve_body( $res );
 		/* 下一批 */
-		$page ++;
+		$page++;
 	}
 
 
