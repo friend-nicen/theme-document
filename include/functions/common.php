@@ -306,8 +306,6 @@ function nicen_theme_getExcerpt( $content, $password, $flag = false ) {
 			return "这是一篇受保护的文章，输入密码后才能查看哈";
 		} else {
 			echo "这是一篇受保护的文章，输入密码后才能查看哈";
-
-			return;
 		}
 	}
 

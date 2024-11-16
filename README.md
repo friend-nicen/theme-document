@@ -12,14 +12,17 @@ Github：[https://github.com/friend-nicen/theme-document](https://github.com/fri
 
 Gitee：[https://gitee.com/friend-nicen/theme-document](https://gitee.com/friend-nicen/theme-document)
 
+使用帮助看这里：[https://nicen.cn/1552.html](https://nicen.cn/1552.html)
+
 # 打赏记录
 
-不定时更新..........
+不定时更新..........,感谢：
 
 | 时间         | 昵称         | 金额   |
 |------------|------------|------|
 | 2024-04-08 | 黯星丶        | 36.6 |
 | 2024-04-18 | 桩白墨 plough | 25   |
+| 2024-11-13 | Laumy      | 66.0 |
 
 # 打赏
 
@@ -27,13 +30,25 @@ Gitee：[https://gitee.com/friend-nicen/theme-document](https://gitee.com/friend
 
 ![img.png](https://weixin.nicen.cn/images/weixin.jpg)
 
-# 个人项目推荐
+# 插件推荐
 
-## Wordpress免费远程图片本地化插件（wordpress插件后台搜索nicen-localize-image）
+## Wordpress免费远程图片本地化插件
+
+wordpress插件后台搜索nicen-localize-image
 
 Github：[https://github.com/friend-nicen/nicen-localize-image](https://github.com/friend-nicen/nicen-localize-image)
 
 Gitee：[https://gitee.com/friend-nicen/nicen-localize-image](https://gitee.com/friend-nicen/nicen-localize-image)
+
+## Wordpress用户行为回放插件
+
+Github：<https://github.com/friend-nicen/nicen-replay>
+
+Gitee：<https://gitee.com/friend-nicen/nicen-replay>
+
+# 2024-11-16
+
+1. 修复文章目录在html模式下跳转异常的问题
 
 # 2024-08-31更新
 
