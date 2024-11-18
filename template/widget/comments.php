@@ -38,7 +38,7 @@
 
             echo '<li>
                 <div class="comment-widget">
-                <img class="author-avatar" src="' . $avatar . '" title="头像"/>
+                <img loading="lazy" class="author-avatar" src="' . $avatar . '" title="头像"/>
                     <a href="' . get_the_permalink($comment->comment_post_ID) . '" title="' . $comment->comment_content . '">
                         <span class="name">
                          ' . $comment->comment_author . '

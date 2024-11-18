@@ -123,7 +123,7 @@ global $table_prefix, $wpdb;
                     <a href="<?php echo get_the_permalink() ?>" title="<?php echo get_the_title() ?>"
                        target="_blank">
                         <div class="thumnbnail">
-                            <img class="lazyload" src="<?php echo nicen_theme_getThumb() ?>" alt="<?php echo get_the_title() ?>"/>
+                            <img loading="lazy" src="<?php echo nicen_theme_getThumb() ?>" alt="<?php echo get_the_title() ?>"/>
                         </div>
                         <div class="caption">
 							<?php echo get_the_title() ?>

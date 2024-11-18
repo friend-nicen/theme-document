@@ -45,7 +45,7 @@ $default = get_template_directory_uri() . "/assets/images/default.png";
 
                         </div>
                     </a>
-                    <img src="<?php echo empty( $thumbnail[ $i ] ) ? $default : $thumbnail[ $i ]; ?>"/>
+                    <img loading="lazy" src="<?php echo empty( $thumbnail[ $i ] ) ? $default : $thumbnail[ $i ]; ?>"/>
                 </div>
 				<?php
 			}
