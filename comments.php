@@ -104,12 +104,13 @@ if ( nicen_theme_showComments() ) {
 			<?php if ( have_comments() ) { ?>
                 <div class="comment_list">
                     <ul class="front">
-						<?php wp_list_comments( [
-							'style'  => 'ul',
-							'type'   => 'all',
-                            'reverse_children'=>true,
-							'walker' => ( new CommentsWalker() )
-						] ); ?>
+	                    <?php wp_list_comments( [
+		                    'style'             => 'ul',
+		                    'type'              => 'all',
+		                    'reverse_top_level' => true,
+		                    'reverse_children'  => true,
+		                    'walker'            => ( new CommentsWalker() )
+	                    ] ); ?>
                     </ul>
                 </div>
 				<?php if ( get_comment_pages_count() > 1 ) { ?>
