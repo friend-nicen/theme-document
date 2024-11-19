@@ -99,7 +99,9 @@ global $table_prefix, $wpdb;
 					}
 
 					$result   = $wpdb->get_results( $sql, ARRAY_A );
-					$post_ids = array_map( fn( $item ) => $item['post_id'], $result );
+					$post_ids = array_map( function ( $item ) {
+						return $item['post_id'];
+					}, $result );
 
 					query_posts( array_merge( $condition, [ "post__in" => $post_ids ] ) );
 					break;
@@ -121,7 +123,7 @@ global $table_prefix, $wpdb;
                     <a href="<?php echo get_the_permalink() ?>" title="<?php echo get_the_title() ?>"
                        target="_blank">
                         <div class="thumnbnail">
-                            <img src="<?php echo nicen_theme_getThumb() ?>" alt="<?php echo get_the_title() ?>"/>
+                            <img loading="lazy" src="<?php echo nicen_theme_getThumb() ?>" alt="<?php echo get_the_title() ?>"/>
                         </div>
                         <div class="caption">
 							<?php echo get_the_title() ?>

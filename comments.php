@@ -105,10 +105,11 @@ if ( nicen_theme_showComments() ) {
                 <div class="comment_list">
                     <ul class="front">
 						<?php wp_list_comments( [
-							'style'  => 'ul',
-							'type'   => 'all',
-                            'reverse_children'=>true,
-							'walker' => ( new CommentsWalker() )
+							'style'             => 'ul',
+							'type'              => 'all',
+							'reverse_top_level' => true,
+							'reverse_children'  => true,
+							'walker'            => ( new CommentsWalker() )
 						] ); ?>
                     </ul>
                 </div>

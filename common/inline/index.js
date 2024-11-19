@@ -58,7 +58,14 @@ $(function () {
 
         $(".main-content").on('click', '.loadnext', function () {
 
-            let load = $(this);
+            /* 正在加载，终止请求 */
+            if (is_loading) {
+                return;
+            }
+
+            is_loading = true;//标记正在加载
+
+            const load = $(this);
 
             /*
             * 没有下一页了
@@ -69,38 +76,28 @@ $(function () {
 
             change(load); //显示加载效果
 
+            /* 请求下一页的文章 */
             $.post(load.data('next'), 'pagination=yes', function (res) {
-
-                if (is_loading) {
-                    return;
-                }
-
-                is_loading = true;//标记正在加载
 
                 let list = $(res).find('.i-article');
                 load.parent().before(list); //插入加载的文章
+
+
                 /*
                 * 修改下一页的链接
                 * */
-
                 load.data("next", $(res).find('.loadnext').data('next'));
 
                 computed(); //重新定位位置
                 toFixed(); //重定位
                 change(load, false); //显示加载效果
 
-                /*
-                * 添加文章目录
-                * */
-
-                /*无目录时终止*/
-                is_loading = false;//标记加载结束
-
                 if (!$("#space").is(":visible")) return;
 
-                let catelog = $("#navigator .scroll ul");
+                const catelog = $("#navigator .scroll ul");
                 let number = catelog.find('li').length;
 
+                /* 遍历刷新目录 */
                 list.each(function (index, item) {
 
                     let linkId = $(item).find("h2").attr("id");
@@ -118,7 +115,9 @@ $(function () {
                 });
 
 
-            })
+            }).always(function() {
+                is_loading = false;//标记加载结束
+            });
 
         })
 

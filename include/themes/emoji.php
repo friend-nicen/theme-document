@@ -33,7 +33,7 @@ function nicen_theme_textToEmoji( $comment_ID ) {
         /*判断表情是否存在*/
         foreach ( $match[1] as $emoji ) {
             if ( file_exists( $dir . $emoji . ".png" ) ) {
-                $html = preg_replace( "/:" . $emoji . ":/", "<img class='comments-emoji' src='" . $path . $emoji . ".png' title='emoji'/>", $html );
+                $html = preg_replace( "/:" . $emoji . ":/", "<img class='comments-emoji' loading='lazy' src='" . $path . $emoji . ".png' title='emoji'/>", $html );
                 $count ++;
             }
         }

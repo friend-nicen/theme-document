@@ -33,11 +33,11 @@ if ($count_posts) {
 <!--作者信息-->
 <div class="author">
     <div class="author-beijin">
-        <img src="<?php echo $beijin; ?>" title="作者头像"/>
+        <img loading="lazy" src="<?php echo $beijin; ?>" title="作者头像"/>
     </div>
     <div class="offset">
         <div class="author-avatar">
-            <img src="<?php echo $avatar; ?>" title="作者头像"/>
+            <img loading="lazy" src="<?php echo $avatar; ?>" title="作者头像"/>
         </div>
         <div class="author-info">
             <div class="nickname">

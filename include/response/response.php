@@ -59,7 +59,7 @@ if ( isset( $_GET['bad'] ) ) {
 /*
  * 百度链接提交
  * */
-if ( isset( $_GET['submit'] ) ) {
+if ( isset( $_GET['baidu_submit'] ) ) {
 
 	nicen_theme_auth(); //权限验证
 
@@ -91,20 +91,45 @@ if ( isset( $_GET['submit'] ) ) {
 	/*
 	 * 请求数据
 	 * */
-	$res = wp_remote_post( $api, [
-		'body'      => implode( "\n", nicen_theme_getLinks() ),
-		'headers'   => $headers,
-		'sslverify' => false,
-		'timeout'   => 120,
-	] );
+
+	$links  = nicen_theme_getLinks();
+	$result = "";//响应结果
+
+
+	$page = 1; // 起始
+
+	/* 循环处理 */
+	while ( true ) {
+
+		/* 提取 */
+		$wait_submit = array_slice( $links, ( $page - 1 ) * 100, 100 );
+
+		/* 空了 */
+		if ( empty( $wait_submit ) ) {
+			break;
+		}
+
+		/* 发起请求 */
+		$res = wp_remote_post( $api, [
+			'body'      => implode( "\n", $wait_submit ),
+			'headers'   => $headers,
+			'sslverify' => false,
+			'timeout'   => 120,
+		] );
+
+		/* 结果 */
+		$result .= wp_remote_retrieve_body( $res );
+		/* 下一批 */
+		$page++;
+	}
 
 
 	/*
 	 * 输出推送结果
 	 * */
 	exit( json_encode( [
-		'code'   => 0,
-		'result' => wp_remote_retrieve_body( $res )
+		'code'   => 1,
+		'result' => $result
 	] ) );
 }
 

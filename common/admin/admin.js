@@ -392,7 +392,7 @@ jQuery(function () {
                 let that = this;
                 load.confirm("确定提交站点所有URL到百度站长平台吗？", () => {
                     load.loading('正在提交');
-                    axios.get('/?submit=1&private=' + that.data.document_private)
+                    axios.get('/?baidu_submit=1&private=' + that.data.document_private)
                         .then((res) => {
                             message.info(res.data.result);
                         }).catch((e) => {
