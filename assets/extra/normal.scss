@@ -732,12 +732,20 @@ html {
                 color: inherit;
               }
 
-              .secondary-index div {
-                padding: 0 0 0 1.2rem;
+              .secondary-index  {
+
+                div{
+                  padding: 0 0 0 1.2rem;
+                }
+
+                .iconfont {
+                  left: 1.616rem;
+                }
               }
 
               .third-index div {
                 padding: 0 0 0 2.4rem;
+
               }
 
               .first-index div, .secondary-index div, .third-index div {

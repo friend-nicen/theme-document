@@ -46,6 +46,12 @@ Github：<https://github.com/friend-nicen/nicen-replay>
 
 Gitee：<https://gitee.com/friend-nicen/nicen-replay>
 
+# 2024-11-19
+
+1. 新增文章阅读目录可以展开/折叠
+2. 新增文章目录顶部图标批量展开/折叠阅读目录
+3. 新增图片懒加载
+
 # 2024-11-16
 
 1. 修复文章目录在html模式下跳转异常的问题

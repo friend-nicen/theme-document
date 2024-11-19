@@ -218,8 +218,6 @@ $(function () {
         /*
         * 内容滚动同步导航栏
         * */
-        let timer = null;
-
         $(window).on('scroll', function () {
 
             /*
@@ -283,8 +281,11 @@ $(function () {
 
             let parent = $("a[href='#" + collects.eq(position).attr("id") + "']").parent();
             needScroll = false;//标记文章不需要跟随目录的点击而滚动
-            parent.trigger('click');
 
+            /* 不显示的时候不处理 */
+            if (parent.parent().parent().css("display") !== "none") {
+                parent.trigger('click');
+            }
 
         });
 
@@ -370,22 +371,55 @@ $(function () {
     * */
     (function () {
 
-        $('#space .scroll .iconfont').click(function (e) {
 
+        /* handle处理展开、收缩 */
+        const handle = (elem, status = null) => {
             /* 选取数据 */
-            const that = $(this)
+            const that = $(elem)
             const parentId = that.parent().parent().data('pid');
-
+            const child = $(`[data-parent=${parentId}]`);
             /* 显示和隐藏 */
-            if (that.hasClass('collapse')) {
+            if ((that.hasClass('collapse') && status === null) || status) {
+                /* 处理 */
                 that.removeClass('collapse');
-                $(`[data-parent=${parentId}]`).show(100);
+                /* 处理下级 */
+                child.show(100)
+                    .find('.iconfont')
+                    .each((o, m) => {
+                        handle(m, true)
+                    });
             } else {
                 that.addClass('collapse');
-                $(`[data-parent=${parentId}]`).hide(100);
+                /* 处理下级 */
+                child.hide(100)
+                    .find('.iconfont')
+                    .each((o, m) => {
+                        handle(m, false)
+                    });
             }
+        }
 
+        /* 监控点击 */
+        $('#space .scroll .iconfont').click(function (e) {
+            handle(this);
             e.stopPropagation();
         });
+
+        /* 批量展开和收缩 */
+        $('.main-top .icon-daohang-caidan').click(function () {
+            /* 记录 */
+            const that = $(this)
+            const collapse = that.hasClass('collapse');
+            /* 批量展开 */
+            $('.first-index > .iconfont').each((i, m) => {
+                handle(m, collapse);
+            });
+            /* 修改状态 */
+            if (collapse) {
+                that.removeClass('collapse');
+            } else {
+                that.addClass('collapse');
+            }
+        })
     })();
 });

@@ -859,6 +859,8 @@ html {
                 color: inherit; }
               html body .main-container #space #navigator .scroll li .secondary-index div {
                 padding: 0 0 0 1.2rem; }
+              html body .main-container #space #navigator .scroll li .secondary-index .iconfont {
+                left: 1.616rem; }
               html body .main-container #space #navigator .scroll li .third-index div {
                 padding: 0 0 0 2.4rem; }
               html body .main-container #space #navigator .scroll li .first-index div, html body .main-container #space #navigator .scroll li .secondary-index div, html body .main-container #space #navigator .scroll li .third-index div {
