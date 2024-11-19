@@ -12,6 +12,11 @@
  * */
 $desination_configs = [];
 
+/* 同步最新配置 */
+foreach ( CONFIG as $key => $value ) {
+	add_option( $key, $value );
+}
+
 
 /*
  * 输出主题选项
@@ -177,7 +182,7 @@ function nicen_theme_getTextContent( $h ) {
  * */
 function nicen_theme_navigator() {
 
-
+	/* 如果是文章页面 */
 	if ( is_single() ) {
 
 		$content = get_the_content();
@@ -202,6 +207,8 @@ function nicen_theme_navigator() {
 		preg_match_all( $h, $content, $match, PREG_OFFSET_CAPTURE );
 
 		$replace = '';
+		/* 父级节点 */
+		$parent = [];
 
 		/* 标签匹配 */
 		foreach ( $match[0] as $item ) {
@@ -215,13 +222,16 @@ function nicen_theme_navigator() {
 					$temp = nicen_theme_getTextContent( $item[0] );
 				}
 
-				$replace .= '<li>
+				$replace .= '<li data-pid="h2' . $h1_number . '">
 							<div class="first-index">
 								<div><a href="#h2' . $h1_number . '" title="' . $temp . '">' . $temp . '</a></div>
 							</div>
 						</li>';
 
+				/* 记录节点 */
+				$parent['h1'] = 'h2' . $h1_number;
 				$h1_number ++;
+
 
 			} else if ( strpos( $item[0], $cat[1] ) !== false ) {
 
@@ -231,12 +241,14 @@ function nicen_theme_navigator() {
 					$temp = nicen_theme_getTextContent( $item[0] );
 				}
 
-				$replace .= '<li>
+				$replace .= '<li data-pid="h3' . $h2_number . '" data-parent="' . $parent['h1'] . '">
 							<div class="secondary-index">
 								<div><a href="#h3' . $h2_number . '" title="' . $temp . '">' . $temp . '</a></div>
 							</div>
 						</li>';
 
+				/* 记录节点 */
+				$parent['h2'] = 'h3' . $h2_number;
 				$h2_number ++;
 
 			} else if ( strpos( $item[0], $cat[2] ) !== false ) {
@@ -247,12 +259,16 @@ function nicen_theme_navigator() {
 					$temp = nicen_theme_getTextContent( $item[0] );
 				}
 
-				$replace .= '<li>
+				$replace .= '<li data-pid="h4' . $h3_number . '" data-parent="' . $parent['h2'] . '">
 							<div class="third-index">
 								<div><a href="#h4' . $h3_number . '" title="' . $temp . '">' . $temp . '</a></div>
 							</div>
 						</li>';
+
 				$h3_number ++;
+
+				/* 记录节点 */
+				/*$parent['h3'] = 'h3' . $h3_number;*/
 			}
 
 		}
@@ -291,6 +307,7 @@ function nicen_theme_navigator() {
 	}
 
 }
+
 
 
 /*

@@ -3,9 +3,7 @@
   * */
 $(function () {
 
-    /*
-        节流
-     */
+    /* 节流  */
     function throttle(cb, wait = 3000) {
         let previous = 0;
         return (...args) => {
@@ -22,7 +20,7 @@ $(function () {
 
 
         let is_loading = false; //是否正在加载
-        let html = $("html"); //dom
+        const html = $("html"); //dom
 
 
         /*
@@ -54,8 +52,6 @@ $(function () {
         /*
         * 动态绑定点击加载时间
         * */
-
-
         $(".main-content").on('click', '.loadnext', function () {
 
             /* 正在加载，终止请求 */
@@ -70,7 +66,7 @@ $(function () {
             /*
             * 没有下一页了
             * */
-            if (load.data('next') == "") {
+            if (load.data('next') === "") {
                 return;
             }
 
@@ -115,7 +111,7 @@ $(function () {
                 });
 
 
-            }).always(function() {
+            }).always(function () {
                 is_loading = false;//标记加载结束
             });
 

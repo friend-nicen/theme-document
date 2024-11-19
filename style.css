@@ -821,8 +821,14 @@ html {
             margin-bottom: 4.2rem;
             padding: 0.7rem 0.5rem 0 0; }
             html body .main-container #space #navigator .scroll .iconfont {
-              margin-right: 1px;
-              font-size: var(--theme-text-more-mini); }
+              position: absolute;
+              margin-right: 3px;
+              cursor: pointer;
+              font-size: var(--theme-text-mini);
+              transition: all 0.5s ease;
+              left: 8px; }
+            html body .main-container #space #navigator .scroll .collapse {
+              transform: rotate(-180deg); }
             html body .main-container #space #navigator .scroll li .first-index, html body .main-container #space #navigator .scroll li .secondary-index, html body .main-container #space #navigator .scroll li .third-index {
               margin-right: 1px;
               font-size: var(--theme-text-more-mini); }
@@ -848,6 +854,7 @@ html {
               html body .main-container #space #navigator .scroll li .first-index, html body .main-container #space #navigator .scroll li .secondary-index, html body .main-container #space #navigator .scroll li .third-index {
                 display: flex;
                 align-items: center;
+                position: relative;
                 padding: 3px 1em;
                 color: inherit; }
               html body .main-container #space #navigator .scroll li .secondary-index div {

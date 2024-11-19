@@ -37,25 +37,20 @@ $.fn.scrollUnique = function () {
 
 $(function () {
 
-    /*阅读导航栏初始化*/
+    /* 阅读导航栏初始化 */
     (function () {
         /*
         * 给目录添加展开伸缩图标
         * */
-        $('.first-index').each(function () {
-            let that = $(this);
-            if (that.parent().next().children('div').is('.secondary-index')) {
-                that.prepend('<i class="iconfont icon-xiangxiazhankai1"></i>');
+        $(`[data-pid]`).each(function () {
+
+            const that = $(this);
+            const parentId = that.data('pid');
+
+            if ($(`[data-parent=${parentId}]`).length) {
+                that.children('div').prepend('<i class="iconfont icon-xiangxiazhankai1"></i>');
             }
         })
-
-        $('.secondary-index').each(function () {
-            let that = $(this);
-            if (that.parent().next().children('div').is('.thrid-index')) {
-                that.prepend('<i class="iconfont icon-xiangxiazhankai1"></i>');
-            }
-        })
-
 
     })();
 
@@ -64,10 +59,10 @@ $(function () {
     * 屏蔽文章导航滚动事件向上传递
     * */
     (function () {
-        $('.scroll').scrollUnique();
-        $('.scroll').on('scroll', function (e) {
-            e.stopPropagation(); //停止向上传递事件
-        })
+        $('.scroll').scrollUnique()
+            .on('scroll', function (e) {
+                e.stopPropagation(); //停止向上传递事件
+            });
     })();
 
     //防止重复触发目录滚动
@@ -77,7 +72,6 @@ $(function () {
 
     /*阅读目录初始化*/
     (function () {
-
 
         /*导航跳转*/
         function goto(Index) {
@@ -131,11 +125,6 @@ $(function () {
 
 
             /*
-            * 同步滚动文章页面
-            * */
-
-
-            /*
             * 判断文章是否需要滚动
             * */
             if (!needScroll) {
@@ -151,7 +140,7 @@ $(function () {
 
             let anchor = main.find(Index.find('div a').attr("href"));
 
-            if (anchor.length != 0) {
+            if (anchor.length !== 0) {
 
 
                 /*
@@ -160,7 +149,7 @@ $(function () {
                 * */
                 watchScroll = false;//屏蔽滚动监听
 
-                let top = anchor.getTop() - 75;
+                let top = anchor.getTop() - 15;
 
                 /*
                 * 滚动锚点标记
@@ -173,7 +162,7 @@ $(function () {
 
         }
 
-        /*重置状态*/
+        /* 重置状态 */
         function clear() {
             $('.main-container .main-left .first-index').css('color', '');//移除所有一级索引的颜色
             $('.main-container .main-left .secondary-index').css('color', '');//移除所有二级索引的颜色
@@ -181,23 +170,17 @@ $(function () {
         }
 
 
-        /*绑定一级索引标签的事件*/
+        /* 绑定文章目录点击的事件 */
         $("body").on("click", '.first-index', function () {
             clear();
             goto($(this));
             $(this).css('color', 'var(--theme-color)');//被选中的一级索引变为主题色
-        })
-
-        /*绑定二级索引标签的事件*/
-        $("body").on("click", '.secondary-index', function () {
+        }).on("click", '.secondary-index', function () {
             clear();
             goto($(this));
             $(this).css('color', 'var(--theme-color)');//被选中的二级索引变为主题色
             $(this).parent().parent().prev('.first-index').css('color', 'var(--theme-color)');//被选中的一级索引变为主题色
-        })
-
-        /*绑定三级索引标签的事件*/
-        $("body").on("click", '.third-index', function () {
+        }).on("click", '.third-index', function () {
             clear();
             goto($(this));
             $(this).css('color', 'var(--theme-color)');//被选中的三级索引变为主题色
@@ -307,6 +290,7 @@ $(function () {
 
     })();
 
+
     /*
     * 监控阅读位置
     * */
@@ -377,6 +361,31 @@ $(function () {
                 });
             }
 
+        });
+    })();
+
+
+    /*
+    * 文章踩、文章点赞
+    * */
+    (function () {
+
+        $('#space .scroll .iconfont').click(function (e) {
+
+            /* 选取数据 */
+            const that = $(this)
+            const parentId = that.parent().parent().data('pid');
+
+            /* 显示和隐藏 */
+            if (that.hasClass('collapse')) {
+                that.removeClass('collapse');
+                $(`[data-parent=${parentId}]`).show(100);
+            } else {
+                that.addClass('collapse');
+                $(`[data-parent=${parentId}]`).hide(100);
+            }
+
+            e.stopPropagation();
         });
     })();
 });

@@ -679,8 +679,16 @@ html {
             padding: 0.7rem 0.5rem 0 0;
 
             .iconfont {
-              margin-right: 1px;
-              font-size: var(--theme-text-more-mini);
+              position: absolute;
+              margin-right: 3px;
+              cursor: pointer;
+              font-size: var(--theme-text-mini);
+              transition: all 0.5s ease;
+              left: 8px;
+            }
+
+            .collapse {
+              transform: rotate(-180deg);
             }
 
             li {
@@ -719,6 +727,7 @@ html {
               .first-index, .secondary-index, .third-index {
                 display: flex;
                 align-items: center;
+                position: relative;
                 padding: 3px 1em;
                 color: inherit;
               }

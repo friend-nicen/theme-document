@@ -4,27 +4,29 @@
 function toggleTheme(flag = true) {
     if (flag) {
         //暗黑主题
-        $('html').addClass('dark');
-        //白天主题
-        $('html').removeClass('personal');
+        $('html')
+            .addClass('dark')
+            .removeClass('personal');
         //标记暗黑模式
         localStorage.setItem('night', 1);
         //改变图标
         $(function () {
-            $('.read-mode i').removeClass("icon-baitian-qing");
-            $('.read-mode i').addClass("icon-yueliang");
+            $('.read-mode i')
+                .removeClass("icon-baitian-qing")
+                .addClass("icon-yueliang");
         });
     } else {
         //暗黑主题
-        $('html').removeClass('dark');
-        //白天主题
-        $('html').addClass('personal');
+        $('html')
+            .removeClass('dark')
+            .addClass('personal');
         //移除暗黑模式标记
         localStorage.removeItem('night');
         //改变图标
         $(function () {
-            $('.read-mode i').removeClass("icon-yueliang");
-            $('.read-mode i').addClass("icon-baitian-qing");
+            $('.read-mode i')
+                .removeClass("icon-yueliang")
+                .addClass("icon-baitian-qing");
         });
     }
 }
