@@ -14,6 +14,8 @@ Gitee：[https://gitee.com/friend-nicen/theme-document](https://gitee.com/friend
 
 使用帮助看这里：[https://nicen.cn/1552.html](https://nicen.cn/1552.html)
 
+> 😁，加我微信【good7341】或机器人微信【nicen_friend】拉你进交流群！
+
 # 打赏记录
 
 不定时更新..........,感谢：
