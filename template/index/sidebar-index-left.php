@@ -17,7 +17,7 @@ if ( nicen_theme_showArticleCate() ) {
 
 		?>
         <div id="space">
-            <aside class="main-left" id="navigator">
+            <aside class="main-left isIndex" id="navigator">
                 <div class="main-top">
                     <ul>
                         <li class="active">文章导航</li>
