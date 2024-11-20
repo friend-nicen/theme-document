@@ -102,7 +102,7 @@ if ( isset( $_GET['baidu_submit'] ) ) {
 	while ( true ) {
 
 		/* 提取 */
-		$wait_submit = array_slice( $links, ( $page - 1 ) * 100, 100 );
+		$wait_submit = array_slice( $links, ( $page - 1 ) * 50, 50 );
 
 		/* 空了 */
 		if ( empty( $wait_submit ) ) {

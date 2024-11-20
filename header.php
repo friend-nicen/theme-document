@@ -16,7 +16,7 @@
 	if ( nicen_theme_config( 'document_tdk', false ) ) {
 		?>
         <title><?php nicen_theme_title() ?></title>
-        <meta name="keywords" content="<?php nicen_theme_config( 'document_keywords' ); ?>"/>
+        <meta name="keywords" content="<?php nicen_theme_keywords(); ?>"/>
         <meta name="description" content="<?php nicen_theme_description() ?>"/>
 		<?php
 	}
@@ -24,7 +24,6 @@
 		echo nicen_theme_og(); //输出og协议内容
 	}
 	?>
-	<?php /*wp_site_icon(); */ ?>
 	<?php wp_head(); ?>
 </head>
 <body>

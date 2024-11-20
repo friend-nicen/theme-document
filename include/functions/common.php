@@ -309,30 +309,35 @@ function nicen_theme_navigator() {
 }
 
 
-
 /*
  * 处理文章摘要
  * */
-function nicen_theme_getExcerpt( $content, $password, $flag = false ) {
+function nicen_theme_getExcerpt( $content, $password, $flag = true ) {
+
+	/* 文章 */
+	global $post;
 
 	/*
 	 * 是否有密码
 	 * */
 	if ( $password ) {
 		if ( $flag ) {
-			return "这是一篇受保护的文章，输入密码后才能查看哈";
-		} else {
 			echo "这是一篇受保护的文章，输入密码后才能查看哈";
+		} else {
+			return "这是一篇受保护的文章，输入密码后才能查看哈";
 		}
 	}
 
+
 	$content = strip_tags( $content );//去除html
 	$content = preg_replace( "/\[[\s\S]*?\]/", "", $content ); //去除短标签
+
 	if ( $flag ) {
-		return $content;
-	} else {
 		echo $content;
+	} else {
+		return $content;
 	}
+
 
 }
 
@@ -429,14 +434,49 @@ function nicen_theme_title() {
 /*
  * 站点关键字
  * */
-function nicen_theme_description( $flag = false ) {
+function nicen_theme_keywords( $flag = true ) {
+
+	global $post;
+
+	if ( is_single() || is_page() ) {
+		$keywords = get_post_meta( $post->ID, 'nicen_keywords', true );
+		if ( $keywords ) {
+			if ( $flag ) {
+				echo $keywords;
+			} else {
+				return $keywords;
+			}
+		} else {
+			return nicen_theme_config( 'document_keywords', $flag );
+		}
+	} else {
+		return nicen_theme_config( 'document_keywords', $flag );
+	}
+}
+
+
+/*
+ * 站点描述
+ * */
+function nicen_theme_description( $flag = true ) {
 
 
 	global $post;
 
 	if ( is_single() || is_page() ) {
-		/*获取文章摘要*/
-		return nicen_theme_getExcerpt( get_the_excerpt(), $post->post_password, $flag );
+		/* 定义的描述 */
+		$description = get_post_meta( $post->ID, 'nicen_description', true );
+		/* 获取文章摘要 */
+		if ( $description ) {
+			if ( $flag ) {
+				echo $description;
+			} else {
+				return $description;
+			}
+		}else{
+			return nicen_theme_getExcerpt( get_the_excerpt(), $post->post_password, $flag );
+		}
+
 	} elseif ( is_category() || is_tag() ) {
 		if ( $flag ) {
 			return preg_replace( '/\n/', '', strip_tags( term_description() ) );
@@ -444,12 +484,7 @@ function nicen_theme_description( $flag = false ) {
 			echo preg_replace( '/\n/', '', strip_tags( term_description() ) );
 		}
 	} else {
-		if ( $flag ) {
-			return nicen_theme_config( 'document_description', false );
-		} else {
-			nicen_theme_config( 'document_description' );
-		}
-
+		return nicen_theme_config( 'document_description', $flag );
 	}
 }
 
@@ -778,7 +813,7 @@ function nicen_theme_og() {
 			home_url(),
 			get_bloginfo( 'name' ),
 			get_bloginfo( 'name' ) . '-' . nicen_theme_config( 'document_subtitle', false ),
-			nicen_theme_description( true ) );
+			nicen_theme_description( false ) );
 	} /*
  * 文章或者页面
  * */
@@ -793,7 +828,7 @@ function nicen_theme_og() {
 			get_bloginfo( 'name' ),
 			get_the_title(),
 			nicen_theme_getThumb(),
-			nicen_theme_description( true ) );
+			nicen_theme_description( false ) );
 	} else if ( is_category() || is_tag() ) {
 
 		return sprintf( '<meta property="og:type" content="webpage" />
@@ -804,7 +839,7 @@ function nicen_theme_og() {
 			nicen_theme_getCatLink(),
 			get_bloginfo( 'name' ),
 			nicen_theme_getCat(),
-			nicen_theme_description( true ) );
+			nicen_theme_description( false ) );
 	} else {
 		return '';
 	}

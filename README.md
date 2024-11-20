@@ -48,6 +48,10 @@ Github：<https://github.com/friend-nicen/nicen-replay>
 
 Gitee：<https://gitee.com/friend-nicen/nicen-replay>
 
+# 2024-11-20
+
+1. 新增编辑文章、页面时可以定义关键词和描述
+
 # 2024-11-19
 
 1. 新增文章阅读目录可以展开/折叠

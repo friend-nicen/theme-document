@@ -255,6 +255,11 @@ const ADMIN = [
                         'title' => '显示主题自带的tdk',
                         'callback' => 'nicen_theme_form_switch',
                     ],
+	                [
+		                'id' => 'document_article_tdk',
+		                'title' => '编辑文章时自定义tdk',
+		                'callback' => 'nicen_theme_form_switch',
+	                ],
                     [
                         'id' => 'document_subtitle',
                         'title' => '博客副标题',
@@ -696,7 +701,7 @@ const ADMIN = [
  * */
 
 define("CONFIG", [
-    "document_tdk" => 1,
+
     //显示主题自带的tdk
     "document_subtitle" => '与你共享美好生活',
     //主题首页副标题
@@ -796,6 +801,9 @@ define("CONFIG", [
     //百度站长
     "document_private" => md5(time()),
     //初次安装时的接口密钥
+
+    "document_tdk" => 1,
+    "document_article_tdk" => 1,
 
     /*
      * 文章设置
