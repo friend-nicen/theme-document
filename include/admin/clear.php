@@ -68,7 +68,7 @@ global $post; //文章
 $slash = isset( $_POST['nicen_slash'] ) ? sanitize_text_field( $_POST['nicen_slash'] ) : "";
 
 if ( strpos( $_SERVER['SCRIPT_NAME'] ?? "", '/post' ) ) {
-	if ( nicen_theme_config( 'document_switch_keep_slash', false ) || ( $slash ?: get_post_meta( $post->ID, 'nicen_slash', true ) ) ) {
+	if ( nicen_theme_config( 'document_switch_keep_slash', false ) || ( $slash ?: ( $post ? get_post_meta( $post->ID, 'nicen_slash', true ) : false ) ) ) {
 		add_filter( 'content_save_pre', 'keep_slash' );
 	}
 }
