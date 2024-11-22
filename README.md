@@ -48,6 +48,10 @@ Github：<https://github.com/friend-nicen/nicen-replay>
 
 Gitee：<https://gitee.com/friend-nicen/nicen-replay>
 
+# 2024-11-22
+
+1. 新增编辑文章时，可单独指定是否保存文章内的反斜杠
+
 # 2024-11-20
 
 1. 新增编辑文章、页面时可以定义关键词和描述

@@ -7,16 +7,32 @@
 
 if ( nicen_theme_config( 'document_article_tdk', false ) ) {
 	add_action( 'add_meta_boxes', 'nicen_theme_kd_meta_box' );
-	add_action( 'edit_post', 'document_kd_save_post' );
+	add_action( 'edit_post', 'nicen_document_kd_save_post' );
 }
+
+add_action( 'edit_post', 'nicen_document_slash_save_post' );
 
 
 /**
  * 新增元框
  */
 function nicen_theme_kd_meta_box() {
+	add_meta_box( 'nicen_theme_slash_meta_box', "反斜杠", 'nicen_theme_slash_callback', 'post', 'side', 'core' );
 	add_meta_box( 'nicen_theme_kd_meta_box', "文章SEO", 'nicen_theme_kd_callback', 'page', 'normal', 'core' );
 	add_meta_box( 'nicen_theme_kd_meta_box', "文章SEO", 'nicen_theme_kd_callback', 'post', 'normal', 'core' );
+}
+
+
+/**
+ * @param $post
+ * 回调
+ */
+function nicen_theme_slash_callback( $post ) {
+	$nice_slash = intval( get_post_meta( $post->ID, 'nicen_slash', true ) ?: "0" );
+	echo '<div style="display:flex;gap:10px;">';
+	echo '<label><input type="radio" name="nicen_slash" value="1" ' . checked( 1, $nice_slash, false ) . '> 保存</label>';
+	echo '<label><input type="radio" name="nicen_slash" value="0" ' . checked( 0, $nice_slash, false ) . '> 不处理</label>';
+	echo '</div>';
 }
 
 
@@ -39,6 +55,16 @@ function nicen_theme_kd_callback( $post ) {
 	<?php
 }
 
+/**
+ * @param $post_id
+ *
+ * @return mixed|void
+ * 保存元框数据
+ */
+function nicen_document_slash_save_post( $post_id ) {
+	$slash = sanitize_text_field( $_POST['nicen_slash'] );
+	update_post_meta( $post_id, 'nicen_slash', $slash );
+}
 
 /**
  * @param $post_id
@@ -46,7 +72,7 @@ function nicen_theme_kd_callback( $post ) {
  * @return mixed|void
  * 保存元框数据
  */
-function document_kd_save_post( $post_id ) {
+function nicen_document_kd_save_post( $post_id ) {
 
 
 	/* nonce数验证 */
@@ -54,7 +80,7 @@ function document_kd_save_post( $post_id ) {
 		return $post_id;
 	}
 
-	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 		return $post_id;
 	}
 

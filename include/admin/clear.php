@@ -59,9 +59,16 @@ function keep_slash( $content ) {
 		return $content;
 	}
 	$document_content_save_pre ++;
+
 	return str_replace( "\\", '\\\\', $content );
 }
 
-if (nicen_theme_config('document_switch_keep_slash', false)) {
-	add_filter( 'content_save_pre', 'keep_slash' );
+
+global $post; //文章
+$slash = sanitize_text_field( $_POST['nicen_slash'] );
+
+if ( strpos( $_SERVER['SCRIPT_NAME'] ?? "", '/post' ) ) {
+	if ( nicen_theme_config( 'document_switch_keep_slash', false ) || ( $slash ?: get_post_meta( $post->ID, 'nicen_slash', true ) ) ) {
+		add_filter( 'content_save_pre', 'keep_slash' );
+	}
 }
