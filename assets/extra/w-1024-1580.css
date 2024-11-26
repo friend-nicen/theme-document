@@ -1,0 +1,10 @@
+@charset "UTF-8";
+/*
+  1580-1024大小的公共样式
+*/
+@media (min-width: 1024px) and (max-width: 1580px) {
+  html body .main-container .main-main {
+    width: 55%;
+    /* 文章推荐 */ }
+    html body .main-container .main-main .recommend .list .swiper-slide {
+      width: calc(25% - 12px); } }

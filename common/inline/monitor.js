@@ -149,7 +149,7 @@ $(function () {
                 * */
                 watchScroll = false;//屏蔽滚动监听
 
-                let top = anchor.getTop() - ($(".isIndex").length > 0 ? 75 : 15);
+                let top = anchor.getTop() - ($(".isIndex").length > 0 ? 55 : 15);
 
                 /*
                 * 滚动锚点标记

@@ -1,0 +1,93 @@
+@charset "UTF-8";
+/*
+  主题所有变量
+*/
+:root {
+  /*基础样式变量*/
+  --theme-text-super-mini: 0.4rem;
+  --theme-text-mini: 0.76rem;
+  --theme-text-more-mini: 0.69rem;
+  --theme-text-more-mini-2: 0.62rem;
+  --theme-text: 0.84rem;
+  --theme-header-size: 1.1rem;
+  --theme-secondary: 0.78rem;
+  --theme-first-level-title: 1.35rem;
+  --theme-secondary-level-title: 1.15rem;
+  --theme-third-level-title: 0.96rem;
+  --theme-fourth-level-title: 0.84rem;
+  /*主题文件样式变量*/
+  --theme-black-text: #333;
+  --theme-white: #f5f7fd;
+  --theme-black: #333;
+  --theme-color: #3eaf7c;
+  --theme-color-20: rgba(66, 185, 131, 0.2);
+  --theme-text-color: #262626;
+  --theme-text-secondary: rgba(0, 0, 0, 0.65);
+  --theme-text-mini-color: rgba(0, 0, 0, 0.65);
+  --theme-margin-bottom: 1rem;
+  --theme-margin-bottom-max: 1.1rem;
+  --theme-li-padding: 1.2rem;
+  --theme-bg-color: var(--theme-white);
+  --theme-pre: #ccc;
+  --theme-front-main-color: #fff;
+  --theme-front-color: #fafbfc;
+  --theme-header-color: var(--theme-color);
+  --theme-header-border: #e1e1e1;
+  --theme-hover-bg: #444;
+  --theme-hover-color: white;
+  --theme-hover-shadow: rgba(0, 0, 0, 0.1);
+  --theme-code-bg: #eeeeee;
+  --theme-code-text: #4e6e8e;
+  /*文字块样式变量*/
+  --theme-success-bg-color: #f3f4f5;
+  --theme-success-line-color: #42b983;
+  --theme-success-title-color: #2c3e50;
+  --theme-success-text-color: #2c3e50;
+  --theme-alert-bg-color: #fffae3;
+  --theme-alert-title-color: #ad9000;
+  --theme-alert-line-color: #e7c000;
+  --theme-alert-text-color: #746000;
+  --theme-error-bg-color: #ffe0e0;
+  --theme-error-title-color: #990000;
+  --theme-error-line-color: #cc0000;
+  --theme-error-text-color: #660000;
+  /*文章导航、目录样式变量*/
+  --theme-first-index-title: 0.78rem;
+  --theme-secondary-index-title: 0.78rem;
+  --theme-third-index-title: 0.78rem;
+  /*代码块样式*/
+  --theme-pre-code-bg: #f7f7f7;
+  --theme-pre-code-shadow: #fff;
+  /*底部标签样式变量*/
+  --theme-label-bg: #aaa;
+  --theme-label-color: #fff;
+  --theme-label-hover: #8d8d8d;
+  --theme-emoji-size: 1.3rem;
+  --theme-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.22);
+  --theme-placeholder: #a4a4a4; }
+
+.theme-one {
+  --theme-color: #f5222d !important; }
+
+.theme-two {
+  --theme-color: #fa541c !important; }
+
+.theme-three {
+  --theme-color: #fadb14 !important; }
+
+.theme-four {
+  --theme-color: #3eaf7c !important; }
+
+.theme-five {
+  --theme-color: #13c2c2 !important; }
+
+.theme-six {
+  --theme-color: #1890ff !important; }
+
+.theme-seven {
+  --theme-color: #722ed1 !important; }
+
+.theme-eight {
+  --theme-color: #eb2f96 !important; }
+
+/* 变量 */
