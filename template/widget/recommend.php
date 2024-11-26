@@ -14,7 +14,7 @@ global $table_prefix, $wpdb;
 	<?php if ( $show_title == 1 ) { ?>
         <div class="header">
             <ul>
-                <li class="active" style="padding-left:1rem;padding-right:1rem;"><?php echo $title; ?></li>
+                <li class="active" style="padding-left:1rem;padding-right:1rem;"><div class="mark"></div><?php echo $title; ?></li>
                 <!-- <li>修改记录</li>-->
             </ul>
         </div>

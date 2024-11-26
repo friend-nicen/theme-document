@@ -1033,16 +1033,28 @@ html {
             html body .main-container .div-info .header ul .active {
               display: flex;
               align-items: center; }
-              html body .main-container .div-info .header ul .active:before {
-                top: 1px;
-                display: block;
-                content: " ";
-                font-weight: 510;
-                border-radius: 5px;
-                width: 3px;
-                height: 1rem;
-                margin-right: 0.6rem;
-                background-color: var(--theme-color); }
+              html body .main-container .div-info .header ul .active .mark {
+                display: flex;
+                align-items: center;
+                margin-right: 0.5rem; }
+                html body .main-container .div-info .header ul .active .mark:before, html body .main-container .div-info .header ul .active .mark:after {
+                  top: 1px;
+                  display: block;
+                  content: " ";
+                  font-weight: 510;
+                  border-radius: 5px;
+                  width: 3px;
+                  height: 1rem;
+                  margin-right: 0.3rem;
+                  transform: rotate(15deg);
+                  transition: all .4s ease-in-out;
+                  background-color: var(--theme-color);
+                  flex: 1; }
+                html body .main-container .div-info .header ul .active .mark:after {
+                  height: 0.9rem;
+                  opacity: 0.6; }
+        html body .main-container .div-info:hover .header ul .active .mark:before, html body .main-container .div-info:hover .header ul .active .mark:after {
+          transform: rotate(-165deg); }
       html body .main-container .main-main {
         display: flex;
         flex-direction: column;

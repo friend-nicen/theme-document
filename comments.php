@@ -41,7 +41,7 @@ if ( nicen_theme_showComments() ) {
         <div class="div-info">
             <div class="header">
                 <ul>
-                    <li class="active">评论区</li>
+                    <li class="active"><div class="mark"></div>评论区</li>
                     <!-- <li>修改记录</li>-->
                 </ul>
             </div>

@@ -11,7 +11,7 @@
 <div class="div-info">
     <div class="header">
         <ul>
-            <li class="active"><?php echo $title; ?></li>
+            <li class="active"><div class="mark"></div><?php echo $title; ?></li>
             <!-- <li>修改记录</li>-->
         </ul>
     </div>

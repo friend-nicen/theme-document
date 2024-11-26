@@ -12,7 +12,7 @@ if ( is_singular() ) {
     <div class="div-info">
         <div class="header">
             <ul>
-                <li class="active">文章信息</li>
+                <li class="active"><div class="mark"></div>文章信息</li>
                 <!-- <li>修改记录</li>-->
             </ul>
         </div>

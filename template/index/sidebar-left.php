@@ -19,7 +19,7 @@ if ( nicen_theme_showCatelog() ) {
             <aside class="main-left" id="navigator">
                 <div class="main-top">
                     <ul>
-                        <li class="active">文章目录</li>
+                        <li class="active">🗂️ 文章目录</li>
                         <!-- <li>修改记录</li>-->
                     </ul>
                     <i class="iconfont icon-daohang-caidan"></i>

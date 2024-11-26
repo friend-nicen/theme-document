@@ -732,9 +732,9 @@ html {
                 color: inherit;
               }
 
-              .secondary-index  {
+              .secondary-index {
 
-                div{
+                div {
                   padding: 0 0 0 1.2rem;
                 }
 
@@ -1020,20 +1020,52 @@ html {
               display: flex;
               align-items: center;
 
-              &:before {
-                top: 1px;
-                display: block;
-                content: " ";
-                font-weight: 510;
-                border-radius: 5px;
-                width: 3px;
-                height: 1rem;
-                margin-right: 0.6rem;
-                background-color: var(--theme-color);
+
+              .mark {
+                display: flex;
+                align-items: center;
+                margin-right: 0.5rem;
+
+                &:before, &:after {
+                  top: 1px;
+                  display: block;
+                  content: " ";
+                  font-weight: 510;
+                  border-radius: 5px;
+                  width: 3px;
+                  height: 1rem;
+                  margin-right: 0.3rem;
+                  transform: rotate(15deg);
+                  transition: all .4s ease-in-out;
+                  background-color: var(--theme-color);
+                  flex: 1;
+                }
+
+                &:after {
+                  height: 0.9rem;
+                  opacity: 0.6;
+                }
               }
+
 
             }
           }
+        }
+
+        &:hover {
+          .header {
+            ul {
+              .active {
+                .mark {
+                  &:before, &:after {
+                    transform: rotate(-165deg);
+                  }
+                }
+              }
+            }
+          }
+
+
         }
       }
 
