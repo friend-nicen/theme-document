@@ -814,7 +814,16 @@ html {
             position: relative;
             overflow-y: auto;
             margin-bottom: 4.2rem;
-            padding: 0.7rem 0.5rem 0 0; }
+            padding: 0.7rem 0.5rem 0 0;
+            /* 隐藏滚动条的同时仍能滚动 */
+            -ms-overflow-style: none;
+            /* 适用于 Internet Explorer 和旧版 Edge */
+            scrollbar-width: none;
+            /* 适用于 Firefox */
+            /* Webkit 浏览器 */ }
+            html body .main-container #space #navigator .scroll::-webkit-scrollbar {
+              display: none;
+              /* 隐藏滚动条 */ }
             html body .main-container #space #navigator .scroll .iconfont {
               position: absolute;
               margin-right: 3px;
@@ -890,16 +899,7 @@ html {
             html body .main-container #space #navigator .scroll .first .first-index:hover, html body .main-container #space #navigator .scroll .first .secondary-index:hover, html body .main-container #space #navigator .scroll .first .third-index:hover {
               color: var(--theme-color); }
           html body .main-container #space #navigator .index-scroll {
-            margin-bottom: 0.7rem;
-            /* 隐藏滚动条的同时仍能滚动 */
-            -ms-overflow-style: none;
-            /* 适用于 Internet Explorer 和旧版 Edge */
-            scrollbar-width: none;
-            /* 适用于 Firefox */
-            /* Webkit 浏览器 */ }
-            html body .main-container #space #navigator .index-scroll::-webkit-scrollbar {
-              display: none;
-              /* 隐藏滚动条 */ }
+            margin-bottom: 0.7rem; }
             html body .main-container #space #navigator .index-scroll li .first-index div, html body .main-container #space #navigator .index-scroll li .secondary-index div, html body .main-container #space #navigator .index-scroll li .third-index div {
               display: -webkit-box;
               -webkit-line-clamp: 2;
