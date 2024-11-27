@@ -651,7 +651,8 @@ html {
                 html body .main-container #fixed .main-right .recent .ul li a .thumnbnail img, html body .main-container #fixed .main-right .update .ul li a .thumnbnail img {
                   width: 100%;
                   height: 100%;
-                  transition: all 0.3s ease-out; }
+                  transition: all 0.3s ease-out;
+                  object-fit: cover; }
                   html body .main-container #fixed .main-right .recent .ul li a .thumnbnail img:hover, html body .main-container #fixed .main-right .update .ul li a .thumnbnail img:hover {
                     transform: scale(1.1); }
               html body .main-container #fixed .main-right .recent .ul li a .article, html body .main-container #fixed .main-right .update .ul li a .article {
@@ -889,7 +890,16 @@ html {
             html body .main-container #space #navigator .scroll .first .first-index:hover, html body .main-container #space #navigator .scroll .first .secondary-index:hover, html body .main-container #space #navigator .scroll .first .third-index:hover {
               color: var(--theme-color); }
           html body .main-container #space #navigator .index-scroll {
-            margin-bottom: 0.7rem; }
+            margin-bottom: 0.7rem;
+            /* 隐藏滚动条的同时仍能滚动 */
+            -ms-overflow-style: none;
+            /* 适用于 Internet Explorer 和旧版 Edge */
+            scrollbar-width: none;
+            /* 适用于 Firefox */
+            /* Webkit 浏览器 */ }
+            html body .main-container #space #navigator .index-scroll::-webkit-scrollbar {
+              display: none;
+              /* 隐藏滚动条 */ }
             html body .main-container #space #navigator .index-scroll li .first-index div, html body .main-container #space #navigator .index-scroll li .secondary-index div, html body .main-container #space #navigator .index-scroll li .third-index div {
               display: -webkit-box;
               -webkit-line-clamp: 2;
@@ -2011,6 +2021,14 @@ html {
         border-bottom: none; }
       html body .index .main-main .hasDynamic {
         padding-top: 0; }
+
+/*## 大于1580px */
+/*
+  1580-1024大小的公共样式
+*/
+@media (min-width: 1580px) {
+  html body .main-header {
+    height: 65px; } }
 
 /*## 平板电脑/Ipad竖屏，##768px - 1024px */
 /*

@@ -434,6 +434,7 @@ html {
                     width: 100%;
                     height: 100%;
                     transition: all 0.3s ease-out;
+                    object-fit: cover;
 
                     &:hover {
                       transform: scale(1.1);
@@ -806,6 +807,13 @@ html {
 
           .index-scroll {
             margin-bottom: 0.7rem;
+            /* 隐藏滚动条的同时仍能滚动 */
+            -ms-overflow-style: none; /* 适用于 Internet Explorer 和旧版 Edge */
+            scrollbar-width: none; /* 适用于 Firefox */
+            /* Webkit 浏览器 */
+            &::-webkit-scrollbar {
+              display: none; /* 隐藏滚动条 */
+            }
 
             li {
               .first-index, .secondary-index, .third-index {

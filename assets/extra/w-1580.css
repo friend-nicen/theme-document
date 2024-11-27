@@ -1,0 +1,7 @@
+@charset "UTF-8";
+/*
+  1580-1024大小的公共样式
+*/
+@media (min-width: 1580px) {
+  html body .main-header {
+    height: 65px; } }
