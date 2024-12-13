@@ -62,8 +62,10 @@ function nicen_theme_kd_callback( $post ) {
  * 保存元框数据
  */
 function nicen_document_slash_save_post( $post_id ) {
-	$slash = sanitize_text_field( $_POST['nicen_slash'] );
-	update_post_meta( $post_id, 'nicen_slash', $slash );
+	if ( ! empty( $_POST['nicen_slash'] ) ) {
+		$slash = sanitize_text_field( $_POST['nicen_slash'] );
+		update_post_meta( $post_id, 'nicen_slash', $slash );
+	}
 }
 
 /**
