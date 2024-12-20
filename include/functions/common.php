@@ -323,6 +323,7 @@ function nicen_theme_getExcerpt( $content, $password, $flag = true ) {
 	if ( $password ) {
 		if ( $flag ) {
 			echo "这是一篇受保护的文章，输入密码后才能查看哈";
+
 			return;
 		} else {
 			return "这是一篇受保护的文章，输入密码后才能查看哈";
@@ -335,6 +336,8 @@ function nicen_theme_getExcerpt( $content, $password, $flag = true ) {
 
 	if ( $flag ) {
 		echo $content;
+
+		return;
 	} else {
 		return $content;
 	}
@@ -474,7 +477,7 @@ function nicen_theme_description( $flag = true ) {
 			} else {
 				return $description;
 			}
-		}else{
+		} else {
 			return nicen_theme_getExcerpt( get_the_excerpt(), $post->post_password, $flag );
 		}
 
@@ -800,7 +803,6 @@ function nicen_theme_getCatLink() {
  * */
 function nicen_theme_og() {
 
-	global $post;
 	/*
 	 * 首页
 	 * */
@@ -809,8 +811,8 @@ function nicen_theme_og() {
 		return sprintf( '<meta property="og:type" content="webpage" />
 <meta property="og:url" content="%s" />
 <meta property="og:site_name" content="%s" />
-<meta property="og:nicen_theme_title" content="%s" />
-<meta property="og:nicen_theme_description" content="%s" />',
+<meta property="og:title" content="%s" />
+<meta property="og:description" content="%s" />',
 			home_url(),
 			get_bloginfo( 'name' ),
 			get_bloginfo( 'name' ) . '-' . nicen_theme_config( 'document_subtitle', false ),
@@ -822,9 +824,9 @@ function nicen_theme_og() {
 		return sprintf( '<meta property="og:type" content="article" />
 <meta property="og:url" content="%s" />
 <meta property="og:site_name" content="%s" />
-<meta property="og:nicen_theme_title" content="%s" />
+<meta property="og:title" content="%s" />
 <meta property="og:image" content="%s" />
-<meta property="og:nicen_theme_description" content="%s" />',
+<meta property="og:description" content="%s" />',
 			get_the_permalink(),
 			get_bloginfo( 'name' ),
 			get_the_title(),
@@ -835,8 +837,8 @@ function nicen_theme_og() {
 		return sprintf( '<meta property="og:type" content="webpage" />
 <meta property="og:url" content="%s" />
 <meta property="og:site_name" content="%s" />
-<meta property="og:nicen_theme_title" content="%s" />
-<meta property="og:nicen_theme_description" content="%s" />',
+<meta property="og:title" content="%s" />
+<meta property="og:description" content="%s" />',
 			nicen_theme_getCatLink(),
 			get_bloginfo( 'name' ),
 			nicen_theme_getCat(),
