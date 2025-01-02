@@ -241,7 +241,7 @@ function nicen_theme_navigator() {
 					$temp = nicen_theme_getTextContent( $item[0] );
 				}
 
-				$replace .= '<li data-pid="h3' . $h2_number . '" data-parent="' . $parent['h1'] . '">
+				$replace .= '<li data-pid="h3' . $h2_number . '" data-parent="' . ( $parent['h1'] ?? '' ) . '">
 							<div class="secondary-index">
 								<div><a href="#h3' . $h2_number . '" title="' . $temp . '">' . $temp . '</a></div>
 							</div>
@@ -259,7 +259,7 @@ function nicen_theme_navigator() {
 					$temp = nicen_theme_getTextContent( $item[0] );
 				}
 
-				$replace .= '<li data-pid="h4' . $h3_number . '" data-parent="' . $parent['h2'] . '">
+				$replace .= '<li data-pid="h4' . $h3_number . '" data-parent="' . ( $parent['h2'] ?? '' ) . '">
 							<div class="third-index">
 								<div><a href="#h4' . $h3_number . '" title="' . $temp . '">' . $temp . '</a></div>
 							</div>
