@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 /*
 Theme Name: Document
 Theme URI: https://nicen.cn
@@ -13,8 +14,8 @@ Text Domain: Document
 Tags: 文档,自适应,主题切换,阅读进度跟随
 */
 
-
 /* 基于1920*938的窗口  */
+
 /*主题变量*/
 @import "assets/extra/variant.scss";
 /*暗黑模式变量*/
@@ -27,8 +28,6 @@ Tags: 文档,自适应,主题切换,阅读进度跟随
 @import "assets/extra/common.scss";
 /*正常的所有样式*/
 @import "assets/extra/normal.scss";
-/*## 大于1580px */
-@import "assets/extra/w-1580.scss";
 /*## 平板电脑/Ipad竖屏，##768px - 1024px */
 @import "assets/extra/w-1024-1580.scss";
 /* 1024px以下的屏幕 */

@@ -27,6 +27,9 @@ add_theme_support( 'widgets' ); //开启自定义侧边栏
 add_theme_support( 'widgets-block-editor' ); //开启自定义侧边栏
 remove_filter( 'the_content', 'wptexturize' );  //关闭文章转义
 
+/* 给页面注册标签和分类功能 */
+register_taxonomy_for_object_type( 'post_tag', 'page' );
+register_taxonomy_for_object_type( 'category', 'page' );
 
 
 

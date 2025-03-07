@@ -20,9 +20,9 @@
         width: 100%;
         height: 100%;
         cursor: pointer;
-        object-fit: cover;
         border-radius: 8px;
-        transition: all 0.3s; }
+        transition: all 0.3s;
+        object-fit: cover; }
       .swiper .swiper-slide .swiper-item .modal {
         position: absolute;
         left: 0;
