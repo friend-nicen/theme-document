@@ -20,11 +20,13 @@ Gitee：[https://gitee.com/friend-nicen/theme-document](https://gitee.com/friend
 
 不定时更新..........,感谢：
 
-| 时间         | 昵称         | 金额   |
-|------------|------------|------|
-| 2024-04-08 | 黯星丶        | 36.6 |
-| 2024-04-18 | 桩白墨 plough | 25   |
-| 2024-11-13 | Laumy      | 66.0 |
+| 时间         | 昵称          | 金额    |
+|------------|-------------|-------|
+| 2024-04-08 | 黯星丶         | 36.6  |
+| 2024-04-18 | 桩白墨 plough  | 25    |
+| 2024-11-13 | Laumy       | 66.0  |
+| 2025-01-13 | Jason zhang | 100.0 |
+| 2025-02-13 | 法律人@海       | 66.0  |
 
 # 打赏
 
@@ -47,6 +49,15 @@ Gitee：[https://gitee.com/friend-nicen/nicen-localize-image](https://gitee.com/
 Github：<https://github.com/friend-nicen/nicen-replay>
 
 Gitee：<https://gitee.com/friend-nicen/nicen-replay>
+
+# 2025-03-08
+
+1. 新增主题后台可以自定义背景色
+2. 新增主题后台可设置是否禁用古腾堡编辑器
+
+# 2024-11-22
+
+1. 新增编辑文章时，可单独指定是否保存文章内的反斜杠
 
 # 2024-11-20
 
