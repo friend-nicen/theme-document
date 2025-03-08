@@ -108,3 +108,131 @@
     display: -webkit-box;
     overflow: hidden;
 }
+
+
+/*
+ * 友情链接关系图表样式
+ * @author 友人a丶
+ * @date 2024-01-18
+ */
+
+.friend-graph {
+    position: relative;
+    width: 100%;
+    min-height: calc(100vh - 100px);
+    border-radius: 8px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+#friend-edges {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.friend-edge {
+    stroke: #bcbcbc;
+    stroke-width: 1;
+    transition: stroke 0.3s;
+}
+
+.friend-node {
+    position: absolute;
+    width: 4.5rem;
+    cursor: move;
+    z-index: 2;
+    transition: transform 0.3s;
+}
+
+.friend-node.dragging {
+    z-index: 3;
+    transform: scale(1.05);
+}
+
+.friend-node.dragging {
+    z-index: 3;
+    transform: scale(1.05);
+}
+
+
+.node-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    margin-bottom: 8px;
+}
+
+.node-icon img {
+    width: 75%;
+    height: 75%;
+    pointer-events: none;
+    user-select: none;
+    object-fit: cover;
+}
+
+.node-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 12px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    position: absolute;
+    width: 240px;
+    left: 50%;
+    z-index: 1001;
+    transform: translateX(-50%);
+}
+
+.friend-node:hover .node-info {
+    opacity: 1;
+}
+
+.node-info h3 {
+    margin: 0 0 4px;
+    font-size: 14px;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.node-info p {
+    margin: 0;
+    font-size: 12px;
+    color: #666;
+    display: -webkit-box;
+    overflow: hidden;
+}
+
+
+@media (max-width: 767px) {
+
+    .friend-node {
+        position: absolute;
+        width: 2.5rem;
+    }
+
+    .node-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+}

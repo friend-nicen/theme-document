@@ -6,6 +6,8 @@
 
 $(function () {
 
+    let gap = window.innerWidth < 767 ? 2 : 4;
+
     /* 创建关系图表容器 */
     const container = document.getElementById('friend-graph');
     if (!container) return;
@@ -68,7 +70,7 @@ $(function () {
         label: currentSite.name,
         image: currentSite.image,
         description: currentSite.description,
-        x: container.clientWidth / 2 - (2 * rem),
+        x: container.clientWidth / 2 - (gap / 2 * rem),
         y: (container.clientHeight - 120) / 2
     });
 
@@ -172,17 +174,22 @@ $(function () {
 
         /* 清除现有的线 */
         svg.innerHTML = '';
+        const length = gap * rem / 2;
+
+
+
 
         /* 绘制新的连线 */
         edges.forEach(edge => {
             const from = nodes[edge.from];
             const to = nodes[edge.to];
 
+
             const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-            line.setAttribute('x1', from.x + 40); // 节点中心点
-            line.setAttribute('y1', from.y + 40);
-            line.setAttribute('x2', to.x + 40);
-            line.setAttribute('y2', to.y + 40);
+            line.setAttribute('x1', from.x + length); // 节点中心点
+            line.setAttribute('y1', from.y + length);
+            line.setAttribute('x2', to.x + length);
+            line.setAttribute('y2', to.y + length);
             line.setAttribute('class', 'friend-edge');
 
             svg.appendChild(line);
