@@ -29,21 +29,59 @@ $(function () {
     }));
 
     /* 创建节点和边（包括当前站点节点） */
-    const nodes = [{
+    const nodes = [];
+    const minDistance = 100; // 最小节点间距
+    const padding = 50; // 容器边距
+
+    /* 检查新位置是否与现有节点重叠 */
+    function isValidPosition(x, y, existingNodes) {
+        for (const node of existingNodes) {
+            const distance = Math.sqrt(
+                Math.pow(x - node.x, 2) +
+                Math.pow(y - node.y, 2)
+            );
+            if (distance < minDistance) return false;
+        }
+        return true;
+    }
+
+    /* 获取随机有效位置 */
+    function getValidPosition(existingNodes) {
+        let x, y;
+        let attempts = 0;
+        const maxAttempts = 100;
+
+        do {
+            x = Math.random() * (container.clientWidth - 2 * padding) + padding;
+            y = Math.random() * (container.clientHeight - 2 * padding) + padding;
+            attempts++;
+        } while (!isValidPosition(x, y, existingNodes) && attempts < maxAttempts);
+
+        return {x, y};
+    }
+
+    /* 添加中心节点 */
+    nodes.push({
         id: 0,
         label: currentSite.name,
         image: currentSite.image,
         description: currentSite.description,
-        x: (container.clientWidth - 100) / 2,
-        y: (container.clientHeight - 100) / 2
-    }].concat(links.map((link, index) => ({
-        id: index + 1,
-        label: link.name,
-        image: link.image || '',
-        description: link.description || '',
-        x: Math.random() * (container.clientWidth - 100) + 50,
-        y: Math.random() * (container.clientHeight - 100) + 50
-    })));
+        x: container.clientWidth / 2,
+        y: (container.clientHeight - 120) / 2
+    });
+
+    /* 添加友情链接节点 */
+    links.forEach((link, index) => {
+        const position = getValidPosition(nodes);
+        nodes.push({
+            id: index + 1,
+            label: link.name,
+            image: link.image || '',
+            description: link.description || '',
+            x: position.x,
+            y: position.y
+        });
+    });
 
     /* 创建边（将所有节点连接到中心节点） */
     const edges = nodes.map((node, index) => ({
@@ -64,7 +102,7 @@ $(function () {
             /* 节点内容 */
             nodeEl.innerHTML = `
                 <div class="node-icon">
-                    <img src="${node.image}" alt="${node.label}" onerror="this.src='${window.themeUrl}/assets/images/default.png'">
+                    <img src="${node.image}" alt="${node.label}">
                 </div>
                 <div class="node-info">
                     <h3>${node.label}</h3>
@@ -73,13 +111,17 @@ $(function () {
             `;
 
 
-            /* 添加拖拽功能 */
+            /* 添加拖拽和点击功能 */
             let isDragging = false;
             let currentX;
             let currentY;
+            let startX;
+            let startY;
 
             nodeEl.addEventListener('mousedown', function (e) {
-                isDragging = true;
+                isDragging = false;
+                startX = e.clientX;
+                startY = e.clientY;
                 currentX = e.clientX - node.x;
                 currentY = e.clientY - node.y;
                 nodeEl.classList.add('dragging');
@@ -87,19 +129,32 @@ $(function () {
 
             document.addEventListener('mousemove', function (e) {
 
-                if (!isDragging) return;
+                if (!nodeEl.classList.contains('dragging')) return;
+
+                const moveDistance = Math.sqrt(
+                    Math.pow(e.clientX - startX, 2) +
+                    Math.pow(e.clientY - startY, 2)
+                );
+
+                if (moveDistance > 5) {
+                    isDragging = true;
+                }
 
                 node.x = e.clientX - currentX;
                 node.y = e.clientY - currentY;
                 nodeEl.style.left = `${node.x}px`;
                 nodeEl.style.top = `${node.y}px`;
 
-
                 drawEdges(); // 重新绘制连线
             });
 
-            document.addEventListener('mouseup', function () {
-                isDragging = false;
+            nodeEl.addEventListener('mouseup', function () {
+                if (!isDragging && node.id !== 0) {
+                    const url = friendLinkEls[node.id - 1].dataset.url;
+                    if (url) {
+                        window.open(url, '_blank');
+                    }
+                }
                 nodeEl.classList.remove('dragging');
             });
 

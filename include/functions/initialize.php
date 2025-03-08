@@ -25,6 +25,7 @@ add_theme_support( 'post-thumbnails' ); //开启主题缩略图
 add_theme_support( 'menus' ); //开启主题菜单功能
 add_theme_support( 'widgets' ); //开启自定义侧边栏
 add_theme_support( 'widgets-block-editor' ); //开启自定义侧边栏
+add_filter( 'pre_option_link_manager_enabled', '__return_true' );
 remove_filter( 'the_content', 'wptexturize' );  //关闭文章转义
 
 /* 给页面注册标签和分类功能 */

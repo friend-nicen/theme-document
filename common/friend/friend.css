@@ -9,7 +9,8 @@
     width: 100%;
     height: calc(100vh - 100px);
     border-radius: 8px;
-    overflow: visible;
+    overflow-x: hidden;
+    overflow-y: visible;
     margin: 20px 0;
 }
 
@@ -22,14 +23,14 @@
 }
 
 .friend-edge {
-    stroke: #e9ecef;
-    stroke-width: 2;
+    stroke: #bcbcbc;
+    stroke-width: 1;
     transition: stroke 0.3s;
 }
 
 .friend-node {
     position: absolute;
-    width: 80px;
+    width: 4.5rem;
     cursor: move;
     z-index: 2;
     transition: transform 0.3s;
@@ -45,9 +46,14 @@
     transform: scale(1.05);
 }
 
+
 .node-icon {
-    width: 80px;
-    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 4.5rem;
+    height: 4.5rem;
     border-radius: 50%;
     overflow: hidden;
     border: 3px solid #fff;
@@ -57,8 +63,8 @@
 }
 
 .node-icon img {
-    width: 100%;
-    height: 100%;
+    width: 75%;
+    height: 75%;
     pointer-events: none;
     user-select: none;
     object-fit: cover;
@@ -67,14 +73,14 @@
 .node-info {
     text-align: center;
     background: rgba(255, 255, 255, 0.9);
-    padding: 8px;
+    padding: 12px;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     opacity: 0;
     transition: opacity 0.3s;
     pointer-events: none;
     position: absolute;
-    width: 200px;
+    width: 240px;
     left: 50%;
     z-index: 1001;
     transform: translateX(-50%);

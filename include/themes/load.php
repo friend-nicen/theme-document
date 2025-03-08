@@ -167,7 +167,8 @@ function nicen_theme_load_source() {
 				 * 如果不是外部文件
 				 * */
 				if ( strpos( $style, 'http' ) === false ) {
-					wp_enqueue_style( $key, $url . $style, array() );
+					$ver = filemtime( $root . $style );
+					wp_enqueue_style( $key, $url . $style, array(), $ver );
 				} else {
 					wp_enqueue_style( $key, $style, array() );
 				}
@@ -183,8 +184,9 @@ function nicen_theme_load_source() {
 				/*
 				 * 如果不是外部文件
 				 * */
-				if ( strpos( $style, 'http' ) === false ) {
-					wp_enqueue_script( $key, $url . $script, array() );
+				if ( strpos( $script, 'http' ) === false ) {
+					$ver = filemtime( $root . $script );
+					wp_enqueue_script( $key, $url . $script, array(), $ver );
 				} else {
 					wp_enqueue_script( $key, $script, array() );
 				}
