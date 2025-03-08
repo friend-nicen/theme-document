@@ -50,10 +50,12 @@ $(function () {
         let x, y;
         let attempts = 0;
         const maxAttempts = 100;
+        const minBorderDistance = 150; // 与边界的最小距离
 
         do {
-            x = Math.random() * (container.clientWidth - 2 * padding) + padding;
-            y = Math.random() * (container.clientHeight - 2 * padding) + padding;
+            // 考虑边界距离计算随机位置
+            x = Math.random() * (container.clientWidth - 2 * minBorderDistance) + minBorderDistance;
+            y = Math.random() * (container.clientHeight - 2 * minBorderDistance) + minBorderDistance;
             attempts++;
         } while (!isValidPosition(x, y, existingNodes) && attempts < maxAttempts);
 
@@ -66,7 +68,7 @@ $(function () {
         label: currentSite.name,
         image: currentSite.image,
         description: currentSite.description,
-        x: container.clientWidth / 2,
+        x: container.clientWidth / 2 - (2.2 * rem),
         y: (container.clientHeight - 120) / 2
     });
 

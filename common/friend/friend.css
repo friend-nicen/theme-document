@@ -7,10 +7,8 @@
 .friend-graph {
     position: relative;
     width: 100%;
-    height: calc(100vh - 100px);
+    min-height: calc(100vh - 100px);
     border-radius: 8px;
-    overflow-x: hidden;
-    overflow-y: visible;
     margin: 20px 0;
 }
 
