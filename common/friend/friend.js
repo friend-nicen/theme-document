@@ -34,8 +34,8 @@ $(function () {
         label: currentSite.name,
         image: currentSite.image,
         description: currentSite.description,
-        x: container.clientWidth / 2,
-        y: container.clientHeight / 2
+        x: (container.clientWidth - 100) / 2,
+        y: (container.clientHeight - 100) / 2
     }].concat(links.map((link, index) => ({
         id: index + 1,
         label: link.name,
@@ -53,7 +53,9 @@ $(function () {
 
     /* 绘制节点 */
     function drawNodes() {
+
         nodes.forEach(node => {
+
             const nodeEl = document.createElement('div');
             nodeEl.className = 'friend-node';
             nodeEl.style.left = `${node.x}px`;
@@ -85,9 +87,6 @@ $(function () {
 
             document.addEventListener('mousemove', function (e) {
 
-
-                console.log("更新")
-
                 if (!isDragging) return;
 
                 node.x = e.clientX - currentX;
@@ -101,7 +100,6 @@ $(function () {
 
             document.addEventListener('mouseup', function () {
                 isDragging = false;
-                console.log("抬起");
                 nodeEl.classList.remove('dragging');
             });
 
