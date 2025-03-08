@@ -50,7 +50,7 @@ $(function () {
         let x, y;
         let attempts = 0;
         const maxAttempts = 100;
-        const minBorderDistance = 150; // 与边界的最小距离
+        const minBorderDistance = (container.clientWidth > 720 ? 150 : 70); // 与边界的最小距离
 
         do {
             // 考虑边界距离计算随机位置
@@ -68,7 +68,7 @@ $(function () {
         label: currentSite.name,
         image: currentSite.image,
         description: currentSite.description,
-        x: container.clientWidth / 2 - (2.2 * rem),
+        x: container.clientWidth / 2 - (2 * rem),
         y: (container.clientHeight - 120) / 2
     });
 
