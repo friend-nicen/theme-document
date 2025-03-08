@@ -50,6 +50,10 @@ Github：<https://github.com/friend-nicen/nicen-replay>
 
 Gitee：<https://gitee.com/friend-nicen/nicen-replay>
 
+# 2025-03-09
+
+1. 新增友情链接页面
+
 # 2025-03-08
 
 1. 新增主题后台可以自定义背景色
