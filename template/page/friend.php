@@ -45,6 +45,7 @@ $friend_links = array_map( function ( $link ) {
 				    ?>"
                     data-description="<?php echo esc_attr( $link['description'] ); ?>"
                     data-url="<?php echo esc_attr( $link['url'] ); ?>">
+                    <a title="<?php echo esc_attr( $link['name']  ); ?>" href="<?php echo esc_attr( $link['url'] ); ?>"><?php echo esc_attr( $link['name'] ); ?></a>
                 </li>
 			<?php endforeach; ?>
         </ul>

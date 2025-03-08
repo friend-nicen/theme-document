@@ -69,6 +69,10 @@
 }
 
 .node-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     background: rgba(255, 255, 255, 0.9);
     padding: 12px;
