@@ -73,14 +73,11 @@ $(function () {
     * 点击表情以外的地方，关闭表情面板
     * */
     $("body").click(function (e) {
-            let that = $();
-            e.stopPropagation();
-            if (!$.contains(emoji.get(0), e.target) && emoji.length > 0) {
-                emoji.css("display", "none");
-                textarea.removeClass("focus");
-            }
+        if (emoji.length > 0 && !$.contains(emoji.get(0), e.target)) {
+            emoji.css("display", "none");
+            textarea.removeClass("focus");
         }
-    );
+    });
 
 
     /*

@@ -1,0 +1,103 @@
+/*
+ * 友情链接关系图表样式
+ * @author 友人a丶
+ * @date 2024-01-18
+ */
+
+.friend-graph {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+#friend-edges {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.friend-edge {
+    stroke: #e9ecef;
+    stroke-width: 2;
+    transition: stroke 0.3s;
+}
+
+.friend-node {
+    position: absolute;
+    width: 80px;
+    cursor: move;
+    z-index: 2;
+    transition: transform 0.3s;
+}
+
+.friend-node.dragging {
+    z-index: 3;
+    transform: scale(1.05);
+}
+
+.friend-node.dragging {
+    z-index: 3;
+    transform: scale(1.05);
+}
+
+.node-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    margin-bottom: 8px;
+}
+
+.node-icon img {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    user-select: none;
+    object-fit: cover;
+}
+
+.node-info {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    position: absolute;
+    width: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.friend-node:hover .node-info {
+    opacity: 1;
+}
+
+.node-info h3 {
+    margin: 0 0 4px;
+    font-size: 14px;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.node-info p {
+    margin: 0;
+    font-size: 12px;
+    color: #666;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
