@@ -309,13 +309,15 @@ function nicen_theme_navigator() {
 }
 
 
-/*
+/**
+ * @param $content
+ * @param $password
+ * @param $flag
  * 处理文章摘要
- * */
+ *
+ * @return string|string[]|void|null
+ */
 function nicen_theme_getExcerpt( $content, $password, $flag = true ) {
-
-	/* 文章 */
-	global $post;
 
 	/*
 	 * 是否有密码
@@ -332,14 +334,12 @@ function nicen_theme_getExcerpt( $content, $password, $flag = true ) {
 
 
 	$content = strip_tags( $content );//去除html
-	$content = preg_replace( "/\[[\s\S]*?\]/", "", $content ); //去除短标签
+	$content = preg_replace( "/\[[\s\S]*?]/", "", $content ); //去除短标签
 
 	if ( $flag ) {
-		echo $content;
-
-		return;
+		echo addslashes( $content );
 	} else {
-		return $content;
+		return addslashes( $content );
 	}
 
 
