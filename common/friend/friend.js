@@ -6,7 +6,7 @@
 
 $(function () {
 
-    let gap = window.innerWidth < 767 ? 2 : 4;
+    let gap = window.innerWidth < 767 ? 2 : 3.6;
 
     /* 创建关系图表容器 */
     const container = document.getElementById('friend-graph');
@@ -52,7 +52,7 @@ $(function () {
         let x, y;
         let attempts = 0;
         const maxAttempts = 100;
-        const minBorderDistance = (container.clientWidth > 720 ? 150 : 70); // 与边界的最小距离
+        const minBorderDistance = (container.clientWidth > 720 ? 100 : 50); // 与边界的最小距离
 
         do {
             // 考虑边界距离计算随机位置
