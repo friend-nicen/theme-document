@@ -678,6 +678,14 @@ html {
             margin-bottom: 4.2rem;
             padding: 0.7rem 0.5rem 0 0;
 
+            /* 隐藏滚动条的同时仍能滚动 */
+            -ms-overflow-style: none; /* 适用于 Internet Explorer 和旧版 Edge */
+            scrollbar-width: none; /* 适用于 Firefox */
+            /* Webkit 浏览器 */
+            &::-webkit-scrollbar {
+              display: none; /* 隐藏滚动条 */
+            }
+
             .iconfont {
               position: absolute;
               margin-right: 3px;
