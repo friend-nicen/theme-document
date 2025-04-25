@@ -18,7 +18,7 @@ Gitee：[https://gitee.com/friend-nicen/theme-document](https://gitee.com/friend
 
 # 打赏记录
 
-不定时更新..........,感谢：
+不定时更新..........，感谢：
 
 | 时间         | 昵称          | 金额    |
 |------------|-------------|-------|
@@ -27,6 +27,8 @@ Gitee：[https://gitee.com/friend-nicen/theme-document](https://gitee.com/friend
 | 2024-11-13 | Laumy       | 66.0  |
 | 2025-01-13 | Jason zhang | 100.0 |
 | 2025-02-13 | 法律人@海       | 66.0  |
+| 2025-04-25 | Laumy       | 60.0  |
+
 
 # 打赏
 
@@ -49,6 +51,13 @@ Gitee：[https://gitee.com/friend-nicen/nicen-localize-image](https://gitee.com/
 Github：<https://github.com/friend-nicen/nicen-replay>
 
 Gitee：<https://gitee.com/friend-nicen/nicen-replay>
+
+# 2025-04-25
+
+1. 修复前台存在多个jq时会导致部分功能不可用的问题
+2. 修复文章目录存在异常报错的情况
+3. 新增存在静态缓存的情况下文章异步同步阅读数
+4. 优化夜间模式下的文字块样式
 
 # 2025-03-09
 

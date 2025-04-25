@@ -22,7 +22,6 @@
   --theme-footer-bg-color: transparent;
   --theme-footer-font-color: white;
 
-
   --theme-text-secondary: #{rgba(#ebebeb,.99)};
   --theme-hover-bg: var(--theme-text-color);
   --theme-hover-color: var(--theme-black);
@@ -40,5 +39,22 @@
 
   --theme-label-bg: #141414;
   --theme-label-hover: #2a2a2b;
+
+  /*文字块样式变量*/
+  --theme-success-bg-color: #10b98129;
+  --theme-success-line-color: #{rgba(#42b983,0.5)};
+  --theme-success-title-color: #dfdfd6;
+  --theme-success-text-color: #dfdfd6;
+
+  --theme-alert-bg-color: #eab30829;
+  --theme-alert-line-color: #{rgba(#e7c000,0.5)};
+  --theme-alert-title-color: #dfdfd6;
+  --theme-alert-text-color: #dfdfd6;
+
+  --theme-error-bg-color: #{rgba(#f43f5e, 0.16)};
+  --theme-error-line-color: #{rgba(#cc0000,0.5)};
+  --theme-error-title-color: #dfdfd6;
+  --theme-error-text-color: #dfdfd6;
+
 
 }

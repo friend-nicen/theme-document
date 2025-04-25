@@ -33,4 +33,17 @@
   --theme-pre-code-bg: #141414;
   --theme-pre-code-shadow: transparent;
   --theme-label-bg: #141414;
-  --theme-label-hover: #2a2a2b; }
+  --theme-label-hover: #2a2a2b;
+  /*文字块样式变量*/
+  --theme-success-bg-color: #10b98129;
+  --theme-success-line-color: rgba(66, 185, 131, 0.5);
+  --theme-success-title-color: #dfdfd6;
+  --theme-success-text-color: #dfdfd6;
+  --theme-alert-bg-color: #eab30829;
+  --theme-alert-line-color: rgba(231, 192, 0, 0.5);
+  --theme-alert-title-color: #dfdfd6;
+  --theme-alert-text-color: #dfdfd6;
+  --theme-error-bg-color: rgba(244, 63, 94, 0.16);
+  --theme-error-line-color: rgba(204, 0, 0, 0.5);
+  --theme-error-title-color: #dfdfd6;
+  --theme-error-text-color: #dfdfd6; }
