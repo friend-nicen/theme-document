@@ -4,7 +4,7 @@
 *
 * 表情处理模块
 * */
-$(function () {
+$(function ($) {
 
     (function ($) {
         $.fn.extend(

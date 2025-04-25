@@ -35,7 +35,7 @@ $.fn.scrollUnique = function () {
 };
 
 
-$(function () {
+$(function ($) {
 
     /* 阅读导航栏初始化 */
     (function () {

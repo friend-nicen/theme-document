@@ -1,7 +1,7 @@
 /*
   * 动态加载下一页
   * */
-$(function () {
+$(function ($) {
 
     /* 节流  */
     function throttle(cb, wait = 3000) {
