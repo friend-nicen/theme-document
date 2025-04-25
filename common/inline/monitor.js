@@ -345,19 +345,15 @@ $(function () {
             * 判断点赞的是哪一个
             * */
             if ($('.icp-beian div').index(this) == 0) {
-                /*
-                * 点赞
-                * */
+                /* 点赞  */
                 let that = $(this);
-                $.post(location.pathname + "?nice=" + Current, function (res) {
+                $.post("/?document_nice=" + Current, function () {
                     that.find('span').text(parseInt(that.find('span').text()) + 1);
                 });
             } else {
-                /*
-                  * 踩
-                  * */
+                /* 踩 */
                 let that = $(this);
-                $.post(location.pathname + "?bad=" + Current, function (res) {
+                $.post("/?document_bad=" + Current, function () {
                     that.find('span').text(parseInt(that.find('span').text()) + 1);
                 });
             }

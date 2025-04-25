@@ -101,8 +101,14 @@ function nicen_theme_load_source() {
 		 * 内联的js
 		 * */
 		wp_add_inline_script( "main-sub", preg_replace( '/\s/', '', vsprintf( '
+			window._ts = %d;
 			window.Current = "%s";'
-			, [ get_the_ID() ] ) ), 'before' );
+			, [ time(), get_the_ID() ] ) ), 'before' );
+
+		/* 阅读数同步和提交 */
+		wp_enqueue_script( 'single-view', $url . '/common/inline/view.js', [ 'main-sub' ], filemtime( $root . '/common/inline/view.js' ), false );
+
+
 	} else {
 		wp_enqueue_script( 'main-index', $url . '/common/inline/index.js', array( 'main' ), filemtime( $root . '/common/inline/index.js' ), false );
 		/*

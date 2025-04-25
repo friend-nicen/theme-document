@@ -31,9 +31,9 @@ function nicen_theme_auth() {
 /*
  * 点赞
  * */
-if ( isset( $_GET['nice'] ) ) {
-	if ( is_numeric( $_GET['nice'] ) ) {
-		nicen_theme_setPostNice( $_GET['nice'] );
+if ( isset( $_GET['document_nice'] ) ) {
+	if ( is_numeric( $_GET['document_nice'] ) ) {
+		nicen_theme_setPostNice( $_GET['document_nice'] );
 
 		exit( json_encode( [
 			'code'   => 1,
@@ -42,12 +42,29 @@ if ( isset( $_GET['nice'] ) ) {
 	}
 }
 
+
+/*
+ * 点赞
+ * */
+if ( isset( $_GET['document_view'] ) ) {
+	if ( is_numeric( $_GET['document_view'] ) ) {
+		nicen_theme_setPostViews( $_GET['document_view'] );
+
+		exit( json_encode( [
+			'code'   => 1,
+			'errMsg' => "阅读+1！",
+			'view'   => nicen_theme_getPostViews( $_GET['document_view'] )
+		] ) );
+	}
+}
+
+
 /*
  * 踩
  * */
-if ( isset( $_GET['bad'] ) ) {
-	if ( is_numeric( $_GET['bad'] ) ) {
-		nicen_theme_setPostBad( $_GET['bad'] );
+if ( isset( $_GET['document_bad'] ) ) {
+	if ( is_numeric( $_GET['document_bad'] ) ) {
+		nicen_theme_setPostBad( $_GET['document_bad'] );
 		exit( json_encode( [
 			'code'   => 1,
 			'errMsg' => "踩成功！"
@@ -120,7 +137,7 @@ if ( isset( $_GET['baidu_submit'] ) ) {
 		/* 结果 */
 		$result .= wp_remote_retrieve_body( $res );
 		/* 下一批 */
-		$page++;
+		$page ++;
 	}
 
 
