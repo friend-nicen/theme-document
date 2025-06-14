@@ -47,28 +47,3 @@ function remove_dashboard_siteHealth() {
 
 add_action( 'wp_dashboard_setup', 'remove_dashboard_siteHealth' );
 
-
-/**
- * 保留文章的反斜杠
- */
-$document_content_save_pre = 1; //次数
-
-function keep_slash( $content ) {
-	global $document_content_save_pre;
-	if ( $document_content_save_pre > 1 ) {
-		return $content;
-	}
-	$document_content_save_pre ++;
-
-	return str_replace( "\\", '\\\\', $content );
-}
-
-
-global $post; //文章
-$slash = isset( $_POST['nicen_slash'] ) ? sanitize_text_field( $_POST['nicen_slash'] ) : "";
-
-if ( strpos( $_SERVER['SCRIPT_NAME'] ?? "", '/post' ) ) {
-	if ( nicen_theme_config( 'document_switch_keep_slash', false ) || ( $slash ?: ( $post ? get_post_meta( $post->ID, 'nicen_slash', true ) : false ) ) ) {
-		add_filter( 'content_save_pre', 'keep_slash' );
-	}
-}
