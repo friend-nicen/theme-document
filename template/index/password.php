@@ -7,7 +7,7 @@
  * */
 
 
-$url     = get_template_directory_uri();//主题url
+$url     = get_cdn_uri();//主题url
 $protect = $url . '/assets/images/empty.svg';
 ?>
     <div class="password">

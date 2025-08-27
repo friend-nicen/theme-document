@@ -8,7 +8,7 @@ function nicen_theme_load_source() {
 
 
 	$root = get_template_directory(); //主题路径
-	$url  = get_template_directory_uri();//主题url
+	$url  = get_cdn_uri();//主题url
 
 	/* 底部推荐区域 */
 	if ( is_active_sidebar( 'content_down' ) ) {
@@ -32,7 +32,7 @@ function nicen_theme_load_source() {
 
 
 	/*主题的style.css*/
-	wp_enqueue_style( 'main-styles', get_stylesheet_uri(), array(), filemtime( $root . '/style.css' ) );
+	wp_enqueue_style( 'main-styles', $url . '/style.css', array(), filemtime( $root . '/style.css' ) );
 
 	/*
 	 * 去除无用的css

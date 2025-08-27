@@ -5,7 +5,7 @@
  * @author 友人a丶
  * @date 2022-07-08
  * */
-$default = get_template_directory_uri() . "/assets/images/default.png";
+$default = get_cdn_uri() . "/assets/images/default.png";
 
 ?>
 <div class="swiper mySwiper <?php echo $show_in_mobile ? '' : 'mobile'; ?>">

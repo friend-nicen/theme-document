@@ -111,6 +111,14 @@ const ADMIN = [
 						]
 					],
 					[
+						'id'       => 'document_cdn_uri',
+						'title'    => '静态资源 CDN 前缀',
+						'callback' => 'nicen_theme_form_input',
+						'args'     => [
+							'tip' => '为空则不使用 CDN。示例：https://fastly.jsdelivr.net/gh/friend-nicen/theme-document',
+						],
+					],
+					[
 						'id'       => 'document_catelog_mode',
 						'title'    => '文章目录解析模式',
 						'callback' => 'nicen_theme_form_select',
@@ -759,6 +767,7 @@ define( "CONFIG", [
 	'document_thumbnail_default'  => get_theme_root_uri() . '/destination/assets/images/default.png',
 	"document_Gravatar"           => 'gravatar.loli.net/avatar',
 	//默认替换的gavatar源
+	'document_cdn_uri'  	      => '',
 	"document_theme_color"        => '#3eaf7c',
 	"document_show_copyright"     => 1,
 	//主题色

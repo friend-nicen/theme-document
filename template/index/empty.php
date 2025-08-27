@@ -6,7 +6,7 @@
  * @date 2022-07-08
  * */
 
-$url      = get_template_directory_uri();//主题url
+$url      = get_cdn_uri();//主题url
 $page_404 = $url . '/assets/images/empty.svg';
 $page_css = $url . '/common/404/404.css';
 ?>

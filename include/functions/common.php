@@ -1065,3 +1065,23 @@ function get_new_post_modified_time( $format ) {
 	}
 
 }
+
+/**
+ * 获取CDN地址
+ */
+function get_cdn_uri() {
+    $cdn_uri = nicen_theme_config('document_cdn_uri', false);
+    if (empty($cdn_uri)) {
+        $cdn_uri = get_template_directory_uri();
+    } else {
+		// 添加 DOCUMENT_VERSION 版本检测：若没有包含 @ 符号并且没有以 / 结尾，则自动加上版本号
+		if (strpos($cdn_uri, '@') === false && substr($cdn_uri, -1) !== '/') {
+			$cdn_uri .= '@' . DOCUMENT_VERSION;
+		} else {
+			// 去掉末尾的 / 符号
+			$cdn_uri = rtrim($cdn_uri, '/');
+		}
+	}
+
+    return $cdn_uri;
+}

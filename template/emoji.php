@@ -4,7 +4,7 @@
 * @date 2022/10/17
 * 表情模板
 */
-$url = get_template_directory_uri();
+$url = get_cdn_uri();
 ?>
 
 <ul class="emoji-list">

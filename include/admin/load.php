@@ -61,7 +61,7 @@ if ( strpos( $_SERVER['QUERY_STRING'] ?? "", 'document_theme' ) !== false ) {
 function nicen_theme_widget_admin_load() {
 
     $root = get_template_directory(); //主题路径
-    $url  = get_template_directory_uri();//主题url
+    $url  = get_cdn_uri();//主题url
     wp_enqueue_style( 'widgetcss', $url . '/common/widget/widget.css', array(), filemtime( $root . '/common/widget/widget.css' ) );
     wp_enqueue_style( 'jqueryuicss', $url . '/assets/theme/jquery-ui.min.css', array() );
     wp_enqueue_script( 'widgetjs', $url . '/common/widget/widget.js', array(

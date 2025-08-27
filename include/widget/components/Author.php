@@ -93,14 +93,14 @@ class Author extends WP_Widget {
 			'title'   => '头像',
 			'type'    => 'text',
 			'field'   => 'avatar',
-			'default' => get_template_directory_uri() . '/assets/images/avatars.jpg',
+			'default' => get_cdn_uri() . '/assets/images/avatars.jpg',
 		] );
 
 		widget_media( $this, $instance, [
 			'title'   => '背景',
 			'type'    => 'text',
 			'field'   => 'beijin',
-			'default' => get_template_directory_uri() . '/assets/images/bg.jpg',
+			'default' => get_cdn_uri() . '/assets/images/bg.jpg',
 		] );
 
 		?>

@@ -19,10 +19,10 @@ function nicen_theme_textToEmoji( $comment_ID ) {
 
     $comment = get_comment( $comment_ID );
     $html    = $comment->comment_content;
-    $path    = get_template_directory_uri() . "/assets/smilies/"; //主题目录
+    $path    = get_cdn_uri() . "/assets/smilies/"; //主题目录
     $dir     = get_template_directory() . "/assets/smilies/"; //主题目录
 
-    
+
     /*
      * 匹配是否有表情
      * */

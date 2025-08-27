@@ -10,7 +10,7 @@ function nicen_theme_admin_init() {
 	if ( nicen_theme_config( 'document_theme_Gutenberg', false ) ) {
 		add_filter( 'use_block_editor_for_post', '__return_false' );
 	}
-	
+
 	//禁止新版小工具
     add_filter( 'gutenberg_use_widgets_block_editor', '__return_false' );
     add_filter( 'use_widgets_block_editor', '__return_false' );
@@ -32,17 +32,17 @@ function nicen_theme_admin_init() {
             /*
              * 引入插件的js
              * */
-            $plugin_array['success']  = get_template_directory_uri() . '/common/plugins/success.js';/*指定要加载的插件*/
-            $plugin_array['alert']    = get_template_directory_uri() . '/common/plugins/alert.js';/*指定要加载的插件*/
-            $plugin_array['error']    = get_template_directory_uri() . '/common/plugins/error.js';/*指定要加载的插件*/
-            $plugin_array['h1']       = get_template_directory_uri() . '/common/plugins/h1.js';/*指定要加载的插件*/
-            $plugin_array['h2']       = get_template_directory_uri() . '/common/plugins/h2.js';/*指定要加载的插件*/
-            $plugin_array['h3']       = get_template_directory_uri() . '/common/plugins/h3.js';/*指定要加载的插件*/
-            $plugin_array['code']     = get_template_directory_uri() . '/common/plugins/code.js';/*指定要加载的插件*/
-            $plugin_array['lightbox'] = get_template_directory_uri() . '/common/plugins/lightbox.js';/*指定要加载的插件*/
-            $plugin_array['mark']     = get_template_directory_uri() . '/common/plugins/mark.js';/*指定要加载的插件*/
-            $plugin_array['table']    = get_template_directory_uri() . '/common/plugins/table.js';/*指定要加载的插件*/
-            $plugin_array['u']        = get_template_directory_uri() . '/common/plugins/u.js';/*指定要加载的插件*/
+            $plugin_array['success']  = get_cdn_uri() . '/common/plugins/success.js';/*指定要加载的插件*/
+            $plugin_array['alert']    = get_cdn_uri() . '/common/plugins/alert.js';/*指定要加载的插件*/
+            $plugin_array['error']    = get_cdn_uri() . '/common/plugins/error.js';/*指定要加载的插件*/
+            $plugin_array['h1']       = get_cdn_uri() . '/common/plugins/h1.js';/*指定要加载的插件*/
+            $plugin_array['h2']       = get_cdn_uri() . '/common/plugins/h2.js';/*指定要加载的插件*/
+            $plugin_array['h3']       = get_cdn_uri() . '/common/plugins/h3.js';/*指定要加载的插件*/
+            $plugin_array['code']     = get_cdn_uri() . '/common/plugins/code.js';/*指定要加载的插件*/
+            $plugin_array['lightbox'] = get_cdn_uri() . '/common/plugins/lightbox.js';/*指定要加载的插件*/
+            $plugin_array['mark']     = get_cdn_uri() . '/common/plugins/mark.js';/*指定要加载的插件*/
+            $plugin_array['table']    = get_cdn_uri() . '/common/plugins/table.js';/*指定要加载的插件*/
+            $plugin_array['u']        = get_cdn_uri() . '/common/plugins/u.js';/*指定要加载的插件*/
 
 
             return $plugin_array;

@@ -5,7 +5,7 @@
  * */
 
 function nicen_theme_admin_edit_load_style( $mce_css ) {
-    $url = get_template_directory_uri();//主题url
+    $url = get_cdn_uri();//主题url
     if ( ! is_array( $mce_css ) ) {
         $mce_css = explode( ',', $mce_css );
     }
