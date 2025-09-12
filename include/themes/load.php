@@ -71,6 +71,7 @@ function nicen_theme_load_source() {
 		wp_enqueue_script( 'viewerjs', $url . '/common/viewer/viewer.min.js', array(), filemtime( $root . '/common/viewer/viewer.min.js' ), false );
 		wp_enqueue_script( 'prism', $url . '/common/prism/prism.js', array(), filemtime( $root . '/common/prism/prism.js' ), false );
 		wp_enqueue_style( 'prism', $url . '/common/prism/prism.css', array(), filemtime( $root . '/common/prism/prism.css' ) );
+		wp_enqueue_style( 'prism-dark', $url . '/common/prism/prism.dark.css', array(), filemtime( $root . '/common/prism/prism.dark.css' ) );
 		wp_enqueue_style( 'viewercss', $url . '/common/viewer/viewer.min.css', array(), filemtime( $root . '/common/viewer/viewer.min.css' ) );
 
 	}
